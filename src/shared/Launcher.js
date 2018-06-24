@@ -1,13 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import renderRoutes from 'react-router-config/renderRoutes'
+import { Switch } from 'react-router-dom'
 
-class Launcher extends Component {
+import '@theme/index.css'
+import routes from '@common/core/routes'
+
+export default class Layout extends React.Component {
+	constructor(props) {
+		super(props)
+	}
+
 	render() {
 		return (
-			<div>
-			Hello World
-		</div>
-	)
+			<Switch>
+				{renderRoutes(routes)}
+			</Switch>
+		)
 	}
 }
-
-export default Launcher

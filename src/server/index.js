@@ -1,35 +1,61 @@
+/* eslint-disable indent */
 import express from 'express'
 import cors from 'cors'
 import { renderToString } from 'react-dom/server'
 import React from 'react'
+import bodyParser from 'body-parser'
+import { matchPath, StaticRouter } from 'react-router-dom'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Launcher from '../shared/Launcher'
+import routes from '@src/constants/routes/index'
 
 const app = express()
 
 app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+	extended: true
+}))
+app.use(express.static('public'))
 
-app.use(express.static("public"))
+const context = {}
 
-app.get("*", (req, res) => {
+app.get('*', (req, res) => {
+	const match = routes(req.url, '/').reduce((acc, route) => matchPath(req.url, {path: route, exact: true}) || acc, null)
+	if (!match) {
+		res.status(404)
+			.send('Page not found')
+		return
+	}
+
 	const markup = renderToString(
-		<Launcher />
+		<MuiThemeProvider>
+			<StaticRouter
+				context={context}
+				location={req.url}
+			>
+				<Launcher/>
+			</StaticRouter>
+		</MuiThemeProvider>
 	)
 
-	res.send(`
-    <!DOCTYPE html>
-    <html>
-		<head>
-			<title>SSR with RR</title>
-  			<script src="/bundle.js" defer></script>
-		</head>
-		<body>
-			<div id="app">${markup}</div>
-		</body>
-    </html>
-  `)
+	res.status(200)
+		.send(`
+		    <!DOCTYPE html>
+		    <html>
+				<head>
+					<title>formetoo</title>
+		            <script src="/bundle.js" defer></script>
+		            <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+				</head>
+				<body>
+					<div id="app">${markup}</div>
+				</body>
+		    </html>
+  		`)
 })
 
 app.listen(8080, () => {
-	console.log(`Server is listening on port: 8080`)
+	console.log('Example app listening on port 8080!')
 })
