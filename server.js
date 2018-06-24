@@ -3623,7 +3623,7 @@ var ResourcesHeader = function (_React$Component) {
                                 label: '\u0418\u043C\u043F\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0444\u0430\u0439\u043B',
                                 primary: true,
                                 icon: _react2.default.createElement(_importExport2.default, { color: _colors.cyan500 }),
-                                href: process.env.NODE_ENV === 'production' ? 'http://admin.formetoo.ru/api/import/products' : 'http://localhost:3001/api/import/products'
+                                href: 'http://admin.formetoo.ru/api/import/products'
                             }),
                             _react2.default.createElement(
                                 _FlatButton2.default,
