@@ -14,7 +14,6 @@ export default class Data {
 
 	static async getAllowedResources() {
 		const response = await axios.get(config.uri.allowed, axiosConfig)
-
 		return {
 			success: response.data.success,
 			allowed: response.data.allowed
