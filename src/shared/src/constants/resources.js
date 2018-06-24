@@ -14,60 +14,60 @@ import StatusesIcon from 'material-ui/svg-icons/communication/stay-current-portr
 import PhotosIcon from 'material-ui/svg-icons/image/collections'
 
 const resources = {
-    categories: {
-        name: 'Категории',
-        icon: <CategoriesIcon/>,
-        dashboardIcon: <CategoriesIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
-    },
-    products: {
-        name: 'Продукты',
-        icon: <ProductsIcon/>,
-        dashboardIcon: <ProductsIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
-    },
-    orders: {
-        name: 'Заказы',
-        icon: <OrdersIcon/>,
-        dashboardIcon: <OrdersIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
-    },
-    users: {
-        name: 'Пользователи',
-        icon: <UsersIcon/>,
-        dashboardIcon: <UsersIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
-    },
-    clients: {
-        name: 'Клиенты',
-        icon: <ClientsIcon/>,
-        dashboardIcon: <ClientsIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
-    },
-    attributes: {
-        name: 'Атрибуты',
-        icon: <AttributesIcon/>
-    },
-    'attribute-sets': {
-        name: 'Набор атрибутов',
-        icon: <SetOfAttributesIcon/>
-    },
-    tabs: {
-        name: 'Табы',
-        icon: <TabsIcon/>
-    },
-    'tab-sets': {
-        name: 'Набор табов',
-        icon: <SetOfTabsIcon/>
-    },
-    statuses: {
-        name: 'Статусы',
-        icon: <StatusesIcon/>
-    },
-    roles: {
-        name: 'Роли',
-        icon: <RolesIcon/>,
-        dashboardIcon: <RolesIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
-    },
-    photos: {
-        name: 'Медиа',
-        icon: <PhotosIcon/>
-    },
+	categories: {
+		name: 'Категории',
+		icon: <CategoriesIcon/>,
+		dashboardIcon: <CategoriesIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
+	},
+	products: {
+		name: 'Продукты',
+		icon: <ProductsIcon/>,
+		dashboardIcon: <ProductsIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
+	},
+	orders: {
+		name: 'Заказы',
+		icon: <OrdersIcon/>,
+		dashboardIcon: <OrdersIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
+	},
+	users: {
+		name: 'Пользователи',
+		icon: <UsersIcon/>,
+		dashboardIcon: <UsersIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
+	},
+	clients: {
+		name: 'Клиенты',
+		icon: <ClientsIcon/>,
+		dashboardIcon: <ClientsIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
+	},
+	attributes: {
+		name: 'Атрибуты',
+		icon: <AttributesIcon/>
+	},
+	'attribute-sets': {
+		name: 'Набор атрибутов',
+		icon: <SetOfAttributesIcon/>
+	},
+	tabs: {
+		name: 'Табы',
+		icon: <TabsIcon/>
+	},
+	'tab-sets': {
+		name: 'Набор табов',
+		icon: <SetOfTabsIcon/>
+	},
+	statuses: {
+		name: 'Статусы',
+		icon: <StatusesIcon/>
+	},
+	roles: {
+		name: 'Роли',
+		icon: <RolesIcon/>,
+		dashboardIcon: <RolesIcon color='rgb(0, 188, 212)' style={{width: 50, height: 50}}/>
+	},
+	photos: {
+		name: 'Медиа',
+		icon: <PhotosIcon/>
+	}
 }
 
 export default resources

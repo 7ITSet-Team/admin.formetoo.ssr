@@ -2,7 +2,7 @@
   "name": "admin.formetoo.ssr",
   "version": "1.0.0",
   "description": "server-side rendering",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "webpack -w & nodemon server.js",
     "webpack": "webpack -w",

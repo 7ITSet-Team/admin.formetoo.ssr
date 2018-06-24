@@ -1039,7 +1039,7 @@ exports.default = function (location, root) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _react = __webpack_require__(0);
@@ -1097,60 +1097,60 @@ var _collections2 = _interopRequireDefault(_collections);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var resources = {
-    categories: {
-        name: 'Категории',
-        icon: _react2.default.createElement(_bookmark2.default, null),
-        dashboardIcon: _react2.default.createElement(_bookmark2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
-    },
-    products: {
-        name: 'Продукты',
-        icon: _react2.default.createElement(_list2.default, null),
-        dashboardIcon: _react2.default.createElement(_list2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
-    },
-    orders: {
-        name: 'Заказы',
-        icon: _react2.default.createElement(_attachMoney2.default, null),
-        dashboardIcon: _react2.default.createElement(_attachMoney2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
-    },
-    users: {
-        name: 'Пользователи',
-        icon: _react2.default.createElement(_people2.default, null),
-        dashboardIcon: _react2.default.createElement(_people2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
-    },
-    clients: {
-        name: 'Клиенты',
-        icon: _react2.default.createElement(_verifiedUser2.default, null),
-        dashboardIcon: _react2.default.createElement(_verifiedUser2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
-    },
-    attributes: {
-        name: 'Атрибуты',
-        icon: _react2.default.createElement(_viewList2.default, null)
-    },
-    'attribute-sets': {
-        name: 'Набор атрибутов',
-        icon: _react2.default.createElement(_stars2.default, null)
-    },
-    tabs: {
-        name: 'Табы',
-        icon: _react2.default.createElement(_tab2.default, null)
-    },
-    'tab-sets': {
-        name: 'Набор табов',
-        icon: _react2.default.createElement(_viewAgenda2.default, null)
-    },
-    statuses: {
-        name: 'Статусы',
-        icon: _react2.default.createElement(_stayCurrentPortrait2.default, null)
-    },
-    roles: {
-        name: 'Роли',
-        icon: _react2.default.createElement(_controlPoint2.default, null),
-        dashboardIcon: _react2.default.createElement(_controlPoint2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
-    },
-    photos: {
-        name: 'Медиа',
-        icon: _react2.default.createElement(_collections2.default, null)
-    }
+	categories: {
+		name: 'Категории',
+		icon: _react2.default.createElement(_bookmark2.default, null),
+		dashboardIcon: _react2.default.createElement(_bookmark2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
+	},
+	products: {
+		name: 'Продукты',
+		icon: _react2.default.createElement(_list2.default, null),
+		dashboardIcon: _react2.default.createElement(_list2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
+	},
+	orders: {
+		name: 'Заказы',
+		icon: _react2.default.createElement(_attachMoney2.default, null),
+		dashboardIcon: _react2.default.createElement(_attachMoney2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
+	},
+	users: {
+		name: 'Пользователи',
+		icon: _react2.default.createElement(_people2.default, null),
+		dashboardIcon: _react2.default.createElement(_people2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
+	},
+	clients: {
+		name: 'Клиенты',
+		icon: _react2.default.createElement(_verifiedUser2.default, null),
+		dashboardIcon: _react2.default.createElement(_verifiedUser2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
+	},
+	attributes: {
+		name: 'Атрибуты',
+		icon: _react2.default.createElement(_viewList2.default, null)
+	},
+	'attribute-sets': {
+		name: 'Набор атрибутов',
+		icon: _react2.default.createElement(_stars2.default, null)
+	},
+	tabs: {
+		name: 'Табы',
+		icon: _react2.default.createElement(_tab2.default, null)
+	},
+	'tab-sets': {
+		name: 'Набор табов',
+		icon: _react2.default.createElement(_viewAgenda2.default, null)
+	},
+	statuses: {
+		name: 'Статусы',
+		icon: _react2.default.createElement(_stayCurrentPortrait2.default, null)
+	},
+	roles: {
+		name: 'Роли',
+		icon: _react2.default.createElement(_controlPoint2.default, null),
+		dashboardIcon: _react2.default.createElement(_controlPoint2.default, { color: 'rgb(0, 188, 212)', style: { width: 50, height: 50 } })
+	},
+	photos: {
+		name: 'Медиа',
+		icon: _react2.default.createElement(_collections2.default, null)
+	}
 };
 
 exports.default = resources;
