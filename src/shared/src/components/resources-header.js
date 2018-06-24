@@ -490,7 +490,7 @@ export default class ResourcesHeader extends React.Component {
                                         label='Импортировать файл'
                                         primary={true}
                                         icon={<ImportExportIcon color={cyan500}/>}
-                                        href='http://localhost:3000/import/products'
+                                        href='http://admin.formetoo.ru/api/import/products'
                                     />
                                     <FlatButton
                                         label='Экспортировать файл'
