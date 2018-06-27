@@ -587,8 +587,19 @@ var ToolBar = function (_React$Component) {
 		value: function render() {
 			var _this2 = this;
 
-			if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled) return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' + this.props.resources });
-			if (this.state.add) return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' + this.props.resources + '/create' });
+			if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled) return _react2.default.createElement(_reactRouterDom.Redirect, {
+				push: true,
+				to: {
+					pathname: '/' + this.props.resources,
+					state: {
+						kek: 'lol'
+					}
+				}
+			});
+			if (this.state.add) return _react2.default.createElement(_reactRouterDom.Redirect, {
+				push: true,
+				to: '/' + this.props.resources + '/create'
+			});
 			if (this.props.action === 'delete') return _react2.default.createElement(
 				_Toolbar.Toolbar,
 				{
@@ -1089,7 +1100,7 @@ exports.default = function (location, root) {
 			path: root + resource + '/create',
 			exact: true,
 			component: function component() {
-				return _react2.default.createElement(_components2.default[resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create']);
+				return _react2.default.createElement(_components2.default[resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create'], { path: location });
 			}
 		});
 		routes.push({
@@ -1265,21 +1276,22 @@ module.exports = require("localStorage");
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+// let config = {
+// 	uri: {
+// 		admin: 'http://admin.formetoo.ru/api',
+// 		login: 'http://admin.formetoo.ru/api/login',
+// 		allowed: 'http://admin.formetoo.ru/api/allowed'
+// 	}
+// }
 var config = {
 	uri: {
-		admin: 'http://admin.formetoo.ru/api',
-		login: 'http://admin.formetoo.ru/api/login',
-		allowed: 'http://admin.formetoo.ru/api/allowed'
+		admin: 'http://localhost:3001/api',
+		login: 'http://localhost:3001/api/login',
+		allowed: 'http://localhost:3001/api/allowed'
 	}
-	// let config = {
-	// 	uri: {
-	// 		admin: 'http://localhost:3001/api',
-	// 		login: 'http://localhost:3001/api/login',
-	// 		allowed: 'http://localhost:3001/api/allowed'
-	// 	}
-	// }
+};
 
-};exports.default = config;
+exports.default = config;
 
 /***/ }),
 /* 31 */
@@ -2088,7 +2100,7 @@ module.exports = require("material-ui/svg-icons/image/collections");
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2120,186 +2132,189 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ResourcesLayout = function (_React$Component) {
-  _inherits(ResourcesLayout, _React$Component);
+	_inherits(ResourcesLayout, _React$Component);
 
-  function ResourcesLayout(props) {
-    _classCallCheck(this, ResourcesLayout);
+	function ResourcesLayout(props) {
+		_classCallCheck(this, ResourcesLayout);
 
-    var _this = _possibleConstructorReturn(this, (ResourcesLayout.__proto__ || Object.getPrototypeOf(ResourcesLayout)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ResourcesLayout.__proto__ || Object.getPrototypeOf(ResourcesLayout)).call(this, props));
 
-    _this.state = {
-      resources: [],
-      total: 0,
-      statuses: []
-    };
-    _this.getData(_this.props.path).catch(function (error) {
-      return console.error('\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u0438 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0438 \u0440\u0435\u0441\u043E\u0440\u0441\u043E\u0432: ', error);
-    });
-    return _this;
-  }
+		_this.state = {
+			resources: [],
+			total: 0,
+			statuses: []
+		};
+		return _this;
+	}
 
-  _createClass(ResourcesLayout, [{
-    key: 'getData',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-        var response, resStatuses, resClients, statuses;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _data2.default.getData(uri);
+	_createClass(ResourcesLayout, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.getData(this.props.path);
+		}
+	}, {
+		key: 'getData',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
+				var response, resStatuses, resClients, statuses;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.getData(uri);
 
-              case 2:
-                response = _context.sent;
+							case 2:
+								response = _context.sent;
 
-                if (!(uri === '/orders')) {
-                  _context.next = 13;
-                  break;
-                }
+								console.log(response);
 
-                _context.next = 6;
-                return _data2.default.getResource('/statuses');
+								if (!(uri === '/orders')) {
+									_context.next = 14;
+									break;
+								}
 
-              case 6:
-                resStatuses = _context.sent;
-                _context.next = 9;
-                return _data2.default.getResource('/clients');
+								_context.next = 7;
+								return _data2.default.getResource('/statuses');
 
-              case 9:
-                resClients = _context.sent;
-                statuses = response.data.map(function (data) {
-                  var arr = {};
-                  resStatuses.statuses.forEach(function (item) {
-                    if (item.slug === data.status) {
-                      arr = _extends({}, data, arr, {
-                        status: item.title
-                      });
-                    }
-                  });
-                  resClients.clients.forEach(function (item) {
-                    if (item.slug === data.client) {
-                      arr = _extends({}, data, arr, {
-                        client: item.name
-                      });
-                    }
-                  });
-                  return arr;
-                });
+							case 7:
+								resStatuses = _context.sent;
+								_context.next = 10;
+								return _data2.default.getResource('/clients');
 
-                this.setState({
-                  resources: statuses,
-                  total: response.total
-                });
-                return _context.abrupt('return', {
-                  resources: statuses,
-                  total: response.total
-                });
+							case 10:
+								resClients = _context.sent;
+								statuses = response.data.map(function (data) {
+									var arr = {};
+									resStatuses.statuses.forEach(function (item) {
+										if (item.slug === data.status) {
+											arr = _extends({}, data, arr, {
+												status: item.title
+											});
+										}
+									});
+									resClients.clients.forEach(function (item) {
+										if (item.slug === data.client) {
+											arr = _extends({}, data, arr, {
+												client: item.name
+											});
+										}
+									});
+									return arr;
+								});
 
-              case 13:
-                this.setState({
-                  resources: response.data,
-                  total: response.total
-                });
-                return _context.abrupt('return', {
-                  resources: response.data,
-                  total: response.total
-                });
+								this.setState({
+									resources: statuses,
+									total: response.total
+								});
+								return _context.abrupt('return', {
+									resources: statuses,
+									total: response.total
+								});
 
-              case 15:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
+							case 14:
+								this.setState({
+									resources: response.data,
+									total: response.total
+								});
+								return _context.abrupt('return', {
+									resources: response.data,
+									total: response.total
+								});
 
-      function getData(_x) {
-        return _ref.apply(this, arguments);
-      }
+							case 16:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-      return getData;
-    }()
-  }, {
-    key: 'refresh',
-    value: function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var response;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return this.getData(this.props.path);
+			function getData(_x) {
+				return _ref.apply(this, arguments);
+			}
 
-              case 2:
-                response = _context2.sent;
+			return getData;
+		}()
+	}, {
+		key: 'refresh',
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+				var response;
+				return regeneratorRuntime.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								_context2.next = 2;
+								return this.getData(this.props.path);
 
-                console.log(response);
-                this.setState({
-                  resources: response.resources,
-                  total: response.total
-                });
+							case 2:
+								response = _context2.sent;
 
-              case 5:
-              case 'end':
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
+								this.setState({
+									resources: response.resources,
+									total: response.total
+								});
 
-      function refresh() {
-        return _ref2.apply(this, arguments);
-      }
+							case 4:
+							case 'end':
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
 
-      return refresh;
-    }()
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+			function refresh() {
+				return _ref2.apply(this, arguments);
+			}
 
-      var _state = this.state,
-          resources = _state.resources,
-          total = _state.total,
-          statuses = _state.statuses;
-      var _props = this.props,
-          title = _props.title,
-          path = _props.path;
+			return refresh;
+		}()
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-      if (this.props.location === '/photos') {
-        return _react2.default.createElement(
-          _Card.Card,
-          null,
-          _react2.default.createElement(_resources2.default, {
-            title: title,
-            resources: resources,
-            path: path,
-            total: total
-          })
-        );
-      }
-      var _props2 = this.props,
-          columns = _props2.columns,
-          filters = _props2.filters;
+			var _state = this.state,
+			    resources = _state.resources,
+			    total = _state.total,
+			    statuses = _state.statuses;
+			var _props = this.props,
+			    title = _props.title,
+			    path = _props.path;
 
-      return _react2.default.createElement(_resources2.default, {
-        columns: columns,
-        title: title,
-        statuses: statuses,
-        resources: resources,
-        path: path,
-        total: total,
-        refresh: function refresh() {
-          return _this2.refresh();
-        },
-        filters: filters
-      });
-    }
-  }]);
+			if (this.props.location === '/photos') {
+				return _react2.default.createElement(
+					_Card.Card,
+					null,
+					_react2.default.createElement(_resources2.default, {
+						title: title,
+						resources: resources,
+						path: path,
+						total: total
+					})
+				);
+			}
+			var _props2 = this.props,
+			    columns = _props2.columns,
+			    filters = _props2.filters;
 
-  return ResourcesLayout;
+			return _react2.default.createElement(_resources2.default, {
+				columns: columns,
+				title: title,
+				statuses: statuses,
+				resources: resources,
+				path: path,
+				total: total,
+				refresh: function refresh() {
+					return _this2.refresh();
+				},
+				filters: filters
+			});
+		}
+	}]);
+
+	return ResourcesLayout;
 }(_react2.default.Component);
 
 exports.default = ResourcesLayout;
@@ -2312,7 +2327,7 @@ exports.default = ResourcesLayout;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2360,171 +2375,191 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ResourcesList = function (_React$Component) {
-  _inherits(ResourcesList, _React$Component);
+	_inherits(ResourcesList, _React$Component);
 
-  function ResourcesList(props) {
-    _classCallCheck(this, ResourcesList);
+	function ResourcesList(props) {
+		_classCallCheck(this, ResourcesList);
 
-    var _this = _possibleConstructorReturn(this, (ResourcesList.__proto__ || Object.getPrototypeOf(ResourcesList)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ResourcesList.__proto__ || Object.getPrototypeOf(ResourcesList)).call(this, props));
 
-    _this.state = {
-      page: 1,
-      resources: [],
-      filteredResources: [],
-      filtration: {}
-    };
-    _this.changePage = _this.changePage.bind(_this);
-    _this.exportFile = _this.exportFile.bind(_this);
-    return _this;
-  }
+		_this.state = {
+			page: 1,
+			resources: [],
+			filteredResources: [],
+			filtration: {}
+		};
+		_this.changePage = _this.changePage.bind(_this);
+		_this.exportFile = _this.exportFile.bind(_this);
+		return _this;
+	}
 
-  _createClass(ResourcesList, [{
-    key: 'changePage',
-    value: function changePage(newPage) {
-      this.setState({
-        page: newPage
-      });
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      this.setState({
-        resources: nextProps.resources,
-        filteredResources: nextProps.resources
-      });
-    }
-  }, {
-    key: 'onChangeState',
-    value: function onChangeState(key, value) {
-      var newState = this.state;
-      newState[key] = value;
-      this.setState(_extends({}, newState));
-    }
-  }, {
-    key: 'addFiltration',
-    value: function addFiltration(type, value) {
-      var _this2 = this;
+	_createClass(ResourcesList, [{
+		key: 'changePage',
+		value: function changePage(newPage) {
+			this.setState({
+				page: newPage
+			});
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			this.setState({
+				resources: nextProps.resources,
+				filteredResources: nextProps.resources
+			});
+		}
+	}, {
+		key: 'onChangeState',
+		value: function onChangeState(key, value) {
+			var newState = this.state;
+			newState[key] = value;
+			this.setState(_extends({}, newState));
+		}
+	}, {
+		key: 'addFiltration',
+		value: function addFiltration(type, value) {
+			var _this2 = this;
 
-      var filtration = this.state.filtration;
-      filtration[type] = value;
-      this.setState({
-        filtration: filtration
-      });
-      var resources = this.state.resources;
-      (0, _mapObj2.default)(this.state.filtration, function (key, value) {
-        var newResources = resources.filter(function (resource) {
-          if (key === 'title' || key === 'sku') return resource[key].indexOf(value) !== -1;
-          if (key === 'showInFilter' || key === 'isActive' || key === 'isRequire' || key === 'attrType' || key === 'role') return resource[key] === value;
-          if (key === 'client') return resource[key] === value;
-          if (key === 'attribute-sets' || key === 'categories' || key === 'name' || key === 'email') return resource[key].indexOf(value) !== -1;
-          if (key === 'priceStart') return Number(resource.price) >= Number(value);
-          if (key === 'priceEnd') return Number(resource.price) <= Number(value);
-          if (key === 'creationDateStart') return new Date(resource.creationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) >= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
-          if (key === 'creationDateEnd') return new Date(resource.creationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) <= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
-          if (key === 'modificationDateStart') return new Date(resource.modificationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) >= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
-          if (key === 'modificationDateEnd') return new Date(resource.modificationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) <= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
-        });
-        _this2.setState({
-          filteredResources: newResources
-        });
-        return true;
-      });
-    }
-  }, {
-    key: 'exportFile',
-    value: function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _data2.default.uploadXls(this.props.path, file.target.files[0]);
+			var filtration = this.state.filtration;
+			filtration[type] = value;
+			this.setState({
+				filtration: filtration
+			});
+			var resources = this.state.resources;
+			(0, _mapObj2.default)(this.state.filtration, function (key, value) {
+				var newResources = resources.filter(function (resource) {
+					if (key === 'title' || key === 'sku') {
+						return resource[key].indexOf(value) !== -1;
+					}
+					if (key === 'showInFilter' || key === 'isActive' || key === 'isRequire' || key === 'attrType' || key === 'role') {
+						return resource[key] === value;
+					}
+					if (key === 'client') {
+						return resource[key] === value;
+					}
+					if (key === 'attribute-sets' || key === 'categories' || key === 'name' || key === 'email') {
+						return resource[key].indexOf(value) !== -1;
+					}
+					if (key === 'priceStart') {
+						return Number(resource.price) >= Number(value);
+					}
+					if (key === 'priceEnd') {
+						return Number(resource.price) <= Number(value);
+					}
+					if (key === 'creationDateStart') {
+						return new Date(resource.creationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) >= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
+					}
+					if (key === 'creationDateEnd') {
+						return new Date(resource.creationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) <= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
+					}
+					if (key === 'modificationDateStart') {
+						return new Date(resource.modificationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) >= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
+					}
+					if (key === 'modificationDateEnd') {
+						return new Date(resource.modificationDate.toLocaleString().slice(0, resource.creationDate.toLocaleString().indexOf(','))) <= new Date(value.toLocaleString().slice(0, value.toLocaleString().indexOf(',')));
+					}
+				});
+				_this2.setState({
+					filteredResources: newResources
+				});
+				return true;
+			});
+		}
+	}, {
+		key: 'exportFile',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.uploadXls(this.props.path, file.target.files[0]);
 
-              case 2:
-                this.props.refresh();
+							case 2:
+								this.props.refresh();
 
-              case 3:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
+							case 3:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-      function exportFile(_x) {
-        return _ref.apply(this, arguments);
-      }
+			function exportFile(_x) {
+				return _ref.apply(this, arguments);
+			}
 
-      return exportFile;
-    }()
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
+			return exportFile;
+		}()
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
 
-      var _props = this.props,
-          title = _props.title,
-          statuses = _props.statuses,
-          columns = _props.columns,
-          path = _props.path,
-          total = _props.total,
-          filters = _props.filters;
-      var _state = this.state,
-          page = _state.page,
-          filteredResources = _state.filteredResources;
+			var _props = this.props,
+			    title = _props.title,
+			    statuses = _props.statuses,
+			    columns = _props.columns,
+			    path = _props.path,
+			    total = _props.total,
+			    filters = _props.filters;
+			var _state = this.state,
+			    page = _state.page,
+			    filteredResources = _state.filteredResources;
 
-      return _react2.default.createElement(
-        'div',
-        {
-          className: path === '/photos' ? 'media-resource' : 'resource-page'
-        },
-        path === '/photos' ? _react2.default.createElement(_photos2.default, {
-          data: filteredResources,
-          total: total,
-          page: page
-        }) : _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_resourcesHeader2.default, {
-            path: path,
-            refresh: function refresh() {
-              return _this3.props.refresh();
-            },
-            filters: filters,
-            addFiltration: function addFiltration(type, value) {
-              return _this3.addFiltration(type, value);
-            },
-            exportFile: this.exportFile,
-            title: _react2.default.createElement(_Card.CardTitle, {
-              title: title
-            })
-          }),
-          _react2.default.createElement(_resourcesContent2.default, {
-            columns: columns,
-            data: filteredResources,
-            statuses: statuses,
-            addFiltration: function addFiltration(type, value) {
-              return _this3.addFiltration(type, value);
-            },
-            onChangeState: function onChangeState(key, value) {
-              return _this3.onChangeState(key, value);
-            },
-            path: path,
-            page: page,
-            total: total
-          }),
-          _react2.default.createElement(_pagination2.default, {
-            total: total,
-            changePage: this.changePage,
-            page: page
-          })
-        )
-      );
-    }
-  }]);
+			return _react2.default.createElement(
+				'div',
+				{
+					className: path === '/photos' ? 'media-resource' : 'resource-page'
+				},
+				path === '/photos' ? _react2.default.createElement(_photos2.default, {
+					data: filteredResources,
+					total: total,
+					page: page
+				}) : _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_resourcesHeader2.default, {
+						path: path,
+						refresh: function refresh() {
+							return _this3.props.refresh();
+						},
+						filters: filters,
+						addFiltration: function addFiltration(type, value) {
+							return _this3.addFiltration(type, value);
+						},
+						exportFile: this.exportFile,
+						title: _react2.default.createElement(_Card.CardTitle, {
+							title: title
+						})
+					}),
+					_react2.default.createElement(_resourcesContent2.default, {
+						columns: columns,
+						data: filteredResources,
+						statuses: statuses,
+						addFiltration: function addFiltration(type, value) {
+							return _this3.addFiltration(type, value);
+						},
+						onChangeState: function onChangeState(key, value) {
+							return _this3.onChangeState(key, value);
+						},
+						path: path,
+						page: page,
+						total: total
+					}),
+					_react2.default.createElement(_pagination2.default, {
+						total: total,
+						changePage: this.changePage,
+						page: page
+					})
+				)
+			);
+		}
+	}]);
 
-  return ResourcesList;
+	return ResourcesList;
 }(_react2.default.Component);
 
 exports.default = ResourcesList;
@@ -2612,7 +2647,9 @@ var ResourcesContent = function (_React$Component) {
 			products: [],
 			data: {}
 		};
-		if (_this.props.path === '/users') _this.getRoles();
+		if (_this.props.path === '/users') {
+			_this.getRoles();
+		}
 		if (_this.props.path === '/products') {
 			_this.getProductsPrice();
 			_this.getCategories();
@@ -3620,15 +3657,15 @@ var ResourcesHeader = function (_React$Component) {
                             'div',
                             null,
                             _react2.default.createElement(_FlatButton2.default, {
-                                label: '\u0418\u043C\u043F\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0444\u0430\u0439\u043B',
+                                label: '\u042D\u043A\u0441\u043F\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0444\u0430\u0439\u043B',
                                 primary: true,
                                 icon: _react2.default.createElement(_importExport2.default, { color: _colors.cyan500 }),
-                                href: 'http://admin.formetoo.ru/api/import/products'
+                                href: /*'http://admin.formetoo.ru/api/import/products'*/'http://localhost:3001/api/import/products'
                             }),
                             _react2.default.createElement(
                                 _FlatButton2.default,
                                 {
-                                    label: '\u042D\u043A\u0441\u043F\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0444\u0430\u0439\u043B',
+                                    label: '\u0418\u043C\u043F\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0444\u0430\u0439\u043B',
                                     primary: true,
                                     containerElement: 'label',
                                     icon: _react2.default.createElement(_importExport2.default, { color: _colors.cyan500 }),
@@ -4135,7 +4172,7 @@ exports.default = Profile;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -4205,284 +4242,284 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var CategoriesCreate = function (_React$Component) {
-    _inherits(CategoriesCreate, _React$Component);
+	_inherits(CategoriesCreate, _React$Component);
 
-    function CategoriesCreate(props) {
-        _classCallCheck(this, CategoriesCreate);
+	function CategoriesCreate(props) {
+		_classCallCheck(this, CategoriesCreate);
 
-        var _this = _possibleConstructorReturn(this, (CategoriesCreate.__proto__ || Object.getPrototypeOf(CategoriesCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (CategoriesCreate.__proto__ || Object.getPrototypeOf(CategoriesCreate)).call(this, props));
 
-        _this.state = {
-            categories: [],
-            data: {
-                image: '',
-                slug: (0, _uid2.default)(16)
-            },
-            descState: _draftJs.EditorState.createEmpty(),
-            image: undefined
-        };
-        _this.getData();
-        _this.uploadFile = _this.uploadFile.bind(_this);
-        _this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
-        _this.changeParentCategory = _this.changeParentCategory.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			categories: [],
+			data: {
+				image: '',
+				slug: (0, _uid2.default)(16)
+			},
+			descState: _draftJs.EditorState.createEmpty(),
+			image: undefined
+		};
+		_this.getData();
+		_this.uploadFile = _this.uploadFile.bind(_this);
+		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
+		_this.changeParentCategory = _this.changeParentCategory.bind(_this);
+		return _this;
+	}
 
-    _createClass(CategoriesCreate, [{
-        key: 'uploadFile',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
-                var result;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.uploadImage('/upload/categories', file.target.files[0]);
+	_createClass(CategoriesCreate, [{
+		key: 'uploadFile',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
+				var result;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.uploadImage('/upload/categories', file.target.files[0]);
 
-                            case 2:
-                                result = _context.sent;
+							case 2:
+								result = _context.sent;
 
-                                this.setState({
-                                    data: _extends({}, this.state.data, {
-                                        image: result
-                                    }),
-                                    image: result
-                                });
+								this.setState({
+									data: _extends({}, this.state.data, {
+										image: result
+									}),
+									image: result
+								});
 
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
+							case 4:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-            function uploadFile(_x) {
-                return _ref.apply(this, arguments);
-            }
+			function uploadFile(_x) {
+				return _ref.apply(this, arguments);
+			}
 
-            return uploadFile;
-        }()
-    }, {
-        key: 'changeParentCategory',
-        value: function changeParentCategory(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    parentCategory: value
-                })
-            });
-        }
-    }, {
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'getData',
-        value: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _data2.default.getData('/categories');
+			return uploadFile;
+		}()
+	}, {
+		key: 'changeParentCategory',
+		value: function changeParentCategory(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					parentCategory: value
+				})
+			});
+		}
+	}, {
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'getData',
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+				var response;
+				return regeneratorRuntime.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								_context2.next = 2;
+								return _data2.default.getData('/categories');
 
-                            case 2:
-                                response = _context2.sent;
+							case 2:
+								response = _context2.sent;
 
-                                this.setState({
-                                    categories: response.data
-                                });
+								this.setState({
+									categories: response.data
+								});
 
-                            case 4:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
+							case 4:
+							case 'end':
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
 
-            function getData() {
-                return _ref2.apply(this, arguments);
-            }
+			function getData() {
+				return _ref2.apply(this, arguments);
+			}
 
-            return getData;
-        }()
-    }, {
-        key: 'onEditorDescChange',
-        value: function onEditorDescChange(descState) {
-            this.setState({
-                descState: descState
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+			return getData;
+		}()
+	}, {
+		key: 'onEditorDescChange',
+		value: function onEditorDescChange(descState) {
+			this.setState({
+				descState: descState
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/categories'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '150px'
-                                },
-                                label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'isActive');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'title');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    style: {
-                                        color: 'rgba(0, 0, 0, 0.3)'
-                                    }
-                                },
-                                '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-                            ),
-                            _react2.default.createElement(_reactDraftWysiwyg.Editor, {
-                                editorState: this.state.descState,
-                                wrapperClassName: 'demo-wrapper',
-                                editorClassName: 'demo-editor',
-                                onEditorStateChange: this.onEditorDescChange,
-                                onChange: function onChange() {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
-                                        })
-                                    });
-                                }
-                            }),
-                            _react2.default.createElement('input', {
-                                type: 'file',
-                                className: 'inputfile',
-                                id: 'file',
-                                onChange: this.uploadFile
-                            }),
-                            _react2.default.createElement(
-                                'label',
-                                {
-                                    htmlFor: 'file',
-                                    className: 'inputfile__label'
-                                },
-                                '\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'inputfile__images'
-                                },
-                                _react2.default.createElement('img', {
-                                    className: 'inputfile__image',
-                                    src: this.state.data.image
-                                })
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.parentCategory,
-                                    floatingLabelText: '\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F',
-                                    onChange: this.changeParentCategory
-                                },
-                                this.state.categories.map(function (category, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: category.slug,
-                                        primaryText: category.title,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: 'SEO' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.seo, {
-                                        title: value
-                                    }), 'seo');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-                                floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.seo, {
-                                        description: value
-                                    }), 'seo');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-                                floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.seo, {
-                                        keywords: value
-                                    }), 'seo');
-                                }
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'categories',
-                    data: this.state.data,
-                    action: 'create',
-                    photo: this.state.image
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/categories'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(_Toggle2.default, {
+								style: {
+									width: '150px'
+								},
+								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
+								onToggle: function onToggle(event, value) {
+									return _this2.changeState(value, 'isActive');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+								onChange: function onChange(event, value) {
+									return _this2.changeState(value, 'title');
+								}
+							}),
+							_react2.default.createElement(
+								'div',
+								{
+									style: {
+										color: 'rgba(0, 0, 0, 0.3)'
+									}
+								},
+								'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+							),
+							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+								editorState: this.state.descState,
+								wrapperClassName: 'demo-wrapper',
+								editorClassName: 'demo-editor',
+								onEditorStateChange: this.onEditorDescChange,
+								onChange: function onChange() {
+									return _this2.setState({
+										data: _extends({}, _this2.state.data, {
+											description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
+										})
+									});
+								}
+							}),
+							_react2.default.createElement('input', {
+								type: 'file',
+								className: 'inputfile',
+								id: 'file',
+								onChange: this.uploadFile
+							}),
+							_react2.default.createElement(
+								'label',
+								{
+									htmlFor: 'file',
+									className: 'inputfile__label'
+								},
+								'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'inputfile__images'
+								},
+								_react2.default.createElement('img', {
+									className: 'inputfile__image',
+									src: this.state.data.image
+								})
+							),
+							_react2.default.createElement(
+								_SelectField2.default,
+								{
+									fullWidth: true,
+									value: this.state.data.parentCategory,
+									floatingLabelText: '\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F',
+									onChange: this.changeParentCategory
+								},
+								this.state.categories.map(function (category, index) {
+									return _react2.default.createElement(_MenuItem2.default, {
+										value: category.slug,
+										primaryText: category.title,
+										key: index
+									});
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: 'SEO' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								onChange: function onChange(event, value) {
+									return _this2.changeState(_extends({}, _this2.state.data.seo, {
+										title: value
+									}), 'seo');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+								floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+								onChange: function onChange(event, value) {
+									return _this2.changeState(_extends({}, _this2.state.data.seo, {
+										description: value
+									}), 'seo');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+								floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+								onChange: function onChange(event, value) {
+									return _this2.changeState(_extends({}, _this2.state.data.seo, {
+										keywords: value
+									}), 'seo');
+								}
+							})
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'categories',
+					data: this.state.data,
+					action: 'create',
+					photo: this.state.image
+				})
+			);
+		}
+	}]);
 
-    return CategoriesCreate;
+	return CategoriesCreate;
 }(_react2.default.Component);
 
 exports.default = CategoriesCreate;

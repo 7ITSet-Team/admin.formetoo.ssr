@@ -26,17 +26,17 @@ export default class ToolBar extends React.Component {
 					url: this.props.photo,
 					creationDate: new Date().toLocaleString(),
 					modificationDate: new Date().toLocaleString()
-				};
+				}
 				Data.create('/photos', data)
 			}
-			const data = this.props.data;
-			data.creationDate = new Date().toLocaleString();
-			data.modificationDate = new Date().toLocaleString();
-			Data.create('/' + this.props.resources, data);
+			const data = this.props.data
+			data.creationDate = new Date().toLocaleString()
+			data.modificationDate = new Date().toLocaleString()
+			Data.create('/' + this.props.resources, data)
 			if (action === 'saveAndExit')
 				this.setState({
 					created: true
-				});
+				})
 			if (action === 'saveAndAdd')
 				this.setState({
 					add: true
@@ -77,12 +77,23 @@ export default class ToolBar extends React.Component {
 	render() {
 		if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled)
 			return (
-				<Redirect to={'/' + this.props.resources}/>
-			);
+				<Redirect
+					push
+					to={{
+						pathname: '/' + this.props.resources,
+						state: {
+							kek: 'lol'
+						}
+					}}
+				/>
+			)
 		if (this.state.add)
 			return (
-				<Redirect to={'/' + this.props.resources + '/create'}/>
-			);
+				<Redirect
+					push
+					to={'/' + this.props.resources + '/create'}
+				/>
+			)
 		if (this.props.action === 'delete')
 			return (
 				<Toolbar

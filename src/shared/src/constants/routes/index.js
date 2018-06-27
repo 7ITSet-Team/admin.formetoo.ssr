@@ -10,19 +10,34 @@ import components from './components'
 import listRoutes from './list'
 
 export default (location, root) => {
-	let resources = ['categories', 'products', 'orders', 'users', 'clients', 'attributes', 'attribute-sets', 'tabs', 'tab-sets', 'statuses', 'roles', 'photos']
-	let routes = [{
-		path: root,
-		exact: true,
-		component: Dashboard
-	}, {
-		path: root + 'profile',
-		exact: true,
-		component: () => <Profile
-			location={location}
-			resources='photos'
-		/>
-	}]
+	let resources = [
+		'categories',
+		'products',
+		'orders',
+		'users',
+		'clients',
+		'attributes',
+		'attribute-sets',
+		'tabs',
+		'tab-sets',
+		'statuses',
+		'roles',
+		'photos'
+	]
+	let routes = [
+		{
+			path: root,
+			exact: true,
+			component: Dashboard
+		}, {
+			path: root + 'profile',
+			exact: true,
+			component: () => <Profile
+				location={location}
+				resources='photos'
+			/>
+		}
+	]
 	listRoutes.forEach(route => {
 		routes.push({
 			path: root + route.resource,
@@ -40,14 +55,15 @@ export default (location, root) => {
 			path: root + resource + '/create',
 			exact: true,
 			component: () => React.createElement(
-				components[resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create'],
+				components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create' ],
+				{path: location}
 			)
 		})
 		routes.push({
 			path: root + resource + '/:id',
 			exact: true,
 			component: () => React.createElement(
-				components[resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit'],
+				components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit' ],
 				{location: location}
 			)
 		})

@@ -22,8 +22,9 @@ export default class ResourcesContent extends React.Component {
 			products: [],
 			data: {}
 		}
-		if (this.props.path === '/users')
+		if (this.props.path === '/users') {
 			this.getRoles()
+		}
 		if (this.props.path === '/products') {
 			this.getProductsPrice()
 			this.getCategories()
@@ -42,7 +43,7 @@ export default class ResourcesContent extends React.Component {
 			this.setState({
 				data: {
 					...this.state.data,
-					[product.slug]: product.price
+					[ product.slug ]: product.price
 				}
 			})
 		})
@@ -65,16 +66,16 @@ export default class ResourcesContent extends React.Component {
 
 	static ascendingSort(key, first, last) {
 		if (key !== 'price') {
-			return first[key] > last[key]
+			return first[ key ] > last[ key ]
 		}
-		return first[key] - last[key]
+		return first[ key ] - last[ key ]
 	}
 
 	static descendingSort(key, first, last) {
 		if (key !== 'price') {
-			return last[key] > first[key]
+			return last[ key ] > first[ key ]
 		}
-		return last[key] - first[key]
+		return last[ key ] - first[ key ]
 	}
 
 	sort(resource) {
@@ -138,15 +139,26 @@ export default class ResourcesContent extends React.Component {
 						displayRowCheckbox={false}
 					>
 						{sortedData.map((data, key) => {
-							if (((key + 1 >= page * 10 - 9) && ((total > (page % 10) * 10) && (key + 1 <= (page % 10) * 10) || (total <= (page % 10) * 10) && (key + 1 <= total)))) {
+							if ((
+								(
+									key + 1 >= page * 10 - 9) && (
+								(
+									total > (
+									page % 10) * 10) && (
+								key + 1 <= (
+								page % 10) * 10) || (
+								total <= (
+								page % 10) * 10) && (
+								key + 1 <= total))))
+							{
 								return (
 									<TableRow
 										key={key}
 										className='table__row'
 									>
 										{columns.map((column, i) => {
-											if (typeof data[column.key] === 'boolean') {
-												if (data[column.key]) {
+											if (typeof data[ column.key ] === 'boolean') {
+												if (data[ column.key ]) {
 													return (
 														<TableRowColumn key={i}>
 															<TrueIcon/>
@@ -159,12 +171,12 @@ export default class ResourcesContent extends React.Component {
 													</TableRowColumn>
 												)
 											}
-											if (column.key instanceof Array && !!data[column.key[0]]) {
+											if (column.key instanceof Array && !!data[ column.key[ 0 ] ]) {
 												return (
 													<TableRowColumn
 														key={i}
 													>
-														{data[column.key[0]][column.key[1]]}
+														{data[ column.key[ 0 ] ][ column.key[ 1 ] ]}
 													</TableRowColumn>
 												)
 											}
@@ -182,12 +194,12 @@ export default class ResourcesContent extends React.Component {
 															style={{
 																width: 60
 															}}
-															value={!!this.state.data[data.slug] ? this.state.data[data.slug] : ''}
+															value={!!this.state.data[ data.slug ] ? this.state.data[ data.slug ] : ''}
 															onChange={(event, value) => {
 																this.setState({
 																	data: {
 																		...this.state.data,
-																		[data.slug]: value
+																		[ data.slug ]: value
 																	}
 																})
 															}}
@@ -202,7 +214,7 @@ export default class ResourcesContent extends React.Component {
 																const url = this.props.path
 																Data.edit(url, {
 																	...data,
-																	price: this.state.data[data.slug]
+																	price: this.state.data[ data.slug ]
 																})
 															}}
 														/>
@@ -240,7 +252,7 @@ export default class ResourcesContent extends React.Component {
 													</TableRowColumn>
 												)
 											}
-											return <TableRowColumn key={i}>{data[column.key]}</TableRowColumn>
+											return <TableRowColumn key={i}>{data[ column.key ]}</TableRowColumn>
 										})}
 										<TableRowColumn>
 											<Link
