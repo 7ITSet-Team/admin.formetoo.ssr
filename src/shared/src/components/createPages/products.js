@@ -226,6 +226,13 @@ export default class ProductsCreate extends React.Component {
 							<div
 								className='input'
 							>
+								<div
+									style={{
+										color: 'rgba(0, 0, 0, 0.3)'
+									}}
+								>
+									Описание
+								</div>
 								<Editor
 									editorState={this.state.descState}
 									wrapperClassName="demo-wrapper"
@@ -242,6 +249,13 @@ export default class ProductsCreate extends React.Component {
 							<div
 								className='input'
 							>
+								<div
+									style={{
+										color: 'rgba(0, 0, 0, 0.3)'
+									}}
+								>
+									Краткое описание
+								</div>
 								<Editor
 									editorState={this.state.shortDescState}
 									wrapperClassName="demo-wrapper"

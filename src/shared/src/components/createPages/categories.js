@@ -114,6 +114,13 @@ export default class CategoriesCreate extends React.Component {
 							<div
 								className='input'
 							>
+								<div
+									style={{
+										color: 'rgba(0, 0, 0, 0.3)'
+									}}
+								>
+									Описание
+								</div>
 								<Editor
 									editorState={this.state.descState}
 									wrapperClassName="demo-wrapper"

@@ -4422,6 +4422,15 @@ var CategoriesCreate = function (_React$Component) {
 								{
 									className: 'input'
 								},
+								_react2.default.createElement(
+									'div',
+									{
+										style: {
+											color: 'rgba(0, 0, 0, 0.3)'
+										}
+									},
+									'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+								),
 								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
 									editorState: this.state.descState,
 									wrapperClassName: 'demo-wrapper',
@@ -4952,6 +4961,15 @@ var ProductsCreate = function (_React$Component) {
 								{
 									className: 'input'
 								},
+								_react2.default.createElement(
+									'div',
+									{
+										style: {
+											color: 'rgba(0, 0, 0, 0.3)'
+										}
+									},
+									'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+								),
 								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
 									editorState: this.state.descState,
 									wrapperClassName: 'demo-wrapper',
@@ -4971,6 +4989,15 @@ var ProductsCreate = function (_React$Component) {
 								{
 									className: 'input'
 								},
+								_react2.default.createElement(
+									'div',
+									{
+										style: {
+											color: 'rgba(0, 0, 0, 0.3)'
+										}
+									},
+									'\u041A\u0440\u0430\u0442\u043A\u043E\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+								),
 								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
 									editorState: this.state.shortDescState,
 									wrapperClassName: 'demo-wrapper',
