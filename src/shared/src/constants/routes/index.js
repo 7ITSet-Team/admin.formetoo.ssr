@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Dashboard from '@src/components/dashboard'
+import Resource from '@src/components/resource-layout'
 import ResourcesLayout from '@src/containers/resources-layout'
 import RemoveLayout from '@src/containers/remove-layout'
 import Profile from '@src/containers/profile'
@@ -50,8 +51,31 @@ export default (location, root) => {
 			/>
 		})
 	})
-	resources.forEach(resource => {
+
+	listRoutes.forEach(route => {
 		routes.push({
+			path: `${root}${route.resource}/create`,
+			exact: true,
+			component: () => <Resource
+				resource={route.resource}
+				structure={route.structure}
+				action='create'
+			/>
+		})
+		routes.push({
+			path: `${root}${route.resource}/:id`,
+			exact: true,
+			component: (props) => <Resource
+				resource={route.resource}
+				structure={route.structure}
+				action='edit'
+				{...props}
+			/>
+		})
+	})
+
+	resources.forEach(resource => {
+		/*routes.push({
 			path: root + resource + '/create',
 			exact: true,
 			component: () => React.createElement(
@@ -66,7 +90,7 @@ export default (location, root) => {
 				components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit' ],
 				{location: location}
 			)
-		})
+		})*/
 		routes.push({
 			path: root + resource + '/:id/delete',
 			exact: true,

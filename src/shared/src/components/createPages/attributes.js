@@ -273,13 +273,13 @@ export default class AttributesCreate extends React.Component {
 																<TableRowColumn>
 																	{variant.value}
 																</TableRowColumn>
-																<TableHeaderColumn>
+																<TableRowColumn>
 																	<DeleteIcon
 																		color='rgb(255, 64, 129)'
 																		onClick={() => this.deleteVariant(variant.id)}
 																		style={{cursor: 'pointer'}}
 																	/>
-																</TableHeaderColumn>
+																</TableRowColumn>
 															</TableRow>
 														)
 													}) : null}

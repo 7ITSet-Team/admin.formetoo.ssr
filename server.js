@@ -487,7 +487,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Toolbar = __webpack_require__(81);
+var _Toolbar = __webpack_require__(82);
 
 var _RaisedButton = __webpack_require__(16);
 
@@ -1035,6 +1035,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1043,15 +1045,19 @@ var _dashboard = __webpack_require__(51);
 
 var _dashboard2 = _interopRequireDefault(_dashboard);
 
-var _resourcesLayout = __webpack_require__(62);
+var _resourceLayout = __webpack_require__(62);
+
+var _resourceLayout2 = _interopRequireDefault(_resourceLayout);
+
+var _resourcesLayout = __webpack_require__(63);
 
 var _resourcesLayout2 = _interopRequireDefault(_resourcesLayout);
 
-var _removeLayout = __webpack_require__(80);
+var _removeLayout = __webpack_require__(81);
 
 var _removeLayout2 = _interopRequireDefault(_removeLayout);
 
-var _profile = __webpack_require__(82);
+var _profile = __webpack_require__(83);
 
 var _profile2 = _interopRequireDefault(_profile);
 
@@ -1059,7 +1065,7 @@ var _components = __webpack_require__(33);
 
 var _components2 = _interopRequireDefault(_components);
 
-var _list = __webpack_require__(106);
+var _list = __webpack_require__(107);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -1095,21 +1101,49 @@ exports.default = function (location, root) {
 			}
 		});
 	});
+
+	_list2.default.forEach(function (route) {
+		routes.push({
+			path: '' + root + route.resource + '/create',
+			exact: true,
+			component: function component() {
+				return _react2.default.createElement(_resourceLayout2.default, {
+					resource: route.resource,
+					structure: route.structure,
+					action: 'create'
+				});
+			}
+		});
+		routes.push({
+			path: '' + root + route.resource + '/:id',
+			exact: true,
+			component: function component(props) {
+				return _react2.default.createElement(_resourceLayout2.default, _extends({
+					resource: route.resource,
+					structure: route.structure,
+					action: 'edit'
+				}, props));
+			}
+		});
+	});
+
 	resources.forEach(function (resource) {
-		routes.push({
-			path: root + resource + '/create',
-			exact: true,
-			component: function component() {
-				return _react2.default.createElement(_components2.default[resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create'], { path: location });
-			}
-		});
-		routes.push({
-			path: root + resource + '/:id',
-			exact: true,
-			component: function component() {
-				return _react2.default.createElement(_components2.default[resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit'], { location: location });
-			}
-		});
+		/*routes.push({
+  	path: root + resource + '/create',
+  	exact: true,
+  	component: () => React.createElement(
+  		components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create' ],
+  		{path: location}
+  	)
+  })
+  routes.push({
+  	path: root + resource + '/:id',
+  	exact: true,
+  	component: () => React.createElement(
+  		components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit' ],
+  		{location: location}
+  	)
+  })*/
 		routes.push({
 			path: root + resource + '/:id/delete',
 			exact: true,
@@ -1316,91 +1350,91 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _categories = __webpack_require__(83);
+var _categories = __webpack_require__(84);
 
 var _categories2 = _interopRequireDefault(_categories);
 
-var _products = __webpack_require__(84);
+var _products = __webpack_require__(85);
 
 var _products2 = _interopRequireDefault(_products);
 
-var _orders = __webpack_require__(85);
+var _orders = __webpack_require__(86);
 
 var _orders2 = _interopRequireDefault(_orders);
 
-var _users = __webpack_require__(86);
+var _users = __webpack_require__(87);
 
 var _users2 = _interopRequireDefault(_users);
 
-var _clients = __webpack_require__(87);
+var _clients = __webpack_require__(88);
 
 var _clients2 = _interopRequireDefault(_clients);
 
-var _attributes = __webpack_require__(88);
+var _attributes = __webpack_require__(89);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _attributeSets = __webpack_require__(89);
+var _attributeSets = __webpack_require__(90);
 
 var _attributeSets2 = _interopRequireDefault(_attributeSets);
 
-var _tabs = __webpack_require__(90);
+var _tabs = __webpack_require__(91);
 
 var _tabs2 = _interopRequireDefault(_tabs);
 
-var _tabSets = __webpack_require__(91);
+var _tabSets = __webpack_require__(92);
 
 var _tabSets2 = _interopRequireDefault(_tabSets);
 
-var _roles = __webpack_require__(92);
+var _roles = __webpack_require__(93);
 
 var _roles2 = _interopRequireDefault(_roles);
 
-var _statuses = __webpack_require__(93);
+var _statuses = __webpack_require__(94);
 
 var _statuses2 = _interopRequireDefault(_statuses);
 
-var _categories3 = __webpack_require__(94);
+var _categories3 = __webpack_require__(95);
 
 var _categories4 = _interopRequireDefault(_categories3);
 
-var _products3 = __webpack_require__(95);
+var _products3 = __webpack_require__(96);
 
 var _products4 = _interopRequireDefault(_products3);
 
-var _users3 = __webpack_require__(97);
+var _users3 = __webpack_require__(98);
 
 var _users4 = _interopRequireDefault(_users3);
 
-var _roles3 = __webpack_require__(98);
+var _roles3 = __webpack_require__(99);
 
 var _roles4 = _interopRequireDefault(_roles3);
 
-var _clients3 = __webpack_require__(99);
+var _clients3 = __webpack_require__(100);
 
 var _clients4 = _interopRequireDefault(_clients3);
 
-var _orders3 = __webpack_require__(100);
+var _orders3 = __webpack_require__(101);
 
 var _orders4 = _interopRequireDefault(_orders3);
 
-var _attributes3 = __webpack_require__(101);
+var _attributes3 = __webpack_require__(102);
 
 var _attributes4 = _interopRequireDefault(_attributes3);
 
-var _attributeSets3 = __webpack_require__(102);
+var _attributeSets3 = __webpack_require__(103);
 
 var _attributeSets4 = _interopRequireDefault(_attributeSets3);
 
-var _tabs3 = __webpack_require__(103);
+var _tabs3 = __webpack_require__(104);
 
 var _tabs4 = _interopRequireDefault(_tabs3);
 
-var _tabSets3 = __webpack_require__(104);
+var _tabSets3 = __webpack_require__(105);
 
 var _tabSets4 = _interopRequireDefault(_tabSets3);
 
-var _statuses3 = __webpack_require__(105);
+var _statuses3 = __webpack_require__(106);
 
 var _statuses4 = _interopRequireDefault(_statuses3);
 
@@ -1675,7 +1709,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "html, body, .layout, #root, .body {\n    height: 100%;\n}\n\nbody {\n    margin: 0;\n}\n\n#app {\n    height: 100%;\n}\n\na, a:link, a:visited, a:active {\n    text-decoration: none;\n}\n\n/*--------------САЙДБАР---------------*/\n\n.list, .list_moved {\n    background-color: white;\n    min-width: 280px;\n    transition: 0.2s linear;\n    display: flex;\n    flex-flow: column;\n    justify-content: space-between;\n    height: 98%;\n}\n\n.list_moved {\n    margin-left: -280px;\n}\n\n.list__item {\n    text-align: start;\n    height: 50px;\n}\n\n/*--------------СТРАНИЦА ЛОГИНА---------------*/\n\n.login-layout {\n    background-color: rgb(0, 188, 212);\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.login-layout__window {\n    width: 300px;\n    height: 320px;\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n}\n\n.login-layout__window__avatar {\n    margin-top: 15px;\n}\n\n.login-layout__window__button {\n    margin-top: 10px;\n    width: 90%;\n}\n\n/*--------------КОНТЕНТНАЯ ОБЛАСТЬ---------------*/\n\n.body {\n    display: flex;\n    background-color: rgb(237, 236, 236);\n}\n\n.content {\n    width: 100%;\n}\n\n.content, .content_moved {\n    display: flex;\n    flex-flow: column;\n    transition: all 200ms linear;\n    margin: 40px;\n    background-color: rgb(237, 236, 236);\n}\n\n.content_moved {\n    width: 100%;\n}\n\n.resource-page {\n    background-color: white;\n    padding-top: 20px;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n}\n\n.media-resource {\n    background-color: white;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n    overflow-y: scroll;\n}\n\n.big-resource {\n    background-color: white;\n    padding: 20px;\n    max-height: 730px;\n    overflow-y: scroll;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: rgb(232, 232, 232);\n}\n\n.total {\n    font-size: 18px\n}\n\n/*--------------ФОТОГРАФИИ---------------*/\n\n.photos__gridlist {\n    display: flex;\n    flex-wrap: wrap;\n    margin-top: 40px;\n}\n\n/*--------------ГЛАВНАЯ СТРАНИЦА---------------*/\n\n.dashboard {\n    padding: 40px;\n}\n\n.dashboard__item {\n    width: 350px;\n    height: 120px;\n    margin: 30px;\n    box-shadow: 0 4px 8px gray;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard__title {\n    font-size: 24px;\n    margin-top: 20px;\n    margin-left: 15px;\n}\n\n.dashboard__refs {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: space-between;\n}\n\n.dashboard__item__title {\n    color: black;\n}\n\n/*--------------ТАБЛИЦЫ---------------*/\n\n.table {\n    margin-top: 80px;\n}\n\n.table__header__column {\n    color: black !important;\n    font-size: 14px !important;\n    font-weight: 500;\n}\n\n.table__row {\n    border-color: black !important;\n}\n\n.input {\n    border: 1px solid #00bcd4;\n    margin-top: 20px;\n}\n\n.inputfile {\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n}\n\n.inputfile + .inputfile__label {\n    font-size: 1.25em;\n    height: 70px;\n    width: 98%;\n    margin-left: 15px;\n    font-weight: 700;\n    color: gray;\n    background-color: #edecec;\n    display: inline-block;\n    text-align: center;\n    padding-top: 55px;\n    margin-top: 40px;\n}\n\n.inputfile:focus + .inputfile__label,\n.inputfile + .inputfile__label:hover {\n    cursor: pointer;\n}\n\n.inputfile__images {\n    display: flex;\n    justify-content: flex-start;\n    margin-left: 15px;\n    margin-top: 20px;\n}\n\n.inputfile__image {\n    width: 100px;\n    height: 100px;\n    margin-left: 5px;\n}\n\n.warning-msg {\n    margin: 20px;\n    font-weight: bold;\n    font-size: large;\n}\n\n.profile__label {\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.resource-filters {\n    margin-left: 15px;\n    display: flex;\n    flex-flow: column;\n}\n\n.resource-headline {\n    display: flex;\n    justify-content: space-between;\n}\n\n.resource-buttons {\n    margin-top: 15px;\n}\n\n.resource-actions {\n    display: flex;\n    justify-content: flex-end;\n}\n\n.filter {\n    display: flex;\n}", ""]);
+exports.push([module.i, "html, body, .layout, #root, .body {\n    height: 100%;\n}\n\nbody {\n    margin: 0;\n}\n\n#app {\n    height: 100%;\n}\n\na, a:link, a:visited, a:active {\n    text-decoration: none;\n}\n\n/*--------------САЙДБАР---------------*/\n\n.list, .list_moved {\n    background-color: white;\n    min-width: 280px;\n    transition: 0.2s linear;\n    display: flex;\n    flex-flow: column;\n    justify-content: space-between;\n    height: 98%;\n}\n\n.list_moved {\n    margin-left: -280px;\n}\n\n.list__item {\n    text-align: start;\n    height: 50px;\n}\n\n/*--------------СТРАНИЦА ЛОГИНА---------------*/\n\n.login-layout {\n    background-color: rgb(0, 188, 212);\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.login-layout__window {\n    width: 300px;\n    height: 320px;\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n}\n\n.login-layout__window__avatar {\n    margin-top: 15px;\n}\n\n.login-layout__window__button {\n    margin-top: 10px;\n    width: 90%;\n}\n\n/*--------------КОНТЕНТНАЯ ОБЛАСТЬ---------------*/\n\n.body {\n    display: flex;\n    background-color: rgb(237, 236, 236);\n}\n\n.content {\n    width: 100%;\n}\n\n.content, .content_moved {\n    display: flex;\n    flex-flow: column;\n    transition: all 200ms linear;\n    margin: 40px;\n    background-color: rgb(237, 236, 236);\n}\n\n.content_moved {\n    width: 100%;\n}\n\n.resource-page {\n    background-color: white;\n    padding-top: 20px;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n}\n\n.media-resource {\n    background-color: white;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n    overflow-y: scroll;\n}\n\n.big-resource {\n    background-color: white;\n    padding: 20px;\n    max-height: 730px;\n    overflow-y: scroll;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: rgb(232, 232, 232);\n}\n\n.total {\n    font-size: 18px\n}\n\n/*--------------ФОТОГРАФИИ---------------*/\n\n.photos__gridlist {\n    display: flex;\n    flex-wrap: wrap;\n    margin-top: 40px;\n}\n\n/*--------------ГЛАВНАЯ СТРАНИЦА---------------*/\n\n.dashboard {\n    padding: 40px;\n}\n\n.dashboard__item {\n    width: 350px;\n    height: 120px;\n    margin: 30px;\n    box-shadow: 0 4px 8px gray;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard__title {\n    font-size: 24px;\n    margin-top: 20px;\n    margin-left: 15px;\n}\n\n.dashboard__refs {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: space-between;\n}\n\n.dashboard__item__title {\n    color: black;\n}\n\n/*--------------ТАБЛИЦЫ---------------*/\n\n.table {\n    margin-top: 80px;\n}\n\n.table__header__column {\n    color: black !important;\n    font-size: 14px !important;\n    font-weight: 500;\n}\n\n.table__row {\n    border-color: black !important;\n}\n\n.input {\n    border: 1px solid black;\n    margin-top: 20px;\n}\n\n.inputfile {\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n}\n\n.inputfile + .inputfile__label {\n    font-size: 1.25em;\n    height: 70px;\n    width: 98%;\n    margin-left: 15px;\n    font-weight: 700;\n    color: gray;\n    background-color: #edecec;\n    display: inline-block;\n    text-align: center;\n    padding-top: 55px;\n    margin-top: 40px;\n}\n\n.inputfile:focus + .inputfile__label,\n.inputfile + .inputfile__label:hover {\n    cursor: pointer;\n}\n\n.inputfile__images {\n    display: flex;\n    justify-content: flex-start;\n    margin-left: 15px;\n    margin-top: 20px;\n}\n\n.inputfile__image {\n    width: 100px;\n    height: 100px;\n    margin-left: 5px;\n}\n\n.warning-msg {\n    margin: 20px;\n    font-weight: bold;\n    font-size: large;\n}\n\n.profile__label {\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.resource-filters {\n    margin-left: 15px;\n    display: flex;\n    flex-flow: column;\n}\n\n.resource-headline {\n    display: flex;\n    justify-content: space-between;\n}\n\n.resource-buttons {\n    margin-top: 15px;\n}\n\n.resource-actions {\n    display: flex;\n    justify-content: flex-end;\n}\n\n.filter {\n    display: flex;\n}", ""]);
 
 // exports
 
@@ -1750,11 +1784,11 @@ var _routes = __webpack_require__(25);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _resources = __webpack_require__(107);
+var _resources = __webpack_require__(108);
 
 var _resources2 = _interopRequireDefault(_resources);
 
-var _login = __webpack_require__(111);
+var _login = __webpack_require__(112);
 
 var _login2 = _interopRequireDefault(_login);
 
@@ -2111,13 +2145,869 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Tabs = __webpack_require__(6);
+
+var _TextField = __webpack_require__(2);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _FlatButton = __webpack_require__(10);
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _list = __webpack_require__(5);
+
+var _list2 = _interopRequireDefault(_list);
+
+var _SelectField = __webpack_require__(7);
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _MenuItem = __webpack_require__(8);
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _delete = __webpack_require__(9);
+
+var _delete2 = _interopRequireDefault(_delete);
+
+var _Table = __webpack_require__(13);
+
+var _Dialog = __webpack_require__(21);
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _RaisedButton = __webpack_require__(16);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _Toggle = __webpack_require__(14);
+
+var _Toggle2 = _interopRequireDefault(_Toggle);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _toolBar = __webpack_require__(4);
+
+var _toolBar2 = _interopRequireDefault(_toolBar);
+
+var _data = __webpack_require__(3);
+
+var _data2 = _interopRequireDefault(_data);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ResourceLayout = function (_React$Component) {
+	_inherits(ResourceLayout, _React$Component);
+
+	function ResourceLayout(props) {
+		_classCallCheck(this, ResourceLayout);
+
+		var _this = _possibleConstructorReturn(this, (ResourceLayout.__proto__ || Object.getPrototypeOf(ResourceLayout)).call(this, props));
+
+		_this.state = {
+			data: _this.getInitialState(),
+			variant: {}
+		};
+		if (_this.props.action === 'edit') {
+			_this.getResourceInfo().catch(function (err) {
+				return console.error('resource-layout:27 ERROR GETTING RESOURCE!: ', err);
+			});
+		}
+		if (_this.props.resource === 'attribute-sets') {
+			_this.getData('attributes').catch(function (err) {
+				return console.error('resource-layout:31 ERROR GETTING DATA!: ', err);
+			});
+		}
+		if (_this.props.resource === 'tab-sets') {
+			_this.state = _extends({}, _this.state, {
+				tabs: []
+			});
+			_this.getData('tabs').catch(function (err) {
+				return console.error('resource-layout:39 ERROR GETTING DATA!: ', err);
+			});
+		}
+		if (_this.props.resource === 'attribute-sets') {
+			_this.state = _extends({}, _this.state, {
+				attributes: []
+			});
+			_this.getData('attributes').catch(function (err) {
+				return console.error('resource-layout:47 ERROR GETTING DATA!: ', err);
+			});
+		}
+		if (_this.props.resource === 'attributes') {
+			_this.state = _extends({}, _this.state, {
+				open: false,
+				variant: {
+					id: '',
+					value: ''
+				}
+			});
+		}
+		if (_this.props.resource === 'orders') {
+			_this.state = _extends({}, _this.state, {
+				clients: [],
+				statuses: [],
+				products: []
+			});
+			_this.getData('clients').catch(function (err) {
+				return console.error('resource-layout:66 ERROR GETTING DATA!: ', err);
+			});
+			_this.getData('statuses').catch(function (err) {
+				return console.error('resource-layout:68 ERROR GETTING DATA!: ', err);
+			});
+			_this.getData('products').catch(function (err) {
+				return console.error('resource-layout:70 ERROR GETTING DATA!: ', err);
+			});
+		}
+		if (_this.props.resource === 'clients') {
+			_this.state = _extends({}, _this.state, {
+				address: {
+					country: '',
+					state: '',
+					city: '',
+					street: '',
+					building: '',
+					apartment: ''
+				},
+				open: false
+			});
+		}
+		_this.changeValueOfInput = _this.changeValueOfInput.bind(_this);
+		_this.changeSwitchInput = _this.changeSwitchInput.bind(_this);
+		_this.handleClose = _this.handleClose.bind(_this);
+		_this.handleOpen = _this.handleOpen.bind(_this);
+		_this.addVariant = _this.addVariant.bind(_this);
+		_this.addAddress = _this.addAddress.bind(_this);
+		return _this;
+	}
+
+	_createClass(ResourceLayout, [{
+		key: 'getInitialState',
+		value: function getInitialState() {
+			var currentResource = {};
+
+			var parseArrayOfKeys = function parseArrayOfKeys(keys, defaultValue) {
+				if (keys.length === 2) {
+					currentResource[keys[0]] = _extends({}, currentResource[keys[0]]);
+					currentResource[keys[0]][keys[1]] = defaultValue;
+				}
+				if (keys.length === 3) {
+					currentResource[keys[0]] = _extends({}, currentResource[keys[0]]);
+					currentResource[keys[0]][keys[1]] = _extends({}, currentResource[keys[0]][keys[1]]);
+					currentResource[keys[0]][keys[1]][keys[2]] = defaultValue;
+				}
+			};
+
+			this.props.structure.tabs.forEach(function (tab) {
+				tab.content.forEach(function (field) {
+					if (field.type === 'table') {
+						return;
+					}
+					var name = field.name,
+					    defaultValue = field.defaultValue;
+
+					if (name instanceof Array) {
+						parseArrayOfKeys(name, defaultValue);
+						return;
+					}
+					currentResource[name] = defaultValue;
+				});
+			});
+
+			if (this.props.resource === 'attributes') {
+				currentResource.variants = [];
+			}
+
+			if (this.props.resource === 'orders') {
+				currentResource.products = [];
+			}
+
+			if (this.props.resource === 'clients') {
+				currentResource.addresses = [];
+				delete currentResource.address;
+			}
+
+			return currentResource;
+		}
+	}, {
+		key: 'getResourceInfo',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var id, result;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								id = this.props.match.params.id;
+								_context.next = 3;
+								return _data2.default.getResource('/' + this.props.resource + '/' + id);
+
+							case 3:
+								result = _context.sent;
+
+								this.setState({
+									data: result
+								});
+
+							case 5:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function getResourceInfo() {
+				return _ref.apply(this, arguments);
+			}
+
+			return getResourceInfo;
+		}()
+	}, {
+		key: 'getData',
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resources) {
+				var response;
+				return regeneratorRuntime.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								_context2.next = 2;
+								return _data2.default.getData('/' + resources);
+
+							case 2:
+								response = _context2.sent;
+
+								this.setState(_defineProperty({}, resources, response.data));
+
+							case 4:
+							case 'end':
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
+
+			function getData(_x) {
+				return _ref2.apply(this, arguments);
+			}
+
+			return getData;
+		}()
+	}, {
+		key: 'changeValueOfInput',
+		value: function changeValueOfInput(e) {
+			var _e$target = e.target,
+			    name = _e$target.name,
+			    value = _e$target.value;
+
+			this.setState({
+				data: _extends({}, this.state.data, _defineProperty({}, name, value))
+			});
+		}
+	}, {
+		key: 'changeSelectInput',
+		value: function changeSelectInput(value, name) {
+			this.setState({
+				data: _extends({}, this.state.data, _defineProperty({}, name, value))
+			});
+		}
+	}, {
+		key: 'changeSwitchInput',
+		value: function changeSwitchInput(value, name) {
+			this.setState({
+				data: _extends({}, this.state.data, _defineProperty({}, name, value))
+			});
+		}
+	}, {
+		key: 'handleOpen',
+		value: function handleOpen() {
+			this.setState({
+				open: true
+			});
+		}
+	}, {
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({
+				open: false
+			});
+		}
+	}, {
+		key: 'addVariant',
+		value: function addVariant() {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					variants: [].concat(_toConsumableArray(this.state.data.variants), [this.state.variant])
+				})
+			});
+			this.handleClose();
+		}
+	}, {
+		key: 'addAddress',
+		value: function addAddress() {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					addresses: [].concat(_toConsumableArray(this.state.data.addresses), [this.state.address])
+				})
+			});
+			this.handleClose();
+		}
+	}, {
+		key: 'deleteVariant',
+		value: function deleteVariant(id) {
+			var newVariants = [];
+			this.state.data.variants.forEach(function (variant) {
+				if (variant.id === id) {
+					return;
+				}
+				newVariants.push(variant);
+			});
+			this.setState({
+				data: _extends({}, this.state.data, {
+					variants: newVariants
+				})
+			});
+			this.handleClose();
+		}
+	}, {
+		key: 'pushToTable',
+		value: function pushToTable(value, name) {
+			this.setState({
+				data: _extends({}, this.state.data, _defineProperty({}, name, [].concat(_toConsumableArray(this.state.data.products), [value])))
+			});
+		}
+	}, {
+		key: 'deleteTableRow',
+		value: function deleteTableRow(index, name) {
+			var newItems = [];
+			this.state.data[name].forEach(function (item, i) {
+				if (i === index) {
+					return;
+				}
+				newItems.push(item);
+			});
+			this.setState({
+				data: _extends({}, this.state.data, _defineProperty({}, name, newItems))
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var tabs = this.props.structure.tabs;
+
+			console.log('STATE =>>>', this.state);
+			console.log('PROPS =>>>', this.props);
+			return _react2.default.createElement(
+				_react2.default.Fragment,
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					tabs.map(function (tab, tabIndex) {
+						return _react2.default.createElement(
+							_Tabs.Tab,
+							{
+								label: tab.title,
+								key: tabIndex
+							},
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'resource-page'
+								},
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'resource-actions'
+									},
+									_this2.props.action === 'edit' ? _react2.default.createElement(
+										_reactRouterDom.Link,
+										{
+											to: _this2.props.location.pathname + '/delete'
+										},
+										_react2.default.createElement(_FlatButton2.default, {
+											label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
+											labelStyle: { color: 'rgb(255, 64, 129)' },
+											primary: true,
+											icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
+										})
+									) : null,
+									_react2.default.createElement(
+										_reactRouterDom.Link,
+										{
+											to: '/' + _this2.props.resource
+										},
+										_react2.default.createElement(_FlatButton2.default, {
+											label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+											primary: true,
+											icon: _react2.default.createElement(_list2.default, null)
+										})
+									)
+								),
+								tab.content.map(function (field, fieldIndex) {
+									var name = field.name,
+									    required = field.required,
+									    title = field.title,
+									    type = field.type;
+
+									if (type === 'textInput') {
+										if (name instanceof Array) {
+											return _react2.default.createElement(
+												'div',
+												{
+													className: 'input',
+													key: fieldIndex
+												},
+												_react2.default.createElement(_TextField2.default, {
+													fullWidth: true,
+													hintText: title,
+													floatingLabelText: title,
+													errorText: required ? 'Поле обязательно' : '',
+													value: _this2.state.data[name[0]][name[1]],
+													onChange: function onChange(e) {
+														return _this2.setState({
+															data: _extends({}, _this2.state.data, _defineProperty({}, name[0], _extends({}, _this2.state.data[name[0]], _defineProperty({}, name[1], e.target.value))))
+														});
+													}
+												})
+											);
+										}
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(_TextField2.default, {
+												fullWidth: true,
+												hintText: title,
+												floatingLabelText: title,
+												errorText: required ? 'Поле обязательно' : '',
+												name: name,
+												value: _this2.state.data[name],
+												onChange: _this2.changeValueOfInput
+											})
+										);
+									}
+									if (type === 'multipleSelect' || type === 'select' && !!field.variants) {
+										var _name = field.name,
+										    _required = field.required,
+										    _title = field.title,
+										    _type = field.type,
+										    variants = field.variants;
+
+										var actions = [_react2.default.createElement(_FlatButton2.default, {
+											label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
+											primary: true,
+											onClick: _this2.handleClose
+										}), _react2.default.createElement(_FlatButton2.default, {
+											label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
+											primary: true,
+											onClick: _this2.addVariant
+										})];
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												_SelectField2.default,
+												{
+													fullWidth: true,
+													multiple: _type === 'multipleSelect',
+													value: _this2.state.data[_name],
+													floatingLabelText: _title,
+													errorText: _required ? 'Поле обязательно' : '',
+													onChange: function onChange(event, index, value) {
+														return _this2.changeSelectInput(value, _name);
+													}
+												},
+												!!variants ? variants.map(function (variant, index) {
+													return _react2.default.createElement(_MenuItem2.default, {
+														value: variant.id,
+														primaryText: variant.title,
+														key: index
+													});
+												}) : _this2.state[_name].map(function (item, index) {
+													return _react2.default.createElement(_MenuItem2.default, {
+														value: item.slug,
+														primaryText: item.title,
+														key: index
+													});
+												})
+											),
+											(_this2.state.data.attrType === 'select' || _this2.state.data.attrType === 'multipleSelect') && _this2.props.resource === 'attributes' ? _react2.default.createElement(
+												_react2.default.Fragment,
+												null,
+												_react2.default.createElement(
+													_Table.Table,
+													{
+														selectable: false
+													},
+													_react2.default.createElement(
+														_Table.TableHeader,
+														{
+															displaySelectAll: false,
+															adjustForCheckbox: false
+														},
+														_react2.default.createElement(
+															_Table.TableRow,
+															null,
+															_react2.default.createElement(
+																_Table.TableHeaderColumn,
+																null,
+																'\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440'
+															),
+															_react2.default.createElement(
+																_Table.TableHeaderColumn,
+																null,
+																'\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435'
+															)
+														)
+													),
+													_react2.default.createElement(
+														_Table.TableBody,
+														{
+															displayRowCheckbox: false
+														},
+														!!_this2.state.data.variants ? _this2.state.data.variants.map(function (variant, index) {
+															return _react2.default.createElement(
+																_Table.TableRow,
+																{
+																	key: index
+																},
+																_react2.default.createElement(
+																	_Table.TableRowColumn,
+																	null,
+																	variant.id
+																),
+																_react2.default.createElement(
+																	_Table.TableRowColumn,
+																	null,
+																	variant.value
+																),
+																_react2.default.createElement(
+																	_Table.TableRowColumn,
+																	null,
+																	_react2.default.createElement(_delete2.default, {
+																		color: 'rgb(255, 64, 129)',
+																		onClick: function onClick() {
+																			return _this2.deleteVariant(variant.id);
+																		},
+																		style: { cursor: 'pointer' }
+																	})
+																)
+															);
+														}) : null
+													)
+												),
+												_react2.default.createElement(_RaisedButton2.default, {
+													label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
+													style: { margin: '38px' },
+													onClick: _this2.handleOpen
+												}),
+												_react2.default.createElement(
+													_Dialog2.default,
+													{
+														title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
+														actions: actions,
+														modal: true,
+														open: _this2.state.open,
+														autoScrollBodyContent: true
+													},
+													_react2.default.createElement(_TextField2.default, {
+														fullWidth: true,
+														floatingLabelText: '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440',
+														value: _this2.state.variant.id,
+														errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+														onChange: function onChange(event, value) {
+															return _this2.setState({
+																variant: _extends({}, _this2.state.variant, {
+																	id: value
+																})
+															});
+														} }),
+													_react2.default.createElement(_TextField2.default, {
+														fullWidth: true,
+														floatingLabelText: '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435',
+														value: _this2.state.variant.value,
+														errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+														onChange: function onChange(event, value) {
+															return _this2.setState({
+																variant: _extends({}, _this2.state.variant, {
+																	value: value
+																})
+															});
+														} })
+												)
+											) : null
+										);
+									}
+									if (type === 'select') {
+										var _name2 = field.name,
+										    _title2 = field.title,
+										    needResources = field.needResources;
+
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												_SelectField2.default,
+												{
+													fullWidth: true,
+													multiple: type === 'multipleSelect',
+													value: _this2.state.data[_name2],
+													floatingLabelText: _title2,
+													errorText: required ? 'Поле обязательно' : '',
+													onChange: function onChange(event, index, value) {
+														return _this2.changeSelectInput(value, _name2);
+													}
+												},
+												_this2.state[needResources].map(function (item, index) {
+													return _react2.default.createElement(_MenuItem2.default, {
+														value: item.slug,
+														primaryText: item.title || item.name,
+														key: index
+													});
+												})
+											)
+										);
+									}
+									if (type === 'boolean') {
+										var _name3 = field.name,
+										    _title3 = field.title;
+
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(_Toggle2.default, {
+												style: {
+													width: '250px'
+												},
+												toggled: _this2.state.data[_name3],
+												label: _title3,
+												onToggle: function onToggle(event, value) {
+													return _this2.changeSwitchInput(value, _name3);
+												}
+											})
+										);
+									}
+									if (type === 'table') {
+										var columns = field.columns,
+										    _name4 = field.name;
+
+										return _react2.default.createElement(
+											_Table.Table,
+											{
+												selectable: false,
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												_Table.TableHeader,
+												{
+													displaySelectAll: false,
+													adjustForCheckbox: false
+												},
+												_react2.default.createElement(
+													_Table.TableRow,
+													null,
+													columns.map(function (item, index) {
+														return _react2.default.createElement(
+															_Table.TableHeaderColumn,
+															{
+																key: index
+															},
+															item.title
+														);
+													}),
+													_react2.default.createElement(_Table.TableHeaderColumn, null)
+												)
+											),
+											_react2.default.createElement(
+												_Table.TableBody,
+												{
+													displayRowCheckbox: false
+												},
+												_this2.state.data[_name4].map(function (item, index) {
+													return _react2.default.createElement(
+														_Table.TableRow,
+														{
+															key: index
+														},
+														columns.map(function (column, index) {
+															return _react2.default.createElement(
+																_Table.TableRowColumn,
+																{
+																	key: index
+																},
+																item[column.name]
+															);
+														}),
+														_react2.default.createElement(
+															_Table.TableRowColumn,
+															null,
+															_react2.default.createElement(_delete2.default, {
+																color: 'rgb(255, 64, 129)',
+																onClick: function onClick() {
+																	return _this2.deleteTableRow(index, _name4);
+																},
+																style: { cursor: 'pointer' }
+															})
+														)
+													);
+												})
+											)
+										);
+									}
+									if (type === 'pushTable') {
+										var _title4 = field.title,
+										    _needResources = field.needResources,
+										    _name5 = field.name;
+
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												_SelectField2.default,
+												{
+													fullWidth: true,
+													floatingLabelText: _title4,
+													onChange: function onChange(event, index, value) {
+														return _this2.pushToTable(value, _name5);
+													}
+												},
+												_this2.state[_needResources].map(function (item, index) {
+													return _react2.default.createElement(_MenuItem2.default, {
+														value: item,
+														primaryText: item.title || item.name,
+														key: index
+													});
+												})
+											)
+										);
+									}
+									if (type === 'dialog') {
+										var _actions = [_react2.default.createElement(_FlatButton2.default, {
+											label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
+											primary: true,
+											onClick: _this2.handleClose
+										}), _react2.default.createElement(_FlatButton2.default, {
+											label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
+											primary: true,
+											onClick: _this2.addAddress
+										})];
+										return _react2.default.createElement(
+											_react2.default.Fragment,
+											{
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												_Dialog2.default,
+												{
+													title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
+													actions: _actions,
+													modal: true,
+													open: _this2.state.open,
+													autoScrollBodyContent: true
+												},
+												field.children.map(function (element, index) {
+													return _react2.default.createElement(
+														'div',
+														{
+															className: 'input',
+															key: index
+														},
+														_react2.default.createElement(_TextField2.default, {
+															fullWidth: true,
+															hintText: element.title,
+															floatingLabelText: element.title,
+															errorText: element.required ? 'Поле обязательно' : '',
+															value: _this2.state[field.name][element.name],
+															onChange: function onChange(e) {
+																return _this2.setState(_defineProperty({}, field.name, _extends({}, _this2.state[field.name], _defineProperty({}, element.name, e.target.value))));
+															}
+														})
+													);
+												})
+											),
+											_react2.default.createElement(_RaisedButton2.default, {
+												label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
+												style: { margin: '38px' },
+												onClick: _this2.handleOpen
+											})
+										);
+									}
+								})
+							)
+						);
+					})
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: this.props.resource,
+					data: this.state.data,
+					action: this.props.action
+				})
+			);
+		}
+	}]);
+
+	return ResourceLayout;
+}(_react2.default.Component);
+
+exports.default = ResourceLayout;
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
 var _Card = __webpack_require__(22);
 
 var _data = __webpack_require__(3);
 
 var _data2 = _interopRequireDefault(_data);
 
-var _resources = __webpack_require__(63);
+var _resources = __webpack_require__(64);
 
 var _resources2 = _interopRequireDefault(_resources);
 
@@ -2320,7 +3210,7 @@ var ResourcesLayout = function (_React$Component) {
 exports.default = ResourcesLayout;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2338,25 +3228,25 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _resourcesContent = __webpack_require__(64);
+var _resourcesContent = __webpack_require__(65);
 
 var _resourcesContent2 = _interopRequireDefault(_resourcesContent);
 
-var _resourcesHeader = __webpack_require__(70);
+var _resourcesHeader = __webpack_require__(71);
 
 var _resourcesHeader2 = _interopRequireDefault(_resourcesHeader);
 
 var _Card = __webpack_require__(22);
 
-var _mapObj = __webpack_require__(75);
+var _mapObj = __webpack_require__(76);
 
 var _mapObj2 = _interopRequireDefault(_mapObj);
 
-var _pagination = __webpack_require__(76);
+var _pagination = __webpack_require__(77);
 
 var _pagination2 = _interopRequireDefault(_pagination);
 
-var _photos = __webpack_require__(78);
+var _photos = __webpack_require__(79);
 
 var _photos2 = _interopRequireDefault(_photos);
 
@@ -2565,7 +3455,7 @@ var ResourcesList = function (_React$Component) {
 exports.default = ResourcesList;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2589,7 +3479,7 @@ var _delete = __webpack_require__(9);
 
 var _delete2 = _interopRequireDefault(_delete);
 
-var _create = __webpack_require__(65);
+var _create = __webpack_require__(66);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -2599,19 +3489,19 @@ var _TextField2 = _interopRequireDefault(_TextField);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _clear = __webpack_require__(66);
+var _clear = __webpack_require__(67);
 
 var _clear2 = _interopRequireDefault(_clear);
 
-var _done = __webpack_require__(67);
+var _done = __webpack_require__(68);
 
 var _done2 = _interopRequireDefault(_done);
 
-var _save = __webpack_require__(68);
+var _save = __webpack_require__(69);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _Chip = __webpack_require__(69);
+var _Chip = __webpack_require__(70);
 
 var _Chip2 = _interopRequireDefault(_Chip);
 
@@ -3020,37 +3910,37 @@ var ResourcesContent = function (_React$Component) {
 exports.default = ResourcesContent;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/create");
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/clear");
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/done");
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/save");
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Chip");
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3072,19 +3962,19 @@ var _FlatButton = __webpack_require__(10);
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _add = __webpack_require__(71);
+var _add = __webpack_require__(72);
 
 var _add2 = _interopRequireDefault(_add);
 
-var _refresh = __webpack_require__(72);
+var _refresh = __webpack_require__(73);
 
 var _refresh2 = _interopRequireDefault(_refresh);
 
-var _close = __webpack_require__(73);
+var _close = __webpack_require__(74);
 
 var _close2 = _interopRequireDefault(_close);
 
-var _importExport = __webpack_require__(74);
+var _importExport = __webpack_require__(75);
 
 var _importExport2 = _interopRequireDefault(_importExport);
 
@@ -3744,37 +4634,37 @@ var ResourcesHeader = function (_React$Component) {
 exports.default = ResourcesHeader;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/add");
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/navigation/refresh");
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/navigation/close");
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/communication/import-export");
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports) {
 
 module.exports = require("map-obj");
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3790,7 +4680,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _materialUiPagination = __webpack_require__(77);
+var _materialUiPagination = __webpack_require__(78);
 
 var _materialUiPagination2 = _interopRequireDefault(_materialUiPagination);
 
@@ -3849,13 +4739,13 @@ var PaginationContainer = function (_React$Component) {
 exports.default = PaginationContainer;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui-pagination");
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3871,7 +4761,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _GridList = __webpack_require__(79);
+var _GridList = __webpack_require__(80);
 
 var _delete = __webpack_require__(9);
 
@@ -3942,13 +4832,13 @@ var Photos = function (_React$Component) {
 exports.default = Photos;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/GridList");
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4018,13 +4908,13 @@ var RemoveLayout = function (_React$Component) {
 exports.default = RemoveLayout;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Toolbar");
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4165,7 +5055,7 @@ var Profile = function (_React$Component) {
 exports.default = Profile;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4574,7 +5464,7 @@ var CategoriesCreate = function (_React$Component) {
 exports.default = CategoriesCreate;
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5485,7 +6375,7 @@ var ProductsCreate = function (_React$Component) {
 exports.default = ProductsCreate;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6001,7 +6891,7 @@ var OrdersCreate = function (_React$Component) {
 exports.default = OrdersCreate;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6250,7 +7140,7 @@ var UsersCreate = function (_React$Component) {
 exports.default = UsersCreate;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6720,7 +7610,7 @@ var ClientsCreate = function (_React$Component) {
 exports.default = ClientsCreate;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7122,7 +8012,7 @@ var AttributesCreate = function (_React$Component) {
 													variant.value
 												),
 												_react2.default.createElement(
-													_Table.TableHeaderColumn,
+													_Table.TableRowColumn,
 													null,
 													_react2.default.createElement(_delete2.default, {
 														color: 'rgb(255, 64, 129)',
@@ -7206,7 +8096,7 @@ var AttributesCreate = function (_React$Component) {
 exports.default = AttributesCreate;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7427,7 +8317,7 @@ var AttributesCreate = function (_React$Component) {
 exports.default = AttributesCreate;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7579,7 +8469,7 @@ var TabsCreate = function (_React$Component) {
 exports.default = TabsCreate;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7798,7 +8688,7 @@ var TabSetsCreate = function (_React$Component) {
 exports.default = TabSetsCreate;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8427,7 +9317,7 @@ var RolesCreate = function (_React$Component) {
 exports.default = RolesCreate;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8560,7 +9450,7 @@ var TabSetsCreate = function (_React$Component) {
 exports.default = TabSetsCreate;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9046,7 +9936,7 @@ var CategoriesEdit = function (_React$Component) {
 exports.default = CategoriesEdit;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9088,7 +9978,7 @@ var _delete = __webpack_require__(9);
 
 var _delete2 = _interopRequireDefault(_delete);
 
-var _flipToFront = __webpack_require__(96);
+var _flipToFront = __webpack_require__(97);
 
 var _flipToFront2 = _interopRequireDefault(_flipToFront);
 
@@ -10037,13 +10927,13 @@ var ProductsEdit = function (_React$Component) {
 exports.default = ProductsEdit;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/flip-to-front");
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10353,7 +11243,7 @@ var UsersEdit = function (_React$Component) {
 exports.default = UsersEdit;
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10951,7 +11841,7 @@ var RolesEdit = function (_React$Component) {
 exports.default = RolesEdit;
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11455,7 +12345,7 @@ var ClientsCreate = function (_React$Component) {
 exports.default = ClientsCreate;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12087,7 +12977,7 @@ var OrdersEdit = function (_React$Component) {
 exports.default = OrdersEdit;
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12580,7 +13470,7 @@ var AttributesEdit = function (_React$Component) {
 exports.default = AttributesEdit;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12851,7 +13741,7 @@ var AttributesCreate = function (_React$Component) {
 exports.default = AttributesCreate;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13079,7 +13969,7 @@ var TabsEdit = function (_React$Component) {
 exports.default = TabsEdit;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13366,7 +14256,7 @@ var TabSetsEdit = function (_React$Component) {
 exports.default = TabSetsEdit;
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13580,7 +14470,7 @@ var StatusEdit = function (_React$Component) {
 exports.default = StatusEdit;
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13601,7 +14491,19 @@ exports.default = [{
 		name: 'ЗАГОЛОВОК',
 		key: 'title'
 	}],
-	filters: []
+	filters: [],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				title: 'Заголовок(наименование)',
+				name: 'title',
+				defaultValue: '',
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'tab-sets',
 	title: 'Список наборов табов',
@@ -13609,7 +14511,25 @@ exports.default = [{
 		name: 'НАЗВАНИЕ',
 		key: 'title'
 	}],
-	filters: []
+	filters: [],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				title: 'Заголовок',
+				name: 'title',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'multipleSelect',
+				title: 'Табы',
+				name: 'tabs',
+				defaultValue: [],
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'tabs',
 	title: 'Список табов',
@@ -13617,7 +14537,25 @@ exports.default = [{
 		name: 'ЗАГОЛОВОК',
 		key: 'title'
 	}],
-	filters: []
+	filters: [],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				title: 'Наименование',
+				name: 'name',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				title: 'Заголовок',
+				name: 'title',
+				defaultValue: '',
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'attribute-sets',
 	title: 'Список наборов атрибутов',
@@ -13625,7 +14563,25 @@ exports.default = [{
 		name: 'НАЗВАНИЕ',
 		key: 'title'
 	}],
-	filters: []
+	filters: [],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				title: 'Наименование',
+				name: 'title',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'multipleSelect',
+				title: 'Атрибуты',
+				name: 'attributes',
+				defaultValue: [],
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'attributes',
 	title: 'Список атрибутов',
@@ -13654,7 +14610,82 @@ exports.default = [{
 	}, {
 		type: 'showInFilter',
 		title: 'Показать в фильтре'
-	}]
+	}],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'boolean',
+				title: 'Показывать в фильтре',
+				name: 'showInFilter',
+				required: false
+			}, {
+				type: 'boolean',
+				title: 'Показывать на странице товара',
+				name: 'showInProductPage',
+				required: false
+			}, {
+				type: 'boolean',
+				title: 'Показывать в списке',
+				name: 'showInList',
+				required: false
+			}, {
+				type: 'boolean',
+				title: 'Обязательный',
+				name: 'isRequired',
+				required: false
+			}, {
+				type: 'textInput',
+				title: 'Наименование',
+				name: 'name',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				title: 'Заголовок',
+				name: 'title',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				title: 'Единица измерения',
+				name: 'unit',
+				defaultValue: '',
+				required: true
+			}]
+		}, {
+			title: 'ТИП',
+			content: [{
+				type: 'select',
+				title: 'Тип',
+				name: 'attrType',
+				variants: [{
+					id: 'multipleSelect',
+					title: 'Множественный список'
+				}, {
+					id: 'textInput',
+					title: 'Текстовое поле'
+				}, {
+					id: 'select',
+					title: 'Список'
+				}, {
+					id: 'numberInput',
+					title: 'Числовое поле'
+				}, {
+					id: 'textBlock',
+					title: 'Текстовый блок'
+				}, {
+					id: 'boolean',
+					title: 'Да/Нет'
+				}, {
+					id: 'interval',
+					title: 'Интервал'
+				}],
+				defaultValue: 'textInput',
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'orders',
 	title: 'Список заказов',
@@ -13674,7 +14705,87 @@ exports.default = [{
 	filters: [{
 		type: 'client',
 		title: 'Клиент'
-	}]
+	}],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'select',
+				title: 'Статус',
+				name: 'status',
+				needResources: 'statuses',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'select',
+				title: 'Заказчик',
+				name: 'client',
+				needResources: 'clients',
+				defaultValue: '',
+				required: true
+			}]
+		}, {
+			title: 'ПРОДУКТЫ',
+			content: [{
+				type: 'table',
+				columns: [{
+					name: 'sku',
+					title: 'Артикул'
+				}, {
+					name: 'title',
+					title: 'Наименование'
+				}, {
+					name: 'price',
+					title: 'Цена'
+				}],
+				name: 'products'
+			}, {
+				type: 'pushTable',
+				title: 'Продукт',
+				needResources: 'products',
+				name: 'products'
+			}]
+		}, {
+			title: 'АДРЕС',
+			content: [{
+				type: 'textInput',
+				name: ['address', 'country'],
+				title: 'Страна',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: ['address', 'state'],
+				title: 'Область',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: ['address', 'city'],
+				title: 'Город',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: ['address', 'street'],
+				title: 'Улица',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: ['address', 'building'],
+				title: 'Дом',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: ['address', 'apartment'],
+				title: 'Квартира',
+				defaultValue: '',
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'clients',
 	title: 'Список клиентов',
@@ -13694,7 +14805,102 @@ exports.default = [{
 	}, {
 		type: 'email',
 		title: 'Почта'
-	}]
+	}],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				name: 'name',
+				title: 'Имя',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: 'email',
+				title: 'Почта',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: 'phone',
+				title: 'Телефон',
+				defaultValue: '',
+				required: true
+			}, {
+				type: 'textInput',
+				name: 'password',
+				title: 'Пароль',
+				defaultValue: '',
+				required: true
+			}]
+		}, {
+			title: 'АДРЕСА',
+			content: [{
+				type: 'table',
+				columns: [{
+					name: 'country',
+					title: 'Страна'
+				}, {
+					name: 'state',
+					title: 'Область'
+				}, {
+					name: 'city',
+					title: 'Город'
+				}, {
+					name: 'street',
+					title: 'Улица'
+				}, {
+					name: 'building',
+					title: 'Дом'
+				}, {
+					name: 'apartment',
+					title: 'Квартира'
+				}],
+				name: 'addresses'
+			}, {
+				type: 'dialog',
+				name: 'address',
+				children: [{
+					type: 'textInput',
+					name: 'country',
+					title: 'Страна',
+					defaultValue: '',
+					required: true
+				}, {
+					type: 'textInput',
+					name: 'state',
+					title: 'Область',
+					defaultValue: '',
+					required: true
+				}, {
+					type: 'textInput',
+					name: 'city',
+					title: 'Город',
+					defaultValue: '',
+					required: true
+				}, {
+					type: 'textInput',
+					name: 'street',
+					title: 'Улица',
+					defaultValue: '',
+					required: true
+				}, {
+					type: 'textInput',
+					name: 'building',
+					title: 'Дом',
+					defaultValue: '',
+					required: true
+				}, {
+					type: 'textInput',
+					name: 'apartment',
+					title: 'Квартира',
+					defaultValue: '',
+					required: true
+				}]
+			}]
+		}]
+	}
 }, {
 	resource: 'roles',
 	title: 'Список ролей',
@@ -13702,7 +14908,114 @@ exports.default = [{
 		name: 'НАЗВАНИЕ',
 		key: 'name'
 	}],
-	filters: []
+	filters: [],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				name: 'name',
+				title: 'Название',
+				required: true
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'categories', 'permissions'],
+				title: 'Права для категорий'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'categories', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'products', 'permissions'],
+				title: 'Права для продуктов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'products', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'users', 'permissions'],
+				title: 'Права для пользователей'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'users', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'roles', 'permissions'],
+				title: 'Права для ролей'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'roles', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'clients', 'permissions'],
+				title: 'Права для клиентов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'clients', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'orders', 'permissions'],
+				title: 'Права для заказов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'orders', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'attributes', 'permissions'],
+				title: 'Права для атрибутов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'attributes', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'tabs', 'permissions'],
+				title: 'Права для табов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'tabs', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'attribute-sets', 'permissions'],
+				title: 'Права для наборов атрибутов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'attribute-sets', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'tab-sets', 'permissions'],
+				title: 'Права для наборов табов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'tab-sets', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'statuses', 'permissions'],
+				title: 'Права для статусов'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'statuses', 'showInMenu'],
+				title: 'Показывать в меню'
+			}, {
+				type: 'multipleSelect',
+				name: ['resources', 'photos', 'permissions'],
+				title: 'Права для фото'
+			}, {
+				type: 'boolean',
+				name: ['resources', 'photos', 'showInMenu'],
+				title: 'Показывать в меню'
+			}]
+		}]
+	}
 }, {
 	resource: 'users',
 	title: 'Список пользователей',
@@ -13725,7 +15038,33 @@ exports.default = [{
 	}, {
 		type: 'role',
 		title: 'Роль'
-	}]
+	}],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'textInput',
+				name: 'name',
+				title: 'Имя',
+				required: true
+			}, {
+				type: 'textInput',
+				name: 'email',
+				title: 'Почта',
+				required: true
+			}, {
+				type: 'textInput',
+				name: 'password',
+				title: 'Пароль',
+				required: true
+			}, {
+				type: 'select',
+				name: 'role',
+				title: 'Роль',
+				required: true
+			}]
+		}]
+	}
 }, {
 	resource: 'categories',
 	title: 'Список категорий',
@@ -13748,7 +15087,56 @@ exports.default = [{
 	}, {
 		type: 'modificationDateEnd',
 		title: 'Дата изменения до'
-	}]
+	}],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'boolean',
+				name: 'isActive',
+				title: 'Активный',
+				required: false
+			}, {
+				type: 'textInput',
+				name: 'title',
+				title: 'Заголовок',
+				required: true
+			}, {
+				type: 'wysiwyg',
+				name: 'description',
+				title: 'Описание',
+				required: true
+			}, {
+				type: 'file',
+				name: 'image',
+				title: 'Перенесите сюда файл или нажмите, чтобы выбрать изображение',
+				required: false
+			}, {
+				type: 'select',
+				name: 'parentCategory',
+				title: 'Родительская категория',
+				required: false
+			}]
+		}, {
+			title: 'SEO',
+			content: [{
+				type: 'textInput',
+				name: ['seo', 'title'],
+				title: 'SEO заголовок',
+				required: false
+			}, {
+				type: 'textInput',
+				name: ['seo', 'description'],
+				title: 'SEO описание',
+				required: false
+			}, {
+				type: 'textInput',
+				name: ['seo', 'keywords'],
+				title: 'SEO ключевые слова',
+				required: false
+			}]
+		}]
+	}
 }, {
 	resource: 'products',
 	title: 'Список продуктов',
@@ -13789,11 +15177,125 @@ exports.default = [{
 	}, {
 		type: 'priceEnd',
 		title: 'Цена до'
-	}]
+	}],
+	structure: {
+		tabs: [{
+			title: 'ОСНОВНОЕ',
+			content: [{
+				type: 'boolean',
+				name: 'isActive',
+				title: 'Активный',
+				required: false
+			}, {
+				type: 'textInput',
+				name: 'title',
+				title: 'Заголовок',
+				required: true
+			}, {
+				type: 'wysiwyg',
+				name: 'description',
+				title: 'Описание',
+				required: true
+			}, {
+				type: 'wysiwyg',
+				name: 'shortDescription',
+				title: 'Краткое описание',
+				required: true
+			}, {
+				type: 'textInput',
+				name: 'sku',
+				title: 'Атрикул',
+				required: true
+			}, {
+				type: 'numberInput',
+				name: 'price',
+				title: 'Цена',
+				required: true
+			}, {
+				type: 'multipleSelect',
+				name: 'categories',
+				title: 'Категории',
+				required: false
+			}, {
+				type: 'file',
+				name: 'image',
+				title: 'Перенесите сюда файл или нажмите, чтобы выбрать изображение',
+				required: false
+			}, {
+				type: 'multipleSelect',
+				name: 'attribute-sets',
+				title: 'Наборы атрибутов',
+				required: false
+			}, {
+				type: 'multipleSelect',
+				name: 'tab-sets',
+				title: 'Наборы табов',
+				required: false
+			}]
+		}, {
+			title: 'SEO',
+			content: [{
+				type: 'textInput',
+				name: ['seo', 'title'],
+				title: 'SEO заголовок',
+				required: false
+			}, {
+				type: 'textInput',
+				name: ['seo', 'description'],
+				title: 'SEO описание',
+				required: false
+			}, {
+				type: 'textInput',
+				name: ['seo', 'keywords'],
+				title: 'SEO ключевые слова',
+				required: false
+			}]
+		}, {
+			title: 'ПОХОЖИЕ ПРОДУКТЫ',
+			content: [{
+				type: 'table',
+				columns: [{
+					name: 'sku',
+					title: 'Артикул'
+				}, {
+					name: 'title',
+					title: 'Наименование'
+				}, {
+					name: 'price',
+					title: 'Цена'
+				}]
+			}, {
+				type: 'select',
+				name: 'relatedProducts',
+				title: 'Похожий продукт',
+				required: false
+			}]
+		}, {
+			title: 'ТОВАРЫ ИЗ НАБОРА',
+			content: [{
+				type: 'table',
+				columns: [{
+					name: 'sku',
+					title: 'Артикул'
+				}, {
+					name: 'title',
+					title: 'Наименование'
+				}, {
+					name: 'price',
+					title: 'Цена'
+				}]
+			}, {
+				type: 'select',
+				name: 'fromSet',
+				title: 'Товар из набора',
+				required: false
+			}]
+		}]
+	}
 }];
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13809,7 +15311,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _List = __webpack_require__(108);
+var _List = __webpack_require__(109);
 
 var _reactRouterDom = __webpack_require__(1);
 
@@ -13817,11 +15319,11 @@ var _people = __webpack_require__(27);
 
 var _people2 = _interopRequireDefault(_people);
 
-var _exitToApp = __webpack_require__(109);
+var _exitToApp = __webpack_require__(110);
 
 var _exitToApp2 = _interopRequireDefault(_exitToApp);
 
-var _home = __webpack_require__(110);
+var _home = __webpack_require__(111);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -13925,25 +15427,25 @@ var ResourcesList = function (_React$Component) {
 exports.default = ResourcesList;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/List");
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/exit-to-app");
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/home");
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13961,7 +15463,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _colors = __webpack_require__(32);
 
-var _Paper = __webpack_require__(112);
+var _Paper = __webpack_require__(113);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -13969,11 +15471,11 @@ var _TextField = __webpack_require__(2);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _Avatar = __webpack_require__(113);
+var _Avatar = __webpack_require__(114);
 
 var _Avatar2 = _interopRequireDefault(_Avatar);
 
-var _lockOutline = __webpack_require__(114);
+var _lockOutline = __webpack_require__(115);
 
 var _lockOutline2 = _interopRequireDefault(_lockOutline);
 
@@ -14110,19 +15612,19 @@ var Login = function (_React$Component) {
 exports.default = Login;
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Paper");
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Avatar");
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/lock-outline");

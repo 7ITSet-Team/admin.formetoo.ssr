@@ -66,40 +66,40 @@ export default class Layout extends React.Component {
 		if (__isBrowser__ && !authorised) {
 			return <Login/>
 		}
-			return (
+		return (
+			<div
+				className="layout"
+			>
+				<AppBar
+					title="ForMeToo"
+					onLeftIconButtonClick={this.openMenu}
+					style={{
+						height: 60
+					}}
+				/>
 				<div
-					className="layout"
+					className="body"
 				>
-					<AppBar
-						title="ForMeToo"
-						onLeftIconButtonClick={this.openMenu}
-						style={{
-							height: 60
-						}}
+					<ResourcesList
+						allowedResources={allowedResources}
+						isMenuOpened={isMenuOpened}
+						basePath={route}
 					/>
 					<div
-						className="body"
+						className={
+							isMenuOpened
+								? 'content'
+								: 'content_moved'
+						}
 					>
-						<ResourcesList
-							allowedResources={allowedResources}
-							isMenuOpened={isMenuOpened}
-							basePath={route}
+						{renderRoutes(routes(location, route))}
+						<Route
+							path={route + 'products/:id/copy'}
+							component={components.ProductsCreate}
 						/>
-						<div
-							className={
-								isMenuOpened
-									? 'content'
-									: 'content_moved'
-							}
-						>
-							{renderRoutes(routes(location, route))}
-							<Route
-								path={route + 'products/:id/copy'}
-								component={components.ProductsCreate}
-							/>
-						</div>
 					</div>
 				</div>
-			)
+			</div>
+		)
 	}
 }
