@@ -31,12 +31,13 @@ export default class ProductsCreate extends React.Component {
 				seo: {
 					title: '',
 					description: '',
-					keywords: '',
+					keywords: ''
 				},
 				'attribute-sets': [],
 				attributes: [],
 				'tab-sets': [],
 				tabs: [],
+				title: '',
 				slug: uid(16)
 			},
 			descState: EditorState.createEmpty(),
@@ -84,7 +85,7 @@ export default class ProductsCreate extends React.Component {
 
 	changeState(value, key) {
 		let newState = this.state
-		newState.data[key] = value
+		newState.data[ key ] = value
 		this.setState(newState)
 	}
 
@@ -113,7 +114,7 @@ export default class ProductsCreate extends React.Component {
 	}
 
 	async uploadFile(file) {
-		const result = await Data.uploadImage('/upload/products', file.target.files[0])
+		const result = await Data.uploadImage('/upload/products', file.target.files[ 0 ])
 		this.setState({
 			data: {
 				...this.state.data,
@@ -129,7 +130,7 @@ export default class ProductsCreate extends React.Component {
 		const resource = uri.slice(1)
 		const response = await Data.getData(uri)
 		let newState = {}
-		newState[resource] = response.data
+		newState[ resource ] = response.data
 		this.setState(newState)
 	}
 
@@ -150,7 +151,7 @@ export default class ProductsCreate extends React.Component {
 			data: {
 				...this.state.data,
 				'attribute-sets': [
-					...this.state.data['attribute-sets'],
+					...this.state.data[ 'attribute-sets' ],
 					...value
 				]
 			}
@@ -162,7 +163,7 @@ export default class ProductsCreate extends React.Component {
 			data: {
 				...this.state.data,
 				'tab-sets': [
-					...this.state.data['tab-sets'],
+					...this.state.data[ 'tab-sets' ],
 					...value
 				]
 			}
@@ -171,19 +172,20 @@ export default class ProductsCreate extends React.Component {
 
 	onEditorDescChange(descState) {
 		this.setState({
-			descState,
+			descState
 		})
 	}
 
 	onEditorShortDescChange(shortDescState) {
 		this.setState({
-			shortDescState,
+			shortDescState
 		})
 	}
 
 	render() {
-		if (!this.state.categories || !this.state.products || !this.state['attribute-sets'] || !this.state['tab-sets'])
+		if (!this.state.categories || !this.state.products || !this.state[ 'attribute-sets' ] || !this.state[ 'tab-sets' ]) {
 			return false
+		}
 		return (
 			<div>
 				<Tabs>
@@ -202,197 +204,231 @@ export default class ProductsCreate extends React.Component {
 							</Link>
 							<Toggle
 								style={{
-									width: '150px',
-									marginLeft: '20px'
+									width: '150px'
 								}}
+								className='input'
 								label="Активный"
 								toggled={this.state.data.isActive}
 								onToggle={(event, value) => this.changeState(value, 'isActive')}
 							/>
-							<TextField
-								fullWidth={true}
-								hintText="Заголовок"
-								floatingLabelText="Заголовок"
-								errorText="Поле обязательно"
-								value={this.state.data.title}
-								onChange={(event, value) => this.changeState(value, 'title')}
-							/>
 							<div
-								style={{
-									color: 'rgba(0, 0, 0, 0.3)'
-								}}
+								className='input'
 							>
-								Описание
+								<TextField
+									fullWidth={true}
+									hintText="Заголовок"
+									floatingLabelText="Заголовок"
+									errorText='Поле обязательно'
+									value={this.state.data.title}
+									onChange={(event, value) => this.changeState(value, 'title')}
+								/>
 							</div>
-							<Editor
-								editorState={this.state.descState}
-								wrapperClassName="demo-wrapper"
-								editorClassName="demo-editor"
-								onEditorStateChange={this.onEditorDescChange}
-								onChange={() => this.setState({
-									data: {
-										...this.state.data,
-										description: draftToHtml(convertToRaw(this.state.descState.getCurrentContent()))
-									}
-								})}
-							/>
 							<div
-								style={{
-									color: 'rgba(0, 0, 0, 0.3)'
-								}}
+								className='input'
 							>
-								Краткое описание
-							</div>
-							<Editor
-								editorState={this.state.shortDescState}
-								wrapperClassName="demo-wrapper"
-								editorClassName="demo-editor"
-								onEditorStateChange={this.onEditorShortDescChange}
-								onChange={() => this.setState({
-									data: {
-										...this.state.data,
-										shortDescription: draftToHtml(convertToRaw(this.state.shortDescState.getCurrentContent()))
-									}
-								})}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="Артикул"
-								floatingLabelText="Артикул"
-								errorText="Поле обязательно"
-								value={this.state.data.sku}
-								onChange={(event, value) => this.changeState(value, 'sku')}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="Цена"
-								floatingLabelText="Цена"
-								errorText="Поле обязательно"
-								value={this.state.data.price}
-								onChange={(event, value) => this.changeState(value, 'price')}
-							/>
-							<SelectField
-								fullWidth={true}
-								multiple={true}
-								value={this.state.data.categories}
-								floatingLabelText="Категории"
-								onChange={(event, index, value) => {
-									this.setState({
+								<Editor
+									editorState={this.state.descState}
+									wrapperClassName="demo-wrapper"
+									editorClassName="demo-editor"
+									onEditorStateChange={this.onEditorDescChange}
+									onChange={() => this.setState({
 										data: {
 											...this.state.data,
-											categories: value
+											description: draftToHtml(convertToRaw(this.state.descState.getCurrentContent()))
 										}
-									})
-								}}
-							>
-								{this.state.categories.map((category, index) => {
-									return <MenuItem
-										value={category.slug}
-										primaryText={category.title}
-										key={index}
-									/>
-								})}
-							</SelectField>
-							<input
-								type="file"
-								className="inputfile"
-								id="file"
-								onChange={this.uploadFile}
-							/>
-							<label
-								htmlFor="file"
-								className="inputfile__label"
-							>
-								Перенесите сюда файл или нажмите, чтобы выбрать изображение
-							</label>
+									})}
+								/>
+							</div>
 							<div
-								className="inputfile__images"
+								className='input'
 							>
-								{this.state.data.images.map((image, index) => {
-									return (
-										<img
-											className="inputfile__image"
-											src={image}
+								<Editor
+									editorState={this.state.shortDescState}
+									wrapperClassName="demo-wrapper"
+									editorClassName="demo-editor"
+									onEditorStateChange={this.onEditorShortDescChange}
+									onChange={() => this.setState({
+										data: {
+											...this.state.data,
+											shortDescription: draftToHtml(convertToRaw(this.state.shortDescState.getCurrentContent()))
+										}
+									})}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="Артикул"
+									floatingLabelText="Артикул"
+									errorText="Поле обязательно"
+									value={this.state.data.sku}
+									onChange={(event, value) => this.changeState(value, 'sku')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="Цена"
+									floatingLabelText="Цена"
+									errorText="Поле обязательно"
+									value={this.state.data.price}
+									onChange={(event, value) => this.changeState(value, 'price')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<SelectField
+									fullWidth={true}
+									multiple={true}
+									value={this.state.data.categories}
+									floatingLabelText="Категории"
+									onChange={(event, index, value) => {
+										this.setState({
+											data: {
+												...this.state.data,
+												categories: value
+											}
+										})
+									}}
+								>
+									{this.state.categories.map((category, index) => {
+										return <MenuItem
+											value={category.slug}
+											primaryText={category.title}
 											key={index}
 										/>
-									)
-								})}
+									})}
+								</SelectField>
 							</div>
-							<SelectField
-								fullWidth={true}
-								multiple={true}
-								value={this.state.data['attribute-sets']}
-								floatingLabelText="Наборы атрибутов"
-								onChange={(event, index, value) => this.setState({
-									data: {
-										...this.state.data,
-										'attribute-sets': value
-									}
-								})}
+							<div
+								className='input'
 							>
-								{this.state['attribute-sets'].map((attribute, index) => {
-									return <MenuItem
-										value={attribute.slug}
-										primaryText={attribute.title}
-										key={index}
-									/>
-								})}
-							</SelectField>
-							<SelectField
-								fullWidth={true}
-								multiple={true}
-								value={this.state.data['tab-sets']}
-								floatingLabelText="Наборы табов"
-								onChange={(event, index, value) => this.setState({
-									data: {
-										...this.state.data,
-										'tab-sets': value
-									}
-								})}
+								<input
+									type="file"
+									className="inputfile"
+									id="file"
+									onChange={this.uploadFile}
+								/>
+								<label
+									htmlFor="file"
+									className="inputfile__label"
+								>
+									Перенесите сюда файл или нажмите, чтобы выбрать изображение
+								</label>
+								<div
+									className="inputfile__images"
+								>
+									{this.state.data.images.map((image, index) => {
+										return (
+											<img
+												className="inputfile__image"
+												src={image}
+												key={index}
+											/>
+										)
+									})}
+								</div>
+							</div>
+							<div
+								className='input'
 							>
-								{this.state['tab-sets'].map((set, index) => {
-									return <MenuItem
-										value={set.slug}
-										primaryText={set.title}
-										key={index}
-									/>
-								})}
-							</SelectField>
+								<SelectField
+									fullWidth={true}
+									multiple={true}
+									value={this.state.data[ 'attribute-sets' ]}
+									floatingLabelText="Наборы атрибутов"
+									onChange={(event, index, value) => this.setState({
+										data: {
+											...this.state.data,
+											'attribute-sets': value
+										}
+									})}
+								>
+									{this.state[ 'attribute-sets' ].map((attribute, index) => {
+										return <MenuItem
+											value={attribute.slug}
+											primaryText={attribute.title}
+											key={index}
+										/>
+									})}
+								</SelectField>
+							</div>
+							<div
+								className='input'
+							>
+								<SelectField
+									fullWidth={true}
+									multiple={true}
+									value={this.state.data[ 'tab-sets' ]}
+									floatingLabelText="Наборы табов"
+									onChange={(event, index, value) => this.setState({
+										data: {
+											...this.state.data,
+											'tab-sets': value
+										}
+									})}
+								>
+									{this.state[ 'tab-sets' ].map((set, index) => {
+										return <MenuItem
+											value={set.slug}
+											primaryText={set.title}
+											key={index}
+										/>
+									})}
+								</SelectField>
+							</div>
 						</div>
 					</Tab>
 					<Tab label="SEO">
 						<div
 							className="resource-page">
-							<TextField
-								fullWidth={true}
-								hintText="SEO заголовок"
-								floatingLabelText="SEO заголовок"
-								value={this.state.data.seo.title}
-								onChange={(event, value) => this.changeState({
-									...this.state.data.seo,
-									title: value
-								}, 'seo')}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="SEO описание"
-								floatingLabelText="SEO описание"
-								value={this.state.data.seo.description}
-								onChange={(event, value) => this.changeState({
-									...this.state.data.seo,
-									description: value
-								}, 'seo')}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="SEO ключевые слова"
-								floatingLabelText="SEO ключевые слова"
-								value={this.state.data.seo.keywords}
-								onChange={(event, value) => this.changeState({
-									...this.state.data.seo,
-									keywords: value
-								}, 'seo')}
-							/>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="SEO заголовок"
+									floatingLabelText="SEO заголовок"
+									value={this.state.data.seo.title}
+									onChange={(event, value) => this.changeState({
+										...this.state.data.seo,
+										title: value
+									}, 'seo')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="SEO описание"
+									floatingLabelText="SEO описание"
+									value={this.state.data.seo.description}
+									onChange={(event, value) => this.changeState({
+										...this.state.data.seo,
+										description: value
+									}, 'seo')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="SEO ключевые слова"
+									floatingLabelText="SEO ключевые слова"
+									value={this.state.data.seo.keywords}
+									onChange={(event, value) => this.changeState({
+										...this.state.data.seo,
+										keywords: value
+									}, 'seo')}
+								/>
+							</div>
 						</div>
 					</Tab>
 					<Tab label="Похожие продукты">
@@ -461,28 +497,32 @@ export default class ProductsCreate extends React.Component {
 									})}
 								</TableBody>
 							</Table>
-							<SelectField
-								fullWidth={true}
-								value={this.state.data.relatedProducts}
-								floatingLabelText="Похожий продукт"
-								onChange={(event, index, value) => this.setState({
-									data: {
-										...this.state.data,
-										relatedProducts: [
-											...this.state.data.relatedProducts,
-											value
-										]
-									}
-								})}
+							<div
+								className='input'
 							>
-								{this.state.products.map((product, index) => {
-									return <MenuItem
-										value={product.slug}
-										primaryText={product.title}
-										key={index}
-									/>
-								})}
-							</SelectField>
+								<SelectField
+									fullWidth={true}
+									value={this.state.data.relatedProducts}
+									floatingLabelText="Похожий продукт"
+									onChange={(event, index, value) => this.setState({
+										data: {
+											...this.state.data,
+											relatedProducts: [
+												...this.state.data.relatedProducts,
+												value
+											]
+										}
+									})}
+								>
+									{this.state.products.map((product, index) => {
+										return <MenuItem
+											value={product.slug}
+											primaryText={product.title}
+											key={index}
+										/>
+									})}
+								</SelectField>
+							</div>
 						</div>
 					</Tab>
 					<Tab label="Товары из набора">
@@ -551,28 +591,32 @@ export default class ProductsCreate extends React.Component {
 									})}
 								</TableBody>
 							</Table>
-							<SelectField
-								fullWidth={true}
-								value={this.state.data.fromSet}
-								floatingLabelText="Товар из набора"
-								onChange={(event, index, value) => this.setState({
-									data: {
-										...this.state.data,
-										fromSet: [
-											...this.state.data.fromSet,
-											value
-										]
-									}
-								})}
+							<div
+								className='input'
 							>
-								{this.state.products.map((product, index) => {
-									return <MenuItem
-										value={product.slug}
-										primaryText={product.title}
-										key={index}
-									/>
-								})}
-							</SelectField>
+								<SelectField
+									fullWidth={true}
+									value={this.state.data.fromSet}
+									floatingLabelText="Товар из набора"
+									onChange={(event, index, value) => this.setState({
+										data: {
+											...this.state.data,
+											fromSet: [
+												...this.state.data.fromSet,
+												value
+											]
+										}
+									})}
+								>
+									{this.state.products.map((product, index) => {
+										return <MenuItem
+											value={product.slug}
+											primaryText={product.title}
+											key={index}
+										/>
+									})}
+								</SelectField>
+							</div>
 						</div>
 					</Tab>
 				</Tabs>

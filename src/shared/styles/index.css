@@ -87,6 +87,7 @@ a, a:link, a:visited, a:active {
 
 .resource-page {
     background-color: white;
+    padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     max-height: 780px;
@@ -173,6 +174,11 @@ a, a:link, a:visited, a:active {
 
 .table__row {
     border-color: black !important;
+}
+
+.input {
+    border: 1px solid #00bcd4;
+    margin-top: 20px;
 }
 
 .inputfile {

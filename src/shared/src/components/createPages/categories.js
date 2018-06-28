@@ -78,7 +78,7 @@ export default class CategoriesCreate extends React.Component {
 				<Tabs>
 					<Tab label="Основное">
 						<div
-							className="resource-page">
+							className="big-resource">
 							<Link
 								className="resource-actions"
 								to="/categories"
@@ -89,105 +89,130 @@ export default class CategoriesCreate extends React.Component {
 									icon={<ListIcon/>}
 								/>
 							</Link>
-							<Toggle
-								style={{
-									width: '150px'
-								}}
-								label="Активный"
-								onToggle={(event, value) => this.changeState(value, 'isActive')}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="Заголовок"
-								floatingLabelText="Заголовок"
-								errorText="Поле обязательно"
-								onChange={(event, value) => this.changeState(value, 'title')}
-							/>
 							<div
-								style={{
-									color: 'rgba(0, 0, 0, 0.3)'
-								}}
+								className='input'
 							>
-								Описание
-							</div>
-							<Editor
-								editorState={this.state.descState}
-								wrapperClassName="demo-wrapper"
-								editorClassName="demo-editor"
-								onEditorStateChange={this.onEditorDescChange}
-								onChange={() => this.setState({
-									data: {
-										...this.state.data,
-										description: draftToHtml(convertToRaw(this.state.descState.getCurrentContent()))
-									}
-								})}
-							/>
-							<input
-								type="file"
-								className="inputfile"
-								id="file"
-								onChange={this.uploadFile}
-							/>
-							<label
-								htmlFor="file"
-								className="inputfile__label"
-							>
-								Перенесите сюда файл или нажмите, чтобы выбрать изображение
-							</label>
-							<div
-								className="inputfile__images"
-							>
-								<img
-									className="inputfile__image"
-									src={this.state.data.image}
+								<Toggle
+									style={{
+										width: '150px'
+									}}
+									label="Активный"
+									onToggle={(event, value) => this.changeState(value, 'isActive')}
 								/>
 							</div>
-							<SelectField
-								fullWidth={true}
-								value={this.state.data.parentCategory}
-								floatingLabelText="Родительская категория"
-								onChange={this.changeParentCategory}
+							<div
+								className='input'
 							>
-								{this.state.categories.map((category, index) => {
-									return <MenuItem
-										value={category.slug}
-										primaryText={category.title}
-										key={index}
+								<TextField
+									fullWidth={true}
+									hintText="Заголовок"
+									floatingLabelText="Заголовок"
+									errorText="Поле обязательно"
+									onChange={(event, value) => this.changeState(value, 'title')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<Editor
+									editorState={this.state.descState}
+									wrapperClassName="demo-wrapper"
+									editorClassName="demo-editor"
+									onEditorStateChange={this.onEditorDescChange}
+									onChange={() => this.setState({
+										data: {
+											...this.state.data,
+											description: draftToHtml(convertToRaw(this.state.descState.getCurrentContent()))
+										}
+									})}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<input
+									type="file"
+									className="inputfile"
+									id="file"
+									onChange={this.uploadFile}
+								/>
+								<label
+									htmlFor="file"
+									className="inputfile__label"
+								>
+									Перенесите сюда файл или нажмите, чтобы выбрать изображение
+								</label>
+								<div
+									className="inputfile__images"
+								>
+									<img
+										className="inputfile__image"
+										src={this.state.data.image}
 									/>
-								})}
-							</SelectField>
+								</div>
+							</div>
+							<div
+								className='input'
+							>
+								<SelectField
+									fullWidth={true}
+									value={this.state.data.parentCategory}
+									floatingLabelText="Родительская категория"
+									onChange={this.changeParentCategory}
+								>
+									{this.state.categories.map((category, index) => {
+										return <MenuItem
+											value={category.slug}
+											primaryText={category.title}
+											key={index}
+										/>
+									})}
+								</SelectField>
+							</div>
 						</div>
 					</Tab>
 					<Tab label="SEO">
 						<div
 							className="resource-page">
-							<TextField
-								fullWidth={true}
-								hintText="SEO заголовок"
-								floatingLabelText="SEO заголовок"
-								onChange={(event, value) => this.changeState({
-									...this.state.data.seo,
-									title: value
-								}, 'seo')}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="SEO описание"
-								floatingLabelText="SEO описание"
-								onChange={(event, value) => this.changeState({
-									...this.state.data.seo,
-									description: value
-								}, 'seo')}
-							/>
-							<TextField
-								fullWidth={true}
-								hintText="SEO ключевые слова"
-								floatingLabelText="SEO ключевые слова"
-								onChange={(event, value) => this.changeState({
-									...this.state.data.seo,
-									keywords: value
-								}, 'seo')}
-							/>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="SEO заголовок"
+									floatingLabelText="SEO заголовок"
+									onChange={(event, value) => this.changeState({
+										...this.state.data.seo,
+										title: value
+									}, 'seo')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="SEO описание"
+									floatingLabelText="SEO описание"
+									onChange={(event, value) => this.changeState({
+										...this.state.data.seo,
+										description: value
+									}, 'seo')}
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="SEO ключевые слова"
+									floatingLabelText="SEO ключевые слова"
+									onChange={(event, value) => this.changeState({
+										...this.state.data.seo,
+										keywords: value
+									}, 'seo')}
+								/>
+							</div>
 						</div>
 					</Tab>
 				</Tabs>

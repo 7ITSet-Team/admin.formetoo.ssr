@@ -1675,7 +1675,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "html, body, .layout, #root, .body {\n    height: 100%;\n}\n\nbody {\n    margin: 0;\n}\n\n#app {\n    height: 100%;\n}\n\na, a:link, a:visited, a:active {\n    text-decoration: none;\n}\n\n/*--------------САЙДБАР---------------*/\n\n.list, .list_moved {\n    background-color: white;\n    min-width: 280px;\n    transition: 0.2s linear;\n    display: flex;\n    flex-flow: column;\n    justify-content: space-between;\n    height: 98%;\n}\n\n.list_moved {\n    margin-left: -280px;\n}\n\n.list__item {\n    text-align: start;\n    height: 50px;\n}\n\n/*--------------СТРАНИЦА ЛОГИНА---------------*/\n\n.login-layout {\n    background-color: rgb(0, 188, 212);\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.login-layout__window {\n    width: 300px;\n    height: 320px;\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n}\n\n.login-layout__window__avatar {\n    margin-top: 15px;\n}\n\n.login-layout__window__button {\n    margin-top: 10px;\n    width: 90%;\n}\n\n/*--------------КОНТЕНТНАЯ ОБЛАСТЬ---------------*/\n\n.body {\n    display: flex;\n    background-color: rgb(237, 236, 236);\n}\n\n.content {\n    width: 100%;\n}\n\n.content, .content_moved {\n    display: flex;\n    flex-flow: column;\n    transition: all 200ms linear;\n    margin: 40px;\n    background-color: rgb(237, 236, 236);\n}\n\n.content_moved {\n    width: 100%;\n}\n\n.resource-page {\n    background-color: white;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n}\n\n.media-resource {\n    background-color: white;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n    overflow-y: scroll;\n}\n\n.big-resource {\n    background-color: white;\n    padding: 20px;\n    max-height: 730px;\n    overflow-y: scroll;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: rgb(232, 232, 232);\n}\n\n.total {\n    font-size: 18px\n}\n\n/*--------------ФОТОГРАФИИ---------------*/\n\n.photos__gridlist {\n    display: flex;\n    flex-wrap: wrap;\n    margin-top: 40px;\n}\n\n/*--------------ГЛАВНАЯ СТРАНИЦА---------------*/\n\n.dashboard {\n    padding: 40px;\n}\n\n.dashboard__item {\n    width: 350px;\n    height: 120px;\n    margin: 30px;\n    box-shadow: 0 4px 8px gray;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard__title {\n    font-size: 24px;\n    margin-top: 20px;\n    margin-left: 15px;\n}\n\n.dashboard__refs {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: space-between;\n}\n\n.dashboard__item__title {\n    color: black;\n}\n\n/*--------------ТАБЛИЦЫ---------------*/\n\n.table {\n    margin-top: 80px;\n}\n\n.table__header__column {\n    color: black !important;\n    font-size: 14px !important;\n    font-weight: 500;\n}\n\n.table__row {\n    border-color: black !important;\n}\n\n.inputfile {\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n}\n\n.inputfile + .inputfile__label {\n    font-size: 1.25em;\n    height: 70px;\n    width: 98%;\n    margin-left: 15px;\n    font-weight: 700;\n    color: gray;\n    background-color: #edecec;\n    display: inline-block;\n    text-align: center;\n    padding-top: 55px;\n    margin-top: 40px;\n}\n\n.inputfile:focus + .inputfile__label,\n.inputfile + .inputfile__label:hover {\n    cursor: pointer;\n}\n\n.inputfile__images {\n    display: flex;\n    justify-content: flex-start;\n    margin-left: 15px;\n    margin-top: 20px;\n}\n\n.inputfile__image {\n    width: 100px;\n    height: 100px;\n    margin-left: 5px;\n}\n\n.warning-msg {\n    margin: 20px;\n    font-weight: bold;\n    font-size: large;\n}\n\n.profile__label {\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.resource-filters {\n    margin-left: 15px;\n    display: flex;\n    flex-flow: column;\n}\n\n.resource-headline {\n    display: flex;\n    justify-content: space-between;\n}\n\n.resource-buttons {\n    margin-top: 15px;\n}\n\n.resource-actions {\n    display: flex;\n    justify-content: flex-end;\n}\n\n.filter {\n    display: flex;\n}", ""]);
+exports.push([module.i, "html, body, .layout, #root, .body {\n    height: 100%;\n}\n\nbody {\n    margin: 0;\n}\n\n#app {\n    height: 100%;\n}\n\na, a:link, a:visited, a:active {\n    text-decoration: none;\n}\n\n/*--------------САЙДБАР---------------*/\n\n.list, .list_moved {\n    background-color: white;\n    min-width: 280px;\n    transition: 0.2s linear;\n    display: flex;\n    flex-flow: column;\n    justify-content: space-between;\n    height: 98%;\n}\n\n.list_moved {\n    margin-left: -280px;\n}\n\n.list__item {\n    text-align: start;\n    height: 50px;\n}\n\n/*--------------СТРАНИЦА ЛОГИНА---------------*/\n\n.login-layout {\n    background-color: rgb(0, 188, 212);\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.login-layout__window {\n    width: 300px;\n    height: 320px;\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n}\n\n.login-layout__window__avatar {\n    margin-top: 15px;\n}\n\n.login-layout__window__button {\n    margin-top: 10px;\n    width: 90%;\n}\n\n/*--------------КОНТЕНТНАЯ ОБЛАСТЬ---------------*/\n\n.body {\n    display: flex;\n    background-color: rgb(237, 236, 236);\n}\n\n.content {\n    width: 100%;\n}\n\n.content, .content_moved {\n    display: flex;\n    flex-flow: column;\n    transition: all 200ms linear;\n    margin: 40px;\n    background-color: rgb(237, 236, 236);\n}\n\n.content_moved {\n    width: 100%;\n}\n\n.resource-page {\n    background-color: white;\n    padding-top: 20px;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n}\n\n.media-resource {\n    background-color: white;\n    padding-left: 20px;\n    padding-right: 20px;\n    max-height: 780px;\n    overflow-y: scroll;\n}\n\n.big-resource {\n    background-color: white;\n    padding: 20px;\n    max-height: 730px;\n    overflow-y: scroll;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: rgb(232, 232, 232);\n}\n\n.total {\n    font-size: 18px\n}\n\n/*--------------ФОТОГРАФИИ---------------*/\n\n.photos__gridlist {\n    display: flex;\n    flex-wrap: wrap;\n    margin-top: 40px;\n}\n\n/*--------------ГЛАВНАЯ СТРАНИЦА---------------*/\n\n.dashboard {\n    padding: 40px;\n}\n\n.dashboard__item {\n    width: 350px;\n    height: 120px;\n    margin: 30px;\n    box-shadow: 0 4px 8px gray;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard__title {\n    font-size: 24px;\n    margin-top: 20px;\n    margin-left: 15px;\n}\n\n.dashboard__refs {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: space-between;\n}\n\n.dashboard__item__title {\n    color: black;\n}\n\n/*--------------ТАБЛИЦЫ---------------*/\n\n.table {\n    margin-top: 80px;\n}\n\n.table__header__column {\n    color: black !important;\n    font-size: 14px !important;\n    font-weight: 500;\n}\n\n.table__row {\n    border-color: black !important;\n}\n\n.input {\n    border: 1px solid #00bcd4;\n    margin-top: 20px;\n}\n\n.inputfile {\n    opacity: 0;\n    overflow: hidden;\n    position: absolute;\n    z-index: -1;\n}\n\n.inputfile + .inputfile__label {\n    font-size: 1.25em;\n    height: 70px;\n    width: 98%;\n    margin-left: 15px;\n    font-weight: 700;\n    color: gray;\n    background-color: #edecec;\n    display: inline-block;\n    text-align: center;\n    padding-top: 55px;\n    margin-top: 40px;\n}\n\n.inputfile:focus + .inputfile__label,\n.inputfile + .inputfile__label:hover {\n    cursor: pointer;\n}\n\n.inputfile__images {\n    display: flex;\n    justify-content: flex-start;\n    margin-left: 15px;\n    margin-top: 20px;\n}\n\n.inputfile__image {\n    width: 100px;\n    height: 100px;\n    margin-left: 5px;\n}\n\n.warning-msg {\n    margin: 20px;\n    font-weight: bold;\n    font-size: large;\n}\n\n.profile__label {\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.resource-filters {\n    margin-left: 15px;\n    display: flex;\n    flex-flow: column;\n}\n\n.resource-headline {\n    display: flex;\n    justify-content: space-between;\n}\n\n.resource-buttons {\n    margin-top: 15px;\n}\n\n.resource-actions {\n    display: flex;\n    justify-content: flex-end;\n}\n\n.filter {\n    display: flex;\n}", ""]);
 
 // exports
 
@@ -4374,7 +4374,7 @@ var CategoriesCreate = function (_React$Component) {
 						_react2.default.createElement(
 							'div',
 							{
-								className: 'resource-page' },
+								className: 'big-resource' },
 							_react2.default.createElement(
 								_reactRouterDom.Link,
 								{
@@ -4387,85 +4387,106 @@ var CategoriesCreate = function (_React$Component) {
 									icon: _react2.default.createElement(_list2.default, null)
 								})
 							),
-							_react2.default.createElement(_Toggle2.default, {
-								style: {
-									width: '150px'
-								},
-								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
-								onToggle: function onToggle(event, value) {
-									return _this2.changeState(value, 'isActive');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								onChange: function onChange(event, value) {
-									return _this2.changeState(value, 'title');
-								}
-							}),
 							_react2.default.createElement(
 								'div',
 								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
 									style: {
-										color: 'rgba(0, 0, 0, 0.3)'
+										width: '150px'
+									},
+									label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(value, 'isActive');
 									}
-								},
-								'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-								editorState: this.state.descState,
-								wrapperClassName: 'demo-wrapper',
-								editorClassName: 'demo-editor',
-								onEditorStateChange: this.onEditorDescChange,
-								onChange: function onChange() {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
-										})
-									});
-								}
-							}),
-							_react2.default.createElement('input', {
-								type: 'file',
-								className: 'inputfile',
-								id: 'file',
-								onChange: this.uploadFile
-							}),
-							_react2.default.createElement(
-								'label',
-								{
-									htmlFor: 'file',
-									className: 'inputfile__label'
-								},
-								'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+								})
 							),
 							_react2.default.createElement(
 								'div',
 								{
-									className: 'inputfile__images'
+									className: 'input'
 								},
-								_react2.default.createElement('img', {
-									className: 'inputfile__image',
-									src: this.state.data.image
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'title');
+									}
 								})
 							),
 							_react2.default.createElement(
-								_SelectField2.default,
+								'div',
 								{
-									fullWidth: true,
-									value: this.state.data.parentCategory,
-									floatingLabelText: '\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F',
-									onChange: this.changeParentCategory
+									className: 'input'
 								},
-								this.state.categories.map(function (category, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: category.slug,
-										primaryText: category.title,
-										key: index
-									});
+								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+									editorState: this.state.descState,
+									wrapperClassName: 'demo-wrapper',
+									editorClassName: 'demo-editor',
+									onEditorStateChange: this.onEditorDescChange,
+									onChange: function onChange() {
+										return _this2.setState({
+											data: _extends({}, _this2.state.data, {
+												description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
+											})
+										});
+									}
 								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement('input', {
+									type: 'file',
+									className: 'inputfile',
+									id: 'file',
+									onChange: this.uploadFile
+								}),
+								_react2.default.createElement(
+									'label',
+									{
+										htmlFor: 'file',
+										className: 'inputfile__label'
+									},
+									'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'inputfile__images'
+									},
+									_react2.default.createElement('img', {
+										className: 'inputfile__image',
+										src: this.state.data.image
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										value: this.state.data.parentCategory,
+										floatingLabelText: '\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F',
+										onChange: this.changeParentCategory
+									},
+									this.state.categories.map(function (category, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: category.slug,
+											primaryText: category.title,
+											key: index
+										});
+									})
+								)
 							)
 						)
 					),
@@ -4476,36 +4497,54 @@ var CategoriesCreate = function (_React$Component) {
 							'div',
 							{
 								className: 'resource-page' },
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								onChange: function onChange(event, value) {
-									return _this2.changeState(_extends({}, _this2.state.data.seo, {
-										title: value
-									}), 'seo');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								onChange: function onChange(event, value) {
-									return _this2.changeState(_extends({}, _this2.state.data.seo, {
-										description: value
-									}), 'seo');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								onChange: function onChange(event, value) {
-									return _this2.changeState(_extends({}, _this2.state.data.seo, {
-										keywords: value
-									}), 'seo');
-								}
-							})
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.seo, {
+											title: value
+										}), 'seo');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+									floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.seo, {
+											description: value
+										}), 'seo');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+									floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.seo, {
+											keywords: value
+										}), 'seo');
+									}
+								})
+							)
 						)
 					)
 				),
@@ -4637,6 +4676,7 @@ var ProductsCreate = function (_React$Component) {
 				attributes: [],
 				'tab-sets': [],
 				tabs: [],
+				title: '',
 				slug: (0, _uid2.default)(16)
 			},
 			descState: _draftJs.EditorState.createEmpty(),
@@ -4852,7 +4892,9 @@ var ProductsCreate = function (_React$Component) {
 		value: function render() {
 			var _this3 = this;
 
-			if (!this.state.categories || !this.state.products || !this.state['attribute-sets'] || !this.state['tab-sets']) return false;
+			if (!this.state.categories || !this.state.products || !this.state['attribute-sets'] || !this.state['tab-sets']) {
+				return false;
+			}
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -4880,184 +4922,220 @@ var ProductsCreate = function (_React$Component) {
 							),
 							_react2.default.createElement(_Toggle2.default, {
 								style: {
-									width: '150px',
-									marginLeft: '20px'
+									width: '150px'
 								},
+								className: 'input',
 								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
 								toggled: this.state.data.isActive,
 								onToggle: function onToggle(event, value) {
 									return _this3.changeState(value, 'isActive');
 								}
 							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.title,
-								onChange: function onChange(event, value) {
-									return _this3.changeState(value, 'title');
-								}
-							}),
 							_react2.default.createElement(
 								'div',
 								{
-									style: {
-										color: 'rgba(0, 0, 0, 0.3)'
-									}
+									className: 'input'
 								},
-								'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-								editorState: this.state.descState,
-								wrapperClassName: 'demo-wrapper',
-								editorClassName: 'demo-editor',
-								onEditorStateChange: this.onEditorDescChange,
-								onChange: function onChange() {
-									return _this3.setState({
-										data: _extends({}, _this3.state.data, {
-											description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.descState.getCurrentContent()))
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(
-								'div',
-								{
-									style: {
-										color: 'rgba(0, 0, 0, 0.3)'
-									}
-								},
-								'\u041A\u0440\u0430\u0442\u043A\u043E\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-								editorState: this.state.shortDescState,
-								wrapperClassName: 'demo-wrapper',
-								editorClassName: 'demo-editor',
-								onEditorStateChange: this.onEditorShortDescChange,
-								onChange: function onChange() {
-									return _this3.setState({
-										data: _extends({}, _this3.state.data, {
-											shortDescription: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.shortDescState.getCurrentContent()))
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
-								floatingLabelText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.sku,
-								onChange: function onChange(event, value) {
-									return _this3.changeState(value, 'sku');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0426\u0435\u043D\u0430',
-								floatingLabelText: '\u0426\u0435\u043D\u0430',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.price,
-								onChange: function onChange(event, value) {
-									return _this3.changeState(value, 'price');
-								}
-							}),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
+								_react2.default.createElement(_TextField2.default, {
 									fullWidth: true,
-									multiple: true,
-									value: this.state.data.categories,
-									floatingLabelText: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438',
-									onChange: function onChange(event, index, value) {
-										_this3.setState({
-											data: _extends({}, _this3.state.data, {
-												categories: value
-											})
-										});
+									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									value: this.state.data.title,
+									onChange: function onChange(event, value) {
+										return _this3.changeState(value, 'title');
 									}
-								},
-								this.state.categories.map(function (category, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: category.slug,
-										primaryText: category.title,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement('input', {
-								type: 'file',
-								className: 'inputfile',
-								id: 'file',
-								onChange: this.uploadFile
-							}),
-							_react2.default.createElement(
-								'label',
-								{
-									htmlFor: 'file',
-									className: 'inputfile__label'
-								},
-								'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'inputfile__images'
-								},
-								this.state.data.images.map(function (image, index) {
-									return _react2.default.createElement('img', {
-										className: 'inputfile__image',
-										src: image,
-										key: index
-									});
 								})
 							),
 							_react2.default.createElement(
-								_SelectField2.default,
+								'div',
 								{
-									fullWidth: true,
-									multiple: true,
-									value: this.state.data['attribute-sets'],
-									floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-									onChange: function onChange(event, index, value) {
+									className: 'input'
+								},
+								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+									editorState: this.state.descState,
+									wrapperClassName: 'demo-wrapper',
+									editorClassName: 'demo-editor',
+									onEditorStateChange: this.onEditorDescChange,
+									onChange: function onChange() {
 										return _this3.setState({
 											data: _extends({}, _this3.state.data, {
-												'attribute-sets': value
+												description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.descState.getCurrentContent()))
 											})
 										});
 									}
-								},
-								this.state['attribute-sets'].map(function (attribute, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: attribute.slug,
-										primaryText: attribute.title,
-										key: index
-									});
 								})
 							),
 							_react2.default.createElement(
-								_SelectField2.default,
+								'div',
 								{
-									fullWidth: true,
-									multiple: true,
-									value: this.state.data['tab-sets'],
-									floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0442\u0430\u0431\u043E\u0432',
-									onChange: function onChange(event, index, value) {
+									className: 'input'
+								},
+								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+									editorState: this.state.shortDescState,
+									wrapperClassName: 'demo-wrapper',
+									editorClassName: 'demo-editor',
+									onEditorStateChange: this.onEditorShortDescChange,
+									onChange: function onChange() {
 										return _this3.setState({
 											data: _extends({}, _this3.state.data, {
-												'tab-sets': value
+												shortDescription: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.shortDescState.getCurrentContent()))
 											})
 										});
 									}
-								},
-								this.state['tab-sets'].map(function (set, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: set.slug,
-										primaryText: set.title,
-										key: index
-									});
 								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
+									floatingLabelText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									value: this.state.data.sku,
+									onChange: function onChange(event, value) {
+										return _this3.changeState(value, 'sku');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0426\u0435\u043D\u0430',
+									floatingLabelText: '\u0426\u0435\u043D\u0430',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									value: this.state.data.price,
+									onChange: function onChange(event, value) {
+										return _this3.changeState(value, 'price');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										multiple: true,
+										value: this.state.data.categories,
+										floatingLabelText: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438',
+										onChange: function onChange(event, index, value) {
+											_this3.setState({
+												data: _extends({}, _this3.state.data, {
+													categories: value
+												})
+											});
+										}
+									},
+									this.state.categories.map(function (category, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: category.slug,
+											primaryText: category.title,
+											key: index
+										});
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement('input', {
+									type: 'file',
+									className: 'inputfile',
+									id: 'file',
+									onChange: this.uploadFile
+								}),
+								_react2.default.createElement(
+									'label',
+									{
+										htmlFor: 'file',
+										className: 'inputfile__label'
+									},
+									'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'inputfile__images'
+									},
+									this.state.data.images.map(function (image, index) {
+										return _react2.default.createElement('img', {
+											className: 'inputfile__image',
+											src: image,
+											key: index
+										});
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										multiple: true,
+										value: this.state.data['attribute-sets'],
+										floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
+										onChange: function onChange(event, index, value) {
+											return _this3.setState({
+												data: _extends({}, _this3.state.data, {
+													'attribute-sets': value
+												})
+											});
+										}
+									},
+									this.state['attribute-sets'].map(function (attribute, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: attribute.slug,
+											primaryText: attribute.title,
+											key: index
+										});
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										multiple: true,
+										value: this.state.data['tab-sets'],
+										floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0442\u0430\u0431\u043E\u0432',
+										onChange: function onChange(event, index, value) {
+											return _this3.setState({
+												data: _extends({}, _this3.state.data, {
+													'tab-sets': value
+												})
+											});
+										}
+									},
+									this.state['tab-sets'].map(function (set, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: set.slug,
+											primaryText: set.title,
+											key: index
+										});
+									})
+								)
 							)
 						)
 					),
@@ -5068,39 +5146,57 @@ var ProductsCreate = function (_React$Component) {
 							'div',
 							{
 								className: 'resource-page' },
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								value: this.state.data.seo.title,
-								onChange: function onChange(event, value) {
-									return _this3.changeState(_extends({}, _this3.state.data.seo, {
-										title: value
-									}), 'seo');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								value: this.state.data.seo.description,
-								onChange: function onChange(event, value) {
-									return _this3.changeState(_extends({}, _this3.state.data.seo, {
-										description: value
-									}), 'seo');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								value: this.state.data.seo.keywords,
-								onChange: function onChange(event, value) {
-									return _this3.changeState(_extends({}, _this3.state.data.seo, {
-										keywords: value
-									}), 'seo');
-								}
-							})
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									value: this.state.data.seo.title,
+									onChange: function onChange(event, value) {
+										return _this3.changeState(_extends({}, _this3.state.data.seo, {
+											title: value
+										}), 'seo');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+									floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+									value: this.state.data.seo.description,
+									onChange: function onChange(event, value) {
+										return _this3.changeState(_extends({}, _this3.state.data.seo, {
+											description: value
+										}), 'seo');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+									floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+									value: this.state.data.seo.keywords,
+									onChange: function onChange(event, value) {
+										return _this3.changeState(_extends({}, _this3.state.data.seo, {
+											keywords: value
+										}), 'seo');
+									}
+								})
+							)
 						)
 					),
 					_react2.default.createElement(
@@ -5194,26 +5290,32 @@ var ProductsCreate = function (_React$Component) {
 								)
 							),
 							_react2.default.createElement(
-								_SelectField2.default,
+								'div',
 								{
-									fullWidth: true,
-									value: this.state.data.relatedProducts,
-									floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
-									onChange: function onChange(event, index, value) {
-										return _this3.setState({
-											data: _extends({}, _this3.state.data, {
-												relatedProducts: [].concat(_toConsumableArray(_this3.state.data.relatedProducts), [value])
-											})
-										});
-									}
+									className: 'input'
 								},
-								this.state.products.map(function (product, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: product.slug,
-										primaryText: product.title,
-										key: index
-									});
-								})
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										value: this.state.data.relatedProducts,
+										floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
+										onChange: function onChange(event, index, value) {
+											return _this3.setState({
+												data: _extends({}, _this3.state.data, {
+													relatedProducts: [].concat(_toConsumableArray(_this3.state.data.relatedProducts), [value])
+												})
+											});
+										}
+									},
+									this.state.products.map(function (product, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: product.slug,
+											primaryText: product.title,
+											key: index
+										});
+									})
+								)
 							)
 						)
 					),
@@ -5308,26 +5410,32 @@ var ProductsCreate = function (_React$Component) {
 								)
 							),
 							_react2.default.createElement(
-								_SelectField2.default,
+								'div',
 								{
-									fullWidth: true,
-									value: this.state.data.fromSet,
-									floatingLabelText: '\u0422\u043E\u0432\u0430\u0440 \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430',
-									onChange: function onChange(event, index, value) {
-										return _this3.setState({
-											data: _extends({}, _this3.state.data, {
-												fromSet: [].concat(_toConsumableArray(_this3.state.data.fromSet), [value])
-											})
-										});
-									}
+									className: 'input'
 								},
-								this.state.products.map(function (product, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: product.slug,
-										primaryText: product.title,
-										key: index
-									});
-								})
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										value: this.state.data.fromSet,
+										floatingLabelText: '\u0422\u043E\u0432\u0430\u0440 \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430',
+										onChange: function onChange(event, index, value) {
+											return _this3.setState({
+												data: _extends({}, _this3.state.data, {
+													fromSet: [].concat(_toConsumableArray(_this3.state.data.fromSet), [value])
+												})
+											});
+										}
+									},
+									this.state.products.map(function (product, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: product.slug,
+											primaryText: product.title,
+											key: index
+										});
+									})
+								)
 							)
 						)
 					)
@@ -5354,7 +5462,7 @@ exports.default = ProductsCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -5420,390 +5528,444 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var OrdersCreate = function (_React$Component) {
-    _inherits(OrdersCreate, _React$Component);
+	_inherits(OrdersCreate, _React$Component);
 
-    function OrdersCreate(props) {
-        _classCallCheck(this, OrdersCreate);
+	function OrdersCreate(props) {
+		_classCallCheck(this, OrdersCreate);
 
-        var _this = _possibleConstructorReturn(this, (OrdersCreate.__proto__ || Object.getPrototypeOf(OrdersCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (OrdersCreate.__proto__ || Object.getPrototypeOf(OrdersCreate)).call(this, props));
 
-        _this.state = {
-            statuses: [],
-            clients: [],
-            data: {
-                products: [],
-                slug: (0, _uid2.default)(16)
-            },
-            products: []
-        };
-        _this.getData('/statuses');
-        _this.getData('/clients');
-        _this.getData('/products');
-        _this.changeProducts = _this.changeProducts.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			statuses: [],
+			clients: [],
+			data: {
+				products: [],
+				slug: (0, _uid2.default)(16)
+			},
+			products: []
+		};
+		_this.getData('/statuses');
+		_this.getData('/clients');
+		_this.getData('/products');
+		_this.changeProducts = _this.changeProducts.bind(_this);
+		return _this;
+	}
 
-    _createClass(OrdersCreate, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'changeProducts',
-        value: function changeProducts(event, index, value) {
-            var _this2 = this;
+	_createClass(OrdersCreate, [{
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'changeProducts',
+		value: function changeProducts(event, index, value) {
+			var _this2 = this;
 
-            this.state.products.forEach(function (product) {
-                if (product._id === value) {
-                    _this2.changeState([].concat(_toConsumableArray(_this2.state.data.products), [product]), 'products');
-                }
-            });
-        }
-    }, {
-        key: 'deleteProduct',
-        value: function deleteProduct(id) {
-            var products = [];
-            this.state.data.products.map(function (product) {
-                if (product._id !== id) {
-                    products.push(product);
-                }
-            });
-            this.changeState(products, 'products');
-        }
-    }, {
-        key: 'changeStatus',
-        value: function changeStatus(value) {
-            var _this3 = this;
+			this.state.products.forEach(function (product) {
+				if (product._id === value) {
+					_this2.changeState([].concat(_toConsumableArray(_this2.state.data.products), [product]), 'products');
+				}
+			});
+		}
+	}, {
+		key: 'deleteProduct',
+		value: function deleteProduct(id) {
+			var products = [];
+			this.state.data.products.map(function (product) {
+				if (product._id !== id) {
+					products.push(product);
+				}
+			});
+			this.changeState(products, 'products');
+		}
+	}, {
+		key: 'changeStatus',
+		value: function changeStatus(value) {
+			var _this3 = this;
 
-            this.setState({
-                currentStatus: value
-            });
-            this.state.statuses.forEach(function (status) {
-                if (status._id === value) {
-                    _this3.setState({
-                        data: _extends({}, _this3.state.data, {
-                            status: {
-                                id: value,
-                                name: status.title
-                            }
-                        })
-                    });
-                }
-            });
-        }
-    }, {
-        key: 'getData',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-                var response, newState;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getData(uri);
+			this.setState({
+				currentStatus: value
+			});
+			this.state.statuses.forEach(function (status) {
+				if (status._id === value) {
+					_this3.setState({
+						data: _extends({}, _this3.state.data, {
+							status: {
+								id: value,
+								name: status.title
+							}
+						})
+					});
+				}
+			});
+		}
+	}, {
+		key: 'getData',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
+				var response, newState;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.getData(uri);
 
-                            case 2:
-                                response = _context.sent;
-                                newState = {};
+							case 2:
+								response = _context.sent;
+								newState = {};
 
-                                newState[uri.slice(1)] = response.data;
-                                this.setState(newState);
+								newState[uri.slice(1)] = response.data;
+								this.setState(newState);
 
-                            case 6:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
+							case 6:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-            function getData(_x) {
-                return _ref.apply(this, arguments);
-            }
+			function getData(_x) {
+				return _ref.apply(this, arguments);
+			}
 
-            return getData;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this4 = this;
+			return getData;
+		}()
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this4 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/orders'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0421\u0442\u0430\u0442\u0443\u0441',
-                                    value: this.state.data.status,
-                                    onChange: function onChange(event, index, value) {
-                                        return _this4.setState({
-                                            data: _extends({}, _this4.state.data, {
-                                                status: value
-                                            })
-                                        });
-                                    }
-                                },
-                                this.state.statuses.map(function (status, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: status.slug,
-                                        primaryText: status.title,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A',
-                                    value: this.state.data.client,
-                                    onChange: function onChange(event, index, value) {
-                                        return _this4.setState({
-                                            data: _extends({}, _this4.state.data, {
-                                                client: value
-                                            })
-                                        });
-                                    }
-                                },
-                                this.state.clients.map(function (client, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: client.slug,
-                                        primaryText: client.name,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _Table.Table,
-                                {
-                                    selectable: false
-                                },
-                                _react2.default.createElement(
-                                    _Table.TableHeader,
-                                    {
-                                        displaySelectAll: false,
-                                        adjustForCheckbox: false
-                                    },
-                                    _react2.default.createElement(
-                                        _Table.TableRow,
-                                        null,
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0426\u0435\u043D\u0430'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0418\u0442\u043E\u0433\u043E'
-                                        ),
-                                        _react2.default.createElement(_Table.TableHeaderColumn, null)
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    _Table.TableBody,
-                                    {
-                                        displayRowCheckbox: false
-                                    },
-                                    this.state.data.products.map(function (product, index) {
-                                        return _react2.default.createElement(
-                                            _Table.TableRow,
-                                            {
-                                                key: index
-                                            },
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.sku
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.title
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.price
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.count
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                '\u0418\u0422\u041E\u0413\u041E'
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                _react2.default.createElement(_delete2.default, {
-                                                    color: 'rgb(255, 64, 129)',
-                                                    onClick: function onClick() {
-                                                        return _this4.deleteProduct(product._id);
-                                                    },
-                                                    style: { cursor: 'pointer' }
-                                                })
-                                            )
-                                        );
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
-                                    onChange: this.changeProducts
-                                },
-                                this.state.products.map(function (product, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: product._id,
-                                        primaryText: product.title,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u0410\u0434\u0440\u0435\u0441' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-                                floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this4.changeState(_extends({}, _this4.state.data.address, {
-                                        country: value
-                                    }), 'address');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-                                floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this4.changeState(_extends({}, _this4.state.data.address, {
-                                        state: value
-                                    }), 'address');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0413\u043E\u0440\u043E\u0434',
-                                floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this4.changeState(_extends({}, _this4.state.data.address, {
-                                        city: value
-                                    }), 'address');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0423\u043B\u0438\u0446\u0430',
-                                floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this4.changeState(_extends({}, _this4.state.data.address, {
-                                        street: value
-                                    }), 'address');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0414\u043E\u043C',
-                                floatingLabelText: '\u0414\u043E\u043C',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this4.changeState(_extends({}, _this4.state.data.address, {
-                                        building: value
-                                    }), 'address');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-                                floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-                                onChange: function onChange(event, value) {
-                                    return _this4.changeState(_extends({}, _this4.state.data.address, {
-                                        apartment: value
-                                    }), 'address');
-                                }
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'orders',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/orders'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										floatingLabelText: '\u0421\u0442\u0430\u0442\u0443\u0441',
+										value: this.state.data.status,
+										onChange: function onChange(event, index, value) {
+											return _this4.setState({
+												data: _extends({}, _this4.state.data, {
+													status: value
+												})
+											});
+										}
+									},
+									this.state.statuses.map(function (status, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: status.slug,
+											primaryText: status.title,
+											key: index
+										});
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										floatingLabelText: '\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A',
+										value: this.state.data.client,
+										onChange: function onChange(event, index, value) {
+											return _this4.setState({
+												data: _extends({}, _this4.state.data, {
+													client: value
+												})
+											});
+										}
+									},
+									this.state.clients.map(function (client, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: client.slug,
+											primaryText: client.name,
+											key: index
+										});
+									})
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_Table.Table,
+								{
+									selectable: false
+								},
+								_react2.default.createElement(
+									_Table.TableHeader,
+									{
+										displaySelectAll: false,
+										adjustForCheckbox: false
+									},
+									_react2.default.createElement(
+										_Table.TableRow,
+										null,
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0426\u0435\u043D\u0430'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0418\u0442\u043E\u0433\u043E'
+										),
+										_react2.default.createElement(_Table.TableHeaderColumn, null)
+									)
+								),
+								_react2.default.createElement(
+									_Table.TableBody,
+									{
+										displayRowCheckbox: false
+									},
+									this.state.data.products.map(function (product, index) {
+										return _react2.default.createElement(
+											_Table.TableRow,
+											{
+												key: index
+											},
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												product.sku
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												product.title
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												product.price
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												product.count
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												'\u0418\u0422\u041E\u0413\u041E'
+											),
+											_react2.default.createElement(
+												_Table.TableHeaderColumn,
+												null,
+												_react2.default.createElement(_delete2.default, {
+													color: 'rgb(255, 64, 129)',
+													onClick: function onClick() {
+														return _this4.deleteProduct(product._id);
+													},
+													style: { cursor: 'pointer' }
+												})
+											)
+										);
+									})
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
+										onChange: this.changeProducts
+									},
+									this.state.products.map(function (product, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: product._id,
+											primaryText: product.title,
+											key: index
+										});
+									})
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u0410\u0434\u0440\u0435\u0441' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0421\u0442\u0440\u0430\u043D\u0430',
+									floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this4.changeState(_extends({}, _this4.state.data.address, {
+											country: value
+										}), 'address');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
+									floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this4.changeState(_extends({}, _this4.state.data.address, {
+											state: value
+										}), 'address');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0413\u043E\u0440\u043E\u0434',
+									floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this4.changeState(_extends({}, _this4.state.data.address, {
+											city: value
+										}), 'address');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0423\u043B\u0438\u0446\u0430',
+									floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this4.changeState(_extends({}, _this4.state.data.address, {
+											street: value
+										}), 'address');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0414\u043E\u043C',
+									floatingLabelText: '\u0414\u043E\u043C',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this4.changeState(_extends({}, _this4.state.data.address, {
+											building: value
+										}), 'address');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
+									floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
+									onChange: function onChange(event, value) {
+										return _this4.changeState(_extends({}, _this4.state.data.address, {
+											apartment: value
+										}), 'address');
+									}
+								})
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'orders',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return OrdersCreate;
+	return OrdersCreate;
 }(_react2.default.Component);
 
 exports.default = OrdersCreate;
@@ -5816,7 +5978,7 @@ exports.default = OrdersCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -5878,157 +6040,181 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var UsersCreate = function (_React$Component) {
-    _inherits(UsersCreate, _React$Component);
+	_inherits(UsersCreate, _React$Component);
 
-    function UsersCreate(props) {
-        _classCallCheck(this, UsersCreate);
+	function UsersCreate(props) {
+		_classCallCheck(this, UsersCreate);
 
-        var _this = _possibleConstructorReturn(this, (UsersCreate.__proto__ || Object.getPrototypeOf(UsersCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (UsersCreate.__proto__ || Object.getPrototypeOf(UsersCreate)).call(this, props));
 
-        _this.state = {
-            roles: [],
-            data: {
-                slug: (0, _uid2.default)(16)
-            }
-        };
-        _this.getRoles();
-        _this.changeRole = _this.changeRole.bind(_this);
-        _this.changeState = _this.changeState.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			roles: [],
+			data: {
+				slug: (0, _uid2.default)(16)
+			}
+		};
+		_this.getRoles();
+		_this.changeRole = _this.changeRole.bind(_this);
+		_this.changeState = _this.changeState.bind(_this);
+		return _this;
+	}
 
-    _createClass(UsersCreate, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'changeRole',
-        value: function changeRole(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    role: value
-                })
-            });
-        }
-    }, {
-        key: 'getRoles',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getData('/roles');
+	_createClass(UsersCreate, [{
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'changeRole',
+		value: function changeRole(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					role: value
+				})
+			});
+		}
+	}, {
+		key: 'getRoles',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var response;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.getData('/roles');
 
-                            case 2:
-                                response = _context.sent;
+							case 2:
+								response = _context.sent;
 
-                                this.setState({
-                                    roles: response.data
-                                });
+								this.setState({
+									roles: response.data
+								});
 
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
+							case 4:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-            function getRoles() {
-                return _ref.apply(this, arguments);
-            }
+			function getRoles() {
+				return _ref.apply(this, arguments);
+			}
 
-            return getRoles;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+			return getRoles;
+		}()
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/users'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0418\u043C\u044F',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u043E\u0447\u0442\u0430',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'email');
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(_hash2.default.getHash(value), 'password');
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.role,
-                                    floatingLabelText: '\u0420\u043E\u043B\u044C',
-                                    onChange: this.changeRole
-                                },
-                                this.state.roles.map(function (role, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: role.slug,
-                                        primaryText: role.name,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'users',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/users'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0418\u043C\u044F',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'name');
+									},
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041F\u043E\u0447\u0442\u0430',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'email');
+									},
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(_hash2.default.getHash(value), 'password');
+									},
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										value: this.state.data.role,
+										floatingLabelText: '\u0420\u043E\u043B\u044C',
+										onChange: this.changeRole
+									},
+									this.state.roles.map(function (role, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: role.slug,
+											primaryText: role.name,
+											key: index
+										});
+									})
+								)
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'users',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return UsersCreate;
+	return UsersCreate;
 }(_react2.default.Component);
 
 exports.default = UsersCreate;
@@ -6041,7 +6227,7 @@ exports.default = UsersCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -6101,342 +6287,404 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ClientsCreate = function (_React$Component) {
-    _inherits(ClientsCreate, _React$Component);
+	_inherits(ClientsCreate, _React$Component);
 
-    function ClientsCreate(props) {
-        _classCallCheck(this, ClientsCreate);
+	function ClientsCreate(props) {
+		_classCallCheck(this, ClientsCreate);
 
-        var _this = _possibleConstructorReturn(this, (ClientsCreate.__proto__ || Object.getPrototypeOf(ClientsCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ClientsCreate.__proto__ || Object.getPrototypeOf(ClientsCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                addresses: [],
-                slug: (0, _uid2.default)(16)
-            },
-            open: false
-        };
-        _this.handleOpen = _this.handleOpen.bind(_this);
-        _this.handleClose = _this.handleClose.bind(_this);
-        _this.addAddress = _this.addAddress.bind(_this);
-        _this.deleteAdresses = _this.deleteAdresses.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			data: {
+				addresses: [],
+				slug: (0, _uid2.default)(16)
+			},
+			open: false
+		};
+		_this.handleOpen = _this.handleOpen.bind(_this);
+		_this.handleClose = _this.handleClose.bind(_this);
+		_this.addAddress = _this.addAddress.bind(_this);
+		_this.deleteAdresses = _this.deleteAdresses.bind(_this);
+		return _this;
+	}
 
-    _createClass(ClientsCreate, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'handleOpen',
-        value: function handleOpen() {
-            this.setState({
-                open: true
-            });
-        }
-    }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            this.setState({
-                open: false
-            });
-        }
-    }, {
-        key: 'deleteAdresses',
-        value: function deleteAdresses(id) {
-            var addresses = [];
-            this.state.data.addresses.forEach(function (address, index) {
-                if (index !== id) addresses.push(address);
-            });
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    addresses: addresses
-                })
-            });
-        }
-    }, {
-        key: 'addAddress',
-        value: function addAddress() {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    addresses: [].concat(_toConsumableArray(this.state.data.addresses), [{
-                        country: this.state.country,
-                        state: this.state.state,
-                        city: this.state.city,
-                        street: this.state.street,
-                        building: this.state.building,
-                        apartment: this.state.apartment
-                    }])
-                })
-            });
-            this.handleClose();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+	_createClass(ClientsCreate, [{
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'handleOpen',
+		value: function handleOpen() {
+			this.setState({
+				open: true
+			});
+		}
+	}, {
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({
+				open: false
+			});
+		}
+	}, {
+		key: 'deleteAdresses',
+		value: function deleteAdresses(id) {
+			var addresses = [];
+			this.state.data.addresses.forEach(function (address, index) {
+				if (index !== id) {
+					addresses.push(address);
+				}
+			});
+			this.setState({
+				data: _extends({}, this.state.data, {
+					addresses: addresses
+				})
+			});
+		}
+	}, {
+		key: 'addAddress',
+		value: function addAddress() {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					addresses: [].concat(_toConsumableArray(this.state.data.addresses), [{
+						country: this.state.country,
+						state: this.state.state,
+						city: this.state.city,
+						street: this.state.street,
+						building: this.state.building,
+						apartment: this.state.apartment
+					}])
+				})
+			});
+			this.handleClose();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            var actions = [_react2.default.createElement(_FlatButton2.default, {
-                label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
-                primary: true,
-                onClick: this.handleClose
-            }), _react2.default.createElement(_FlatButton2.default, {
-                label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
-                primary: true,
-                onClick: this.addAddress
-            })];
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/clients'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0418\u043C\u044F',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u043E\u0447\u0442\u0430',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'email');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0422\u0435\u043B\u0435\u0444\u043E\u043D',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'phone');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'password');
-                                }
-                            })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u0410\u0434\u0440\u0435\u0441\u0430' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _Table.Table,
-                                {
-                                    selectable: false
-                                },
-                                _react2.default.createElement(
-                                    _Table.TableHeader,
-                                    {
-                                        displaySelectAll: false,
-                                        adjustForCheckbox: false
-                                    },
-                                    _react2.default.createElement(
-                                        _Table.TableRow,
-                                        null,
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0421\u0442\u0440\u0430\u043D\u0430'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041E\u0431\u043B\u0430\u0441\u0442\u044C'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0413\u043E\u0440\u043E\u0434'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0423\u043B\u0438\u0446\u0430'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0414\u043E\u043C'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430'
-                                        ),
-                                        _react2.default.createElement(_Table.TableHeaderColumn, null)
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    _Table.TableBody,
-                                    {
-                                        displayRowCheckbox: false
-                                    },
-                                    this.state.data.addresses.map(function (address, index) {
-                                        return _react2.default.createElement(
-                                            _Table.TableRow,
-                                            {
-                                                key: index
-                                            },
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.country
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.state
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.city
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.street
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.building
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.apartment
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                _react2.default.createElement(_delete2.default, {
-                                                    color: 'rgb(255, 64, 129)',
-                                                    onClick: function onClick() {
-                                                        return _this2.deleteAdresses(index);
-                                                    },
-                                                    style: { cursor: 'pointer' }
-                                                })
-                                            )
-                                        );
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_RaisedButton2.default, {
-                                label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
-                                style: { margin: '38px' },
-                                onClick: this.handleOpen
-                            }),
-                            _react2.default.createElement(
-                                _Dialog2.default,
-                                {
-                                    title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0430\u0434\u0440\u0435\u0441\u0430',
-                                    actions: actions,
-                                    modal: true,
-                                    open: this.state.open,
-                                    autoScrollBodyContent: true
-                                },
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            country: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            state: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            city: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            street: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0414\u043E\u043C',
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            building: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            apartment: value
-                                        });
-                                    } })
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'clients',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			var actions = [_react2.default.createElement(_FlatButton2.default, {
+				label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
+				primary: true,
+				onClick: this.handleClose
+			}), _react2.default.createElement(_FlatButton2.default, {
+				label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
+				primary: true,
+				onClick: this.addAddress
+			})];
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/clients'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0418\u043C\u044F',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'name');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041F\u043E\u0447\u0442\u0430',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'email');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0422\u0435\u043B\u0435\u0444\u043E\u043D',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'phone');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'password');
+									}
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u0410\u0434\u0440\u0435\u0441\u0430' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_Table.Table,
+								{
+									selectable: false
+								},
+								_react2.default.createElement(
+									_Table.TableHeader,
+									{
+										displaySelectAll: false,
+										adjustForCheckbox: false
+									},
+									_react2.default.createElement(
+										_Table.TableRow,
+										null,
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0421\u0442\u0440\u0430\u043D\u0430'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u041E\u0431\u043B\u0430\u0441\u0442\u044C'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0413\u043E\u0440\u043E\u0434'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0423\u043B\u0438\u0446\u0430'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0414\u043E\u043C'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430'
+										),
+										_react2.default.createElement(_Table.TableHeaderColumn, null)
+									)
+								),
+								_react2.default.createElement(
+									_Table.TableBody,
+									{
+										displayRowCheckbox: false
+									},
+									this.state.data.addresses.map(function (address, index) {
+										return _react2.default.createElement(
+											_Table.TableRow,
+											{
+												key: index
+											},
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												address.country
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												address.state
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												address.city
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												address.street
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												address.building
+											),
+											_react2.default.createElement(
+												_Table.TableRowColumn,
+												null,
+												address.apartment
+											),
+											_react2.default.createElement(
+												_Table.TableHeaderColumn,
+												null,
+												_react2.default.createElement(_delete2.default, {
+													color: 'rgb(255, 64, 129)',
+													onClick: function onClick() {
+														return _this2.deleteAdresses(index);
+													},
+													style: { cursor: 'pointer' }
+												})
+											)
+										);
+									})
+								)
+							),
+							_react2.default.createElement(_RaisedButton2.default, {
+								label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
+								style: { margin: '38px' },
+								onClick: this.handleOpen
+							}),
+							_react2.default.createElement(
+								_Dialog2.default,
+								{
+									title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0430\u0434\u0440\u0435\u0441\u0430',
+									actions: actions,
+									modal: true,
+									open: this.state.open,
+									autoScrollBodyContent: true
+								},
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'input'
+									},
+									_react2.default.createElement(_TextField2.default, {
+										fullWidth: true,
+										floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
+										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+										onChange: function onChange(event, value) {
+											return _this2.setState({
+												country: value
+											});
+										} })
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'input'
+									},
+									_react2.default.createElement(_TextField2.default, {
+										fullWidth: true,
+										floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
+										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+										onChange: function onChange(event, value) {
+											return _this2.setState({
+												state: value
+											});
+										} })
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'input'
+									},
+									_react2.default.createElement(_TextField2.default, {
+										fullWidth: true,
+										floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
+										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+										onChange: function onChange(event, value) {
+											return _this2.setState({
+												city: value
+											});
+										} })
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'input'
+									},
+									_react2.default.createElement(_TextField2.default, {
+										fullWidth: true,
+										floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
+										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+										onChange: function onChange(event, value) {
+											return _this2.setState({
+												street: value
+											});
+										} })
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'input'
+									},
+									_react2.default.createElement(_TextField2.default, {
+										fullWidth: true,
+										floatingLabelText: '\u0414\u043E\u043C',
+										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+										onChange: function onChange(event, value) {
+											return _this2.setState({
+												building: value
+											});
+										} })
+								),
+								_react2.default.createElement(
+									'div',
+									{
+										className: 'input'
+									},
+									_react2.default.createElement(_TextField2.default, {
+										fullWidth: true,
+										floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
+										onChange: function onChange(event, value) {
+											return _this2.setState({
+												apartment: value
+											});
+										} })
+								)
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'clients',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return ClientsCreate;
+	return ClientsCreate;
 }(_react2.default.Component);
 
 exports.default = ClientsCreate;
@@ -6449,7 +6697,7 @@ exports.default = ClientsCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -6521,348 +6769,408 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AttributesCreate = function (_React$Component) {
-    _inherits(AttributesCreate, _React$Component);
+	_inherits(AttributesCreate, _React$Component);
 
-    function AttributesCreate(props) {
-        _classCallCheck(this, AttributesCreate);
+	function AttributesCreate(props) {
+		_classCallCheck(this, AttributesCreate);
 
-        var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                showInFilter: false,
-                showInProductPage: false,
-                showInList: false,
-                isRequired: false,
-                name: null,
-                title: null,
-                units: null,
-                attrType: null,
-                variants: [],
-                slug: (0, _uid2.default)(16)
-            },
-            open: false,
-            types: [{
-                id: 'multipleSelect',
-                title: 'Множественный список'
-            }, {
-                id: 'textInput',
-                title: 'Текстовое поле'
-            }, {
-                id: 'select',
-                title: 'Список'
-            }, {
-                id: 'numberInput',
-                title: 'Числовое поле'
-            }, {
-                id: 'textBlock',
-                title: 'Текстовый блок'
-            }, {
-                id: 'boolean',
-                title: 'Да/Нет'
-            }, {
-                id: 'interval',
-                title: 'Интервал'
-            }],
-            variant: {
-                id: '',
-                value: ''
-            }
-        };
-        _this.changeType = _this.changeType.bind(_this);
-        _this.handleClose = _this.handleClose.bind(_this);
-        _this.handleOpen = _this.handleOpen.bind(_this);
-        _this.addVariant = _this.addVariant.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			data: {
+				showInFilter: false,
+				showInProductPage: false,
+				showInList: false,
+				isRequired: false,
+				name: null,
+				title: null,
+				units: null,
+				attrType: null,
+				variants: [],
+				slug: (0, _uid2.default)(16)
+			},
+			open: false,
+			types: [{
+				id: 'multipleSelect',
+				title: 'Множественный список'
+			}, {
+				id: 'textInput',
+				title: 'Текстовое поле'
+			}, {
+				id: 'select',
+				title: 'Список'
+			}, {
+				id: 'numberInput',
+				title: 'Числовое поле'
+			}, {
+				id: 'textBlock',
+				title: 'Текстовый блок'
+			}, {
+				id: 'boolean',
+				title: 'Да/Нет'
+			}, {
+				id: 'interval',
+				title: 'Интервал'
+			}],
+			variant: {
+				id: '',
+				value: ''
+			}
+		};
+		_this.changeType = _this.changeType.bind(_this);
+		_this.handleClose = _this.handleClose.bind(_this);
+		_this.handleOpen = _this.handleOpen.bind(_this);
+		_this.addVariant = _this.addVariant.bind(_this);
+		return _this;
+	}
 
-    _createClass(AttributesCreate, [{
-        key: 'handleOpen',
-        value: function handleOpen() {
-            this.setState({
-                open: true
-            });
-        }
-    }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            this.setState({
-                open: false
-            });
-        }
-    }, {
-        key: 'addVariant',
-        value: function addVariant() {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    variants: [].concat(_toConsumableArray(this.state.data.variants), [this.state.variant])
-                })
-            });
-            this.handleClose();
-        }
-    }, {
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'changeType',
-        value: function changeType(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    attrType: value
-                })
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+	_createClass(AttributesCreate, [{
+		key: 'handleOpen',
+		value: function handleOpen() {
+			this.setState({
+				open: true
+			});
+		}
+	}, {
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({
+				open: false
+			});
+		}
+	}, {
+		key: 'addVariant',
+		value: function addVariant() {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					variants: [].concat(_toConsumableArray(this.state.data.variants), [this.state.variant])
+				})
+			});
+			this.handleClose();
+		}
+	}, {
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'changeType',
+		value: function changeType(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					attrType: value
+				})
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            var actions = [_react2.default.createElement(_FlatButton2.default, {
-                label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
-                primary: true,
-                onClick: this.handleClose
-            }), _react2.default.createElement(_FlatButton2.default, {
-                label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
-                primary: true,
-                onClick: this.addVariant
-            })];
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/attributes'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0444\u0438\u043B\u044C\u0442\u0440\u0435',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'showInFilter');
-                                }
-                            }),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0442\u043E\u0432\u0430\u0440\u0430',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'showInProductPage');
-                                }
-                            }),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0441\u043F\u0438\u0441\u043A\u0435',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'showInList');
-                                }
-                            }),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'isRequired');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'title');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0415\u0434\u0438\u043D\u0438\u0446\u0430 \u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'units');
-                                }
-                            })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u0422\u0438\u043F' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.attrType,
-                                    floatingLabelText: '\u0422\u0438\u043F',
-                                    onChange: this.changeType
-                                },
-                                this.state.types.map(function (type, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: type.id,
-                                        primaryText: type.title,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            this.state.data.attrType === 'multipleSelect' || this.state.data.attrType === 'select' ? _react2.default.createElement(
-                                'div',
-                                null,
-                                _react2.default.createElement(
-                                    _Table.Table,
-                                    {
-                                        selectable: false
-                                    },
-                                    _react2.default.createElement(
-                                        _Table.TableHeader,
-                                        {
-                                            displaySelectAll: false,
-                                            adjustForCheckbox: false
-                                        },
-                                        _react2.default.createElement(
-                                            _Table.TableRow,
-                                            null,
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440'
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435'
-                                            ),
-                                            _react2.default.createElement(_Table.TableHeaderColumn, null)
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        _Table.TableBody,
-                                        {
-                                            displayRowCheckbox: false
-                                        },
-                                        !!this.state.data.variants ? this.state.data.variants.map(function (variant, index) {
-                                            return _react2.default.createElement(
-                                                _Table.TableRow,
-                                                {
-                                                    key: index
-                                                },
-                                                _react2.default.createElement(
-                                                    _Table.TableRowColumn,
-                                                    null,
-                                                    variant.id
-                                                ),
-                                                _react2.default.createElement(
-                                                    _Table.TableRowColumn,
-                                                    null,
-                                                    variant.value
-                                                ),
-                                                _react2.default.createElement(
-                                                    _Table.TableHeaderColumn,
-                                                    null,
-                                                    _react2.default.createElement(_delete2.default, {
-                                                        color: 'rgb(255, 64, 129)',
-                                                        onClick: function onClick() {
-                                                            return _this2.deleteVariant(variant.id);
-                                                        },
-                                                        style: { cursor: 'pointer' }
-                                                    })
-                                                )
-                                            );
-                                        }) : null
-                                    )
-                                ),
-                                _react2.default.createElement(_RaisedButton2.default, {
-                                    label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
-                                    style: { margin: '38px' },
-                                    onClick: this.handleOpen
-                                }),
-                                _react2.default.createElement(
-                                    _Dialog2.default,
-                                    {
-                                        title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
-                                        actions: actions,
-                                        modal: true,
-                                        open: this.state.open,
-                                        autoScrollBodyContent: true
-                                    },
-                                    _react2.default.createElement(_TextField2.default, {
-                                        fullWidth: true,
-                                        floatingLabelText: '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440',
-                                        value: this.state.variant.id,
-                                        errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                        onChange: function onChange(event, value) {
-                                            return _this2.setState({
-                                                variant: _extends({}, _this2.state.variant, {
-                                                    id: value
-                                                })
-                                            });
-                                        } }),
-                                    _react2.default.createElement(_TextField2.default, {
-                                        fullWidth: true,
-                                        floatingLabelText: '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435',
-                                        value: this.state.variant.value,
-                                        errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                        onChange: function onChange(event, value) {
-                                            return _this2.setState({
-                                                variant: _extends({}, _this2.state.variant, {
-                                                    value: value
-                                                })
-                                            });
-                                        } })
-                                )
-                            ) : null
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'attributes',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			var actions = [_react2.default.createElement(_FlatButton2.default, {
+				label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
+				primary: true,
+				onClick: this.handleClose
+			}), _react2.default.createElement(_FlatButton2.default, {
+				label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
+				primary: true,
+				onClick: this.addVariant
+			})];
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/attributes'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '250px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0444\u0438\u043B\u044C\u0442\u0440\u0435',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(value, 'showInFilter');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '250px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0442\u043E\u0432\u0430\u0440\u0430',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(value, 'showInProductPage');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '250px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0441\u043F\u0438\u0441\u043A\u0435',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(value, 'showInList');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '250px',
+										marginLeft: '20px'
+									},
+									label: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(value, 'isRequired');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'name');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'title');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0415\u0434\u0438\u043D\u0438\u0446\u0430 \u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'units');
+									}
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u0422\u0438\u043F' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										value: this.state.data.attrType,
+										floatingLabelText: '\u0422\u0438\u043F',
+										onChange: this.changeType
+									},
+									this.state.types.map(function (type, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: type.id,
+											primaryText: type.title,
+											key: index
+										});
+									})
+								)
+							),
+							this.state.data.attrType === 'multipleSelect' || this.state.data.attrType === 'select' ? _react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									_Table.Table,
+									{
+										selectable: false
+									},
+									_react2.default.createElement(
+										_Table.TableHeader,
+										{
+											displaySelectAll: false,
+											adjustForCheckbox: false
+										},
+										_react2.default.createElement(
+											_Table.TableRow,
+											null,
+											_react2.default.createElement(
+												_Table.TableHeaderColumn,
+												null,
+												'\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440'
+											),
+											_react2.default.createElement(
+												_Table.TableHeaderColumn,
+												null,
+												'\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435'
+											),
+											_react2.default.createElement(_Table.TableHeaderColumn, null)
+										)
+									),
+									_react2.default.createElement(
+										_Table.TableBody,
+										{
+											displayRowCheckbox: false
+										},
+										!!this.state.data.variants ? this.state.data.variants.map(function (variant, index) {
+											return _react2.default.createElement(
+												_Table.TableRow,
+												{
+													key: index
+												},
+												_react2.default.createElement(
+													_Table.TableRowColumn,
+													null,
+													variant.id
+												),
+												_react2.default.createElement(
+													_Table.TableRowColumn,
+													null,
+													variant.value
+												),
+												_react2.default.createElement(
+													_Table.TableHeaderColumn,
+													null,
+													_react2.default.createElement(_delete2.default, {
+														color: 'rgb(255, 64, 129)',
+														onClick: function onClick() {
+															return _this2.deleteVariant(variant.id);
+														},
+														style: { cursor: 'pointer' }
+													})
+												)
+											);
+										}) : null
+									)
+								),
+								_react2.default.createElement(_RaisedButton2.default, {
+									label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
+									style: { margin: '38px' },
+									onClick: this.handleOpen
+								}),
+								_react2.default.createElement(
+									_Dialog2.default,
+									{
+										title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
+										actions: actions,
+										modal: true,
+										open: this.state.open,
+										autoScrollBodyContent: true
+									},
+									_react2.default.createElement(
+										'div',
+										{
+											className: 'input'
+										},
+										_react2.default.createElement(_TextField2.default, {
+											fullWidth: true,
+											floatingLabelText: '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440',
+											value: this.state.variant.id,
+											errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+											onChange: function onChange(event, value) {
+												return _this2.setState({
+													variant: _extends({}, _this2.state.variant, {
+														id: value
+													})
+												});
+											} })
+									),
+									_react2.default.createElement(
+										'div',
+										{
+											className: 'input'
+										},
+										_react2.default.createElement(_TextField2.default, {
+											fullWidth: true,
+											floatingLabelText: '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435',
+											value: this.state.variant.value,
+											errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
+											onChange: function onChange(event, value) {
+												return _this2.setState({
+													variant: _extends({}, _this2.state.variant, {
+														value: value
+													})
+												});
+											} })
+									)
+								)
+							) : null
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'attributes',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return AttributesCreate;
+	return AttributesCreate;
 }(_react2.default.Component);
 
 exports.default = AttributesCreate;
@@ -6875,7 +7183,7 @@ exports.default = AttributesCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -6935,143 +7243,155 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AttributesCreate = function (_React$Component) {
-    _inherits(AttributesCreate, _React$Component);
+	_inherits(AttributesCreate, _React$Component);
 
-    function AttributesCreate(props) {
-        _classCallCheck(this, AttributesCreate);
+	function AttributesCreate(props) {
+		_classCallCheck(this, AttributesCreate);
 
-        var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                title: '',
-                attributes: [],
-                slug: (0, _uid2.default)(16)
-            },
-            attributes: []
-        };
-        _this.getAttributes();
-        _this.changeAttribute = _this.changeAttribute.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			data: {
+				title: '',
+				attributes: [],
+				slug: (0, _uid2.default)(16)
+			},
+			attributes: []
+		};
+		_this.getAttributes();
+		_this.changeAttribute = _this.changeAttribute.bind(_this);
+		return _this;
+	}
 
-    _createClass(AttributesCreate, [{
-        key: 'getAttributes',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getData('/attributes');
+	_createClass(AttributesCreate, [{
+		key: 'getAttributes',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var response;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.getData('/attributes');
 
-                            case 2:
-                                response = _context.sent;
+							case 2:
+								response = _context.sent;
 
-                                this.setState({
-                                    attributes: response.data
-                                });
+								this.setState({
+									attributes: response.data
+								});
 
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
+							case 4:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-            function getAttributes() {
-                return _ref.apply(this, arguments);
-            }
+			function getAttributes() {
+				return _ref.apply(this, arguments);
+			}
 
-            return getAttributes;
-        }()
-    }, {
-        key: 'changeAttribute',
-        value: function changeAttribute(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    attributes: [].concat(_toConsumableArray(value))
-                })
-            });
-        }
-    }, {
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+			return getAttributes;
+		}()
+	}, {
+		key: 'changeAttribute',
+		value: function changeAttribute(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					attributes: [].concat(_toConsumableArray(value))
+				})
+			});
+		}
+	}, {
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/attribute-sets'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'title');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    multiple: true,
-                                    value: this.state.data.attributes,
-                                    floatingLabelText: '\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u044B',
-                                    onChange: this.changeAttribute
-                                },
-                                this.state.attributes.map(function (attribute, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: attribute.slug,
-                                        primaryText: attribute.title,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'attribute-sets',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/attribute-sets'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'title');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										multiple: true,
+										value: this.state.data.attributes,
+										floatingLabelText: '\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u044B',
+										onChange: this.changeAttribute
+									},
+									this.state.attributes.map(function (attribute, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: attribute.slug,
+											primaryText: attribute.title,
+											key: index
+										});
+									})
+								)
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'attribute-sets',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return AttributesCreate;
+	return AttributesCreate;
 }(_react2.default.Component);
 
 exports.default = AttributesCreate;
@@ -7084,7 +7404,7 @@ exports.default = AttributesCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -7128,90 +7448,102 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TabsCreate = function (_React$Component) {
-    _inherits(TabsCreate, _React$Component);
+	_inherits(TabsCreate, _React$Component);
 
-    function TabsCreate(props) {
-        _classCallCheck(this, TabsCreate);
+	function TabsCreate(props) {
+		_classCallCheck(this, TabsCreate);
 
-        var _this = _possibleConstructorReturn(this, (TabsCreate.__proto__ || Object.getPrototypeOf(TabsCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (TabsCreate.__proto__ || Object.getPrototypeOf(TabsCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                name: '',
-                title: '',
-                slug: (0, _uid2.default)(16)
-            }
-        };
-        return _this;
-    }
+		_this.state = {
+			data: {
+				name: '',
+				title: '',
+				slug: (0, _uid2.default)(16)
+			}
+		};
+		return _this;
+	}
 
-    _createClass(TabsCreate, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+	_createClass(TabsCreate, [{
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/tabs'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            name: value
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            title: value
-                                        })
-                                    });
-                                },
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'tabs',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/tabs'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
+									onChange: function onChange(event, value) {
+										return _this2.setState({
+											data: _extends({}, _this2.state.data, {
+												name: value
+											})
+										});
+									},
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									onChange: function onChange(event, value) {
+										return _this2.setState({
+											data: _extends({}, _this2.state.data, {
+												title: value
+											})
+										});
+									},
+									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'tabs',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return TabsCreate;
+	return TabsCreate;
 }(_react2.default.Component);
 
 exports.default = TabsCreate;
@@ -7224,7 +7556,7 @@ exports.default = TabsCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -7284,141 +7616,153 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TabSetsCreate = function (_React$Component) {
-    _inherits(TabSetsCreate, _React$Component);
+	_inherits(TabSetsCreate, _React$Component);
 
-    function TabSetsCreate(props) {
-        _classCallCheck(this, TabSetsCreate);
+	function TabSetsCreate(props) {
+		_classCallCheck(this, TabSetsCreate);
 
-        var _this = _possibleConstructorReturn(this, (TabSetsCreate.__proto__ || Object.getPrototypeOf(TabSetsCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (TabSetsCreate.__proto__ || Object.getPrototypeOf(TabSetsCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                title: '',
-                tabs: [],
-                slug: (0, _uid2.default)(16)
-            },
-            tabs: []
-        };
-        _this.getTabs();
-        _this.changeTabs = _this.changeTabs.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			data: {
+				title: '',
+				tabs: [],
+				slug: (0, _uid2.default)(16)
+			},
+			tabs: []
+		};
+		_this.getTabs();
+		_this.changeTabs = _this.changeTabs.bind(_this);
+		return _this;
+	}
 
-    _createClass(TabSetsCreate, [{
-        key: 'changeTabs',
-        value: function changeTabs(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    tabs: [].concat(_toConsumableArray(value))
-                })
-            });
-        }
-    }, {
-        key: 'getTabs',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getData('/tabs');
+	_createClass(TabSetsCreate, [{
+		key: 'changeTabs',
+		value: function changeTabs(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					tabs: [].concat(_toConsumableArray(value))
+				})
+			});
+		}
+	}, {
+		key: 'getTabs',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var response;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								_context.next = 2;
+								return _data2.default.getData('/tabs');
 
-                            case 2:
-                                response = _context.sent;
+							case 2:
+								response = _context.sent;
 
-                                this.setState({
-                                    tabs: response.data
-                                });
+								this.setState({
+									tabs: response.data
+								});
 
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
+							case 4:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
 
-            function getTabs() {
-                return _ref.apply(this, arguments);
-            }
+			function getTabs() {
+				return _ref.apply(this, arguments);
+			}
 
-            return getTabs;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+			return getTabs;
+		}()
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            console.log(this.state);
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/tab-sets'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                onChange: function onChange(event, value) {
-                                    _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            title: value
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    multiple: true,
-                                    value: this.state.data.tabs,
-                                    floatingLabelText: '\u0422\u0430\u0431\u044B',
-                                    onChange: this.changeTabs
-                                },
-                                this.state.tabs.map(function (tab, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: tab.slug,
-                                        primaryText: tab.title,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'tab-sets',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			console.log(this.state);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/tab-sets'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+									onChange: function onChange(event, value) {
+										_this2.setState({
+											data: _extends({}, _this2.state.data, {
+												title: value
+											})
+										});
+									},
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										fullWidth: true,
+										multiple: true,
+										value: this.state.data.tabs,
+										floatingLabelText: '\u0422\u0430\u0431\u044B',
+										onChange: this.changeTabs
+									},
+									this.state.tabs.map(function (tab, index) {
+										return _react2.default.createElement(_MenuItem2.default, {
+											value: tab.slug,
+											primaryText: tab.title,
+											key: index
+										});
+									})
+								)
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'tab-sets',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return TabSetsCreate;
+	return TabSetsCreate;
 }(_react2.default.Component);
 
 exports.default = TabSetsCreate;
@@ -7431,7 +7775,7 @@ exports.default = TabSetsCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -7487,441 +7831,567 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var RolesCreate = function (_React$Component) {
-    _inherits(RolesCreate, _React$Component);
+	_inherits(RolesCreate, _React$Component);
 
-    function RolesCreate(props) {
-        _classCallCheck(this, RolesCreate);
+	function RolesCreate(props) {
+		_classCallCheck(this, RolesCreate);
 
-        var _this = _possibleConstructorReturn(this, (RolesCreate.__proto__ || Object.getPrototypeOf(RolesCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (RolesCreate.__proto__ || Object.getPrototypeOf(RolesCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                resources: {
-                    users: { showInMenu: false, permissions: [] },
-                    statuses: { showInMenu: false, permissions: [] },
-                    roles: { showInMenu: false, permissions: [] },
-                    products: { showInMenu: false, permissions: [] },
-                    photos: { showInMenu: false, permissions: [] },
-                    orders: { showInMenu: false, permissions: [] },
-                    clients: { showInMenu: false, permissions: [] },
-                    categories: { showInMenu: false, permissions: [] },
-                    attributes: { showInMenu: false, permissions: [] },
-                    "attribute-sets": { showInMenu: false, permissions: [] }
-                },
-                slug: (0, _uid2.default)(16)
-            },
-            permissions: [{
-                type: 'create',
-                label: 'Создание'
-            }, {
-                type: 'put',
-                label: 'Редактирование'
-            }, {
-                type: 'get',
-                label: 'Чтение'
-            }, {
-                type: 'delete',
-                label: 'Удаление'
-            }]
-        };
-        return _this;
-    }
+		_this.state = {
+			data: {
+				resources: {
+					users: { showInMenu: false, permissions: [] },
+					statuses: { showInMenu: false, permissions: [] },
+					roles: { showInMenu: false, permissions: [] },
+					products: { showInMenu: false, permissions: [] },
+					photos: { showInMenu: false, permissions: [] },
+					orders: { showInMenu: false, permissions: [] },
+					clients: { showInMenu: false, permissions: [] },
+					categories: { showInMenu: false, permissions: [] },
+					attributes: { showInMenu: false, permissions: [] },
+					'attribute-sets': { showInMenu: false, permissions: [] }
+				},
+				slug: (0, _uid2.default)(16)
+			},
+			permissions: [{
+				type: 'create',
+				label: 'Создание'
+			}, {
+				type: 'put',
+				label: 'Редактирование'
+			}, {
+				type: 'get',
+				label: 'Чтение'
+			}, {
+				type: 'delete',
+				label: 'Удаление'
+			}]
+		};
+		return _this;
+	}
 
-    _createClass(RolesCreate, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'menuItems',
-        value: function menuItems(values) {
-            return this.state.permissions.map(function (_ref, index) {
-                var type = _ref.type,
-                    label = _ref.label;
-                return _react2.default.createElement(_MenuItem2.default, {
-                    key: index,
-                    insetChildren: true,
-                    checked: values && values.indexOf(type) > -1,
-                    value: type,
-                    primaryText: label
-                });
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+	_createClass(RolesCreate, [{
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'menuItems',
+		value: function menuItems(values) {
+			return this.state.permissions.map(function (_ref, index) {
+				var type = _ref.type,
+				    label = _ref.label;
+				return _react2.default.createElement(_MenuItem2.default, {
+					key: index,
+					insetChildren: true,
+					checked: values && values.indexOf(type) > -1,
+					value: type,
+					primaryText: label
+				});
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F'
-                        },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'big-resource'
-                            },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/roles'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.categories.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            categories: _extends({}, _this2.state.data.resources.categories, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.categories.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        categories: _extends({}, _this2.state.data.resources.categories, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.products.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            products: _extends({}, _this2.state.data.resources.products, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.products.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        products: _extends({}, _this2.state.data.resources.products, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.users.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            users: _extends({}, _this2.state.data.resources.users, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.users.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        users: _extends({}, _this2.state.data.resources.users, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.roles.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0440\u043E\u043B\u0435\u0439',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            roles: _extends({}, _this2.state.data.resources.roles, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.roles.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        roles: _extends({}, _this2.state.data.resources.roles, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.clients.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            clients: _extends({}, _this2.state.data.resources.clients, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.clients.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        clients: _extends({}, _this2.state.data.resources.clients, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.orders.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0437\u0430\u043A\u0430\u0437\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            orders: _extends({}, _this2.state.data.resources.orders, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.orders.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        orders: _extends({}, _this2.state.data.resources.orders, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.attributes.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            attributes: _extends({}, _this2.state.data.resources.attributes, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.attributes.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        attributes: _extends({}, _this2.state.data.resources.attributes, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources['attribute-sets'].permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043D\u0430\u0431\u043E\u0440\u043E\u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources['attribute-sets'].permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.statuses.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0441\u0442\u0430\u0442\u0443\u0441\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            statuses: _extends({}, _this2.state.data.resources.statuses, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.statuses.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        statuses: _extends({}, _this2.state.data.resources.statuses, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.photos.permissions,
-                                    hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0444\u043E\u0442\u043E',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            photos: _extends({}, _this2.state.data.resources.photos, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.photos.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        photos: _extends({}, _this2.state.data.resources.photos, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'roles',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F'
+						},
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'big-resource'
+							},
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/roles'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: '\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+									onChange: function onChange(event, value) {
+										return _this2.changeState(value, 'name');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.categories.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												categories: _extends({}, _this2.state.data.resources.categories, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.categories.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											categories: _extends({}, _this2.state.data.resources.categories, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.products.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												products: _extends({}, _this2.state.data.resources.products, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.products.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											products: _extends({}, _this2.state.data.resources.products, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.users.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												users: _extends({}, _this2.state.data.resources.users, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.users.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											users: _extends({}, _this2.state.data.resources.users, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.roles.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0440\u043E\u043B\u0435\u0439',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												roles: _extends({}, _this2.state.data.resources.roles, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.roles.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											roles: _extends({}, _this2.state.data.resources.roles, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.clients.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u043E\u0432',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												clients: _extends({}, _this2.state.data.resources.clients, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.clients.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											clients: _extends({}, _this2.state.data.resources.clients, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.orders.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0437\u0430\u043A\u0430\u0437\u043E\u0432',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												orders: _extends({}, _this2.state.data.resources.orders, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.orders.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											orders: _extends({}, _this2.state.data.resources.orders, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.attributes.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												attributes: _extends({}, _this2.state.data.resources.attributes, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.attributes.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											attributes: _extends({}, _this2.state.data.resources.attributes, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources['attribute-sets'].permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043D\u0430\u0431\u043E\u0440\u043E\u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources['attribute-sets'].permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.statuses.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0441\u0442\u0430\u0442\u0443\u0441\u043E\u0432',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												statuses: _extends({}, _this2.state.data.resources.statuses, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.statuses.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											statuses: _extends({}, _this2.state.data.resources.statuses, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(
+									_SelectField2.default,
+									{
+										multiple: true,
+										value: this.state.data.resources.photos.permissions,
+										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0444\u043E\u0442\u043E',
+										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+										fullWidth: true,
+										onChange: function onChange(event, index, values) {
+											return _this2.changeState(_extends({}, _this2.state.data.resources, {
+												photos: _extends({}, _this2.state.data.resources.photos, {
+													permissions: values
+												})
+											}), 'resources');
+										}
+									},
+									this.menuItems(this.state.data.resources.photos.permissions)
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_Toggle2.default, {
+									style: {
+										width: '230px',
+										marginLeft: '20px'
+									},
+									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
+									onToggle: function onToggle(event, value) {
+										return _this2.changeState(_extends({}, _this2.state.data.resources, {
+											photos: _extends({}, _this2.state.data.resources.photos, {
+												showInMenu: value
+											})
+										}), 'resources');
+									}
+								})
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'roles',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return RolesCreate;
+	return RolesCreate;
 }(_react2.default.Component);
 
 exports.default = RolesCreate;
@@ -7934,7 +8404,7 @@ exports.default = RolesCreate;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -7978,77 +8448,83 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TabSetsCreate = function (_React$Component) {
-    _inherits(TabSetsCreate, _React$Component);
+	_inherits(TabSetsCreate, _React$Component);
 
-    function TabSetsCreate(props) {
-        _classCallCheck(this, TabSetsCreate);
+	function TabSetsCreate(props) {
+		_classCallCheck(this, TabSetsCreate);
 
-        var _this = _possibleConstructorReturn(this, (TabSetsCreate.__proto__ || Object.getPrototypeOf(TabSetsCreate)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (TabSetsCreate.__proto__ || Object.getPrototypeOf(TabSetsCreate)).call(this, props));
 
-        _this.state = {
-            data: {
-                title: '',
-                slug: (0, _uid2.default)(16)
-            }
-        };
-        return _this;
-    }
+		_this.state = {
+			data: {
+				title: '',
+				slug: (0, _uid2.default)(16)
+			}
+		};
+		return _this;
+	}
 
-    _createClass(TabSetsCreate, [{
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+	_createClass(TabSetsCreate, [{
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    className: 'resource-actions',
-                                    to: '/statuses'
-                                },
-                                _react2.default.createElement(_FlatButton2.default, {
-                                    label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                    primary: true,
-                                    icon: _react2.default.createElement(_list2.default, null)
-                                })
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                onChange: function onChange(event, value) {
-                                    _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            title: value
-                                        })
-                                    });
-                                },
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A(\u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435)',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'statuses',
-                    data: this.state.data,
-                    action: 'create'
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/statuses'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'input'
+								},
+								_react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									onChange: function onChange(event, value) {
+										_this2.setState({
+											data: _extends({}, _this2.state.data, {
+												title: value
+											})
+										});
+									},
+									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A(\u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435)',
+									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
+								})
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'statuses',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
 
-    return TabSetsCreate;
+	return TabSetsCreate;
 }(_react2.default.Component);
 
 exports.default = TabSetsCreate;

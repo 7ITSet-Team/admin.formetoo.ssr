@@ -9,65 +9,73 @@ import uid from 'uid'
 import ToolBar from '@src/containers/tool-bar'
 
 export default class TabsCreate extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data: {
-                name: '',
-                title: '',
-                slug: uid(16)
-            }
-        }
-    }
+	constructor(props) {
+		super(props)
+		this.state = {
+			data: {
+				name: '',
+				title: '',
+				slug: uid(16)
+			}
+		}
+	}
 
-    render() {
-        return (
-            <div>
-                <Tabs>
-                    <Tab label="Основное">
-                        <div
-                            className="resource-page">
-                            <Link
-                                className="resource-actions"
-                                to="/tabs"
-                            >
-                                <FlatButton
-                                    label="Назад к списку"
-                                    primary={true}
-                                    icon={<ListIcon/>}
-                                />
-                            </Link>
-                            <TextField
-                                fullWidth={true}
-                                hintText="Наименование"
-                                onChange={(event, value) => this.setState({
-                                    data: {
-                                        ...this.state.data,
-                                        name: value
-                                    }
-                                })}
-                                errorText="Поле обязательно"
-                            />
-                            <TextField
-                                fullWidth={true}
-                                onChange={(event, value) => this.setState({
-                                    data: {
-                                        ...this.state.data,
-                                        title: value
-                                    }
-                                })}
-                                hintText="Заголовок"
-                                errorText="Поле обязательно"
-                            />
-                        </div>
-                    </Tab>
-                </Tabs>
-                <ToolBar
-                    resources='tabs'
-                    data={this.state.data}
-                    action='create'
-                />
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div>
+				<Tabs>
+					<Tab label="Основное">
+						<div
+							className="resource-page">
+							<Link
+								className="resource-actions"
+								to="/tabs"
+							>
+								<FlatButton
+									label="Назад к списку"
+									primary={true}
+									icon={<ListIcon/>}
+								/>
+							</Link>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									hintText="Наименование"
+									onChange={(event, value) => this.setState({
+										data: {
+											...this.state.data,
+											name: value
+										}
+									})}
+									errorText="Поле обязательно"
+								/>
+							</div>
+							<div
+								className='input'
+							>
+								<TextField
+									fullWidth={true}
+									onChange={(event, value) => this.setState({
+										data: {
+											...this.state.data,
+											title: value
+										}
+									})}
+									hintText="Заголовок"
+									errorText="Поле обязательно"
+								/>
+							</div>
+						</div>
+					</Tab>
+				</Tabs>
+				<ToolBar
+					resources='tabs'
+					data={this.state.data}
+					action='create'
+				/>
+			</div>
+		)
+	}
 }
