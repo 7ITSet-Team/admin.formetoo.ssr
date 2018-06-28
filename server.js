@@ -4253,6 +4253,7 @@ var CategoriesCreate = function (_React$Component) {
 			categories: [],
 			data: {
 				image: '',
+				description: '',
 				slug: (0, _uid2.default)(16)
 			},
 			descState: _draftJs.EditorState.createEmpty(),
@@ -4675,6 +4676,8 @@ var ProductsCreate = function (_React$Component) {
 				relatedProducts: [],
 				fromSet: [],
 				images: [],
+				description: '',
+				shortDescription: '',
 				categories: [],
 				seo: {
 					title: '',

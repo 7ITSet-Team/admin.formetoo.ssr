@@ -27,6 +27,8 @@ export default class ProductsCreate extends React.Component {
 				relatedProducts: [],
 				fromSet: [],
 				images: [],
+				description: '',
+				shortDescription: '',
 				categories: [],
 				seo: {
 					title: '',

@@ -22,6 +22,7 @@ export default class CategoriesCreate extends React.Component {
 			categories: [],
 			data: {
 				image: '',
+				description: '',
 				slug: uid(16)
 			},
 			descState: EditorState.createEmpty(),
