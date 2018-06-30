@@ -1,10 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const _root = path.resolve()
 const _project = path.join(_root, '/src/shared')
-const _themePath = _project + '/styles/'
+const _themePath = _root + '/public/styles/'
 
 const browserConfig = {
 	entry: ['babel-polyfill', './src/browser/index.js'],
@@ -22,6 +23,7 @@ const browserConfig = {
 			'@theme': _themePath
 		}
 	},
+	mode: 'production',
 	module: {
 		rules: [
 			{
@@ -54,7 +56,8 @@ const browserConfig = {
 	plugins: [
 		new webpack.DefinePlugin({
 			__isBrowser__: 'true'
-		})
+		}),
+		//new BundleAnalyzerPlugin()
 	]
 }
 
@@ -91,6 +94,7 @@ const serverConfig = {
 			}
 		]
 	},
+	mode: 'production',
 	plugins: [
 		new webpack.DefinePlugin({
 			__isBrowser__: 'false'

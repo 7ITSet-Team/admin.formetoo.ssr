@@ -2,10 +2,10 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import { Route } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
-import routes from '@src/constants/routes'
+import { Redirect } from 'react-router-dom'
 
+import routes from '@src/constants/routes'
 import ResourcesList from '@src/components/sidebar/resources'
-import Login from '@src/containers/login'
 import Auth from '@src/core/auth.provider'
 import Data from '@src/core/data.provider'
 import CopyProduct from '@src/containers/content/copy-product-page'
@@ -60,11 +60,11 @@ export default class AppLayout extends React.Component {
 		const {authorised, allowedResources, isMenuOpened} = this.state
 		const location = this.props.location.pathname
 		const route = this.props.route.path
-		if (!__isBrowser__) {
-			return null
-		}
 		if (__isBrowser__ && !authorised) {
-			return <Login/>
+			return <Redirect
+				push
+				to='/login'
+			/>
 		}
 		return (
 			<div

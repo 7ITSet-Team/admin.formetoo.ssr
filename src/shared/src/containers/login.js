@@ -5,6 +5,8 @@ import TextField from 'material-ui/TextField'
 import Avatar from 'material-ui/Avatar'
 import LockOutline from 'material-ui/svg-icons/action/lock-outline'
 import RaisedButton from 'material-ui/RaisedButton'
+import { Redirect } from 'react-router-dom'
+
 import Auth from '@src/core/auth.provider'
 
 export default class Login extends React.Component {
@@ -12,20 +14,43 @@ export default class Login extends React.Component {
 		super(props)
 		this.state = {
 			email: null,
-			password: null
+			password: null,
+			authorised: false
 		}
 		this.login = this.login.bind(this)
+	}
+
+	componentWillMount() {
+		Auth.init(
+			() => this.setState({
+				authorised: true
+			}),
+			() => this.setState({
+				authorised: false
+			})
+		)
 	}
 
 	async login() {
 		const {email, password} = this.state
 		if (email && password) {
-			Auth.login(email, password)
+			const success = await Auth.login(email, password)
+			if (success) {
+				this.setState({
+					authorised: true
+				})
+			}
 		}
 	}
 
 	render() {
-		const {email, password} = this.state
+		const {email, password, authorised} = this.state
+		if (authorised) {
+			return <Redirect
+				push
+				to='/'
+			/>
+		}
 		return (
 			<div
 				className='login-layout'

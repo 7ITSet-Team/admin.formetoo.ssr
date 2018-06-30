@@ -4,16 +4,18 @@ import localStorage from 'localStorage'
 import config from '@src/config'
 import Auth from './auth.provider'
 
-const axiosConfig = {
-	headers: {
-		'Authorization': localStorage.getItem('token')
+const axiosConfig = () => {
+	return {
+		headers: {
+			'Authorization': Auth._token
+		}
 	}
 }
 
 export default class Data {
 
 	static async getAllowedResources() {
-		const response = await axios.get(config.uri.allowed, axiosConfig)
+		const response = await axios.get(config.uri.allowed, axiosConfig())
 		return {
 			success: response.data.success,
 			allowed: response.data.allowed
@@ -21,7 +23,7 @@ export default class Data {
 	}
 
 	static async getProfile() {
-		const response = await axios.get(config.uri.admin + '/profile', axiosConfig)
+		const response = await axios.get(config.uri.admin + '/profile', axiosConfig())
 		if (response.data.success)
 			return {
 				success: true,
@@ -36,7 +38,7 @@ export default class Data {
 
 	static async getData(uri) {
 		const resource = uri.slice(1)
-		const response = await axios.get(config.uri.admin + uri, axiosConfig)
+		const response = await axios.get(config.uri.admin + uri, axiosConfig())
 		if (response.data.success)
 			return {
 				success: true,
@@ -53,31 +55,31 @@ export default class Data {
 	}
 
 	static async getResource(uri) {
-		const response = await axios.get(config.uri.admin + uri, axiosConfig)
+		const response = await axios.get(config.uri.admin + uri, axiosConfig())
 		return response.data
 	}
 
 	static async getAttributes(sets) {
-		const response = await axios.post(config.uri.admin + '/products/get/attributes', sets, axiosConfig)
+		const response = await axios.post(config.uri.admin + '/products/get/attributes', sets, axiosConfig())
 		return response.data
 	}
 
 	static async getTabs(sets) {
-		const response = await axios.post(config.uri.admin + '/products/get/tabs', sets, axiosConfig)
+		const response = await axios.post(config.uri.admin + '/products/get/tabs', sets, axiosConfig())
 		return response.data
 	}
 
 	static async uploadImage(uri, data) {
 		let formData = new FormData()
 		formData.append('file', data)
-		const result = await axios.post(config.uri.admin + uri, formData, axiosConfig)
+		const result = await axios.post(config.uri.admin + uri, formData, axiosConfig())
 		return result.data.url
 	}
 
 	static async uploadXls(uri, data) {
 		let formData = new FormData()
 		formData.append('file', data)
-		const response = await axios.post(config.uri.admin + '/export' + uri, formData, axiosConfig)
+		const response = await axios.post(config.uri.admin + '/export' + uri, formData, axiosConfig())
 		if (response.data.success)
 			return {
 				success: true
@@ -89,7 +91,7 @@ export default class Data {
 	}
 
 	static async importXls(uri) {
-		const response = await axios.get(config.uri.admin + '/import' + uri, axiosConfig)
+		const response = await axios.get(config.uri.admin + '/import' + uri, axiosConfig())
 		if (response.data.success)
 			return {
 				success: true
@@ -101,13 +103,13 @@ export default class Data {
 	}
 
 	static async create(uri, data) {
-		const result = await axios.post(config.uri.admin + uri, data, axiosConfig)
+		const result = await axios.post(config.uri.admin + uri, data, axiosConfig())
 		return result.data
 	}
 
 	static async edit(uri, data) {
 		if (uri === '/profile') {
-			const response = await axios.post(config.uri.admin + uri + '/', data, axiosConfig)
+			const response = await axios.post(config.uri.admin + uri + '/', data, axiosConfig())
 			Auth._token = response.data.token
 			return {
 				success: true,
@@ -115,12 +117,12 @@ export default class Data {
 			}
 		}
 		const url = config.uri.admin + uri + '/' + data._id
-		const result = await axios.post(url, data, axiosConfig)
+		const result = await axios.post(url, data, axiosConfig())
 		return result.data
 	}
 
 	static async remove(uri) {
-		const result = await axios.post(config.uri.admin + uri, null, axiosConfig)
+		const result = await axios.post(config.uri.admin + uri, null, axiosConfig())
 		return result.data
 	}
 }
