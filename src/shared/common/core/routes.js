@@ -1,5 +1,5 @@
 import React from 'react'
-import App from '@src/containers/layout'
+import App from '@src/containers/app-layout'
 
 export default [
 	{

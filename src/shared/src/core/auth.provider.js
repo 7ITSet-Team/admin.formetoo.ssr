@@ -38,7 +38,6 @@ export default class Auth {
 
 	static async login(email, password) {
 		const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
-		console.log(sha256(salt + '1'))
 		const hashedPassword = sha256(salt + password)
 		const response = await axios.post(config.uri.login, {email, password: hashedPassword})
 		if (response.data.success) {

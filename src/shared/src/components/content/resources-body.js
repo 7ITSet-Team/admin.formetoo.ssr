@@ -11,7 +11,7 @@ import Chip from 'material-ui/Chip'
 
 import Data from '@src/core/data.provider'
 
-export default class ResourcesContent extends React.Component {
+export default class ResourcesBody extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -80,13 +80,13 @@ export default class ResourcesContent extends React.Component {
 
 	sort(resource) {
 		if (this.state.ascendingSort) {
-			const newData = this.state.sortedData.slice().sort(ResourcesContent.ascendingSort.bind(null, resource.key))
+			const newData = this.state.sortedData.slice().sort(ResourcesBody.ascendingSort.bind(null, resource.key))
 
 			this.setState({
 				sortedData: newData
 			})
 		} else {
-			const newData = this.state.sortedData.slice().sort(ResourcesContent.descendingSort.bind(null, resource.key))
+			const newData = this.state.sortedData.slice().sort(ResourcesBody.descendingSort.bind(null, resource.key))
 
 			this.setState({
 				sortedData: newData

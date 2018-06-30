@@ -57,6 +57,16 @@ export default class Data {
 		return response.data
 	}
 
+	static async getAttributes(sets) {
+		const response = await axios.post(config.uri.admin + '/products/attributes', sets, axiosConfig)
+		return response.data
+	}
+
+	static async getTabs(sets) {
+		const response = await axios.post(config.uri.admin + '/products/tabs', sets, axiosConfig)
+		return response.data
+	}
+
 	static async uploadImage(uri, data) {
 		let formData = new FormData()
 		formData.append('file', data)
@@ -80,7 +90,6 @@ export default class Data {
 
 	static async importXls(uri) {
 		const response = await axios.get(config.uri.admin + '/import' + uri, axiosConfig)
-		console.log(response)
 		if (response.data.success)
 			return {
 				success: true

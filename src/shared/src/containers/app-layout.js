@@ -4,13 +4,13 @@ import { Route } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import routes from '@src/constants/routes'
 
-import ResourcesList from '@src/containers/resources'
+import ResourcesList from '@src/components/sidebar/resources'
 import Login from '@src/containers/login'
 import Auth from '@src/core/auth.provider'
 import Data from '@src/core/data.provider'
-import components from '@src/constants/routes/components'
+import CopyProduct from '@src/containers/content/copy-product-page'
 
-export default class Layout extends React.Component {
+export default class AppLayout extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -95,7 +95,7 @@ export default class Layout extends React.Component {
 						{renderRoutes(routes(location, route))}
 						<Route
 							path={route + 'products/:id/copy'}
-							component={components.ProductsCreate}
+							component={CopyProduct}
 						/>
 					</div>
 				</div>

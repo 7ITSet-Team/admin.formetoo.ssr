@@ -16,7 +16,7 @@ import draftToHtml from 'draftjs-to-html'
 import htmlToDraft from 'html-to-draftjs'
 
 import Data from '@src/core/data.provider'
-import ToolBar from '@src/containers/tool-bar'
+import ToolBar from '@src/containers/content/tool-bar'
 
 export default class ProductsCreate extends React.Component {
 	constructor(props) {
@@ -27,8 +27,6 @@ export default class ProductsCreate extends React.Component {
 				relatedProducts: [],
 				fromSet: [],
 				images: [],
-				description: '',
-				shortDescription: '',
 				categories: [],
 				seo: {
 					title: '',
@@ -39,7 +37,6 @@ export default class ProductsCreate extends React.Component {
 				attributes: [],
 				'tab-sets': [],
 				tabs: [],
-				title: '',
 				slug: uid(16)
 			},
 			descState: EditorState.createEmpty(),
@@ -206,245 +203,197 @@ export default class ProductsCreate extends React.Component {
 							</Link>
 							<Toggle
 								style={{
-									width: '150px'
+									width: '150px',
+									marginLeft: '20px'
 								}}
-								className='input'
 								label="Активный"
 								toggled={this.state.data.isActive}
 								onToggle={(event, value) => this.changeState(value, 'isActive')}
 							/>
+							<TextField
+								fullWidth={true}
+								hintText="Заголовок"
+								floatingLabelText="Заголовок"
+								errorText="Поле обязательно"
+								value={this.state.data.title}
+								onChange={(event, value) => this.changeState(value, 'title')}
+							/>
 							<div
-								className='input'
+								style={{
+									color: 'rgba(0, 0, 0, 0.3)'
+								}}
 							>
-								<TextField
-									fullWidth={true}
-									hintText="Заголовок"
-									floatingLabelText="Заголовок"
-									errorText='Поле обязательно'
-									value={this.state.data.title}
-									onChange={(event, value) => this.changeState(value, 'title')}
-								/>
+								Описание
 							</div>
+							<Editor
+								editorState={this.state.descState}
+								wrapperClassName="demo-wrapper"
+								editorClassName="demo-editor"
+								onEditorStateChange={this.onEditorDescChange}
+								onChange={() => this.setState({
+									data: {
+										...this.state.data,
+										description: draftToHtml(convertToRaw(this.state.descState.getCurrentContent()))
+									}
+								})}
+							/>
 							<div
-								className='input'
+								style={{
+									color: 'rgba(0, 0, 0, 0.3)'
+								}}
 							>
-								<div
-									style={{
-										color: 'rgba(0, 0, 0, 0.3)'
-									}}
-								>
-									Описание
-								</div>
-								<Editor
-									editorState={this.state.descState}
-									wrapperClassName="demo-wrapper"
-									editorClassName="demo-editor"
-									onEditorStateChange={this.onEditorDescChange}
-									onChange={() => this.setState({
+								Краткое описание
+							</div>
+							<Editor
+								editorState={this.state.shortDescState}
+								wrapperClassName="demo-wrapper"
+								editorClassName="demo-editor"
+								onEditorStateChange={this.onEditorShortDescChange}
+								onChange={() => this.setState({
+									data: {
+										...this.state.data,
+										shortDescription: draftToHtml(convertToRaw(this.state.shortDescState.getCurrentContent()))
+									}
+								})}
+							/>
+							<TextField
+								fullWidth={true}
+								hintText="Артикул"
+								floatingLabelText="Артикул"
+								errorText="Поле обязательно"
+								value={this.state.data.sku}
+								onChange={(event, value) => this.changeState(value, 'sku')}
+							/>
+							<TextField
+								fullWidth={true}
+								hintText="Цена"
+								floatingLabelText="Цена"
+								errorText="Поле обязательно"
+								value={this.state.data.price}
+								onChange={(event, value) => this.changeState(value, 'price')}
+							/>
+							<SelectField
+								fullWidth={true}
+								multiple={true}
+								value={this.state.data.categories}
+								floatingLabelText="Категории"
+								onChange={(event, index, value) => {
+									this.setState({
 										data: {
 											...this.state.data,
-											description: draftToHtml(convertToRaw(this.state.descState.getCurrentContent()))
+											categories: value
 										}
-									})}
-								/>
-							</div>
-							<div
-								className='input'
+									})
+								}}
 							>
-								<div
-									style={{
-										color: 'rgba(0, 0, 0, 0.3)'
-									}}
-								>
-									Краткое описание
-								</div>
-								<Editor
-									editorState={this.state.shortDescState}
-									wrapperClassName="demo-wrapper"
-									editorClassName="demo-editor"
-									onEditorStateChange={this.onEditorShortDescChange}
-									onChange={() => this.setState({
-										data: {
-											...this.state.data,
-											shortDescription: draftToHtml(convertToRaw(this.state.shortDescState.getCurrentContent()))
-										}
-									})}
-								/>
-							</div>
-							<div
-								className='input'
+								{this.state.categories.map((category, index) => {
+									return <MenuItem
+										value={category.slug}
+										primaryText={category.title}
+										key={index}
+									/>
+								})}
+							</SelectField>
+							<input
+								type="file"
+								className="inputfile"
+								id="file"
+								onChange={this.uploadFile}
+							/>
+							<label
+								htmlFor="file"
+								className="inputfile__label"
 							>
-								<TextField
-									fullWidth={true}
-									hintText="Артикул"
-									floatingLabelText="Артикул"
-									errorText="Поле обязательно"
-									value={this.state.data.sku}
-									onChange={(event, value) => this.changeState(value, 'sku')}
-								/>
-							</div>
+								Перенесите сюда файл или нажмите, чтобы выбрать изображение
+							</label>
 							<div
-								className='input'
+								className="inputfile__images"
 							>
-								<TextField
-									fullWidth={true}
-									hintText="Цена"
-									floatingLabelText="Цена"
-									errorText="Поле обязательно"
-									value={this.state.data.price}
-									onChange={(event, value) => this.changeState(value, 'price')}
-								/>
-							</div>
-							<div
-								className='input'
-							>
-								<SelectField
-									fullWidth={true}
-									multiple={true}
-									value={this.state.data.categories}
-									floatingLabelText="Категории"
-									onChange={(event, index, value) => {
-										this.setState({
-											data: {
-												...this.state.data,
-												categories: value
-											}
-										})
-									}}
-								>
-									{this.state.categories.map((category, index) => {
-										return <MenuItem
-											value={category.slug}
-											primaryText={category.title}
+								{this.state.data.images.map((image, index) => {
+									return (
+										<img
+											className="inputfile__image"
+											src={image}
 											key={index}
 										/>
-									})}
-								</SelectField>
+									)
+								})}
 							</div>
-							<div
-								className='input'
+							<SelectField
+								fullWidth={true}
+								multiple={true}
+								value={this.state.data[ 'attribute-sets' ]}
+								floatingLabelText="Наборы атрибутов"
+								onChange={(event, index, value) => this.setState({
+									data: {
+										...this.state.data,
+										'attribute-sets': value
+									}
+								})}
 							>
-								<input
-									type="file"
-									className="inputfile"
-									id="file"
-									onChange={this.uploadFile}
-								/>
-								<label
-									htmlFor="file"
-									className="inputfile__label"
-								>
-									Перенесите сюда файл или нажмите, чтобы выбрать изображение
-								</label>
-								<div
-									className="inputfile__images"
-								>
-									{this.state.data.images.map((image, index) => {
-										return (
-											<img
-												className="inputfile__image"
-												src={image}
-												key={index}
-											/>
-										)
-									})}
-								</div>
-							</div>
-							<div
-								className='input'
+								{this.state[ 'attribute-sets' ].map((attribute, index) => {
+									return <MenuItem
+										value={attribute.slug}
+										primaryText={attribute.title}
+										key={index}
+									/>
+								})}
+							</SelectField>
+							<SelectField
+								fullWidth={true}
+								multiple={true}
+								value={this.state.data[ 'tab-sets' ]}
+								floatingLabelText="Наборы табов"
+								onChange={(event, index, value) => this.setState({
+									data: {
+										...this.state.data,
+										'tab-sets': value
+									}
+								})}
 							>
-								<SelectField
-									fullWidth={true}
-									multiple={true}
-									value={this.state.data[ 'attribute-sets' ]}
-									floatingLabelText="Наборы атрибутов"
-									onChange={(event, index, value) => this.setState({
-										data: {
-											...this.state.data,
-											'attribute-sets': value
-										}
-									})}
-								>
-									{this.state[ 'attribute-sets' ].map((attribute, index) => {
-										return <MenuItem
-											value={attribute.slug}
-											primaryText={attribute.title}
-											key={index}
-										/>
-									})}
-								</SelectField>
-							</div>
-							<div
-								className='input'
-							>
-								<SelectField
-									fullWidth={true}
-									multiple={true}
-									value={this.state.data[ 'tab-sets' ]}
-									floatingLabelText="Наборы табов"
-									onChange={(event, index, value) => this.setState({
-										data: {
-											...this.state.data,
-											'tab-sets': value
-										}
-									})}
-								>
-									{this.state[ 'tab-sets' ].map((set, index) => {
-										return <MenuItem
-											value={set.slug}
-											primaryText={set.title}
-											key={index}
-										/>
-									})}
-								</SelectField>
-							</div>
+								{this.state[ 'tab-sets' ].map((set, index) => {
+									return <MenuItem
+										value={set.slug}
+										primaryText={set.title}
+										key={index}
+									/>
+								})}
+							</SelectField>
 						</div>
 					</Tab>
 					<Tab label="SEO">
 						<div
 							className="resource-page">
-							<div
-								className='input'
-							>
-								<TextField
-									fullWidth={true}
-									hintText="SEO заголовок"
-									floatingLabelText="SEO заголовок"
-									value={this.state.data.seo.title}
-									onChange={(event, value) => this.changeState({
-										...this.state.data.seo,
-										title: value
-									}, 'seo')}
-								/>
-							</div>
-							<div
-								className='input'
-							>
-								<TextField
-									fullWidth={true}
-									hintText="SEO описание"
-									floatingLabelText="SEO описание"
-									value={this.state.data.seo.description}
-									onChange={(event, value) => this.changeState({
-										...this.state.data.seo,
-										description: value
-									}, 'seo')}
-								/>
-							</div>
-							<div
-								className='input'
-							>
-								<TextField
-									fullWidth={true}
-									hintText="SEO ключевые слова"
-									floatingLabelText="SEO ключевые слова"
-									value={this.state.data.seo.keywords}
-									onChange={(event, value) => this.changeState({
-										...this.state.data.seo,
-										keywords: value
-									}, 'seo')}
-								/>
-							</div>
+							<TextField
+								fullWidth={true}
+								hintText="SEO заголовок"
+								floatingLabelText="SEO заголовок"
+								value={this.state.data.seo.title}
+								onChange={(event, value) => this.changeState({
+									...this.state.data.seo,
+									title: value
+								}, 'seo')}
+							/>
+							<TextField
+								fullWidth={true}
+								hintText="SEO описание"
+								floatingLabelText="SEO описание"
+								value={this.state.data.seo.description}
+								onChange={(event, value) => this.changeState({
+									...this.state.data.seo,
+									description: value
+								}, 'seo')}
+							/>
+							<TextField
+								fullWidth={true}
+								hintText="SEO ключевые слова"
+								floatingLabelText="SEO ключевые слова"
+								value={this.state.data.seo.keywords}
+								onChange={(event, value) => this.changeState({
+									...this.state.data.seo,
+									keywords: value
+								}, 'seo')}
+							/>
 						</div>
 					</Tab>
 					<Tab label="Похожие продукты">
@@ -513,32 +462,28 @@ export default class ProductsCreate extends React.Component {
 									})}
 								</TableBody>
 							</Table>
-							<div
-								className='input'
+							<SelectField
+								fullWidth={true}
+								value={this.state.data.relatedProducts}
+								floatingLabelText="Похожий продукт"
+								onChange={(event, index, value) => this.setState({
+									data: {
+										...this.state.data,
+										relatedProducts: [
+											...this.state.data.relatedProducts,
+											value
+										]
+									}
+								})}
 							>
-								<SelectField
-									fullWidth={true}
-									value={this.state.data.relatedProducts}
-									floatingLabelText="Похожий продукт"
-									onChange={(event, index, value) => this.setState({
-										data: {
-											...this.state.data,
-											relatedProducts: [
-												...this.state.data.relatedProducts,
-												value
-											]
-										}
-									})}
-								>
-									{this.state.products.map((product, index) => {
-										return <MenuItem
-											value={product.slug}
-											primaryText={product.title}
-											key={index}
-										/>
-									})}
-								</SelectField>
-							</div>
+								{this.state.products.map((product, index) => {
+									return <MenuItem
+										value={product.slug}
+										primaryText={product.title}
+										key={index}
+									/>
+								})}
+							</SelectField>
 						</div>
 					</Tab>
 					<Tab label="Товары из набора">
@@ -607,32 +552,28 @@ export default class ProductsCreate extends React.Component {
 									})}
 								</TableBody>
 							</Table>
-							<div
-								className='input'
+							<SelectField
+								fullWidth={true}
+								value={this.state.data.fromSet}
+								floatingLabelText="Товар из набора"
+								onChange={(event, index, value) => this.setState({
+									data: {
+										...this.state.data,
+										fromSet: [
+											...this.state.data.fromSet,
+											value
+										]
+									}
+								})}
 							>
-								<SelectField
-									fullWidth={true}
-									value={this.state.data.fromSet}
-									floatingLabelText="Товар из набора"
-									onChange={(event, index, value) => this.setState({
-										data: {
-											...this.state.data,
-											fromSet: [
-												...this.state.data.fromSet,
-												value
-											]
-										}
-									})}
-								>
-									{this.state.products.map((product, index) => {
-										return <MenuItem
-											value={product.slug}
-											primaryText={product.title}
-											key={index}
-										/>
-									})}
-								</SelectField>
-							</div>
+								{this.state.products.map((product, index) => {
+									return <MenuItem
+										value={product.slug}
+										primaryText={product.title}
+										key={index}
+									/>
+								})}
+							</SelectField>
 						</div>
 					</Tab>
 				</Tabs>

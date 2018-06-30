@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'material-ui/Card'
 
 import Data from '@src/core/data.provider'
-import Resources from '@src/components/resources'
+import Resources from '@src/containers/content/resources'
 
 export default class ResourcesLayout extends React.Component {
 	constructor(props) {
@@ -12,15 +12,12 @@ export default class ResourcesLayout extends React.Component {
 			total: 0,
 			statuses: []
 		}
-	}
-
-	componentWillMount() {
 		this.getData(this.props.path)
+			.catch(err => console.log('resource-layout:16, Error getting data! ', err))
 	}
 
 	async getData(uri) {
 		const response = await Data.getData(uri)
-		console.log(response)
 		if (uri === '/orders') {
 			const resStatuses = await Data.getResource('/statuses')
 			const resClients = await Data.getResource('/clients')
@@ -66,6 +63,7 @@ export default class ResourcesLayout extends React.Component {
 	}
 
 	async refresh() {
+		console.log(this.props.path)
 		const response = await this.getData(this.props.path)
 		this.setState({
 			resources: response.resources,

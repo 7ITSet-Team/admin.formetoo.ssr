@@ -509,16 +509,34 @@ export default [
 			tabs: [
 				{
 					title: 'ОСНОВНОЕ',
+					className: 'big-resource',
 					content: [
 						{
 							type: 'textInput',
 							name: 'name',
 							title: 'Название',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'categories', 'permissions'],
-							title: 'Права для категорий'
+							title: 'Права для категорий',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'categories', 'showInMenu'],
@@ -526,7 +544,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'products', 'permissions'],
-							title: 'Права для продуктов'
+							title: 'Права для продуктов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'products', 'showInMenu'],
@@ -534,7 +568,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'users', 'permissions'],
-							title: 'Права для пользователей'
+							title: 'Права для пользователей',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'users', 'showInMenu'],
@@ -542,7 +592,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'roles', 'permissions'],
-							title: 'Права для ролей'
+							title: 'Права для ролей',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'roles', 'showInMenu'],
@@ -550,7 +616,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'clients', 'permissions'],
-							title: 'Права для клиентов'
+							title: 'Права для клиентов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'clients', 'showInMenu'],
@@ -558,7 +640,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'orders', 'permissions'],
-							title: 'Права для заказов'
+							title: 'Права для заказов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'orders', 'showInMenu'],
@@ -566,7 +664,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'attributes', 'permissions'],
-							title: 'Права для атрибутов'
+							title: 'Права для атрибутов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'attributes', 'showInMenu'],
@@ -574,7 +688,23 @@ export default [
 						},{
 							type: 'multipleSelect',
 							name: ['resources', 'tabs', 'permissions'],
-							title: 'Права для табов'
+							title: 'Права для табов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'tabs', 'showInMenu'],
@@ -582,7 +712,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'attribute-sets', 'permissions'],
-							title: 'Права для наборов атрибутов'
+							title: 'Права для наборов атрибутов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'attribute-sets', 'showInMenu'],
@@ -590,7 +736,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'tab-sets', 'permissions'],
-							title: 'Права для наборов табов'
+							title: 'Права для наборов табов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'tab-sets', 'showInMenu'],
@@ -598,7 +760,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'statuses', 'permissions'],
-							title: 'Права для статусов'
+							title: 'Права для статусов',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'statuses', 'showInMenu'],
@@ -606,7 +784,23 @@ export default [
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'photos', 'permissions'],
-							title: 'Права для фото'
+							title: 'Права для фото',
+							variants: [
+								{
+									id: 'get',
+									title: 'Чтение'
+								}, {
+									id: 'create',
+									title: 'Создание'
+								}, {
+									id: 'put',
+									title: 'Редактирование'
+								}, {
+									id: 'delete',
+									title: 'Удаление'
+								}
+							],
+							defaultValue: []
 						}, {
 							type: 'boolean',
 							name: ['resources', 'photos', 'showInMenu'],
@@ -653,21 +847,26 @@ export default [
 							type: 'textInput',
 							name: 'name',
 							title: 'Имя',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'textInput',
 							name: 'email',
 							title: 'Почта',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'textInput',
 							name: 'password',
 							title: 'Пароль',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'select',
 							name: 'role',
 							title: 'Роль',
+							needResources: 'roles',
+							defaultValue: '',
 							required: true
 						}
 					]
@@ -706,30 +905,37 @@ export default [
 			tabs: [
 				{
 					title: 'ОСНОВНОЕ',
+					className: 'big-resource',
 					content: [
 						{
 							type: 'boolean',
 							name: 'isActive',
 							title: 'Активный',
+							defaultValue: false,
 							required: false
 						}, {
 							type: 'textInput',
 							name: 'title',
 							title: 'Заголовок',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'wysiwyg',
 							name: 'description',
 							title: 'Описание',
+							editorStateName: 'descState',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'file',
 							name: 'image',
 							title: 'Перенесите сюда файл или нажмите, чтобы выбрать изображение',
+							defaultValue: undefined,
 							required: false
 						}, {
 							type: 'select',
 							name: 'parentCategory',
+							needResources: 'categories',
 							title: 'Родительская категория',
 							required: false
 						}
@@ -807,56 +1013,73 @@ export default [
 			tabs: [
 				{
 					title: 'ОСНОВНОЕ',
+					className: 'big-resource',
 					content: [
 						{
 							type: 'boolean',
 							name: 'isActive',
 							title: 'Активный',
+							defaultValue: false,
 							required: false
 						}, {
 							type: 'textInput',
 							name: 'title',
 							title: 'Заголовок',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'wysiwyg',
 							name: 'description',
 							title: 'Описание',
+							editorStateName: 'descState',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'wysiwyg',
 							name: 'shortDescription',
+							editorStateName: 'shortDescState',
 							title: 'Краткое описание',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'textInput',
 							name: 'sku',
 							title: 'Атрикул',
+							defaultValue: '',
 							required: true
 						}, {
-							type: 'numberInput',
+							type: 'textInput',
 							name: 'price',
 							title: 'Цена',
+							defaultValue: '',
 							required: true
 						}, {
 							type: 'multipleSelect',
 							name: 'categories',
 							title: 'Категории',
+							defaultValue: [],
+							needResources: 'categories',
 							required: false
 						}, {
 							type: 'file',
-							name: 'image',
+							name: 'images',
+							multiple: true,
 							title: 'Перенесите сюда файл или нажмите, чтобы выбрать изображение',
+							defaultValue: [],
 							required: false
 						}, {
 							type: 'multipleSelect',
 							name: 'attribute-sets',
 							title: 'Наборы атрибутов',
+							defaultValue: [],
+							needResources: 'attribute-sets',
 							required: false
 						}, {
 							type: 'multipleSelect',
 							name: 'tab-sets',
 							title: 'Наборы табов',
+							defaultValue: [],
+							needResources: 'tab-sets',
 							required: false
 						}
 					]
@@ -867,16 +1090,19 @@ export default [
 							type: 'textInput',
 							name: ['seo', 'title'],
 							title: 'SEO заголовок',
+							defaultValue: '',
 							required: false
 						}, {
 							type: 'textInput',
 							name: ['seo', 'description'],
 							title: 'SEO описание',
+							defaultValue: '',
 							required: false
 						}, {
 							type: 'textInput',
 							name: ['seo', 'keywords'],
 							title: 'SEO ключевые слова',
+							defaultValue: '',
 							required: false
 						}
 					]
@@ -885,6 +1111,7 @@ export default [
 					content: [
 						{
 							type: 'table',
+							name: 'relatedProducts',
 							columns: [
 								{
 									name: 'sku',
@@ -896,12 +1123,13 @@ export default [
 									name: 'price',
 									title: 'Цена'
 								}
-							]
+							],
+							defaultValue: []
 						}, {
-							type: 'select',
-							name: 'relatedProducts',
+							type: 'pushTable',
 							title: 'Похожий продукт',
-							required: false
+							needResources: 'products',
+							name: 'relatedProducts'
 						}
 					]
 				}, {
@@ -909,6 +1137,7 @@ export default [
 					content: [
 						{
 							type: 'table',
+							name: 'fromSet',
 							columns: [
 								{
 									name: 'sku',
@@ -920,12 +1149,13 @@ export default [
 									name: 'price',
 									title: 'Цена'
 								}
-							]
+							],
+							defaultValue: []
 						}, {
-							type: 'select',
-							name: 'fromSet',
+							type: 'pushTable',
 							title: 'Товар из набора',
-							required: false
+							needResources: 'products',
+							name: 'fromSet'
 						}
 					]
 				}

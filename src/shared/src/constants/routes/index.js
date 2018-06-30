@@ -1,12 +1,10 @@
 import React from 'react'
 
-import Dashboard from '@src/components/dashboard'
-import Resource from '@src/components/resource-layout'
-import ResourcesLayout from '@src/containers/resources-layout'
-import RemoveLayout from '@src/containers/remove-layout'
-import Profile from '@src/containers/profile'
-
-import components from './components'
+import Dashboard from '@src/components/content/dashboard'
+import Profile from '@src/containers/content/profile'
+import ResourceCreateEditLayout from '@src/containers/content/resource-create-edit-layout'
+import ResourcesLayout from '@src/containers/content/resources-layout'
+import RemoveLayout from '@src/containers/content/remove-layout'
 
 import listRoutes from './list'
 
@@ -56,7 +54,7 @@ export default (location, root) => {
 		routes.push({
 			path: `${root}${route.resource}/create`,
 			exact: true,
-			component: () => <Resource
+			component: () => <ResourceCreateEditLayout
 				resource={route.resource}
 				structure={route.structure}
 				action='create'
@@ -65,7 +63,7 @@ export default (location, root) => {
 		routes.push({
 			path: `${root}${route.resource}/:id`,
 			exact: true,
-			component: (props) => <Resource
+			component: (props) => <ResourceCreateEditLayout
 				resource={route.resource}
 				structure={route.structure}
 				action='edit'
@@ -75,22 +73,6 @@ export default (location, root) => {
 	})
 
 	resources.forEach(resource => {
-		/*routes.push({
-			path: root + resource + '/create',
-			exact: true,
-			component: () => React.createElement(
-				components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create' ],
-				{path: location}
-			)
-		})
-		routes.push({
-			path: root + resource + '/:id',
-			exact: true,
-			component: () => React.createElement(
-				components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit' ],
-				{location: location}
-			)
-		})*/
 		routes.push({
 			path: root + resource + '/:id/delete',
 			exact: true,

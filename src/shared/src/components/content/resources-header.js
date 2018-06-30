@@ -169,7 +169,6 @@ export default class ResourcesHeader extends React.Component {
                 break
             case 'showInFilter':
                 if (!this.state.showInFilter) {
-                    console.log(1)
                     const search = (
                         <Toggle
                             label="Показывать в фильтре"

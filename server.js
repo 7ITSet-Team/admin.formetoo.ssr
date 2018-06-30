@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,12 +77,6 @@ module.exports = require("react-router-dom");
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/TextField");
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94,19 +88,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _axios = __webpack_require__(28);
+var _axios = __webpack_require__(19);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _localStorage = __webpack_require__(29);
+var _localStorage = __webpack_require__(20);
 
 var _localStorage2 = _interopRequireDefault(_localStorage);
 
-var _config = __webpack_require__(30);
+var _config = __webpack_require__(21);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _auth = __webpack_require__(17);
+var _auth = __webpack_require__(4);
 
 var _auth2 = _interopRequireDefault(_auth);
 
@@ -285,25 +279,22 @@ var Data = function () {
 			return getResource;
 		}()
 	}, {
-		key: 'uploadImage',
+		key: 'getAttributes',
 		value: function () {
-			var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(uri, data) {
-				var formData, result;
+			var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(sets) {
+				var response;
 				return regeneratorRuntime.wrap(function _callee5$(_context5) {
 					while (1) {
 						switch (_context5.prev = _context5.next) {
 							case 0:
-								formData = new FormData();
+								_context5.next = 2;
+								return _axios2.default.post(_config2.default.uri.admin + '/products/attributes', sets, axiosConfig);
 
-								formData.append('file', data);
-								_context5.next = 4;
-								return _axios2.default.post(_config2.default.uri.admin + uri, formData, axiosConfig);
+							case 2:
+								response = _context5.sent;
+								return _context5.abrupt('return', response.data);
 
 							case 4:
-								result = _context5.sent;
-								return _context5.abrupt('return', result.data.url);
-
-							case 6:
 							case 'end':
 								return _context5.stop();
 						}
@@ -311,45 +302,29 @@ var Data = function () {
 				}, _callee5, this);
 			}));
 
-			function uploadImage(_x3, _x4) {
+			function getAttributes(_x3) {
 				return _ref5.apply(this, arguments);
 			}
 
-			return uploadImage;
+			return getAttributes;
 		}()
 	}, {
-		key: 'uploadXls',
+		key: 'getTabs',
 		value: function () {
-			var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(uri, data) {
-				var formData, response;
+			var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(sets) {
+				var response;
 				return regeneratorRuntime.wrap(function _callee6$(_context6) {
 					while (1) {
 						switch (_context6.prev = _context6.next) {
 							case 0:
-								formData = new FormData();
+								_context6.next = 2;
+								return _axios2.default.post(_config2.default.uri.admin + '/products/tabs', sets, axiosConfig);
 
-								formData.append('file', data);
-								_context6.next = 4;
-								return _axios2.default.post(_config2.default.uri.admin + '/export' + uri, formData, axiosConfig);
+							case 2:
+								response = _context6.sent;
+								return _context6.abrupt('return', response.data);
 
 							case 4:
-								response = _context6.sent;
-
-								if (!response.data.success) {
-									_context6.next = 9;
-									break;
-								}
-
-								return _context6.abrupt('return', {
-									success: true
-								});
-
-							case 9:
-								return _context6.abrupt('return', {
-									success: false
-								});
-
-							case 10:
 							case 'end':
 								return _context6.stop();
 						}
@@ -357,44 +332,32 @@ var Data = function () {
 				}, _callee6, this);
 			}));
 
-			function uploadXls(_x5, _x6) {
+			function getTabs(_x4) {
 				return _ref6.apply(this, arguments);
 			}
 
-			return uploadXls;
+			return getTabs;
 		}()
 	}, {
-		key: 'importXls',
+		key: 'uploadImage',
 		value: function () {
-			var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(uri) {
-				var response;
+			var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(uri, data) {
+				var formData, result;
 				return regeneratorRuntime.wrap(function _callee7$(_context7) {
 					while (1) {
 						switch (_context7.prev = _context7.next) {
 							case 0:
-								_context7.next = 2;
-								return _axios2.default.get(_config2.default.uri.admin + '/import' + uri, axiosConfig);
+								formData = new FormData();
 
-							case 2:
-								response = _context7.sent;
+								formData.append('file', data);
+								_context7.next = 4;
+								return _axios2.default.post(_config2.default.uri.admin + uri, formData, axiosConfig);
 
-								console.log(response);
+							case 4:
+								result = _context7.sent;
+								return _context7.abrupt('return', result.data.url);
 
-								if (!response.data.success) {
-									_context7.next = 8;
-									break;
-								}
-
-								return _context7.abrupt('return', {
-									success: true
-								});
-
-							case 8:
-								return _context7.abrupt('return', {
-									success: false
-								});
-
-							case 9:
+							case 6:
 							case 'end':
 								return _context7.stop();
 						}
@@ -402,8 +365,97 @@ var Data = function () {
 				}, _callee7, this);
 			}));
 
-			function importXls(_x7) {
+			function uploadImage(_x5, _x6) {
 				return _ref7.apply(this, arguments);
+			}
+
+			return uploadImage;
+		}()
+	}, {
+		key: 'uploadXls',
+		value: function () {
+			var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(uri, data) {
+				var formData, response;
+				return regeneratorRuntime.wrap(function _callee8$(_context8) {
+					while (1) {
+						switch (_context8.prev = _context8.next) {
+							case 0:
+								formData = new FormData();
+
+								formData.append('file', data);
+								_context8.next = 4;
+								return _axios2.default.post(_config2.default.uri.admin + '/export' + uri, formData, axiosConfig);
+
+							case 4:
+								response = _context8.sent;
+
+								if (!response.data.success) {
+									_context8.next = 9;
+									break;
+								}
+
+								return _context8.abrupt('return', {
+									success: true
+								});
+
+							case 9:
+								return _context8.abrupt('return', {
+									success: false
+								});
+
+							case 10:
+							case 'end':
+								return _context8.stop();
+						}
+					}
+				}, _callee8, this);
+			}));
+
+			function uploadXls(_x7, _x8) {
+				return _ref8.apply(this, arguments);
+			}
+
+			return uploadXls;
+		}()
+	}, {
+		key: 'importXls',
+		value: function () {
+			var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(uri) {
+				var response;
+				return regeneratorRuntime.wrap(function _callee9$(_context9) {
+					while (1) {
+						switch (_context9.prev = _context9.next) {
+							case 0:
+								_context9.next = 2;
+								return _axios2.default.get(_config2.default.uri.admin + '/import' + uri, axiosConfig);
+
+							case 2:
+								response = _context9.sent;
+
+								if (!response.data.success) {
+									_context9.next = 7;
+									break;
+								}
+
+								return _context9.abrupt('return', {
+									success: true
+								});
+
+							case 7:
+								return _context9.abrupt('return', {
+									success: false
+								});
+
+							case 8:
+							case 'end':
+								return _context9.stop();
+						}
+					}
+				}, _callee9, this);
+			}));
+
+			function importXls(_x9) {
+				return _ref9.apply(this, arguments);
 			}
 
 			return importXls;
@@ -416,25 +468,25 @@ var Data = function () {
 	}, {
 		key: 'edit',
 		value: function () {
-			var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(uri, data) {
+			var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(uri, data) {
 				var response, url;
-				return regeneratorRuntime.wrap(function _callee8$(_context8) {
+				return regeneratorRuntime.wrap(function _callee10$(_context10) {
 					while (1) {
-						switch (_context8.prev = _context8.next) {
+						switch (_context10.prev = _context10.next) {
 							case 0:
 								if (!(uri === '/profile')) {
-									_context8.next = 6;
+									_context10.next = 6;
 									break;
 								}
 
-								_context8.next = 3;
+								_context10.next = 3;
 								return _axios2.default.post(_config2.default.uri.admin + uri + '/', data, axiosConfig);
 
 							case 3:
-								response = _context8.sent;
+								response = _context10.sent;
 
 								_auth2.default._token = response.data.token;
-								return _context8.abrupt('return', {
+								return _context10.abrupt('return', {
 									success: true,
 									email: response.data.profile.email
 								});
@@ -446,14 +498,14 @@ var Data = function () {
 
 							case 8:
 							case 'end':
-								return _context8.stop();
+								return _context10.stop();
 						}
 					}
-				}, _callee8, this);
+				}, _callee10, this);
 			}));
 
-			function edit(_x8, _x9) {
-				return _ref8.apply(this, arguments);
+			function edit(_x10, _x11) {
+				return _ref10.apply(this, arguments);
 			}
 
 			return edit;
@@ -471,7 +523,144 @@ var Data = function () {
 exports.default = Data;
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/TextField");
+
+/***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _axios = __webpack_require__(19);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _config = __webpack_require__(21);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _jsSha = __webpack_require__(56);
+
+var _jsSha2 = _interopRequireDefault(_jsSha);
+
+var _localStorage = __webpack_require__(20);
+
+var _localStorage2 = _interopRequireDefault(_localStorage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Auth = function () {
+	function Auth() {
+		_classCallCheck(this, Auth);
+	}
+
+	_createClass(Auth, null, [{
+		key: '_clearToken',
+		value: function _clearToken() {
+			_localStorage2.default.removeItem('token');
+			return true;
+		}
+	}, {
+		key: 'init',
+		value: function init(onLoginAction, onLogoutAction) {
+			Auth.onLoginAction = onLoginAction || function () {
+				return undefined;
+			};
+			Auth.onLogoutAction = onLogoutAction || function () {
+				return undefined;
+			};
+			return true;
+		}
+	}, {
+		key: 'isAuthorizedSession',
+		value: function isAuthorizedSession() {
+			return !!Auth._token;
+		}
+	}, {
+		key: 'logout',
+		value: function logout() {
+			Auth._clearToken();
+			Auth.onLogoutAction();
+			return true;
+		}
+	}, {
+		key: 'login',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, password) {
+				var salt, hashedPassword, response;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32';
+								hashedPassword = (0, _jsSha2.default)(salt + password);
+								_context.next = 4;
+								return _axios2.default.post(_config2.default.uri.login, { email: email, password: hashedPassword });
+
+							case 4:
+								response = _context.sent;
+
+								if (!response.data.success) {
+									_context.next = 9;
+									break;
+								}
+
+								Auth._token = response.data.token;
+								Auth.onLoginAction();
+								return _context.abrupt('return', true);
+
+							case 9:
+								return _context.abrupt('return', {
+									success: 'false',
+									msg: response.msg
+								});
+
+							case 10:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function login(_x, _x2) {
+				return _ref.apply(this, arguments);
+			}
+
+			return login;
+		}()
+	}, {
+		key: '_token',
+		get: function get() {
+			return _localStorage2.default.getItem('token');
+		},
+		set: function set(token) {
+			_localStorage2.default.setItem('token', token);
+			return true;
+		}
+	}]);
+
+	return Auth;
+}();
+
+exports.default = Auth;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -487,15 +676,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Toolbar = __webpack_require__(82);
+var _Toolbar = __webpack_require__(57);
 
-var _RaisedButton = __webpack_require__(16);
+var _RaisedButton = __webpack_require__(9);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _data4 = __webpack_require__(3);
+var _data4 = __webpack_require__(2);
 
 var _data5 = _interopRequireDefault(_data4);
 
@@ -702,34 +891,28 @@ var ToolBar = function (_React$Component) {
 exports.default = ToolBar;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/svg-icons/action/list");
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("material-ui/Tabs");
+module.exports = require("material-ui/svg-icons/action/delete");
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("material-ui/SelectField");
+module.exports = require("material-ui/Card");
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("material-ui/MenuItem");
+module.exports = require("material-ui/svg-icons/action/list");
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("material-ui/svg-icons/action/delete");
+module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
 /* 10 */
@@ -741,13 +924,13 @@ module.exports = require("material-ui/FlatButton");
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = require("uid");
+module.exports = require("material-ui/SelectField");
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("material-ui/DatePicker");
+module.exports = require("material-ui/MenuItem");
 
 /***/ }),
 /* 13 */
@@ -763,187 +946,6 @@ module.exports = require("material-ui/Toggle");
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui");
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/RaisedButton");
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _axios = __webpack_require__(28);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _config = __webpack_require__(30);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _jsSha = __webpack_require__(31);
-
-var _jsSha2 = _interopRequireDefault(_jsSha);
-
-var _localStorage = __webpack_require__(29);
-
-var _localStorage2 = _interopRequireDefault(_localStorage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Auth = function () {
-	function Auth() {
-		_classCallCheck(this, Auth);
-	}
-
-	_createClass(Auth, null, [{
-		key: '_clearToken',
-		value: function _clearToken() {
-			_localStorage2.default.removeItem('token');
-			return true;
-		}
-	}, {
-		key: 'init',
-		value: function init(onLoginAction, onLogoutAction) {
-			Auth.onLoginAction = onLoginAction || function () {
-				return undefined;
-			};
-			Auth.onLogoutAction = onLogoutAction || function () {
-				return undefined;
-			};
-			return true;
-		}
-	}, {
-		key: 'isAuthorizedSession',
-		value: function isAuthorizedSession() {
-			return !!Auth._token;
-		}
-	}, {
-		key: 'logout',
-		value: function logout() {
-			Auth._clearToken();
-			Auth.onLogoutAction();
-			return true;
-		}
-	}, {
-		key: 'login',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, password) {
-				var salt, hashedPassword, response;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32';
-
-								console.log((0, _jsSha2.default)(salt + '1'));
-								hashedPassword = (0, _jsSha2.default)(salt + password);
-								_context.next = 5;
-								return _axios2.default.post(_config2.default.uri.login, { email: email, password: hashedPassword });
-
-							case 5:
-								response = _context.sent;
-
-								if (!response.data.success) {
-									_context.next = 10;
-									break;
-								}
-
-								Auth._token = response.data.token;
-								Auth.onLoginAction();
-								return _context.abrupt('return', true);
-
-							case 10:
-								return _context.abrupt('return', {
-									success: 'false',
-									msg: response.msg
-								});
-
-							case 11:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function login(_x, _x2) {
-				return _ref.apply(this, arguments);
-			}
-
-			return login;
-		}()
-	}, {
-		key: '_token',
-		get: function get() {
-			return _localStorage2.default.getItem('token');
-		},
-		set: function set(token) {
-			_localStorage2.default.setItem('token', token);
-			return true;
-		}
-	}]);
-
-	return Auth;
-}();
-
-exports.default = Auth;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = require("draftjs-to-html");
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-draft-wysiwyg");
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports) {
-
-module.exports = require("draft-js");
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/Dialog");
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/Card");
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-module.exports = require("html-to-draftjs");
-
-/***/ }),
-/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1025,7 +1027,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 25 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1041,31 +1043,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _dashboard = __webpack_require__(51);
+var _dashboard = __webpack_require__(44);
 
 var _dashboard2 = _interopRequireDefault(_dashboard);
 
-var _resourceLayout = __webpack_require__(62);
-
-var _resourceLayout2 = _interopRequireDefault(_resourceLayout);
-
-var _resourcesLayout = __webpack_require__(63);
-
-var _resourcesLayout2 = _interopRequireDefault(_resourcesLayout);
-
-var _removeLayout = __webpack_require__(81);
-
-var _removeLayout2 = _interopRequireDefault(_removeLayout);
-
-var _profile = __webpack_require__(83);
+var _profile = __webpack_require__(55);
 
 var _profile2 = _interopRequireDefault(_profile);
 
-var _components = __webpack_require__(33);
+var _resourceCreateEditLayout = __webpack_require__(58);
 
-var _components2 = _interopRequireDefault(_components);
+var _resourceCreateEditLayout2 = _interopRequireDefault(_resourceCreateEditLayout);
 
-var _list = __webpack_require__(107);
+var _resourcesLayout = __webpack_require__(61);
+
+var _resourcesLayout2 = _interopRequireDefault(_resourcesLayout);
+
+var _removeLayout = __webpack_require__(80);
+
+var _removeLayout2 = _interopRequireDefault(_removeLayout);
+
+var _list = __webpack_require__(81);
 
 var _list2 = _interopRequireDefault(_list);
 
@@ -1107,7 +1105,7 @@ exports.default = function (location, root) {
 			path: '' + root + route.resource + '/create',
 			exact: true,
 			component: function component() {
-				return _react2.default.createElement(_resourceLayout2.default, {
+				return _react2.default.createElement(_resourceCreateEditLayout2.default, {
 					resource: route.resource,
 					structure: route.structure,
 					action: 'create'
@@ -1118,7 +1116,7 @@ exports.default = function (location, root) {
 			path: '' + root + route.resource + '/:id',
 			exact: true,
 			component: function component(props) {
-				return _react2.default.createElement(_resourceLayout2.default, _extends({
+				return _react2.default.createElement(_resourceCreateEditLayout2.default, _extends({
 					resource: route.resource,
 					structure: route.structure,
 					action: 'edit'
@@ -1128,22 +1126,6 @@ exports.default = function (location, root) {
 	});
 
 	resources.forEach(function (resource) {
-		/*routes.push({
-  	path: root + resource + '/create',
-  	exact: true,
-  	component: () => React.createElement(
-  		components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Create' ],
-  		{path: location}
-  	)
-  })
-  routes.push({
-  	path: root + resource + '/:id',
-  	exact: true,
-  	component: () => React.createElement(
-  		components[ resource.charAt(0).toUpperCase() + resource.slice(1) + 'Edit' ],
-  		{location: location}
-  	)
-  })*/
 		routes.push({
 			path: root + resource + '/:id/delete',
 			exact: true,
@@ -1159,7 +1141,7 @@ exports.default = function (location, root) {
 };
 
 /***/ }),
-/* 26 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1173,51 +1155,51 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _bookmark = __webpack_require__(52);
+var _bookmark = __webpack_require__(45);
 
 var _bookmark2 = _interopRequireDefault(_bookmark);
 
-var _list = __webpack_require__(5);
+var _list = __webpack_require__(8);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _people = __webpack_require__(27);
+var _people = __webpack_require__(18);
 
 var _people2 = _interopRequireDefault(_people);
 
-var _controlPoint = __webpack_require__(53);
+var _controlPoint = __webpack_require__(46);
 
 var _controlPoint2 = _interopRequireDefault(_controlPoint);
 
-var _verifiedUser = __webpack_require__(54);
+var _verifiedUser = __webpack_require__(47);
 
 var _verifiedUser2 = _interopRequireDefault(_verifiedUser);
 
-var _attachMoney = __webpack_require__(55);
+var _attachMoney = __webpack_require__(48);
 
 var _attachMoney2 = _interopRequireDefault(_attachMoney);
 
-var _viewList = __webpack_require__(56);
+var _viewList = __webpack_require__(49);
 
 var _viewList2 = _interopRequireDefault(_viewList);
 
-var _stars = __webpack_require__(57);
+var _stars = __webpack_require__(50);
 
 var _stars2 = _interopRequireDefault(_stars);
 
-var _tab = __webpack_require__(58);
+var _tab = __webpack_require__(51);
 
 var _tab2 = _interopRequireDefault(_tab);
 
-var _viewAgenda = __webpack_require__(59);
+var _viewAgenda = __webpack_require__(52);
 
 var _viewAgenda2 = _interopRequireDefault(_viewAgenda);
 
-var _stayCurrentPortrait = __webpack_require__(60);
+var _stayCurrentPortrait = __webpack_require__(53);
 
 var _stayCurrentPortrait2 = _interopRequireDefault(_stayCurrentPortrait);
 
-var _collections = __webpack_require__(61);
+var _collections = __webpack_require__(54);
 
 var _collections2 = _interopRequireDefault(_collections);
 
@@ -1283,25 +1265,25 @@ var resources = {
 exports.default = resources;
 
 /***/ }),
-/* 27 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/social/people");
 
 /***/ }),
-/* 28 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ }),
-/* 29 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("localStorage");
 
 /***/ }),
-/* 30 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1328,232 +1310,91 @@ var config = {
 exports.default = config;
 
 /***/ }),
-/* 31 */
+/* 22 */
 /***/ (function(module, exports) {
 
-module.exports = require("js-sha256");
+module.exports = require("material-ui/Tabs");
 
 /***/ }),
-/* 32 */
+/* 23 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-draft-wysiwyg");
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+module.exports = require("draftjs-to-html");
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+module.exports = require("draft-js");
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+module.exports = require("html-to-draftjs");
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/styles/colors");
 
 /***/ }),
-/* 33 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _categories = __webpack_require__(84);
-
-var _categories2 = _interopRequireDefault(_categories);
-
-var _products = __webpack_require__(85);
-
-var _products2 = _interopRequireDefault(_products);
-
-var _orders = __webpack_require__(86);
-
-var _orders2 = _interopRequireDefault(_orders);
-
-var _users = __webpack_require__(87);
-
-var _users2 = _interopRequireDefault(_users);
-
-var _clients = __webpack_require__(88);
-
-var _clients2 = _interopRequireDefault(_clients);
-
-var _attributes = __webpack_require__(89);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
-var _attributeSets = __webpack_require__(90);
-
-var _attributeSets2 = _interopRequireDefault(_attributeSets);
-
-var _tabs = __webpack_require__(91);
-
-var _tabs2 = _interopRequireDefault(_tabs);
-
-var _tabSets = __webpack_require__(92);
-
-var _tabSets2 = _interopRequireDefault(_tabSets);
-
-var _roles = __webpack_require__(93);
-
-var _roles2 = _interopRequireDefault(_roles);
-
-var _statuses = __webpack_require__(94);
-
-var _statuses2 = _interopRequireDefault(_statuses);
-
-var _categories3 = __webpack_require__(95);
-
-var _categories4 = _interopRequireDefault(_categories3);
-
-var _products3 = __webpack_require__(96);
-
-var _products4 = _interopRequireDefault(_products3);
-
-var _users3 = __webpack_require__(98);
-
-var _users4 = _interopRequireDefault(_users3);
-
-var _roles3 = __webpack_require__(99);
-
-var _roles4 = _interopRequireDefault(_roles3);
-
-var _clients3 = __webpack_require__(100);
-
-var _clients4 = _interopRequireDefault(_clients3);
-
-var _orders3 = __webpack_require__(101);
-
-var _orders4 = _interopRequireDefault(_orders3);
-
-var _attributes3 = __webpack_require__(102);
-
-var _attributes4 = _interopRequireDefault(_attributes3);
-
-var _attributeSets3 = __webpack_require__(103);
-
-var _attributeSets4 = _interopRequireDefault(_attributeSets3);
-
-var _tabs3 = __webpack_require__(104);
-
-var _tabs4 = _interopRequireDefault(_tabs3);
-
-var _tabSets3 = __webpack_require__(105);
-
-var _tabSets4 = _interopRequireDefault(_tabSets3);
-
-var _statuses3 = __webpack_require__(106);
-
-var _statuses4 = _interopRequireDefault(_statuses3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    CategoriesCreate: _categories2.default,
-    ProductsCreate: _products2.default,
-    OrdersCreate: _orders2.default,
-    UsersCreate: _users2.default,
-    ClientsCreate: _clients2.default,
-    AttributesCreate: _attributes2.default,
-    'Attribute-setsCreate': _attributeSets2.default,
-    TabsCreate: _tabs2.default,
-    'Tab-setsCreate': _tabSets2.default,
-    RolesCreate: _roles2.default,
-    StatusesCreate: _statuses2.default,
-    CategoriesEdit: _categories4.default,
-    ProductsEdit: _products4.default,
-    UsersEdit: _users4.default,
-    RolesEdit: _roles4.default,
-    ClientsEdit: _clients4.default,
-    OrdersEdit: _orders4.default,
-    AttributesEdit: _attributes4.default,
-    'Attribute-setsEdit': _attributeSets4.default,
-    TabsEdit: _tabs4.default,
-    'Tab-setsEdit': _tabSets4.default,
-    StatusesEdit: _statuses4.default
-};
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _jsSha = __webpack_require__(31);
-
-var _jsSha2 = _interopRequireDefault(_jsSha);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Hash = function () {
-  function Hash() {
-    _classCallCheck(this, Hash);
-  }
-
-  _createClass(Hash, null, [{
-    key: 'getHash',
-    value: function getHash(text) {
-      var salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32';
-      return (0, _jsSha2.default)(salt + text);
-    }
-  }]);
-
-  return Hash;
-}();
-
-exports.default = Hash;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(36);
-module.exports = __webpack_require__(37);
+__webpack_require__(29);
+module.exports = __webpack_require__(30);
 
 
 /***/ }),
-/* 36 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
 
 /***/ }),
-/* 37 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(38);
+var _express = __webpack_require__(31);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _cors = __webpack_require__(39);
+var _cors = __webpack_require__(32);
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _server = __webpack_require__(40);
+var _server = __webpack_require__(33);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _bodyParser = __webpack_require__(41);
+var _bodyParser = __webpack_require__(34);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _MuiThemeProvider = __webpack_require__(42);
+var _MuiThemeProvider = __webpack_require__(35);
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-var _Launcher = __webpack_require__(43);
+var _Launcher = __webpack_require__(36);
 
 var _Launcher2 = _interopRequireDefault(_Launcher);
 
-var _index = __webpack_require__(25);
+var _index = __webpack_require__(16);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -1601,37 +1442,37 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 38 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 39 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 40 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 41 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 42 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/styles/MuiThemeProvider");
 
 /***/ }),
-/* 43 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1647,17 +1488,17 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _renderRoutes = __webpack_require__(44);
+var _renderRoutes = __webpack_require__(37);
 
 var _renderRoutes2 = _interopRequireDefault(_renderRoutes);
 
 var _reactRouterDom = __webpack_require__(1);
 
-__webpack_require__(45);
+__webpack_require__(38);
 
-__webpack_require__(46);
+__webpack_require__(39);
 
-var _routes = __webpack_require__(47);
+var _routes = __webpack_require__(40);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -1695,16 +1536,16 @@ var Layout = function (_React$Component) {
 exports.default = Layout;
 
 /***/ }),
-/* 44 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-config/renderRoutes");
 
 /***/ }),
-/* 45 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(24)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
@@ -1715,10 +1556,10 @@ exports.push([module.i, "html, body, .layout, #root, .body {\n    height: 100%;\
 
 
 /***/ }),
-/* 46 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(24)(false);
+exports = module.exports = __webpack_require__(15)(false);
 // imports
 
 
@@ -1729,7 +1570,7 @@ exports.push([module.i, ".rdw-option-wrapper {\n    border: 1px solid #F1F1F1;\n
 
 
 /***/ }),
-/* 47 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1743,20 +1584,20 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _layout = __webpack_require__(48);
+var _appLayout = __webpack_require__(41);
 
-var _layout2 = _interopRequireDefault(_layout);
+var _appLayout2 = _interopRequireDefault(_appLayout);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = [{
 	path: '/',
 	exact: false,
-	component: _layout2.default
+	component: _appLayout2.default
 }];
 
 /***/ }),
-/* 48 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1772,37 +1613,37 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AppBar = __webpack_require__(49);
+var _AppBar = __webpack_require__(42);
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _reactRouterConfig = __webpack_require__(50);
+var _reactRouterConfig = __webpack_require__(43);
 
-var _routes = __webpack_require__(25);
+var _routes = __webpack_require__(16);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _resources = __webpack_require__(108);
+var _resources = __webpack_require__(82);
 
 var _resources2 = _interopRequireDefault(_resources);
 
-var _login = __webpack_require__(112);
+var _login = __webpack_require__(86);
 
 var _login2 = _interopRequireDefault(_login);
 
-var _auth = __webpack_require__(17);
+var _auth = __webpack_require__(4);
 
 var _auth2 = _interopRequireDefault(_auth);
 
-var _data = __webpack_require__(3);
+var _data = __webpack_require__(2);
 
 var _data2 = _interopRequireDefault(_data);
 
-var _components = __webpack_require__(33);
+var _copyProductPage = __webpack_require__(90);
 
-var _components2 = _interopRequireDefault(_components);
+var _copyProductPage2 = _interopRequireDefault(_copyProductPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1814,13 +1655,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Layout = function (_React$Component) {
-	_inherits(Layout, _React$Component);
+var AppLayout = function (_React$Component) {
+	_inherits(AppLayout, _React$Component);
 
-	function Layout(props) {
-		_classCallCheck(this, Layout);
+	function AppLayout(props) {
+		_classCallCheck(this, AppLayout);
 
-		var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (AppLayout.__proto__ || Object.getPrototypeOf(AppLayout)).call(this, props));
 
 		_this.state = {
 			isMenuOpened: true,
@@ -1834,7 +1675,7 @@ var Layout = function (_React$Component) {
 		return _this;
 	}
 
-	_createClass(Layout, [{
+	_createClass(AppLayout, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			var _this2 = this;
@@ -1950,7 +1791,7 @@ var Layout = function (_React$Component) {
 						(0, _reactRouterConfig.renderRoutes)((0, _routes2.default)(location, route)),
 						_react2.default.createElement(_reactRouterDom.Route, {
 							path: route + 'products/:id/copy',
-							component: _components2.default.ProductsCreate
+							component: _copyProductPage2.default
 						})
 					)
 				)
@@ -1958,25 +1799,25 @@ var Layout = function (_React$Component) {
 		}
 	}]);
 
-	return Layout;
+	return AppLayout;
 }(_react2.default.Component);
 
-exports.default = Layout;
+exports.default = AppLayout;
 
 /***/ }),
-/* 49 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/AppBar");
 
 /***/ }),
-/* 50 */
+/* 43 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-config");
 
 /***/ }),
-/* 51 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1994,9 +1835,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _Card = __webpack_require__(22);
+var _Card = __webpack_require__(7);
 
-var _resources = __webpack_require__(26);
+var _resources = __webpack_require__(17);
 
 var _resources2 = _interopRequireDefault(_resources);
 
@@ -2067,67 +1908,220 @@ var Dashboard = function (_React$Component) {
 exports.default = Dashboard;
 
 /***/ }),
-/* 52 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/bookmark");
 
 /***/ }),
-/* 53 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/image/control-point");
 
 /***/ }),
-/* 54 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/verified-user");
 
 /***/ }),
-/* 55 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/editor/attach-money");
 
 /***/ }),
-/* 56 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/view-list");
 
 /***/ }),
-/* 57 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/stars");
 
 /***/ }),
-/* 58 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/tab");
 
 /***/ }),
-/* 59 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/view-agenda");
 
 /***/ }),
-/* 60 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/communication/stay-current-portrait");
 
 /***/ }),
-/* 61 */
+/* 54 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/image/collections");
 
 /***/ }),
-/* 62 */
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TextField = __webpack_require__(3);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _data = __webpack_require__(2);
+
+var _data2 = _interopRequireDefault(_data);
+
+var _toolBar = __webpack_require__(5);
+
+var _toolBar2 = _interopRequireDefault(_toolBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Profile = function (_React$Component) {
+    _inherits(Profile, _React$Component);
+
+    function Profile(props) {
+        _classCallCheck(this, Profile);
+
+        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+
+        _this.state = {
+            user: '',
+            password: ''
+        };
+        _this.getUser().catch(function (error) {
+            return console.error('\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u0438 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0438 \u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u0440\u043E\u0444\u0438\u043B\u044F: ', error);
+        });
+        return _this;
+    }
+
+    _createClass(Profile, [{
+        key: 'getUser',
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var result;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.next = 2;
+                                return _data2.default.getProfile();
+
+                            case 2:
+                                result = _context.sent;
+
+                                this.setState({
+                                    user: result.profile
+                                });
+
+                            case 4:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function getUser() {
+                return _ref.apply(this, arguments);
+            }
+
+            return getUser;
+        }()
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                {
+                    className: 'resource-page' },
+                _react2.default.createElement(
+                    'div',
+                    {
+                        className: 'profile__label'
+                    },
+                    '\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043F\u0440\u043E\u0444\u0438\u043B\u044F'
+                ),
+                _react2.default.createElement(_TextField2.default, {
+                    fullWidth: true,
+                    hintText: '\u041F\u043E\u0447\u0442\u0430',
+                    floatingLabelText: '\u041F\u043E\u0447\u0442\u0430',
+                    value: this.state.user,
+                    onChange: function onChange(event, value) {
+                        return _this2.setState({
+                            user: value
+                        });
+                    }
+                }),
+                _react2.default.createElement(_TextField2.default, {
+                    fullWidth: true,
+                    hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
+                    floatingLabelText: '\u041F\u0430\u0440\u043E\u043B\u044C',
+                    onChange: function onChange(event, value) {
+                        return _this2.setState({
+                            password: value
+                        });
+                    }
+                }),
+                _react2.default.createElement(_toolBar2.default, {
+                    resources: 'profile',
+                    data: this.state,
+                    action: 'edit'
+                })
+            );
+        }
+    }]);
+
+    return Profile;
+}(_react2.default.Component);
+
+exports.default = Profile;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+module.exports = require("js-sha256");
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/Toolbar");
+
+/***/ }),
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2145,9 +2139,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Tabs = __webpack_require__(6);
+var _Tabs = __webpack_require__(22);
 
-var _TextField = __webpack_require__(2);
+var _TextField = __webpack_require__(3);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -2155,29 +2149,29 @@ var _FlatButton = __webpack_require__(10);
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _list = __webpack_require__(5);
+var _list = __webpack_require__(8);
 
 var _list2 = _interopRequireDefault(_list);
 
-var _SelectField = __webpack_require__(7);
+var _SelectField = __webpack_require__(11);
 
 var _SelectField2 = _interopRequireDefault(_SelectField);
 
-var _MenuItem = __webpack_require__(8);
+var _MenuItem = __webpack_require__(12);
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
-var _delete = __webpack_require__(9);
+var _delete = __webpack_require__(6);
 
 var _delete2 = _interopRequireDefault(_delete);
 
 var _Table = __webpack_require__(13);
 
-var _Dialog = __webpack_require__(21);
+var _Dialog = __webpack_require__(59);
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _RaisedButton = __webpack_require__(16);
+var _RaisedButton = __webpack_require__(9);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
@@ -2185,13 +2179,29 @@ var _Toggle = __webpack_require__(14);
 
 var _Toggle2 = _interopRequireDefault(_Toggle);
 
+var _flipToFront = __webpack_require__(60);
+
+var _flipToFront2 = _interopRequireDefault(_flipToFront);
+
+var _reactDraftWysiwyg = __webpack_require__(23);
+
+var _draftjsToHtml = __webpack_require__(24);
+
+var _draftjsToHtml2 = _interopRequireDefault(_draftjsToHtml);
+
+var _draftJs = __webpack_require__(25);
+
+var _htmlToDraftjs = __webpack_require__(26);
+
+var _htmlToDraftjs2 = _interopRequireDefault(_htmlToDraftjs);
+
 var _reactRouterDom = __webpack_require__(1);
 
-var _toolBar = __webpack_require__(4);
+var _toolBar = __webpack_require__(5);
 
 var _toolBar2 = _interopRequireDefault(_toolBar);
 
-var _data = __webpack_require__(3);
+var _data = __webpack_require__(2);
 
 var _data2 = _interopRequireDefault(_data);
 
@@ -2209,17 +2219,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ResourceLayout = function (_React$Component) {
-	_inherits(ResourceLayout, _React$Component);
+var ResourceCreateEditLayout = function (_React$Component) {
+	_inherits(ResourceCreateEditLayout, _React$Component);
 
-	function ResourceLayout(props) {
-		_classCallCheck(this, ResourceLayout);
+	function ResourceCreateEditLayout(props) {
+		_classCallCheck(this, ResourceCreateEditLayout);
 
-		var _this = _possibleConstructorReturn(this, (ResourceLayout.__proto__ || Object.getPrototypeOf(ResourceLayout)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ResourceCreateEditLayout.__proto__ || Object.getPrototypeOf(ResourceCreateEditLayout)).call(this, props));
 
 		_this.state = {
-			data: _this.getInitialState(),
-			variant: {}
+			data: _this.getInitialState()
 		};
 		if (_this.props.action === 'edit') {
 			_this.getResourceInfo().catch(function (err) {
@@ -2285,16 +2294,59 @@ var ResourceLayout = function (_React$Component) {
 				open: false
 			});
 		}
+		if (_this.props.resource === 'users') {
+			_this.state = _extends({}, _this.state, {
+				roles: []
+			});
+			_this.getData('roles').catch(function (err) {
+				return console.error('resource-layout:92 ERROR GETTING DATA!: ', err);
+			});
+		}
+		if (_this.props.resource === 'categories') {
+			_this.state = _extends({}, _this.state, {
+				categories: [],
+				descState: _draftJs.EditorState.createEmpty()
+			});
+			_this.getData('categories').catch(function (err) {
+				return console.error('resource-layout:102 ERROR GETTING DATA!: ', err);
+			});
+		}
+		if (_this.props.resource === 'products') {
+			_this.state = _extends({}, _this.state, {
+				categories: [],
+				'attribute-sets': [],
+				'tab-sets': [],
+				products: [],
+				descState: _draftJs.EditorState.createEmpty(),
+				shortDescState: _draftJs.EditorState.createEmpty()
+			});
+			_this.getData('categories').catch(function (err) {
+				return console.error('resource-layout:117 ERROR GETTING DATA!: ', err);
+			});
+			_this.getData('attribute-sets').catch(function (err) {
+				return console.error('resource-layout:119 ERROR GETTING DATA!: ', err);
+			});
+			_this.getData('tab-sets').catch(function (err) {
+				return console.error('resource-layout:121 ERROR GETTING DATA!: ', err);
+			});
+			_this.getData('products').catch(function (err) {
+				return console.error('resource-layout:123 ERROR GETTING DATA!: ', err);
+			});
+		}
 		_this.changeValueOfInput = _this.changeValueOfInput.bind(_this);
 		_this.changeSwitchInput = _this.changeSwitchInput.bind(_this);
 		_this.handleClose = _this.handleClose.bind(_this);
 		_this.handleOpen = _this.handleOpen.bind(_this);
 		_this.addVariant = _this.addVariant.bind(_this);
 		_this.addAddress = _this.addAddress.bind(_this);
+		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
+		_this.onEditorShortDescChange = _this.onEditorShortDescChange.bind(_this);
+		_this.uploadFile = _this.uploadFile.bind(_this);
+		_this.uploadFiles = _this.uploadFiles.bind(_this);
 		return _this;
 	}
 
-	_createClass(ResourceLayout, [{
+	_createClass(ResourceCreateEditLayout, [{
 		key: 'getInitialState',
 		value: function getInitialState() {
 			var currentResource = {};
@@ -2340,13 +2392,19 @@ var ResourceLayout = function (_React$Component) {
 				delete currentResource.address;
 			}
 
+			if (this.props.resource === 'products') {
+				currentResource.relatedProducts = [];
+				currentResource.fromSet = [];
+			}
+
 			return currentResource;
 		}
 	}, {
 		key: 'getResourceInfo',
 		value: function () {
 			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var id, result;
+				var id, result, description, contentBlock, contentState, editorState, _description, _contentBlock, _contentState, _editorState, shortDescription, contentBlockShortDesc, contentStateShortDesc, editorStateShortDesc;
+
 				return regeneratorRuntime.wrap(function _callee$(_context) {
 					while (1) {
 						switch (_context.prev = _context.next) {
@@ -2358,11 +2416,50 @@ var ResourceLayout = function (_React$Component) {
 							case 3:
 								result = _context.sent;
 
+								if (!(this.props.resource === 'categories')) {
+									_context.next = 11;
+									break;
+								}
+
+								description = result.description;
+								contentBlock = (0, _htmlToDraftjs2.default)(description);
+								contentState = _draftJs.ContentState.createFromBlockArray(contentBlock.contentBlocks);
+								editorState = _draftJs.EditorState.createWithContent(contentState);
+
+								this.setState({
+									data: result,
+									descState: editorState
+								});
+								return _context.abrupt('return');
+
+							case 11:
+								if (!(this.props.resource === 'products')) {
+									_context.next = 22;
+									break;
+								}
+
+								_description = result.description;
+								_contentBlock = (0, _htmlToDraftjs2.default)(_description);
+								_contentState = _draftJs.ContentState.createFromBlockArray(_contentBlock.contentBlocks);
+								_editorState = _draftJs.EditorState.createWithContent(_contentState);
+								shortDescription = result.shortDescription;
+								contentBlockShortDesc = (0, _htmlToDraftjs2.default)(shortDescription);
+								contentStateShortDesc = _draftJs.ContentState.createFromBlockArray(contentBlockShortDesc.contentBlocks);
+								editorStateShortDesc = _draftJs.EditorState.createWithContent(contentStateShortDesc);
+
+								this.setState({
+									data: result,
+									descState: _editorState,
+									shortDescState: editorStateShortDesc
+								});
+								return _context.abrupt('return');
+
+							case 22:
 								this.setState({
 									data: result
 								});
 
-							case 5:
+							case 23:
 							case 'end':
 								return _context.stop();
 						}
@@ -2408,6 +2505,77 @@ var ResourceLayout = function (_React$Component) {
 			return getData;
 		}()
 	}, {
+		key: 'uploadFile',
+		value: function () {
+			var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(file) {
+				var result;
+				return regeneratorRuntime.wrap(function _callee3$(_context3) {
+					while (1) {
+						switch (_context3.prev = _context3.next) {
+							case 0:
+								_context3.next = 2;
+								return _data2.default.uploadImage('/upload/categories', file.target.files[0]);
+
+							case 2:
+								result = _context3.sent;
+
+								this.setState({
+									data: _extends({}, this.state.data, {
+										image: result
+									}),
+									image: result
+								});
+
+							case 4:
+							case 'end':
+								return _context3.stop();
+						}
+					}
+				}, _callee3, this);
+			}));
+
+			function uploadFile(_x2) {
+				return _ref3.apply(this, arguments);
+			}
+
+			return uploadFile;
+		}()
+	}, {
+		key: 'uploadFiles',
+		value: function () {
+			var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(file) {
+				var result;
+				return regeneratorRuntime.wrap(function _callee4$(_context4) {
+					while (1) {
+						switch (_context4.prev = _context4.next) {
+							case 0:
+								_context4.next = 2;
+								return _data2.default.uploadImage('/upload/products', file.target.files[0]);
+
+							case 2:
+								result = _context4.sent;
+
+								this.setState({
+									data: _extends({}, this.state.data, {
+										images: [].concat(_toConsumableArray(this.state.data.images), [result])
+									})
+								});
+
+							case 4:
+							case 'end':
+								return _context4.stop();
+						}
+					}
+				}, _callee4, this);
+			}));
+
+			function uploadFiles(_x3) {
+				return _ref4.apply(this, arguments);
+			}
+
+			return uploadFiles;
+		}()
+	}, {
 		key: 'changeValueOfInput',
 		value: function changeValueOfInput(e) {
 			var _e$target = e.target,
@@ -2420,14 +2588,104 @@ var ResourceLayout = function (_React$Component) {
 		}
 	}, {
 		key: 'changeSelectInput',
-		value: function changeSelectInput(value, name) {
-			this.setState({
-				data: _extends({}, this.state.data, _defineProperty({}, name, value))
-			});
-		}
+		value: function () {
+			var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(value, name, multiple) {
+				var attributes, tabs;
+				return regeneratorRuntime.wrap(function _callee5$(_context5) {
+					while (1) {
+						switch (_context5.prev = _context5.next) {
+							case 0:
+								if (!(this.props.resource === 'products')) {
+									_context5.next = 13;
+									break;
+								}
+
+								if (!(name === 'attribute-sets')) {
+									_context5.next = 6;
+									break;
+								}
+
+								_context5.next = 4;
+								return _data2.default.getAttributes(value);
+
+							case 4:
+								attributes = _context5.sent;
+
+								this.setState({
+									data: _extends({}, this.state.data, {
+										attributes: attributes
+									})
+								});
+
+							case 6:
+								if (!(name === 'tab-sets')) {
+									_context5.next = 11;
+									break;
+								}
+
+								_context5.next = 9;
+								return _data2.default.getTabs(value);
+
+							case 9:
+								tabs = _context5.sent;
+
+								this.setState({
+									data: _extends({}, this.state.data, {
+										tabs: tabs
+									})
+								});
+
+							case 11:
+								this.setState({
+									data: _extends({}, this.state.data, _defineProperty({}, name, value))
+								});
+								return _context5.abrupt('return');
+
+							case 13:
+								if (!(name instanceof Array)) {
+									_context5.next = 16;
+									break;
+								}
+
+								if (name.length === 3) {
+									if (!!multiple) {
+										this.setState({
+											data: _extends({}, this.state.data, _defineProperty({}, name[0], _extends({}, this.state.data[name[0]], _defineProperty({}, name[1], _extends({}, this.state.data[name[0]][name[1]], _defineProperty({}, name[2], value))))))
+										});
+									}
+								}
+								return _context5.abrupt('return');
+
+							case 16:
+								this.setState({
+									data: _extends({}, this.state.data, _defineProperty({}, name, value))
+								});
+
+							case 17:
+							case 'end':
+								return _context5.stop();
+						}
+					}
+				}, _callee5, this);
+			}));
+
+			function changeSelectInput(_x4, _x5, _x6) {
+				return _ref5.apply(this, arguments);
+			}
+
+			return changeSelectInput;
+		}()
 	}, {
 		key: 'changeSwitchInput',
-		value: function changeSwitchInput(value, name) {
+		value: function changeSwitchInput(value, name, multiple) {
+			if (!!multiple) {
+				if (name.length === 3) {
+					this.setState({
+						data: _extends({}, this.state.data, _defineProperty({}, name[0], _extends({}, this.state.data[name[0]], _defineProperty({}, name[1], _extends({}, this.state.data[name[0]][name[1]], _defineProperty({}, name[2], value))))))
+					});
+				}
+				return;
+			}
 			this.setState({
 				data: _extends({}, this.state.data, _defineProperty({}, name, value))
 			});
@@ -2487,7 +2745,7 @@ var ResourceLayout = function (_React$Component) {
 		key: 'pushToTable',
 		value: function pushToTable(value, name) {
 			this.setState({
-				data: _extends({}, this.state.data, _defineProperty({}, name, [].concat(_toConsumableArray(this.state.data.products), [value])))
+				data: _extends({}, this.state.data, _defineProperty({}, name, [].concat(_toConsumableArray(this.state.data[name]), [value])))
 			});
 		}
 	}, {
@@ -2505,14 +2763,26 @@ var ResourceLayout = function (_React$Component) {
 			});
 		}
 	}, {
+		key: 'onEditorDescChange',
+		value: function onEditorDescChange(descState) {
+			this.setState({
+				descState: descState
+			});
+		}
+	}, {
+		key: 'onEditorShortDescChange',
+		value: function onEditorShortDescChange(shortDescState) {
+			this.setState({
+				shortDescState: shortDescState
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
 
 			var tabs = this.props.structure.tabs;
 
-			console.log('STATE =>>>', this.state);
-			console.log('PROPS =>>>', this.props);
 			return _react2.default.createElement(
 				_react2.default.Fragment,
 				null,
@@ -2529,7 +2799,7 @@ var ResourceLayout = function (_React$Component) {
 							_react2.default.createElement(
 								'div',
 								{
-									className: 'resource-page'
+									className: !!tab.className ? tab.className : 'resource-page'
 								},
 								_react2.default.createElement(
 									'div',
@@ -2546,6 +2816,20 @@ var ResourceLayout = function (_React$Component) {
 											labelStyle: { color: 'rgb(255, 64, 129)' },
 											primary: true,
 											icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
+										})
+									) : null,
+									_this2.props.action === 'edit' && _this2.props.resource === 'products' ? _react2.default.createElement(
+										_reactRouterDom.Link,
+										{
+											to: {
+												pathname: _this2.props.location.pathname + '/copy'
+											}
+										},
+										_react2.default.createElement(_FlatButton2.default, {
+											label: '\u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C',
+											labelStyle: { color: 'rgb(64, 255, 129)' },
+											primary: true,
+											icon: _react2.default.createElement(_flipToFront2.default, { color: 'rgb(64, 255, 129)' })
 										})
 									) : null,
 									_react2.default.createElement(
@@ -2605,7 +2889,7 @@ var ResourceLayout = function (_React$Component) {
 											})
 										);
 									}
-									if (type === 'multipleSelect' || type === 'select' && !!field.variants) {
+									if (type === 'multipleSelect' && !!field.variants || type === 'select' && !!field.variants) {
 										var _name = field.name,
 										    _required = field.required,
 										    _title = field.title,
@@ -2621,6 +2905,38 @@ var ResourceLayout = function (_React$Component) {
 											primary: true,
 											onClick: _this2.addVariant
 										})];
+										if (_name instanceof Array) {
+											if (_name.length === 3) {
+												return _react2.default.createElement(
+													'div',
+													{
+														className: 'input',
+														key: fieldIndex
+													},
+													_react2.default.createElement(
+														_SelectField2.default,
+														{
+															fullWidth: true,
+															multiple: _type === 'multipleSelect',
+															value: _this2.state.data[_name[0]][_name[1]][_name[2]],
+															floatingLabelText: _title,
+															errorText: _required ? 'Поле обязательно' : '',
+															onChange: function onChange(event, index, value) {
+																return _this2.changeSelectInput(value, _name, true);
+															}
+														},
+														variants.map(function (variant, index) {
+															return _react2.default.createElement(_MenuItem2.default, {
+																value: variant.id,
+																primaryText: variant.title,
+																key: index
+															});
+														})
+													)
+												);
+											}
+											return;
+										}
 										return _react2.default.createElement(
 											'div',
 											{
@@ -2760,6 +3076,35 @@ var ResourceLayout = function (_React$Component) {
 											) : null
 										);
 									}
+									if (type === 'multipleSelect') {
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												_SelectField2.default,
+												{
+													fullWidth: true,
+													multiple: type === 'multipleSelect',
+													value: _this2.state.data[name],
+													floatingLabelText: title,
+													errorText: required ? 'Поле обязательно' : '',
+													onChange: function onChange(event, index, value) {
+														return _this2.changeSelectInput(value, name);
+													}
+												},
+												_this2.state[name].map(function (item, index) {
+													return _react2.default.createElement(_MenuItem2.default, {
+														value: item.slug,
+														primaryText: item.title,
+														key: index
+													});
+												})
+											)
+										);
+									}
 									if (type === 'select') {
 										var _name2 = field.name,
 										    _title2 = field.title,
@@ -2797,6 +3142,28 @@ var ResourceLayout = function (_React$Component) {
 										var _name3 = field.name,
 										    _title3 = field.title;
 
+										if (_name3 instanceof Array) {
+											if (_name3.length === 3) {
+												return _react2.default.createElement(
+													'div',
+													{
+														className: 'input',
+														key: fieldIndex
+													},
+													_react2.default.createElement(_Toggle2.default, {
+														style: {
+															width: '250px'
+														},
+														toggled: _this2.state.data[_name3[0]][_name3[1]][_name3[2]],
+														label: _title3,
+														onToggle: function onToggle(event, value) {
+															return _this2.changeSwitchInput(value, _name3, true);
+														}
+													})
+												);
+											}
+											return;
+										}
 										return _react2.default.createElement(
 											'div',
 											{
@@ -2963,10 +3330,235 @@ var ResourceLayout = function (_React$Component) {
 											})
 										);
 									}
+									if (type === 'wysiwyg') {
+										return _react2.default.createElement(
+											'div',
+											{
+												className: 'input',
+												key: fieldIndex
+											},
+											_react2.default.createElement(
+												'div',
+												{
+													style: {
+														color: 'rgba(0, 0, 0, 0.3)'
+													}
+												},
+												title
+											),
+											_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+												editorState: _this2.state[field.editorStateName],
+												wrapperClassName: 'demo-wrapper',
+												editorClassName: 'demo-editor',
+												onEditorStateChange: field.editorStateName === 'descState' ? _this2.onEditorDescChange : _this2.onEditorShortDescChange,
+												onChange: function onChange() {
+													return _this2.setState({
+														data: _extends({}, _this2.state.data, _defineProperty({}, name, (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state[field.editorStateName].getCurrentContent()))))
+													});
+												}
+											})
+										);
+									}
+									if (type === 'file') {
+										if (!field.multiple) {
+											return _react2.default.createElement(
+												'div',
+												{
+													className: 'input',
+													key: fieldIndex
+												},
+												_react2.default.createElement('input', {
+													type: 'file',
+													className: 'inputfile',
+													id: 'file',
+													onChange: _this2.uploadFile
+												}),
+												_react2.default.createElement(
+													'label',
+													{
+														htmlFor: 'file',
+														className: 'inputfile__label'
+													},
+													'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+												),
+												_react2.default.createElement(
+													'div',
+													{
+														className: 'inputfile__images'
+													},
+													!!_this2.state.data.image ? _react2.default.createElement('img', {
+														className: 'inputfile__image',
+														src: _this2.state.data.image
+													}) : null
+												)
+											);
+										} else {
+											return _react2.default.createElement(
+												'div',
+												{
+													className: 'input',
+													key: fieldIndex
+												},
+												_react2.default.createElement('input', {
+													type: 'file',
+													className: 'inputfile',
+													id: 'file',
+													onChange: _this2.uploadFiles
+												}),
+												_react2.default.createElement(
+													'label',
+													{
+														htmlFor: 'file',
+														className: 'inputfile__label'
+													},
+													'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+												),
+												_react2.default.createElement(
+													'div',
+													{
+														className: 'inputfile__images'
+													},
+													_this2.state.data.images.map(function (image, index) {
+														return _react2.default.createElement('img', {
+															className: 'inputfile__image',
+															src: image,
+															key: index
+														});
+													})
+												)
+											);
+										}
+									}
 								})
 							)
 						);
-					})
+					}),
+					this.props.resource === 'products' && !!this.state.data.attributes ? _react2.default.createElement(
+						_Tabs.Tab,
+						{
+							label: '\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u044B'
+						},
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							this.state.data.attributes.map(function (attribute, key) {
+								if (attribute.attrType === 'select' || attribute.attrType === 'multipleSelect') {
+									return _react2.default.createElement(
+										_SelectField2.default,
+										{
+											fullWidth: true,
+											multiple: attribute.attrType === 'multipleSelect',
+											value: _this2.state.data.attributes[key].value,
+											floatingLabelText: attribute.title,
+											onChange: function onChange(event, index, value) {
+												var newState = {
+													data: _extends({}, _this2.state.data, {
+														attributes: _this2.state.data.attributes
+													})
+												};
+												newState.data.attributes[key].value = value;
+												_this2.setState(newState);
+											},
+											key: key
+										},
+										attribute.variants.map(function (variant, index) {
+											return _react2.default.createElement(_MenuItem2.default, {
+												value: variant.value,
+												primaryText: variant.id,
+												key: index
+											});
+										})
+									);
+								}
+								if (attribute.attrType === 'interval') {
+									return _react2.default.createElement(
+										'div',
+										{
+											key: key
+										},
+										_react2.default.createElement(_TextField2.default, {
+											fullWidth: true,
+											hintText: attribute.title + ' \u043E\u0442',
+											defaultValue: !!_this2.state.data.attributes[key].value ? _this2.state.data.attributes[key].value.from : '',
+											floatingLabelText: attribute.title + ' \u043E\u0442',
+											onChange: function onChange(event, value) {
+												var newState = {
+													data: _extends({}, _this2.state.data, {
+														attributes: _this2.state.data.attributes
+													})
+												};
+												newState.data.attributes[key].value = _extends({}, newState.data.attributes[key].value);
+												newState.data.attributes[key].value.from = value;
+												_this2.setState(newState);
+											}
+										}),
+										_react2.default.createElement(_TextField2.default, {
+											fullWidth: true,
+											hintText: attribute.title + ' \u0434\u043E',
+											defaultValue: !!_this2.state.data.attributes[key].value ? _this2.state.data.attributes[key].value.to : '',
+											floatingLabelText: attribute.title + ' \u0434\u043E',
+											onChange: function onChange(event, value) {
+												var newState = {
+													data: _extends({}, _this2.state.data, {
+														attributes: _this2.state.data.attributes
+													})
+												};
+												newState.data.attributes[key].value = _extends({}, newState.data.attributes[key].value);
+												newState.data.attributes[key].value.to = value;
+												_this2.setState(newState);
+											}
+										})
+									);
+								}
+								return _react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: attribute.title,
+									value: _this2.state.data.attributes[key].value,
+									floatingLabelText: attribute.title,
+									onChange: function onChange(event, value) {
+										var newState = {
+											data: _extends({}, _this2.state.data, {
+												attributes: _this2.state.data.attributes
+											})
+										};
+										newState.data.attributes[key].value = value;
+										_this2.setState(newState);
+									},
+									key: key
+								});
+							})
+						)
+					) : null,
+					this.props.resource === 'products' && !!this.state.data.tabs ? _react2.default.createElement(
+						_Tabs.Tab,
+						{
+							label: '\u0422\u0430\u0431\u044B'
+						},
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							this.state.data.tabs.map(function (tab, key) {
+								return _react2.default.createElement(_TextField2.default, {
+									fullWidth: true,
+									hintText: tab.title,
+									value: _this2.state.data.tabs[key].value,
+									floatingLabelText: tab.title,
+									onChange: function onChange(event, value) {
+										var newState = {
+											data: _extends({}, _this2.state.data, {
+												tabs: _this2.state.data.tabs
+											})
+										};
+										newState.data.tabs[key].value = value;
+										_this2.setState(newState);
+									},
+									key: key
+								});
+							})
+						)
+					) : null
 				),
 				_react2.default.createElement(_toolBar2.default, {
 					resources: this.props.resource,
@@ -2977,13 +3569,25 @@ var ResourceLayout = function (_React$Component) {
 		}
 	}]);
 
-	return ResourceLayout;
+	return ResourceCreateEditLayout;
 }(_react2.default.Component);
 
-exports.default = ResourceLayout;
+exports.default = ResourceCreateEditLayout;
 
 /***/ }),
-/* 63 */
+/* 59 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/Dialog");
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/svg-icons/action/flip-to-front");
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3001,13 +3605,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Card = __webpack_require__(22);
+var _Card = __webpack_require__(7);
 
-var _data = __webpack_require__(3);
+var _data = __webpack_require__(2);
 
 var _data2 = _interopRequireDefault(_data);
 
-var _resources = __webpack_require__(64);
+var _resources = __webpack_require__(62);
 
 var _resources2 = _interopRequireDefault(_resources);
 
@@ -3034,15 +3638,13 @@ var ResourcesLayout = function (_React$Component) {
 			total: 0,
 			statuses: []
 		};
+		_this.getData(_this.props.path).catch(function (err) {
+			return console.log('resource-layout:16, Error getting data! ', err);
+		});
 		return _this;
 	}
 
 	_createClass(ResourcesLayout, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.getData(this.props.path);
-		}
-	}, {
 		key: 'getData',
 		value: function () {
 			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
@@ -3057,22 +3659,20 @@ var ResourcesLayout = function (_React$Component) {
 							case 2:
 								response = _context.sent;
 
-								console.log(response);
-
 								if (!(uri === '/orders')) {
-									_context.next = 14;
+									_context.next = 13;
 									break;
 								}
 
-								_context.next = 7;
+								_context.next = 6;
 								return _data2.default.getResource('/statuses');
 
-							case 7:
+							case 6:
 								resStatuses = _context.sent;
-								_context.next = 10;
+								_context.next = 9;
 								return _data2.default.getResource('/clients');
 
-							case 10:
+							case 9:
 								resClients = _context.sent;
 								statuses = response.data.map(function (data) {
 									var arr = {};
@@ -3102,7 +3702,7 @@ var ResourcesLayout = function (_React$Component) {
 									total: response.total
 								});
 
-							case 14:
+							case 13:
 								this.setState({
 									resources: response.data,
 									total: response.total
@@ -3112,7 +3712,7 @@ var ResourcesLayout = function (_React$Component) {
 									total: response.total
 								});
 
-							case 16:
+							case 15:
 							case 'end':
 								return _context.stop();
 						}
@@ -3135,10 +3735,11 @@ var ResourcesLayout = function (_React$Component) {
 					while (1) {
 						switch (_context2.prev = _context2.next) {
 							case 0:
-								_context2.next = 2;
+								console.log(this.props.path);
+								_context2.next = 3;
 								return this.getData(this.props.path);
 
-							case 2:
+							case 3:
 								response = _context2.sent;
 
 								this.setState({
@@ -3146,7 +3747,7 @@ var ResourcesLayout = function (_React$Component) {
 									total: response.total
 								});
 
-							case 4:
+							case 5:
 							case 'end':
 								return _context2.stop();
 						}
@@ -3210,7 +3811,7 @@ var ResourcesLayout = function (_React$Component) {
 exports.default = ResourcesLayout;
 
 /***/ }),
-/* 64 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3228,29 +3829,29 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _resourcesContent = __webpack_require__(65);
+var _resourcesBody = __webpack_require__(63);
 
-var _resourcesContent2 = _interopRequireDefault(_resourcesContent);
+var _resourcesBody2 = _interopRequireDefault(_resourcesBody);
 
-var _resourcesHeader = __webpack_require__(71);
+var _resourcesHeader = __webpack_require__(69);
 
 var _resourcesHeader2 = _interopRequireDefault(_resourcesHeader);
 
-var _Card = __webpack_require__(22);
+var _Card = __webpack_require__(7);
 
-var _mapObj = __webpack_require__(76);
+var _mapObj = __webpack_require__(75);
 
 var _mapObj2 = _interopRequireDefault(_mapObj);
 
-var _pagination = __webpack_require__(77);
+var _pagination = __webpack_require__(76);
 
 var _pagination2 = _interopRequireDefault(_pagination);
 
-var _photos = __webpack_require__(79);
+var _photos = __webpack_require__(78);
 
 var _photos2 = _interopRequireDefault(_photos);
 
-var _data = __webpack_require__(3);
+var _data = __webpack_require__(2);
 
 var _data2 = _interopRequireDefault(_data);
 
@@ -3425,7 +4026,7 @@ var ResourcesList = function (_React$Component) {
 							title: title
 						})
 					}),
-					_react2.default.createElement(_resourcesContent2.default, {
+					_react2.default.createElement(_resourcesBody2.default, {
 						columns: columns,
 						data: filteredResources,
 						statuses: statuses,
@@ -3455,7 +4056,7 @@ var ResourcesList = function (_React$Component) {
 exports.default = ResourcesList;
 
 /***/ }),
-/* 65 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3475,37 +4076,37 @@ var _react2 = _interopRequireDefault(_react);
 
 var _Table = __webpack_require__(13);
 
-var _delete = __webpack_require__(9);
+var _delete = __webpack_require__(6);
 
 var _delete2 = _interopRequireDefault(_delete);
 
-var _create = __webpack_require__(66);
+var _create = __webpack_require__(64);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _TextField = __webpack_require__(2);
+var _TextField = __webpack_require__(3);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _clear = __webpack_require__(67);
+var _clear = __webpack_require__(65);
 
 var _clear2 = _interopRequireDefault(_clear);
 
-var _done = __webpack_require__(68);
+var _done = __webpack_require__(66);
 
 var _done2 = _interopRequireDefault(_done);
 
-var _save = __webpack_require__(69);
+var _save = __webpack_require__(67);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _Chip = __webpack_require__(70);
+var _Chip = __webpack_require__(68);
 
 var _Chip2 = _interopRequireDefault(_Chip);
 
-var _data = __webpack_require__(3);
+var _data = __webpack_require__(2);
 
 var _data2 = _interopRequireDefault(_data);
 
@@ -3521,13 +4122,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ResourcesContent = function (_React$Component) {
-	_inherits(ResourcesContent, _React$Component);
+var ResourcesBody = function (_React$Component) {
+	_inherits(ResourcesBody, _React$Component);
 
-	function ResourcesContent(props) {
-		_classCallCheck(this, ResourcesContent);
+	function ResourcesBody(props) {
+		_classCallCheck(this, ResourcesBody);
 
-		var _this = _possibleConstructorReturn(this, (ResourcesContent.__proto__ || Object.getPrototypeOf(ResourcesContent)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ResourcesBody.__proto__ || Object.getPrototypeOf(ResourcesBody)).call(this, props));
 
 		_this.state = {
 			ascendingSort: true,
@@ -3547,7 +4148,7 @@ var ResourcesContent = function (_React$Component) {
 		return _this;
 	}
 
-	_createClass(ResourcesContent, [{
+	_createClass(ResourcesBody, [{
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
 			this.setState({
@@ -3662,13 +4263,13 @@ var ResourcesContent = function (_React$Component) {
 		key: 'sort',
 		value: function sort(resource) {
 			if (this.state.ascendingSort) {
-				var newData = this.state.sortedData.slice().sort(ResourcesContent.ascendingSort.bind(null, resource.key));
+				var newData = this.state.sortedData.slice().sort(ResourcesBody.ascendingSort.bind(null, resource.key));
 
 				this.setState({
 					sortedData: newData
 				});
 			} else {
-				var _newData = this.state.sortedData.slice().sort(ResourcesContent.descendingSort.bind(null, resource.key));
+				var _newData = this.state.sortedData.slice().sort(ResourcesBody.descendingSort.bind(null, resource.key));
 
 				this.setState({
 					sortedData: _newData
@@ -3904,43 +4505,43 @@ var ResourcesContent = function (_React$Component) {
 		}
 	}]);
 
-	return ResourcesContent;
+	return ResourcesBody;
 }(_react2.default.Component);
 
-exports.default = ResourcesContent;
+exports.default = ResourcesBody;
 
 /***/ }),
-/* 66 */
+/* 64 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/create");
 
 /***/ }),
-/* 67 */
+/* 65 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/clear");
 
 /***/ }),
-/* 68 */
+/* 66 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/done");
 
 /***/ }),
-/* 69 */
+/* 67 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/save");
 
 /***/ }),
-/* 70 */
+/* 68 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Chip");
 
 /***/ }),
-/* 71 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3956,39 +4557,39 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _colors = __webpack_require__(32);
+var _colors = __webpack_require__(27);
 
 var _FlatButton = __webpack_require__(10);
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _add = __webpack_require__(72);
+var _add = __webpack_require__(70);
 
 var _add2 = _interopRequireDefault(_add);
 
-var _refresh = __webpack_require__(73);
+var _refresh = __webpack_require__(71);
 
 var _refresh2 = _interopRequireDefault(_refresh);
 
-var _close = __webpack_require__(74);
+var _close = __webpack_require__(72);
 
 var _close2 = _interopRequireDefault(_close);
 
-var _importExport = __webpack_require__(75);
+var _importExport = __webpack_require__(73);
 
 var _importExport2 = _interopRequireDefault(_importExport);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _SelectField = __webpack_require__(7);
+var _SelectField = __webpack_require__(11);
 
 var _SelectField2 = _interopRequireDefault(_SelectField);
 
-var _MenuItem = __webpack_require__(8);
+var _MenuItem = __webpack_require__(12);
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
-var _TextField = __webpack_require__(2);
+var _TextField = __webpack_require__(3);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -3996,11 +4597,11 @@ var _Toggle = __webpack_require__(14);
 
 var _Toggle2 = _interopRequireDefault(_Toggle);
 
-var _DatePicker = __webpack_require__(12);
+var _DatePicker = __webpack_require__(74);
 
 var _DatePicker2 = _interopRequireDefault(_DatePicker);
 
-var _data = __webpack_require__(3);
+var _data = __webpack_require__(2);
 
 var _data2 = _interopRequireDefault(_data);
 
@@ -4185,7 +4786,6 @@ var ResourcesHeader = function (_React$Component) {
 
                             case 14:
                                 if (!this.state.showInFilter) {
-                                    console.log(1);
                                     _search5 = _react2.default.createElement(_Toggle2.default, {
                                         label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0444\u0438\u043B\u044C\u0442\u0440\u0435',
                                         style: {
@@ -4634,37 +5234,43 @@ var ResourcesHeader = function (_React$Component) {
 exports.default = ResourcesHeader;
 
 /***/ }),
-/* 72 */
+/* 70 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/content/add");
 
 /***/ }),
-/* 73 */
+/* 71 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/navigation/refresh");
 
 /***/ }),
-/* 74 */
+/* 72 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/navigation/close");
 
 /***/ }),
-/* 75 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/communication/import-export");
 
 /***/ }),
-/* 76 */
+/* 74 */
+/***/ (function(module, exports) {
+
+module.exports = require("material-ui/DatePicker");
+
+/***/ }),
+/* 75 */
 /***/ (function(module, exports) {
 
 module.exports = require("map-obj");
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4680,7 +5286,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _materialUiPagination = __webpack_require__(78);
+var _materialUiPagination = __webpack_require__(77);
 
 var _materialUiPagination2 = _interopRequireDefault(_materialUiPagination);
 
@@ -4739,13 +5345,13 @@ var PaginationContainer = function (_React$Component) {
 exports.default = PaginationContainer;
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui-pagination");
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4761,9 +5367,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _GridList = __webpack_require__(80);
+var _GridList = __webpack_require__(79);
 
-var _delete = __webpack_require__(9);
+var _delete = __webpack_require__(6);
 
 var _delete2 = _interopRequireDefault(_delete);
 
@@ -4832,13 +5438,13 @@ var Photos = function (_React$Component) {
 exports.default = Photos;
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/GridList");
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4854,7 +5460,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _toolBar = __webpack_require__(4);
+var _toolBar = __webpack_require__(5);
 
 var _toolBar2 = _interopRequireDefault(_toolBar);
 
@@ -4908,9569 +5514,7 @@ var RemoveLayout = function (_React$Component) {
 exports.default = RemoveLayout;
 
 /***/ }),
-/* 82 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/Toolbar");
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Profile = function (_React$Component) {
-    _inherits(Profile, _React$Component);
-
-    function Profile(props) {
-        _classCallCheck(this, Profile);
-
-        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
-
-        _this.state = {
-            user: '',
-            password: ''
-        };
-        _this.getUser().catch(function (error) {
-            return console.error('\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u0438 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0438 \u0434\u0430\u043D\u043D\u044B\u0445 \u043F\u0440\u043E\u0444\u0438\u043B\u044F: ', error);
-        });
-        return _this;
-    }
-
-    _createClass(Profile, [{
-        key: 'getUser',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var result;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getProfile();
-
-                            case 2:
-                                result = _context.sent;
-
-                                this.setState({
-                                    user: result.profile
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getUser() {
-                return _ref.apply(this, arguments);
-            }
-
-            return getUser;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                {
-                    className: 'resource-page' },
-                _react2.default.createElement(
-                    'div',
-                    {
-                        className: 'profile__label'
-                    },
-                    '\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043F\u0440\u043E\u0444\u0438\u043B\u044F'
-                ),
-                _react2.default.createElement(_TextField2.default, {
-                    fullWidth: true,
-                    hintText: '\u041F\u043E\u0447\u0442\u0430',
-                    floatingLabelText: '\u041F\u043E\u0447\u0442\u0430',
-                    value: this.state.user,
-                    onChange: function onChange(event, value) {
-                        return _this2.setState({
-                            user: value
-                        });
-                    }
-                }),
-                _react2.default.createElement(_TextField2.default, {
-                    fullWidth: true,
-                    hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                    floatingLabelText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                    onChange: function onChange(event, value) {
-                        return _this2.setState({
-                            password: value
-                        });
-                    }
-                }),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'profile',
-                    data: this.state,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return Profile;
-}(_react2.default.Component);
-
-exports.default = Profile;
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _draftjsToHtml = __webpack_require__(18);
-
-var _draftjsToHtml2 = _interopRequireDefault(_draftjsToHtml);
-
-var _reactDraftWysiwyg = __webpack_require__(19);
-
-var _draftJs = __webpack_require__(20);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CategoriesCreate = function (_React$Component) {
-	_inherits(CategoriesCreate, _React$Component);
-
-	function CategoriesCreate(props) {
-		_classCallCheck(this, CategoriesCreate);
-
-		var _this = _possibleConstructorReturn(this, (CategoriesCreate.__proto__ || Object.getPrototypeOf(CategoriesCreate)).call(this, props));
-
-		_this.state = {
-			categories: [],
-			data: {
-				image: '',
-				description: '',
-				slug: (0, _uid2.default)(16)
-			},
-			descState: _draftJs.EditorState.createEmpty(),
-			image: undefined
-		};
-		_this.getData();
-		_this.uploadFile = _this.uploadFile.bind(_this);
-		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
-		_this.changeParentCategory = _this.changeParentCategory.bind(_this);
-		return _this;
-	}
-
-	_createClass(CategoriesCreate, [{
-		key: 'uploadFile',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
-				var result;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.uploadImage('/upload/categories', file.target.files[0]);
-
-							case 2:
-								result = _context.sent;
-
-								this.setState({
-									data: _extends({}, this.state.data, {
-										image: result
-									}),
-									image: result
-								});
-
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function uploadFile(_x) {
-				return _ref.apply(this, arguments);
-			}
-
-			return uploadFile;
-		}()
-	}, {
-		key: 'changeParentCategory',
-		value: function changeParentCategory(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					parentCategory: value
-				})
-			});
-		}
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'getData',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-				var response;
-				return regeneratorRuntime.wrap(function _callee2$(_context2) {
-					while (1) {
-						switch (_context2.prev = _context2.next) {
-							case 0:
-								_context2.next = 2;
-								return _data2.default.getData('/categories');
-
-							case 2:
-								response = _context2.sent;
-
-								this.setState({
-									categories: response.data
-								});
-
-							case 4:
-							case 'end':
-								return _context2.stop();
-						}
-					}
-				}, _callee2, this);
-			}));
-
-			function getData() {
-				return _ref2.apply(this, arguments);
-			}
-
-			return getData;
-		}()
-	}, {
-		key: 'onEditorDescChange',
-		value: function onEditorDescChange(descState) {
-			this.setState({
-				descState: descState
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'big-resource' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/categories'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '150px'
-									},
-									label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(value, 'isActive');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'title');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									'div',
-									{
-										style: {
-											color: 'rgba(0, 0, 0, 0.3)'
-										}
-									},
-									'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-								),
-								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-									editorState: this.state.descState,
-									wrapperClassName: 'demo-wrapper',
-									editorClassName: 'demo-editor',
-									onEditorStateChange: this.onEditorDescChange,
-									onChange: function onChange() {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
-											})
-										});
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement('input', {
-									type: 'file',
-									className: 'inputfile',
-									id: 'file',
-									onChange: this.uploadFile
-								}),
-								_react2.default.createElement(
-									'label',
-									{
-										htmlFor: 'file',
-										className: 'inputfile__label'
-									},
-									'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'inputfile__images'
-									},
-									_react2.default.createElement('img', {
-										className: 'inputfile__image',
-										src: this.state.data.image
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										value: this.state.data.parentCategory,
-										floatingLabelText: '\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F',
-										onChange: this.changeParentCategory
-									},
-									this.state.categories.map(function (category, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: category.slug,
-											primaryText: category.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: 'SEO' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.seo, {
-											title: value
-										}), 'seo');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-									floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.seo, {
-											description: value
-										}), 'seo');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-									floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.seo, {
-											keywords: value
-										}), 'seo');
-									}
-								})
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'categories',
-					data: this.state.data,
-					action: 'create',
-					photo: this.state.image
-				})
-			);
-		}
-	}]);
-
-	return CategoriesCreate;
-}(_react2.default.Component);
-
-exports.default = CategoriesCreate;
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _Table = __webpack_require__(13);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _reactDraftWysiwyg = __webpack_require__(19);
-
-var _draftJs = __webpack_require__(20);
-
-var _draftjsToHtml = __webpack_require__(18);
-
-var _draftjsToHtml2 = _interopRequireDefault(_draftjsToHtml);
-
-var _htmlToDraftjs = __webpack_require__(23);
-
-var _htmlToDraftjs2 = _interopRequireDefault(_htmlToDraftjs);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ProductsCreate = function (_React$Component) {
-	_inherits(ProductsCreate, _React$Component);
-
-	function ProductsCreate(props) {
-		_classCallCheck(this, ProductsCreate);
-
-		var _this = _possibleConstructorReturn(this, (ProductsCreate.__proto__ || Object.getPrototypeOf(ProductsCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				isActive: false,
-				relatedProducts: [],
-				fromSet: [],
-				images: [],
-				description: '',
-				shortDescription: '',
-				categories: [],
-				seo: {
-					title: '',
-					description: '',
-					keywords: ''
-				},
-				'attribute-sets': [],
-				attributes: [],
-				'tab-sets': [],
-				tabs: [],
-				title: '',
-				slug: (0, _uid2.default)(16)
-			},
-			descState: _draftJs.EditorState.createEmpty(),
-			shortDescState: _draftJs.EditorState.createEmpty(),
-			products: []
-		};
-		if (!!_this.props.match) {
-			_this.getProduct();
-		}
-		_this.getResource('/products');
-		_this.getResource('/categories');
-		_this.getResource('/attribute-sets');
-		_this.getResource('/tab-sets');
-		_this.changeRelatedProducts = _this.changeRelatedProducts.bind(_this);
-		_this.uploadFile = _this.uploadFile.bind(_this);
-		_this.changeCategories = _this.changeCategories.bind(_this);
-		_this.changeAttributeSets = _this.changeAttributeSets.bind(_this);
-		_this.changeTabSets = _this.changeTabSets.bind(_this);
-		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
-		_this.onEditorShortDescChange = _this.onEditorShortDescChange.bind(_this);
-		return _this;
-	}
-
-	_createClass(ProductsCreate, [{
-		key: 'getProduct',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var id, response, description, contentBlockDesc, contentStateDesc, editorStateDesc, shortDescription, contentBlockShortDesc, contentStateShortDesc, editorStateShortDesc;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								id = this.props.match.params.id;
-								_context.next = 3;
-								return _data2.default.getResource('/products/' + id);
-
-							case 3:
-								response = _context.sent;
-
-								delete response._id;
-								description = response.description;
-								contentBlockDesc = (0, _htmlToDraftjs2.default)(description);
-								contentStateDesc = _draftJs.ContentState.createFromBlockArray(contentBlockDesc.contentBlocks);
-								editorStateDesc = _draftJs.EditorState.createWithContent(contentStateDesc);
-								shortDescription = response.shortDescription;
-								contentBlockShortDesc = (0, _htmlToDraftjs2.default)(shortDescription);
-								contentStateShortDesc = _draftJs.ContentState.createFromBlockArray(contentBlockShortDesc.contentBlocks);
-								editorStateShortDesc = _draftJs.EditorState.createWithContent(contentStateShortDesc);
-
-								this.setState({
-									data: _extends({}, this.state.data, response, {
-										sku: response.sku + '-COPY'
-									}),
-									descState: editorStateDesc,
-									shortDescState: editorStateShortDesc
-								});
-
-							case 14:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getProduct() {
-				return _ref.apply(this, arguments);
-			}
-
-			return getProduct;
-		}()
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'changeRelatedProducts',
-		value: function changeRelatedProducts(event, index, value) {
-			var _this2 = this;
-
-			this.state.products.forEach(function (product) {
-				if (product.slug === value) {
-					_this2.changeState([].concat(_toConsumableArray(_this2.state.data.relatedProducts), [product]), 'relatedProducts');
-				}
-			});
-		}
-	}, {
-		key: 'deleteRelatedProduct',
-		value: function deleteRelatedProduct(id) {
-			var relatedProducts = [];
-			this.state.data.relatedProducts.map(function (relatedProduct) {
-				if (relatedProduct.slug !== id) {
-					relatedProducts.push(relatedProduct);
-				}
-			});
-			this.changeState(relatedProducts, 'relatedProducts');
-		}
-	}, {
-		key: 'uploadFile',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(file) {
-				var result;
-				return regeneratorRuntime.wrap(function _callee2$(_context2) {
-					while (1) {
-						switch (_context2.prev = _context2.next) {
-							case 0:
-								_context2.next = 2;
-								return _data2.default.uploadImage('/upload/products', file.target.files[0]);
-
-							case 2:
-								result = _context2.sent;
-
-								this.setState({
-									data: _extends({}, this.state.data, {
-										images: [].concat(_toConsumableArray(this.state.data.images), [result])
-									})
-								});
-
-							case 4:
-							case 'end':
-								return _context2.stop();
-						}
-					}
-				}, _callee2, this);
-			}));
-
-			function uploadFile(_x) {
-				return _ref2.apply(this, arguments);
-			}
-
-			return uploadFile;
-		}()
-	}, {
-		key: 'getResource',
-		value: function () {
-			var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(uri) {
-				var resource, response, newState;
-				return regeneratorRuntime.wrap(function _callee3$(_context3) {
-					while (1) {
-						switch (_context3.prev = _context3.next) {
-							case 0:
-								resource = uri.slice(1);
-								_context3.next = 3;
-								return _data2.default.getData(uri);
-
-							case 3:
-								response = _context3.sent;
-								newState = {};
-
-								newState[resource] = response.data;
-								this.setState(newState);
-
-							case 7:
-							case 'end':
-								return _context3.stop();
-						}
-					}
-				}, _callee3, this);
-			}));
-
-			function getResource(_x2) {
-				return _ref3.apply(this, arguments);
-			}
-
-			return getResource;
-		}()
-	}, {
-		key: 'changeCategories',
-		value: function changeCategories(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					categories: [].concat(_toConsumableArray(this.state.data.categories), _toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'changeAttributeSets',
-		value: function changeAttributeSets(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					'attribute-sets': [].concat(_toConsumableArray(this.state.data['attribute-sets']), _toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'changeTabSets',
-		value: function changeTabSets(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					'tab-sets': [].concat(_toConsumableArray(this.state.data['tab-sets']), _toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'onEditorDescChange',
-		value: function onEditorDescChange(descState) {
-			this.setState({
-				descState: descState
-			});
-		}
-	}, {
-		key: 'onEditorShortDescChange',
-		value: function onEditorShortDescChange(shortDescState) {
-			this.setState({
-				shortDescState: shortDescState
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this3 = this;
-
-			if (!this.state.categories || !this.state.products || !this.state['attribute-sets'] || !this.state['tab-sets']) {
-				return false;
-			}
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'big-resource' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/products'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(_Toggle2.default, {
-								style: {
-									width: '150px'
-								},
-								className: 'input',
-								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
-								toggled: this.state.data.isActive,
-								onToggle: function onToggle(event, value) {
-									return _this3.changeState(value, 'isActive');
-								}
-							}),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									value: this.state.data.title,
-									onChange: function onChange(event, value) {
-										return _this3.changeState(value, 'title');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									'div',
-									{
-										style: {
-											color: 'rgba(0, 0, 0, 0.3)'
-										}
-									},
-									'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-								),
-								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-									editorState: this.state.descState,
-									wrapperClassName: 'demo-wrapper',
-									editorClassName: 'demo-editor',
-									onEditorStateChange: this.onEditorDescChange,
-									onChange: function onChange() {
-										return _this3.setState({
-											data: _extends({}, _this3.state.data, {
-												description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.descState.getCurrentContent()))
-											})
-										});
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									'div',
-									{
-										style: {
-											color: 'rgba(0, 0, 0, 0.3)'
-										}
-									},
-									'\u041A\u0440\u0430\u0442\u043A\u043E\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-								),
-								_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-									editorState: this.state.shortDescState,
-									wrapperClassName: 'demo-wrapper',
-									editorClassName: 'demo-editor',
-									onEditorStateChange: this.onEditorShortDescChange,
-									onChange: function onChange() {
-										return _this3.setState({
-											data: _extends({}, _this3.state.data, {
-												shortDescription: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.shortDescState.getCurrentContent()))
-											})
-										});
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
-									floatingLabelText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									value: this.state.data.sku,
-									onChange: function onChange(event, value) {
-										return _this3.changeState(value, 'sku');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0426\u0435\u043D\u0430',
-									floatingLabelText: '\u0426\u0435\u043D\u0430',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									value: this.state.data.price,
-									onChange: function onChange(event, value) {
-										return _this3.changeState(value, 'price');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										multiple: true,
-										value: this.state.data.categories,
-										floatingLabelText: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438',
-										onChange: function onChange(event, index, value) {
-											_this3.setState({
-												data: _extends({}, _this3.state.data, {
-													categories: value
-												})
-											});
-										}
-									},
-									this.state.categories.map(function (category, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: category.slug,
-											primaryText: category.title,
-											key: index
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement('input', {
-									type: 'file',
-									className: 'inputfile',
-									id: 'file',
-									onChange: this.uploadFile
-								}),
-								_react2.default.createElement(
-									'label',
-									{
-										htmlFor: 'file',
-										className: 'inputfile__label'
-									},
-									'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'inputfile__images'
-									},
-									this.state.data.images.map(function (image, index) {
-										return _react2.default.createElement('img', {
-											className: 'inputfile__image',
-											src: image,
-											key: index
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										multiple: true,
-										value: this.state.data['attribute-sets'],
-										floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-										onChange: function onChange(event, index, value) {
-											return _this3.setState({
-												data: _extends({}, _this3.state.data, {
-													'attribute-sets': value
-												})
-											});
-										}
-									},
-									this.state['attribute-sets'].map(function (attribute, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: attribute.slug,
-											primaryText: attribute.title,
-											key: index
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										multiple: true,
-										value: this.state.data['tab-sets'],
-										floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0442\u0430\u0431\u043E\u0432',
-										onChange: function onChange(event, index, value) {
-											return _this3.setState({
-												data: _extends({}, _this3.state.data, {
-													'tab-sets': value
-												})
-											});
-										}
-									},
-									this.state['tab-sets'].map(function (set, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: set.slug,
-											primaryText: set.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: 'SEO' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									value: this.state.data.seo.title,
-									onChange: function onChange(event, value) {
-										return _this3.changeState(_extends({}, _this3.state.data.seo, {
-											title: value
-										}), 'seo');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-									floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-									value: this.state.data.seo.description,
-									onChange: function onChange(event, value) {
-										return _this3.changeState(_extends({}, _this3.state.data.seo, {
-											description: value
-										}), 'seo');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-									floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-									value: this.state.data.seo.keywords,
-									onChange: function onChange(event, value) {
-										return _this3.changeState(_extends({}, _this3.state.data.seo, {
-											keywords: value
-										}), 'seo');
-									}
-								})
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041F\u043E\u0445\u043E\u0436\u0438\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_Table.Table,
-								{
-									selectable: false
-								},
-								_react2.default.createElement(
-									_Table.TableHeader,
-									{
-										displaySelectAll: false,
-										adjustForCheckbox: false
-									},
-									_react2.default.createElement(
-										_Table.TableRow,
-										null,
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0426\u0435\u043D\u0430'
-										),
-										_react2.default.createElement(_Table.TableHeaderColumn, null)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableBody,
-									{
-										displayRowCheckbox: false
-									},
-									this.state.data.relatedProducts.map(function (relatedProduct, index) {
-										return _this3.state.products.map(function (product) {
-											if (product.slug === relatedProduct) {
-												return _react2.default.createElement(
-													_Table.TableRow,
-													{
-														key: index
-													},
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.sku
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.title
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.price
-													),
-													_react2.default.createElement(
-														_Table.TableHeaderColumn,
-														null,
-														_react2.default.createElement(_delete2.default, {
-															color: 'rgb(255, 64, 129)',
-															onClick: function onClick() {
-																var relatedProducts = _this3.state.data.relatedProducts;
-																relatedProducts.splice(index, 1);
-																_this3.setState({
-																	data: _extends({}, _this3.state.data, {
-																		relatedProducts: relatedProducts
-																	})
-																});
-															},
-															style: { cursor: 'pointer' }
-														})
-													)
-												);
-											}
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										value: this.state.data.relatedProducts,
-										floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
-										onChange: function onChange(event, index, value) {
-											return _this3.setState({
-												data: _extends({}, _this3.state.data, {
-													relatedProducts: [].concat(_toConsumableArray(_this3.state.data.relatedProducts), [value])
-												})
-											});
-										}
-									},
-									this.state.products.map(function (product, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: product.slug,
-											primaryText: product.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u0422\u043E\u0432\u0430\u0440\u044B \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_Table.Table,
-								{
-									selectable: false
-								},
-								_react2.default.createElement(
-									_Table.TableHeader,
-									{
-										displaySelectAll: false,
-										adjustForCheckbox: false
-									},
-									_react2.default.createElement(
-										_Table.TableRow,
-										null,
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0426\u0435\u043D\u0430'
-										),
-										_react2.default.createElement(_Table.TableHeaderColumn, null)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableBody,
-									{
-										displayRowCheckbox: false
-									},
-									this.state.data.fromSet.map(function (fromSet, index) {
-										return _this3.state.products.map(function (product) {
-											if (product.slug === fromSet) {
-												return _react2.default.createElement(
-													_Table.TableRow,
-													{
-														key: index
-													},
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.sku
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.title
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.price
-													),
-													_react2.default.createElement(
-														_Table.TableHeaderColumn,
-														null,
-														_react2.default.createElement(_delete2.default, {
-															color: 'rgb(255, 64, 129)',
-															onClick: function onClick() {
-																var fromSet = _this3.state.data.fromSet;
-																fromSet.splice(index, 1);
-																_this3.setState({
-																	data: _extends({}, _this3.state.data, {
-																		fromSet: fromSet
-																	})
-																});
-															},
-															style: { cursor: 'pointer' }
-														})
-													)
-												);
-											}
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										value: this.state.data.fromSet,
-										floatingLabelText: '\u0422\u043E\u0432\u0430\u0440 \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430',
-										onChange: function onChange(event, index, value) {
-											return _this3.setState({
-												data: _extends({}, _this3.state.data, {
-													fromSet: [].concat(_toConsumableArray(_this3.state.data.fromSet), [value])
-												})
-											});
-										}
-									},
-									this.state.products.map(function (product, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: product.slug,
-											primaryText: product.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'products',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return ProductsCreate;
-}(_react2.default.Component);
-
-exports.default = ProductsCreate;
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _Table = __webpack_require__(13);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var OrdersCreate = function (_React$Component) {
-	_inherits(OrdersCreate, _React$Component);
-
-	function OrdersCreate(props) {
-		_classCallCheck(this, OrdersCreate);
-
-		var _this = _possibleConstructorReturn(this, (OrdersCreate.__proto__ || Object.getPrototypeOf(OrdersCreate)).call(this, props));
-
-		_this.state = {
-			statuses: [],
-			clients: [],
-			data: {
-				products: [],
-				slug: (0, _uid2.default)(16)
-			},
-			products: []
-		};
-		_this.getData('/statuses');
-		_this.getData('/clients');
-		_this.getData('/products');
-		_this.changeProducts = _this.changeProducts.bind(_this);
-		return _this;
-	}
-
-	_createClass(OrdersCreate, [{
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'changeProducts',
-		value: function changeProducts(event, index, value) {
-			var _this2 = this;
-
-			this.state.products.forEach(function (product) {
-				if (product._id === value) {
-					_this2.changeState([].concat(_toConsumableArray(_this2.state.data.products), [product]), 'products');
-				}
-			});
-		}
-	}, {
-		key: 'deleteProduct',
-		value: function deleteProduct(id) {
-			var products = [];
-			this.state.data.products.map(function (product) {
-				if (product._id !== id) {
-					products.push(product);
-				}
-			});
-			this.changeState(products, 'products');
-		}
-	}, {
-		key: 'changeStatus',
-		value: function changeStatus(value) {
-			var _this3 = this;
-
-			this.setState({
-				currentStatus: value
-			});
-			this.state.statuses.forEach(function (status) {
-				if (status._id === value) {
-					_this3.setState({
-						data: _extends({}, _this3.state.data, {
-							status: {
-								id: value,
-								name: status.title
-							}
-						})
-					});
-				}
-			});
-		}
-	}, {
-		key: 'getData',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-				var response, newState;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.getData(uri);
-
-							case 2:
-								response = _context.sent;
-								newState = {};
-
-								newState[uri.slice(1)] = response.data;
-								this.setState(newState);
-
-							case 6:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getData(_x) {
-				return _ref.apply(this, arguments);
-			}
-
-			return getData;
-		}()
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this4 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/orders'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										floatingLabelText: '\u0421\u0442\u0430\u0442\u0443\u0441',
-										value: this.state.data.status,
-										onChange: function onChange(event, index, value) {
-											return _this4.setState({
-												data: _extends({}, _this4.state.data, {
-													status: value
-												})
-											});
-										}
-									},
-									this.state.statuses.map(function (status, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: status.slug,
-											primaryText: status.title,
-											key: index
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										floatingLabelText: '\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A',
-										value: this.state.data.client,
-										onChange: function onChange(event, index, value) {
-											return _this4.setState({
-												data: _extends({}, _this4.state.data, {
-													client: value
-												})
-											});
-										}
-									},
-									this.state.clients.map(function (client, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: client.slug,
-											primaryText: client.name,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_Table.Table,
-								{
-									selectable: false
-								},
-								_react2.default.createElement(
-									_Table.TableHeader,
-									{
-										displaySelectAll: false,
-										adjustForCheckbox: false
-									},
-									_react2.default.createElement(
-										_Table.TableRow,
-										null,
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0426\u0435\u043D\u0430'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0418\u0442\u043E\u0433\u043E'
-										),
-										_react2.default.createElement(_Table.TableHeaderColumn, null)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableBody,
-									{
-										displayRowCheckbox: false
-									},
-									this.state.data.products.map(function (product, index) {
-										return _react2.default.createElement(
-											_Table.TableRow,
-											{
-												key: index
-											},
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												product.sku
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												product.title
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												product.price
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												product.count
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												'\u0418\u0422\u041E\u0413\u041E'
-											),
-											_react2.default.createElement(
-												_Table.TableHeaderColumn,
-												null,
-												_react2.default.createElement(_delete2.default, {
-													color: 'rgb(255, 64, 129)',
-													onClick: function onClick() {
-														return _this4.deleteProduct(product._id);
-													},
-													style: { cursor: 'pointer' }
-												})
-											)
-										);
-									})
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
-										onChange: this.changeProducts
-									},
-									this.state.products.map(function (product, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: product._id,
-											primaryText: product.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u0410\u0434\u0440\u0435\u0441' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-									floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this4.changeState(_extends({}, _this4.state.data.address, {
-											country: value
-										}), 'address');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-									floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this4.changeState(_extends({}, _this4.state.data.address, {
-											state: value
-										}), 'address');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0413\u043E\u0440\u043E\u0434',
-									floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this4.changeState(_extends({}, _this4.state.data.address, {
-											city: value
-										}), 'address');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0423\u043B\u0438\u0446\u0430',
-									floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this4.changeState(_extends({}, _this4.state.data.address, {
-											street: value
-										}), 'address');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0414\u043E\u043C',
-									floatingLabelText: '\u0414\u043E\u043C',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this4.changeState(_extends({}, _this4.state.data.address, {
-											building: value
-										}), 'address');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-									floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-									onChange: function onChange(event, value) {
-										return _this4.changeState(_extends({}, _this4.state.data.address, {
-											apartment: value
-										}), 'address');
-									}
-								})
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'orders',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return OrdersCreate;
-}(_react2.default.Component);
-
-exports.default = OrdersCreate;
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _hash = __webpack_require__(34);
-
-var _hash2 = _interopRequireDefault(_hash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var UsersCreate = function (_React$Component) {
-	_inherits(UsersCreate, _React$Component);
-
-	function UsersCreate(props) {
-		_classCallCheck(this, UsersCreate);
-
-		var _this = _possibleConstructorReturn(this, (UsersCreate.__proto__ || Object.getPrototypeOf(UsersCreate)).call(this, props));
-
-		_this.state = {
-			roles: [],
-			data: {
-				slug: (0, _uid2.default)(16)
-			}
-		};
-		_this.getRoles();
-		_this.changeRole = _this.changeRole.bind(_this);
-		_this.changeState = _this.changeState.bind(_this);
-		return _this;
-	}
-
-	_createClass(UsersCreate, [{
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'changeRole',
-		value: function changeRole(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					role: value
-				})
-			});
-		}
-	}, {
-		key: 'getRoles',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var response;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.getData('/roles');
-
-							case 2:
-								response = _context.sent;
-
-								this.setState({
-									roles: response.data
-								});
-
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getRoles() {
-				return _ref.apply(this, arguments);
-			}
-
-			return getRoles;
-		}()
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/users'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0418\u043C\u044F',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'name');
-									},
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041F\u043E\u0447\u0442\u0430',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'email');
-									},
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(_hash2.default.getHash(value), 'password');
-									},
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										value: this.state.data.role,
-										floatingLabelText: '\u0420\u043E\u043B\u044C',
-										onChange: this.changeRole
-									},
-									this.state.roles.map(function (role, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: role.slug,
-											primaryText: role.name,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'users',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return UsersCreate;
-}(_react2.default.Component);
-
-exports.default = UsersCreate;
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _RaisedButton = __webpack_require__(16);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _Table = __webpack_require__(13);
-
-var _Dialog = __webpack_require__(21);
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ClientsCreate = function (_React$Component) {
-	_inherits(ClientsCreate, _React$Component);
-
-	function ClientsCreate(props) {
-		_classCallCheck(this, ClientsCreate);
-
-		var _this = _possibleConstructorReturn(this, (ClientsCreate.__proto__ || Object.getPrototypeOf(ClientsCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				addresses: [],
-				slug: (0, _uid2.default)(16)
-			},
-			open: false
-		};
-		_this.handleOpen = _this.handleOpen.bind(_this);
-		_this.handleClose = _this.handleClose.bind(_this);
-		_this.addAddress = _this.addAddress.bind(_this);
-		_this.deleteAdresses = _this.deleteAdresses.bind(_this);
-		return _this;
-	}
-
-	_createClass(ClientsCreate, [{
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'handleOpen',
-		value: function handleOpen() {
-			this.setState({
-				open: true
-			});
-		}
-	}, {
-		key: 'handleClose',
-		value: function handleClose() {
-			this.setState({
-				open: false
-			});
-		}
-	}, {
-		key: 'deleteAdresses',
-		value: function deleteAdresses(id) {
-			var addresses = [];
-			this.state.data.addresses.forEach(function (address, index) {
-				if (index !== id) {
-					addresses.push(address);
-				}
-			});
-			this.setState({
-				data: _extends({}, this.state.data, {
-					addresses: addresses
-				})
-			});
-		}
-	}, {
-		key: 'addAddress',
-		value: function addAddress() {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					addresses: [].concat(_toConsumableArray(this.state.data.addresses), [{
-						country: this.state.country,
-						state: this.state.state,
-						city: this.state.city,
-						street: this.state.street,
-						building: this.state.building,
-						apartment: this.state.apartment
-					}])
-				})
-			});
-			this.handleClose();
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var actions = [_react2.default.createElement(_FlatButton2.default, {
-				label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
-				primary: true,
-				onClick: this.handleClose
-			}), _react2.default.createElement(_FlatButton2.default, {
-				label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
-				primary: true,
-				onClick: this.addAddress
-			})];
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/clients'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0418\u043C\u044F',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'name');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041F\u043E\u0447\u0442\u0430',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'email');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0422\u0435\u043B\u0435\u0444\u043E\u043D',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'phone');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'password');
-									}
-								})
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u0410\u0434\u0440\u0435\u0441\u0430' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_Table.Table,
-								{
-									selectable: false
-								},
-								_react2.default.createElement(
-									_Table.TableHeader,
-									{
-										displaySelectAll: false,
-										adjustForCheckbox: false
-									},
-									_react2.default.createElement(
-										_Table.TableRow,
-										null,
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0421\u0442\u0440\u0430\u043D\u0430'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041E\u0431\u043B\u0430\u0441\u0442\u044C'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0413\u043E\u0440\u043E\u0434'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0423\u043B\u0438\u0446\u0430'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0414\u043E\u043C'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430'
-										),
-										_react2.default.createElement(_Table.TableHeaderColumn, null)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableBody,
-									{
-										displayRowCheckbox: false
-									},
-									this.state.data.addresses.map(function (address, index) {
-										return _react2.default.createElement(
-											_Table.TableRow,
-											{
-												key: index
-											},
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												address.country
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												address.state
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												address.city
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												address.street
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												address.building
-											),
-											_react2.default.createElement(
-												_Table.TableRowColumn,
-												null,
-												address.apartment
-											),
-											_react2.default.createElement(
-												_Table.TableHeaderColumn,
-												null,
-												_react2.default.createElement(_delete2.default, {
-													color: 'rgb(255, 64, 129)',
-													onClick: function onClick() {
-														return _this2.deleteAdresses(index);
-													},
-													style: { cursor: 'pointer' }
-												})
-											)
-										);
-									})
-								)
-							),
-							_react2.default.createElement(_RaisedButton2.default, {
-								label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
-								style: { margin: '38px' },
-								onClick: this.handleOpen
-							}),
-							_react2.default.createElement(
-								_Dialog2.default,
-								{
-									title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0430\u0434\u0440\u0435\u0441\u0430',
-									actions: actions,
-									modal: true,
-									open: this.state.open,
-									autoScrollBodyContent: true
-								},
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'input'
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-										onChange: function onChange(event, value) {
-											return _this2.setState({
-												country: value
-											});
-										} })
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'input'
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-										onChange: function onChange(event, value) {
-											return _this2.setState({
-												state: value
-											});
-										} })
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'input'
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
-										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-										onChange: function onChange(event, value) {
-											return _this2.setState({
-												city: value
-											});
-										} })
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'input'
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
-										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-										onChange: function onChange(event, value) {
-											return _this2.setState({
-												street: value
-											});
-										} })
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'input'
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										floatingLabelText: '\u0414\u043E\u043C',
-										errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-										onChange: function onChange(event, value) {
-											return _this2.setState({
-												building: value
-											});
-										} })
-								),
-								_react2.default.createElement(
-									'div',
-									{
-										className: 'input'
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-										onChange: function onChange(event, value) {
-											return _this2.setState({
-												apartment: value
-											});
-										} })
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'clients',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return ClientsCreate;
-}(_react2.default.Component);
-
-exports.default = ClientsCreate;
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _Table = __webpack_require__(13);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _Dialog = __webpack_require__(21);
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _RaisedButton = __webpack_require__(16);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AttributesCreate = function (_React$Component) {
-	_inherits(AttributesCreate, _React$Component);
-
-	function AttributesCreate(props) {
-		_classCallCheck(this, AttributesCreate);
-
-		var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				showInFilter: false,
-				showInProductPage: false,
-				showInList: false,
-				isRequired: false,
-				name: null,
-				title: null,
-				units: null,
-				attrType: null,
-				variants: [],
-				slug: (0, _uid2.default)(16)
-			},
-			open: false,
-			types: [{
-				id: 'multipleSelect',
-				title: 'Множественный список'
-			}, {
-				id: 'textInput',
-				title: 'Текстовое поле'
-			}, {
-				id: 'select',
-				title: 'Список'
-			}, {
-				id: 'numberInput',
-				title: 'Числовое поле'
-			}, {
-				id: 'textBlock',
-				title: 'Текстовый блок'
-			}, {
-				id: 'boolean',
-				title: 'Да/Нет'
-			}, {
-				id: 'interval',
-				title: 'Интервал'
-			}],
-			variant: {
-				id: '',
-				value: ''
-			}
-		};
-		_this.changeType = _this.changeType.bind(_this);
-		_this.handleClose = _this.handleClose.bind(_this);
-		_this.handleOpen = _this.handleOpen.bind(_this);
-		_this.addVariant = _this.addVariant.bind(_this);
-		return _this;
-	}
-
-	_createClass(AttributesCreate, [{
-		key: 'handleOpen',
-		value: function handleOpen() {
-			this.setState({
-				open: true
-			});
-		}
-	}, {
-		key: 'handleClose',
-		value: function handleClose() {
-			this.setState({
-				open: false
-			});
-		}
-	}, {
-		key: 'addVariant',
-		value: function addVariant() {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					variants: [].concat(_toConsumableArray(this.state.data.variants), [this.state.variant])
-				})
-			});
-			this.handleClose();
-		}
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'changeType',
-		value: function changeType(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					attrType: value
-				})
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var actions = [_react2.default.createElement(_FlatButton2.default, {
-				label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
-				primary: true,
-				onClick: this.handleClose
-			}), _react2.default.createElement(_FlatButton2.default, {
-				label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
-				primary: true,
-				onClick: this.addVariant
-			})];
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/attributes'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '250px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0444\u0438\u043B\u044C\u0442\u0440\u0435',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(value, 'showInFilter');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '250px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0442\u043E\u0432\u0430\u0440\u0430',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(value, 'showInProductPage');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '250px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0441\u043F\u0438\u0441\u043A\u0435',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(value, 'showInList');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '250px',
-										marginLeft: '20px'
-									},
-									label: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(value, 'isRequired');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'name');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'title');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0415\u0434\u0438\u043D\u0438\u0446\u0430 \u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'units');
-									}
-								})
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u0422\u0438\u043F' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										value: this.state.data.attrType,
-										floatingLabelText: '\u0422\u0438\u043F',
-										onChange: this.changeType
-									},
-									this.state.types.map(function (type, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: type.id,
-											primaryText: type.title,
-											key: index
-										});
-									})
-								)
-							),
-							this.state.data.attrType === 'multipleSelect' || this.state.data.attrType === 'select' ? _react2.default.createElement(
-								'div',
-								null,
-								_react2.default.createElement(
-									_Table.Table,
-									{
-										selectable: false
-									},
-									_react2.default.createElement(
-										_Table.TableHeader,
-										{
-											displaySelectAll: false,
-											adjustForCheckbox: false
-										},
-										_react2.default.createElement(
-											_Table.TableRow,
-											null,
-											_react2.default.createElement(
-												_Table.TableHeaderColumn,
-												null,
-												'\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440'
-											),
-											_react2.default.createElement(
-												_Table.TableHeaderColumn,
-												null,
-												'\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435'
-											),
-											_react2.default.createElement(_Table.TableHeaderColumn, null)
-										)
-									),
-									_react2.default.createElement(
-										_Table.TableBody,
-										{
-											displayRowCheckbox: false
-										},
-										!!this.state.data.variants ? this.state.data.variants.map(function (variant, index) {
-											return _react2.default.createElement(
-												_Table.TableRow,
-												{
-													key: index
-												},
-												_react2.default.createElement(
-													_Table.TableRowColumn,
-													null,
-													variant.id
-												),
-												_react2.default.createElement(
-													_Table.TableRowColumn,
-													null,
-													variant.value
-												),
-												_react2.default.createElement(
-													_Table.TableRowColumn,
-													null,
-													_react2.default.createElement(_delete2.default, {
-														color: 'rgb(255, 64, 129)',
-														onClick: function onClick() {
-															return _this2.deleteVariant(variant.id);
-														},
-														style: { cursor: 'pointer' }
-													})
-												)
-											);
-										}) : null
-									)
-								),
-								_react2.default.createElement(_RaisedButton2.default, {
-									label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
-									style: { margin: '38px' },
-									onClick: this.handleOpen
-								}),
-								_react2.default.createElement(
-									_Dialog2.default,
-									{
-										title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430',
-										actions: actions,
-										modal: true,
-										open: this.state.open,
-										autoScrollBodyContent: true
-									},
-									_react2.default.createElement(
-										'div',
-										{
-											className: 'input'
-										},
-										_react2.default.createElement(_TextField2.default, {
-											fullWidth: true,
-											floatingLabelText: '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440',
-											value: this.state.variant.id,
-											errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-											onChange: function onChange(event, value) {
-												return _this2.setState({
-													variant: _extends({}, _this2.state.variant, {
-														id: value
-													})
-												});
-											} })
-									),
-									_react2.default.createElement(
-										'div',
-										{
-											className: 'input'
-										},
-										_react2.default.createElement(_TextField2.default, {
-											fullWidth: true,
-											floatingLabelText: '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435',
-											value: this.state.variant.value,
-											errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-											onChange: function onChange(event, value) {
-												return _this2.setState({
-													variant: _extends({}, _this2.state.variant, {
-														value: value
-													})
-												});
-											} })
-									)
-								)
-							) : null
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'attributes',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return AttributesCreate;
-}(_react2.default.Component);
-
-exports.default = AttributesCreate;
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AttributesCreate = function (_React$Component) {
-	_inherits(AttributesCreate, _React$Component);
-
-	function AttributesCreate(props) {
-		_classCallCheck(this, AttributesCreate);
-
-		var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				title: '',
-				attributes: [],
-				slug: (0, _uid2.default)(16)
-			},
-			attributes: []
-		};
-		_this.getAttributes();
-		_this.changeAttribute = _this.changeAttribute.bind(_this);
-		return _this;
-	}
-
-	_createClass(AttributesCreate, [{
-		key: 'getAttributes',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var response;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.getData('/attributes');
-
-							case 2:
-								response = _context.sent;
-
-								this.setState({
-									attributes: response.data
-								});
-
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getAttributes() {
-				return _ref.apply(this, arguments);
-			}
-
-			return getAttributes;
-		}()
-	}, {
-		key: 'changeAttribute',
-		value: function changeAttribute(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					attributes: [].concat(_toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/attribute-sets'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'title');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										multiple: true,
-										value: this.state.data.attributes,
-										floatingLabelText: '\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u044B',
-										onChange: this.changeAttribute
-									},
-									this.state.attributes.map(function (attribute, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: attribute.slug,
-											primaryText: attribute.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'attribute-sets',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return AttributesCreate;
-}(_react2.default.Component);
-
-exports.default = AttributesCreate;
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TabsCreate = function (_React$Component) {
-	_inherits(TabsCreate, _React$Component);
-
-	function TabsCreate(props) {
-		_classCallCheck(this, TabsCreate);
-
-		var _this = _possibleConstructorReturn(this, (TabsCreate.__proto__ || Object.getPrototypeOf(TabsCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				name: '',
-				title: '',
-				slug: (0, _uid2.default)(16)
-			}
-		};
-		return _this;
-	}
-
-	_createClass(TabsCreate, [{
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/tabs'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-									onChange: function onChange(event, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												name: value
-											})
-										});
-									},
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									onChange: function onChange(event, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												title: value
-											})
-										});
-									},
-									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'tabs',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return TabsCreate;
-}(_react2.default.Component);
-
-exports.default = TabsCreate;
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TabSetsCreate = function (_React$Component) {
-	_inherits(TabSetsCreate, _React$Component);
-
-	function TabSetsCreate(props) {
-		_classCallCheck(this, TabSetsCreate);
-
-		var _this = _possibleConstructorReturn(this, (TabSetsCreate.__proto__ || Object.getPrototypeOf(TabSetsCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				title: '',
-				tabs: [],
-				slug: (0, _uid2.default)(16)
-			},
-			tabs: []
-		};
-		_this.getTabs();
-		_this.changeTabs = _this.changeTabs.bind(_this);
-		return _this;
-	}
-
-	_createClass(TabSetsCreate, [{
-		key: 'changeTabs',
-		value: function changeTabs(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					tabs: [].concat(_toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'getTabs',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var response;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.getData('/tabs');
-
-							case 2:
-								response = _context.sent;
-
-								this.setState({
-									tabs: response.data
-								});
-
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getTabs() {
-				return _ref.apply(this, arguments);
-			}
-
-			return getTabs;
-		}()
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			console.log(this.state);
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/tab-sets'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-									onChange: function onChange(event, value) {
-										_this2.setState({
-											data: _extends({}, _this2.state.data, {
-												title: value
-											})
-										});
-									},
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										multiple: true,
-										value: this.state.data.tabs,
-										floatingLabelText: '\u0422\u0430\u0431\u044B',
-										onChange: this.changeTabs
-									},
-									this.state.tabs.map(function (tab, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: tab.slug,
-											primaryText: tab.title,
-											key: index
-										});
-									})
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'tab-sets',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return TabSetsCreate;
-}(_react2.default.Component);
-
-exports.default = TabSetsCreate;
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var RolesCreate = function (_React$Component) {
-	_inherits(RolesCreate, _React$Component);
-
-	function RolesCreate(props) {
-		_classCallCheck(this, RolesCreate);
-
-		var _this = _possibleConstructorReturn(this, (RolesCreate.__proto__ || Object.getPrototypeOf(RolesCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				resources: {
-					users: { showInMenu: false, permissions: [] },
-					statuses: { showInMenu: false, permissions: [] },
-					roles: { showInMenu: false, permissions: [] },
-					products: { showInMenu: false, permissions: [] },
-					photos: { showInMenu: false, permissions: [] },
-					orders: { showInMenu: false, permissions: [] },
-					clients: { showInMenu: false, permissions: [] },
-					categories: { showInMenu: false, permissions: [] },
-					attributes: { showInMenu: false, permissions: [] },
-					'attribute-sets': { showInMenu: false, permissions: [] }
-				},
-				slug: (0, _uid2.default)(16)
-			},
-			permissions: [{
-				type: 'create',
-				label: 'Создание'
-			}, {
-				type: 'put',
-				label: 'Редактирование'
-			}, {
-				type: 'get',
-				label: 'Чтение'
-			}, {
-				type: 'delete',
-				label: 'Удаление'
-			}]
-		};
-		return _this;
-	}
-
-	_createClass(RolesCreate, [{
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'menuItems',
-		value: function menuItems(values) {
-			return this.state.permissions.map(function (_ref, index) {
-				var type = _ref.type,
-				    label = _ref.label;
-				return _react2.default.createElement(_MenuItem2.default, {
-					key: index,
-					insetChildren: true,
-					checked: values && values.indexOf(type) > -1,
-					value: type,
-					primaryText: label
-				});
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F'
-						},
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'big-resource'
-							},
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/roles'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: '\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-									onChange: function onChange(event, value) {
-										return _this2.changeState(value, 'name');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.categories.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												categories: _extends({}, _this2.state.data.resources.categories, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.categories.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											categories: _extends({}, _this2.state.data.resources.categories, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.products.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												products: _extends({}, _this2.state.data.resources.products, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.products.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											products: _extends({}, _this2.state.data.resources.products, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.users.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												users: _extends({}, _this2.state.data.resources.users, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.users.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											users: _extends({}, _this2.state.data.resources.users, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.roles.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0440\u043E\u043B\u0435\u0439',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												roles: _extends({}, _this2.state.data.resources.roles, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.roles.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											roles: _extends({}, _this2.state.data.resources.roles, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.clients.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u043E\u0432',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												clients: _extends({}, _this2.state.data.resources.clients, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.clients.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											clients: _extends({}, _this2.state.data.resources.clients, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.orders.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0437\u0430\u043A\u0430\u0437\u043E\u0432',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												orders: _extends({}, _this2.state.data.resources.orders, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.orders.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											orders: _extends({}, _this2.state.data.resources.orders, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.attributes.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												attributes: _extends({}, _this2.state.data.resources.attributes, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.attributes.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											attributes: _extends({}, _this2.state.data.resources.attributes, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources['attribute-sets'].permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043D\u0430\u0431\u043E\u0440\u043E\u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources['attribute-sets'].permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.statuses.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0441\u0442\u0430\u0442\u0443\u0441\u043E\u0432',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												statuses: _extends({}, _this2.state.data.resources.statuses, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.statuses.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											statuses: _extends({}, _this2.state.data.resources.statuses, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(
-									_SelectField2.default,
-									{
-										multiple: true,
-										value: this.state.data.resources.photos.permissions,
-										hintText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0444\u043E\u0442\u043E',
-										errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-										fullWidth: true,
-										onChange: function onChange(event, index, values) {
-											return _this2.changeState(_extends({}, _this2.state.data.resources, {
-												photos: _extends({}, _this2.state.data.resources.photos, {
-													permissions: values
-												})
-											}), 'resources');
-										}
-									},
-									this.menuItems(this.state.data.resources.photos.permissions)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_Toggle2.default, {
-									style: {
-										width: '230px',
-										marginLeft: '20px'
-									},
-									label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-									onToggle: function onToggle(event, value) {
-										return _this2.changeState(_extends({}, _this2.state.data.resources, {
-											photos: _extends({}, _this2.state.data.resources.photos, {
-												showInMenu: value
-											})
-										}), 'resources');
-									}
-								})
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'roles',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return RolesCreate;
-}(_react2.default.Component);
-
-exports.default = RolesCreate;
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TabSetsCreate = function (_React$Component) {
-	_inherits(TabSetsCreate, _React$Component);
-
-	function TabSetsCreate(props) {
-		_classCallCheck(this, TabSetsCreate);
-
-		var _this = _possibleConstructorReturn(this, (TabSetsCreate.__proto__ || Object.getPrototypeOf(TabSetsCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				title: '',
-				slug: (0, _uid2.default)(16)
-			}
-		};
-		return _this;
-	}
-
-	_createClass(TabSetsCreate, [{
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/statuses'
-								},
-								_react2.default.createElement(_FlatButton2.default, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'input'
-								},
-								_react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									onChange: function onChange(event, value) {
-										_this2.setState({
-											data: _extends({}, _this2.state.data, {
-												title: value
-											})
-										});
-									},
-									hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A(\u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435)',
-									errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-								})
-							)
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'statuses',
-					data: this.state.data,
-					action: 'create'
-				})
-			);
-		}
-	}]);
-
-	return TabSetsCreate;
-}(_react2.default.Component);
-
-exports.default = TabSetsCreate;
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _draftjsToHtml = __webpack_require__(18);
-
-var _draftjsToHtml2 = _interopRequireDefault(_draftjsToHtml);
-
-var _reactDraftWysiwyg = __webpack_require__(19);
-
-var _draftJs = __webpack_require__(20);
-
-var _htmlToDraftjs = __webpack_require__(23);
-
-var _htmlToDraftjs2 = _interopRequireDefault(_htmlToDraftjs);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CategoriesEdit = function (_React$Component) {
-	_inherits(CategoriesEdit, _React$Component);
-
-	function CategoriesEdit(props) {
-		_classCallCheck(this, CategoriesEdit);
-
-		var _this = _possibleConstructorReturn(this, (CategoriesEdit.__proto__ || Object.getPrototypeOf(CategoriesEdit)).call(this, props));
-
-		_this.state = {
-			categories: [],
-			data: {
-				isActive: false,
-				title: '',
-				description: '',
-				image: '',
-				parentCategory: '',
-				slug: '',
-				seo: {
-					title: '',
-					description: '',
-					keywords: ''
-				},
-				creationDate: new Date(),
-				modificationDate: new Date()
-			},
-			descState: _draftJs.EditorState.createEmpty(),
-			image: ''
-		};
-		_this.getCategory(_this.props.location);
-		_this.getCategories();
-		_this.uploadFile = _this.uploadFile.bind(_this);
-		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
-		_this.changeParentCategory = _this.changeParentCategory.bind(_this);
-		return _this;
-	}
-
-	_createClass(CategoriesEdit, [{
-		key: 'uploadFile',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
-				var result;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.uploadImage('/upload/categories', file.target.files[0]);
-
-							case 2:
-								result = _context.sent;
-
-								this.setState({
-									data: _extends({}, this.state.data, {
-										image: result
-									}),
-									image: result
-								});
-
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function uploadFile(_x) {
-				return _ref.apply(this, arguments);
-			}
-
-			return uploadFile;
-		}()
-	}, {
-		key: 'changeParentCategory',
-		value: function changeParentCategory(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					parentCategory: value
-				})
-			});
-		}
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'getCategory',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(uri) {
-				var response, description, contentBlock, contentState, editorState;
-				return regeneratorRuntime.wrap(function _callee2$(_context2) {
-					while (1) {
-						switch (_context2.prev = _context2.next) {
-							case 0:
-								_context2.next = 2;
-								return _data2.default.getResource(uri);
-
-							case 2:
-								response = _context2.sent;
-								description = response.description;
-								contentBlock = (0, _htmlToDraftjs2.default)(description);
-								contentState = _draftJs.ContentState.createFromBlockArray(contentBlock.contentBlocks);
-								editorState = _draftJs.EditorState.createWithContent(contentState);
-
-								this.setState({
-									data: _extends({}, this.state.data, response),
-									descState: editorState
-								});
-
-							case 8:
-							case 'end':
-								return _context2.stop();
-						}
-					}
-				}, _callee2, this);
-			}));
-
-			function getCategory(_x2) {
-				return _ref2.apply(this, arguments);
-			}
-
-			return getCategory;
-		}()
-	}, {
-		key: 'getCategories',
-		value: function () {
-			var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-				var response;
-				return regeneratorRuntime.wrap(function _callee3$(_context3) {
-					while (1) {
-						switch (_context3.prev = _context3.next) {
-							case 0:
-								_context3.next = 2;
-								return _data2.default.getResource('/categories');
-
-							case 2:
-								response = _context3.sent;
-
-								this.setState({
-									categories: response.categories
-								});
-
-							case 4:
-							case 'end':
-								return _context3.stop();
-						}
-					}
-				}, _callee3, this);
-			}));
-
-			function getCategories() {
-				return _ref3.apply(this, arguments);
-			}
-
-			return getCategories;
-		}()
-	}, {
-		key: 'onEditorDescChange',
-		value: function onEditorDescChange(descState) {
-			this.setState({
-				descState: descState
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			console.log(this.state);
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'big-resource' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/categories'
-								},
-								_react2.default.createElement(
-									_reactRouterDom.Link,
-									{
-										to: this.props.location + '/delete'
-									},
-									_react2.default.createElement(_materialUi.FlatButton, {
-										label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-										labelStyle: { color: 'rgb(255, 64, 129)' },
-										primary: true,
-										icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-									})
-								),
-								_react2.default.createElement(_materialUi.FlatButton, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(_Toggle2.default, {
-								style: {
-									width: '150px',
-									marginLeft: '20px'
-								},
-								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
-								toggled: this.state.data.isActive,
-								onToggle: function onToggle(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											isActive: value
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.title,
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											title: value
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(
-								'div',
-								{
-									style: {
-										color: 'rgba(0, 0, 0, 0.3)'
-									}
-								},
-								'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-								editorState: this.state.descState,
-								wrapperClassName: 'demo-wrapper',
-								editorClassName: 'demo-editor',
-								onEditorStateChange: this.onEditorDescChange,
-								onChange: function onChange() {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
-										})
-									});
-								}
-							}),
-							_react2.default.createElement('input', {
-								type: 'file',
-								className: 'inputfile',
-								id: 'file',
-								onChange: this.uploadFile
-							}),
-							_react2.default.createElement(
-								'label',
-								{
-									htmlFor: 'file',
-									className: 'inputfile__label'
-								},
-								'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'inputfile__images'
-								},
-								_react2.default.createElement('img', {
-									className: 'inputfile__image',
-									src: this.state.data.image
-								})
-							),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									value: this.state.data.parentCategory,
-									floatingLabelText: '\u0420\u043E\u0434\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F',
-									onChange: function onChange(event, index, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												parentCategory: value
-											})
-										});
-									}
-								},
-								this.state.categories.map(function (category, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: category.slug,
-										primaryText: category.title,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement(_DatePicker2.default, {
-								fullWidth: true,
-								floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-								hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-								defaultDate: new Date(this.state.data.creationDate)
-							}),
-							_react2.default.createElement(_DatePicker2.default, {
-								fullWidth: true,
-								floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-								hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-								defaultDate: new Date(this.state.data.modificationDate)
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								value: this.state.data.slug,
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											slug: value
-										})
-									});
-								},
-								floatingLabelText: 'Slug',
-								label: 'Slug'
-							})
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: 'SEO' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								value: !!this.state.data.seo ? this.state.data.seo.title : '',
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											seo: _extends({}, _this2.state.data.seo, {
-												title: value
-											})
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								value: !!this.state.data.seo ? this.state.data.seo.description : '',
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											seo: _extends({}, _this2.state.data.seo, {
-												description: value
-											})
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								value: !!this.state.data.seo ? this.state.data.seo.keywords : '',
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											seo: _extends({}, _this2.state.data.seo, {
-												keywords: value
-											})
-										})
-									});
-								}
-							})
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'categories',
-					data: this.state.data,
-					action: 'edit',
-					photo: this.state.image
-				})
-			);
-		}
-	}]);
-
-	return CategoriesEdit;
-}(_react2.default.Component);
-
-exports.default = CategoriesEdit;
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _Table = __webpack_require__(13);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _flipToFront = __webpack_require__(97);
-
-var _flipToFront2 = _interopRequireDefault(_flipToFront);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _uid = __webpack_require__(11);
-
-var _uid2 = _interopRequireDefault(_uid);
-
-var _reactDraftWysiwyg = __webpack_require__(19);
-
-var _draftjsToHtml = __webpack_require__(18);
-
-var _draftjsToHtml2 = _interopRequireDefault(_draftjsToHtml);
-
-var _draftJs = __webpack_require__(20);
-
-var _htmlToDraftjs = __webpack_require__(23);
-
-var _htmlToDraftjs2 = _interopRequireDefault(_htmlToDraftjs);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ProductsEdit = function (_React$Component) {
-	_inherits(ProductsEdit, _React$Component);
-
-	function ProductsEdit(props) {
-		_classCallCheck(this, ProductsEdit);
-
-		var _this = _possibleConstructorReturn(this, (ProductsEdit.__proto__ || Object.getPrototypeOf(ProductsEdit)).call(this, props));
-
-		_this.state = {
-			data: {
-				isActive: false,
-				title: '',
-				description: '',
-				shortDescription: '',
-				sku: '',
-				price: '',
-				categories: [],
-				images: [],
-				'attribute-sets': [],
-				attributes: [],
-				'tab-sets': [],
-				tabs: [],
-				seo: {
-					title: '',
-					description: '',
-					keywords: ''
-				},
-				relatedProducts: [],
-				fromSet: [],
-				creationDate: new Date(),
-				modificationDate: new Date(),
-				slug: (0, _uid2.default)(16)
-			},
-			products: []
-		};
-		_this.getProduct(_this.props.location);
-		_this.getResource('/products');
-		_this.getResource('/categories');
-		_this.getResource('/attribute-sets');
-		_this.getResource('/tab-sets');
-		_this.changeRelatedProducts = _this.changeRelatedProducts.bind(_this);
-		_this.uploadFile = _this.uploadFile.bind(_this);
-		_this.changeCategories = _this.changeCategories.bind(_this);
-		_this.changeAttributeSets = _this.changeAttributeSets.bind(_this);
-		_this.changeTabSets = _this.changeTabSets.bind(_this);
-		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
-		_this.onEditorShortDescChange = _this.onEditorShortDescChange.bind(_this);
-		return _this;
-	}
-
-	_createClass(ProductsEdit, [{
-		key: 'getProduct',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-				var response, description, contentBlockDesc, contentStateDesc, editorStateDesc, shortDescription, contentBlockShortDesc, contentStateShortDesc, editorStateShortDesc;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.getResource(uri);
-
-							case 2:
-								response = _context.sent;
-								description = response.description;
-								contentBlockDesc = (0, _htmlToDraftjs2.default)(description);
-								contentStateDesc = _draftJs.ContentState.createFromBlockArray(contentBlockDesc.contentBlocks);
-								editorStateDesc = _draftJs.EditorState.createWithContent(contentStateDesc);
-								shortDescription = response.shortDescription;
-								contentBlockShortDesc = (0, _htmlToDraftjs2.default)(shortDescription);
-								contentStateShortDesc = _draftJs.ContentState.createFromBlockArray(contentBlockShortDesc.contentBlocks);
-								editorStateShortDesc = _draftJs.EditorState.createWithContent(contentStateShortDesc);
-
-								this.setState({
-									data: _extends({}, this.state.data, response),
-									descState: editorStateDesc,
-									shortDescState: editorStateShortDesc
-								});
-
-							case 12:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getProduct(_x) {
-				return _ref.apply(this, arguments);
-			}
-
-			return getProduct;
-		}()
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'changeRelatedProducts',
-		value: function changeRelatedProducts(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					relatedProducts: [].concat(_toConsumableArray(this.state.data.relatedProducts), [value])
-				})
-			});
-		}
-	}, {
-		key: 'deleteRelatedProduct',
-		value: function deleteRelatedProduct(id) {
-			var relatedProducts = [];
-			this.state.data.relatedProducts.map(function (relatedProduct) {
-				if (relatedProduct !== id) {
-					relatedProducts.push(relatedProduct);
-				}
-			});
-			this.setState({
-				data: _extends({}, this.state.data, {
-					relatedProducts: relatedProducts
-				})
-			});
-		}
-	}, {
-		key: 'uploadFile',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(file) {
-				var result;
-				return regeneratorRuntime.wrap(function _callee2$(_context2) {
-					while (1) {
-						switch (_context2.prev = _context2.next) {
-							case 0:
-								_context2.next = 2;
-								return _data2.default.uploadImage('/upload/products', file.target.files[0]);
-
-							case 2:
-								result = _context2.sent;
-
-								this.setState({
-									data: _extends({}, this.state.data, {
-										images: [].concat(_toConsumableArray(this.state.data.images), [result])
-									})
-								});
-
-							case 4:
-							case 'end':
-								return _context2.stop();
-						}
-					}
-				}, _callee2, this);
-			}));
-
-			function uploadFile(_x2) {
-				return _ref2.apply(this, arguments);
-			}
-
-			return uploadFile;
-		}()
-	}, {
-		key: 'getResource',
-		value: function () {
-			var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(uri) {
-				var resource, response, newState;
-				return regeneratorRuntime.wrap(function _callee3$(_context3) {
-					while (1) {
-						switch (_context3.prev = _context3.next) {
-							case 0:
-								resource = uri.slice(1);
-								_context3.next = 3;
-								return _data2.default.getData(uri);
-
-							case 3:
-								response = _context3.sent;
-								newState = {};
-
-								newState[resource] = response.data;
-								this.setState(newState);
-
-							case 7:
-							case 'end':
-								return _context3.stop();
-						}
-					}
-				}, _callee3, this);
-			}));
-
-			function getResource(_x3) {
-				return _ref3.apply(this, arguments);
-			}
-
-			return getResource;
-		}()
-	}, {
-		key: 'changeCategories',
-		value: function changeCategories(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					categories: [].concat(_toConsumableArray(this.state.data.categories), _toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'changeAttributeSets',
-		value: function changeAttributeSets(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					'attribute-sets': [].concat(_toConsumableArray(this.state.data['attribute-sets']), _toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'changeTabSets',
-		value: function changeTabSets(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					'tab-sets': [].concat(_toConsumableArray(this.state.data['tab-sets']), _toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'onEditorDescChange',
-		value: function onEditorDescChange(descState) {
-			this.setState({
-				descState: descState
-			});
-		}
-	}, {
-		key: 'onEditorShortDescChange',
-		value: function onEditorShortDescChange(shortDescState) {
-			this.setState({
-				shortDescState: shortDescState
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			if (!this.state.data || !this.state.categories || !this.state['attribute-sets'] || !this.state['tab-sets']) {
-				return false;
-			}
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'big-resource' },
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'resource-actions'
-								},
-								_react2.default.createElement(
-									_reactRouterDom.Link,
-									{
-										to: {
-											pathname: this.props.location + '/copy',
-											state: this.state.data
-										}
-									},
-									_react2.default.createElement(_materialUi.FlatButton, {
-										label: '\u041A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C',
-										labelStyle: { color: 'rgb(64, 255, 129)' },
-										primary: true,
-										icon: _react2.default.createElement(_flipToFront2.default, { color: 'rgb(64, 255, 129)' })
-									})
-								),
-								_react2.default.createElement(
-									_reactRouterDom.Link,
-									{
-										to: this.props.location + '/delete'
-									},
-									_react2.default.createElement(_materialUi.FlatButton, {
-										label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-										labelStyle: { color: 'rgb(255, 64, 129)' },
-										primary: true,
-										icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-									})
-								),
-								_react2.default.createElement(
-									_reactRouterDom.Link,
-									{
-										to: '/products'
-									},
-									_react2.default.createElement(_materialUi.FlatButton, {
-										label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-										primary: true,
-										icon: _react2.default.createElement(_list2.default, null)
-									})
-								)
-							),
-							_react2.default.createElement(_Toggle2.default, {
-								style: {
-									width: '150px',
-									marginLeft: '20px'
-								},
-								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
-								toggled: this.state.data.isActive,
-								onToggle: function onToggle(event, value) {
-									return _this2.changeState(value, 'isActive');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.title,
-								onChange: function onChange(event, value) {
-									return _this2.changeState(value, 'title');
-								}
-							}),
-							_react2.default.createElement(
-								'div',
-								{
-									style: {
-										color: 'rgba(0, 0, 0, 0.3)'
-									}
-								},
-								'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-								editorState: this.state.descState,
-								wrapperClassName: 'demo-wrapper',
-								editorClassName: 'demo-editor',
-								onEditorStateChange: this.onEditorDescChange,
-								onChange: function onChange() {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.descState.getCurrentContent()))
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(
-								'div',
-								{
-									style: {
-										color: 'rgba(0, 0, 0, 0.3)'
-									}
-								},
-								'\u041A\u0440\u0430\u0442\u043A\u043E\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
-								editorState: this.state.shortDescState,
-								wrapperClassName: 'demo-wrapper',
-								editorClassName: 'demo-editor',
-								onEditorStateChange: this.onEditorShortDescChange,
-								onChange: function onChange() {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											shortDescription: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this2.state.shortDescState.getCurrentContent()))
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.sku,
-								onChange: function onChange(event, value) {
-									return _this2.changeState(value, 'sku');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u0426\u0435\u043D\u0430',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.price,
-								onChange: function onChange(event, value) {
-									return _this2.changeState(value, 'price');
-								}
-							}),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									multiple: true,
-									value: this.state.data.categories,
-									floatingLabelText: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438',
-									onChange: function onChange(event, index, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												categories: value
-											})
-										});
-									}
-								},
-								this.state.categories.map(function (category, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: category.slug,
-										primaryText: category.title,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement('input', {
-								type: 'file',
-								className: 'inputfile',
-								id: 'file',
-								onChange: this.uploadFile
-							}),
-							_react2.default.createElement(
-								'label',
-								{
-									htmlFor: 'file',
-									className: 'inputfile__label'
-								},
-								'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
-							),
-							_react2.default.createElement(
-								'div',
-								{
-									className: 'inputfile__images'
-								},
-								this.state.data.images.map(function (image, index) {
-									return _react2.default.createElement('img', {
-										className: 'inputfile__image',
-										src: image,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									multiple: true,
-									value: this.state.data['attribute-sets'],
-									floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-									onChange: function onChange(event, index, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												'attribute-sets': value
-											})
-										});
-									}
-								},
-								this.state['attribute-sets'].map(function (attribute, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: attribute.slug,
-										primaryText: attribute.title,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									multiple: true,
-									value: this.state.data['tab-sets'],
-									floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0442\u0430\u0431\u043E\u0432',
-									onChange: function onChange(event, index, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												'tab-sets': value
-											})
-										});
-									}
-								},
-								this.state['tab-sets'].map(function (set, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: set.slug,
-										primaryText: set.title,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement(_DatePicker2.default, {
-								fullWidth: true,
-								floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-								hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-								defaultDate: new Date(this.state.data.creationDate)
-							}),
-							_react2.default.createElement(_DatePicker2.default, {
-								fullWidth: true,
-								floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-								hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-								defaultDate: new Date(this.state.data.modificationDate)
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								value: this.state.data.slug,
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											slug: value
-										})
-									});
-								},
-								floatingLabelText: 'Slug',
-								label: 'Slug'
-							})
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: 'SEO' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-								value: !!this.state.data.seo ? this.state.data.seo.title : undefined,
-								onChange: function onChange(event, value) {
-									return _this2.changeState(_extends({}, _this2.state.data.seo, {
-										title: value
-									}), 'seo');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
-								value: !!this.state.data.seo ? this.state.data.seo.description : undefined,
-								onChange: function onChange(event, value) {
-									return _this2.changeState(_extends({}, _this2.state.data.seo, {
-										description: value
-									}), 'seo');
-								}
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
-								value: !!this.state.data.seo ? this.state.data.seo.keywords : undefined,
-								onChange: function onChange(event, value) {
-									return _this2.changeState(_extends({}, _this2.state.data.seo, {
-										keywords: value
-									}), 'seo');
-								}
-							})
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041F\u043E\u0445\u043E\u0436\u0438\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_Table.Table,
-								{
-									selectable: false
-								},
-								_react2.default.createElement(
-									_Table.TableHeader,
-									{
-										displaySelectAll: false,
-										adjustForCheckbox: false
-									},
-									_react2.default.createElement(
-										_Table.TableRow,
-										null,
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0426\u0435\u043D\u0430'
-										),
-										_react2.default.createElement(_Table.TableHeaderColumn, null)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableBody,
-									{
-										displayRowCheckbox: false
-									},
-									this.state.data.relatedProducts.map(function (relatedProduct, index) {
-										return _this2.state.products.map(function (product) {
-											if (product.slug === relatedProduct) {
-												return _react2.default.createElement(
-													_Table.TableRow,
-													{
-														key: index
-													},
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.sku
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.title
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.price
-													),
-													_react2.default.createElement(
-														_Table.TableHeaderColumn,
-														null,
-														_react2.default.createElement(_delete2.default, {
-															color: 'rgb(255, 64, 129)',
-															onClick: function onClick() {
-																return _this2.deleteRelatedProduct(product.slug);
-															},
-															style: { cursor: 'pointer' }
-														})
-													)
-												);
-											}
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									value: this.state.data.relatedProducts,
-									floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
-									onChange: this.changeRelatedProducts
-								},
-								this.state.products.map(function (product, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: product.slug,
-										primaryText: product.title,
-										key: index
-									});
-								})
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u0422\u043E\u0432\u0430\u0440\u044B \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_Table.Table,
-								{
-									selectable: false
-								},
-								_react2.default.createElement(
-									_Table.TableHeader,
-									{
-										displaySelectAll: false,
-										adjustForCheckbox: false
-									},
-									_react2.default.createElement(
-										_Table.TableRow,
-										null,
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-										),
-										_react2.default.createElement(
-											_Table.TableHeaderColumn,
-											null,
-											'\u0426\u0435\u043D\u0430'
-										),
-										_react2.default.createElement(_Table.TableHeaderColumn, null)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableBody,
-									{
-										displayRowCheckbox: false
-									},
-									this.state.data.fromSet.map(function (fromSet, index) {
-										return _this2.state.products.map(function (product) {
-											if (product.slug === fromSet) {
-												return _react2.default.createElement(
-													_Table.TableRow,
-													{
-														key: index
-													},
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.sku
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.title
-													),
-													_react2.default.createElement(
-														_Table.TableRowColumn,
-														null,
-														product.price
-													),
-													_react2.default.createElement(
-														_Table.TableHeaderColumn,
-														null,
-														_react2.default.createElement(_delete2.default, {
-															color: 'rgb(255, 64, 129)',
-															onClick: function onClick() {
-																var fromSet = _this2.state.data.fromSet;
-																fromSet.splice(index, 1);
-																_this2.setState({
-																	data: _extends({}, _this2.state.data, {
-																		fromSet: fromSet
-																	})
-																});
-															},
-															style: { cursor: 'pointer' }
-														})
-													)
-												);
-											}
-										});
-									})
-								)
-							),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									value: this.state.data.fromSet,
-									floatingLabelText: '\u0422\u043E\u0432\u0430\u0440 \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430',
-									onChange: function onChange(event, index, value) {
-										return _this2.setState({
-											data: _extends({}, _this2.state.data, {
-												fromSet: [].concat(_toConsumableArray(_this2.state.data.fromSet), [value])
-											})
-										});
-									}
-								},
-								this.state.products.map(function (product, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: product.slug,
-										primaryText: product.title,
-										key: index
-									});
-								})
-							)
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{
-							label: '\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u044B'
-						},
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							this.state.data.attributes.map(function (attribute, key) {
-								if (attribute.attrType === 'select' || attribute.attrType === 'multipleSelect') return _react2.default.createElement(
-									_SelectField2.default,
-									{
-										fullWidth: true,
-										multiple: attribute.attrType === 'multipleSelect',
-										value: _this2.state.data.attributes[key].value,
-										floatingLabelText: attribute.title,
-										onChange: function onChange(event, index, value) {
-											var newState = {
-												data: _extends({}, _this2.state.data, {
-													attributes: _this2.state.data.attributes
-												})
-											};
-											newState.data.attributes[key].value = value;
-											_this2.setState(newState);
-										},
-										key: key
-									},
-									attribute.variants.map(function (variant, index) {
-										return _react2.default.createElement(_MenuItem2.default, {
-											value: variant.value,
-											primaryText: variant.id,
-											key: index
-										});
-									})
-								);
-								if (attribute.attrType === 'interval') return _react2.default.createElement(
-									'div',
-									{
-										key: key
-									},
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										hintText: attribute.title + ' \u043E\u0442',
-										defaultValue: !!_this2.state.data.attributes[key].value ? _this2.state.data.attributes[key].value.from : '',
-										floatingLabelText: attribute.title + ' \u043E\u0442',
-										onChange: function onChange(event, value) {
-											var newState = {
-												data: _extends({}, _this2.state.data, {
-													attributes: _this2.state.data.attributes
-												})
-											};
-											newState.data.attributes[key].value = _extends({}, newState.data.attributes[key].value);
-											newState.data.attributes[key].value.from = value;
-											_this2.setState(newState);
-										}
-									}),
-									_react2.default.createElement(_TextField2.default, {
-										fullWidth: true,
-										hintText: attribute.title + ' \u0434\u043E',
-										defaultValue: !!_this2.state.data.attributes[key].value ? _this2.state.data.attributes[key].value.to : '',
-										floatingLabelText: attribute.title + ' \u0434\u043E',
-										onChange: function onChange(event, value) {
-											var newState = {
-												data: _extends({}, _this2.state.data, {
-													attributes: _this2.state.data.attributes
-												})
-											};
-											newState.data.attributes[key].value = _extends({}, newState.data.attributes[key].value);
-											newState.data.attributes[key].value.to = value;
-											_this2.setState(newState);
-										}
-									})
-								);
-								return _react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: attribute.title,
-									value: _this2.state.data.attributes[key].value,
-									floatingLabelText: attribute.title,
-									onChange: function onChange(event, value) {
-										var newState = {
-											data: _extends({}, _this2.state.data, {
-												attributes: _this2.state.data.attributes
-											})
-										};
-										newState.data.attributes[key].value = value;
-										_this2.setState(newState);
-									},
-									key: key
-								});
-							})
-						)
-					),
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{
-							label: '\u0422\u0430\u0431\u044B'
-						},
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							this.state.data.tabs.map(function (tab, key) {
-								return _react2.default.createElement(_TextField2.default, {
-									fullWidth: true,
-									hintText: tab.title,
-									value: _this2.state.data.tabs[key].value,
-									floatingLabelText: tab.title,
-									onChange: function onChange(event, value) {
-										var newState = {
-											data: _extends({}, _this2.state.data, {
-												tabs: _this2.state.data.tabs
-											})
-										};
-										newState.data.tabs[key].value = value;
-										_this2.setState(newState);
-									},
-									key: key
-								});
-							})
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'products',
-					data: this.state.data,
-					action: 'edit'
-				})
-			);
-		}
-	}]);
-
-	return ProductsEdit;
-}(_react2.default.Component);
-
-exports.default = ProductsEdit;
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports) {
-
-module.exports = require("material-ui/svg-icons/action/flip-to-front");
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _hash = __webpack_require__(34);
-
-var _hash2 = _interopRequireDefault(_hash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var UsersEdit = function (_React$Component) {
-    _inherits(UsersEdit, _React$Component);
-
-    function UsersEdit(props) {
-        _classCallCheck(this, UsersEdit);
-
-        var _this = _possibleConstructorReturn(this, (UsersEdit.__proto__ || Object.getPrototypeOf(UsersEdit)).call(this, props));
-
-        _this.state = {
-            roles: [],
-            data: {
-                name: '',
-                email: '',
-                password: '',
-                role: '',
-                slug: '',
-                creationDate: new Date(),
-                modificationDate: new Date()
-            }
-        };
-        _this.getData(_this.props.location);
-        _this.getRoles();
-        return _this;
-    }
-
-    _createClass(UsersEdit, [{
-        key: 'getData',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(uri);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: _extends({}, this.state.data, response)
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getData(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getData;
-        }()
-    }, {
-        key: 'getRoles',
-        value: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _data2.default.getResource('/roles');
-
-                            case 2:
-                                response = _context2.sent;
-
-                                this.setState({
-                                    roles: response.roles
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function getRoles() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return getRoles;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/users'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0418\u043C\u044F',
-                                value: this.state.data.name,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            name: value
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u043E\u0447\u0442\u0430',
-                                value: this.state.data.email,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            email: value
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            password: _hash2.default.getHash(value)
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.role,
-                                    floatingLabelText: '\u0420\u043E\u043B\u044C',
-                                    onChange: function onChange(event, index, value) {
-                                        return _this2.setState({
-                                            data: _extends({}, _this2.state.data, {
-                                                role: value
-                                            })
-                                        });
-                                    }
-                                },
-                                this.state.roles.map(function (role, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: role.slug,
-                                        primaryText: role.name,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'users',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return UsersEdit;
-}(_react2.default.Component);
-
-exports.default = UsersEdit;
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var RolesEdit = function (_React$Component) {
-    _inherits(RolesEdit, _React$Component);
-
-    function RolesEdit(props) {
-        _classCallCheck(this, RolesEdit);
-
-        var _this = _possibleConstructorReturn(this, (RolesEdit.__proto__ || Object.getPrototypeOf(RolesEdit)).call(this, props));
-
-        _this.state = {
-            data: {
-                resources: {
-                    users: { showInMenu: false, permissions: [] },
-                    statuses: { showInMenu: false, permissions: [] },
-                    roles: { showInMenu: false, permissions: [] },
-                    products: { showInMenu: false, permissions: [] },
-                    photos: { showInMenu: false, permissions: [] },
-                    orders: { showInMenu: false, permissions: [] },
-                    clients: { showInMenu: false, permissions: [] },
-                    categories: { showInMenu: false, permissions: [] },
-                    attributes: { showInMenu: false, permissions: [] },
-                    "attribute-sets": { showInMenu: false, permissions: [] }
-                }
-            },
-            permissions: [{
-                type: 'post',
-                label: 'Создание'
-            }, {
-                type: 'put',
-                label: 'Редактирование'
-            }, {
-                type: 'get',
-                label: 'Чтение'
-            }, {
-                type: 'delete',
-                label: 'Удаление'
-            }]
-        };
-        _this.getRole();
-        return _this;
-    }
-
-    _createClass(RolesEdit, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'getRole',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(this.props.location);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: response
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getRole() {
-                return _ref.apply(this, arguments);
-            }
-
-            return getRole;
-        }()
-    }, {
-        key: 'menuItems',
-        value: function menuItems(values) {
-            return this.state.permissions.map(function (_ref2, index) {
-                var type = _ref2.type,
-                    label = _ref2.label;
-                return _react2.default.createElement(_MenuItem2.default, {
-                    key: index,
-                    insetChildren: true,
-                    checked: values && values.indexOf(type) > -1,
-                    value: type,
-                    primaryText: label
-                });
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            if (!this.state.data.name) {
-                return false;
-            }
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'big-resource' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/roles'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                value: this.state.data.name,
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.categories.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            categories: _extends({}, _this2.state.data.resources.categories, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.categories.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.categories.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        categories: _extends({}, _this2.state.data.resources.categories, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.products.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            products: _extends({}, _this2.state.data.resources.products, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.products.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.products.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        products: _extends({}, _this2.state.data.resources.products, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.users.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            users: _extends({}, _this2.state.data.resources.users, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.users.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.users.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        users: _extends({}, _this2.state.data.resources.users, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.roles.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0440\u043E\u043B\u0435\u0439',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            roles: _extends({}, _this2.state.data.resources.roles, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.roles.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.roles.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        roles: _extends({}, _this2.state.data.resources.roles, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.clients.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            clients: _extends({}, _this2.state.data.resources.clients, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.clients.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.clients.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        clients: _extends({}, _this2.state.data.resources.clients, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.orders.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0437\u0430\u043A\u0430\u0437\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            orders: _extends({}, _this2.state.data.resources.orders, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.orders.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.orders.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        orders: _extends({}, _this2.state.data.resources.orders, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.attributes.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            attributes: _extends({}, _this2.state.data.resources.attributes, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.attributes.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.attributes.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        attributes: _extends({}, _this2.state.data.resources.attributes, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources['attribute-sets'].permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u043D\u0430\u0431\u043E\u0440\u043E\u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources['attribute-sets'].permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources['attribute-sets'].showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        'attribute-sets': _extends({}, _this2.state.data.resources['attribute-sets'], {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.statuses.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0441\u0442\u0430\u0442\u0443\u0441\u043E\u0432',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            statuses: _extends({}, _this2.state.data.resources.statuses, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.statuses.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.statuses.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        statuses: _extends({}, _this2.state.data.resources.statuses, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    multiple: true,
-                                    value: this.state.data.resources.photos.permissions,
-                                    floatingLabelText: '\u041F\u0440\u0430\u0432\u0430 \u0434\u043B\u044F \u0444\u043E\u0442\u043E',
-                                    errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                    fullWidth: true,
-                                    onChange: function onChange(event, index, values) {
-                                        return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                            photos: _extends({}, _this2.state.data.resources.photos, {
-                                                permissions: values
-                                            })
-                                        }), 'resources');
-                                    }
-                                },
-                                this.menuItems(this.state.data.resources.photos.permissions)
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '230px',
-                                    marginLeft: '20px'
-                                },
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u043C\u0435\u043D\u044E',
-                                toggled: this.state.data.resources.photos.showInMenu,
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(_extends({}, _this2.state.data.resources, {
-                                        photos: _extends({}, _this2.state.data.resources.photos, {
-                                            showInMenu: value
-                                        })
-                                    }), 'resources');
-                                }
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'roles',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return RolesEdit;
-}(_react2.default.Component);
-
-exports.default = RolesEdit;
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _RaisedButton = __webpack_require__(16);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _Table = __webpack_require__(13);
-
-var _Dialog = __webpack_require__(21);
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ClientsCreate = function (_React$Component) {
-    _inherits(ClientsCreate, _React$Component);
-
-    function ClientsCreate(props) {
-        _classCallCheck(this, ClientsCreate);
-
-        var _this = _possibleConstructorReturn(this, (ClientsCreate.__proto__ || Object.getPrototypeOf(ClientsCreate)).call(this, props));
-
-        _this.getRole(_this.props.location);
-        _this.state = {
-            loaded: false,
-            open: false,
-            data: {
-                addresses: []
-            }
-        };
-        _this.handleOpen = _this.handleOpen.bind(_this);
-        _this.handleClose = _this.handleClose.bind(_this);
-        _this.addAddress = _this.addAddress.bind(_this);
-        _this.deleteAddress = _this.deleteAddress.bind(_this);
-        return _this;
-    }
-
-    _createClass(ClientsCreate, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'getRole',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(uri);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: response,
-                                    loaded: true
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getRole(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getRole;
-        }()
-    }, {
-        key: 'handleOpen',
-        value: function handleOpen() {
-            this.setState({
-                open: true
-            });
-        }
-    }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            this.setState({
-                open: false
-            });
-        }
-    }, {
-        key: 'deleteAddress',
-        value: function deleteAddress(id) {
-            var addresses = [];
-            this.state.data.addresses.forEach(function (address, index) {
-                if (index !== id) addresses.push(address);
-            });
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    addresses: addresses
-                })
-            });
-        }
-    }, {
-        key: 'addAddress',
-        value: function addAddress() {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    addresses: [].concat(_toConsumableArray(this.state.data.addresses), [{
-                        country: this.state.country,
-                        state: this.state.state,
-                        city: this.state.city,
-                        street: this.state.street,
-                        building: this.state.building,
-                        apartment: this.state.apartment
-                    }])
-                })
-            });
-            this.handleClose();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var actions = [_react2.default.createElement(_FlatButton2.default, {
-                label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
-                primary: true,
-                onClick: this.handleClose
-            }), _react2.default.createElement(_FlatButton2.default, {
-                label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
-                primary: true,
-                onClick: this.addAddress
-            })];
-            if (!this.state.loaded) {
-                return false;
-            }
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_FlatButton2.default, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/clients'
-                                    },
-                                    _react2.default.createElement(_FlatButton2.default, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.name,
-                                hintText: '\u0418\u043C\u044F',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.email,
-                                hintText: '\u041F\u043E\u0447\u0442\u0430',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'email');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.phone,
-                                hintText: '\u0422\u0435\u043B\u0435\u0444\u043E\u043D',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'phone');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'password');
-                                }
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u0410\u0434\u0440\u0435\u0441\u0430' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _Table.Table,
-                                {
-                                    selectable: false
-                                },
-                                _react2.default.createElement(
-                                    _Table.TableHeader,
-                                    {
-                                        displaySelectAll: false,
-                                        adjustForCheckbox: false
-                                    },
-                                    _react2.default.createElement(
-                                        _Table.TableRow,
-                                        null,
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0421\u0442\u0440\u0430\u043D\u0430'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041E\u0431\u043B\u0430\u0441\u0442\u044C'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0413\u043E\u0440\u043E\u0434'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0423\u043B\u0438\u0446\u0430'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0414\u043E\u043C'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430'
-                                        ),
-                                        _react2.default.createElement(_Table.TableHeaderColumn, null)
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    _Table.TableBody,
-                                    {
-                                        displayRowCheckbox: false
-                                    },
-                                    !!this.state.data.addresses ? this.state.data.addresses.map(function (address, index) {
-                                        return _react2.default.createElement(
-                                            _Table.TableRow,
-                                            {
-                                                key: index
-                                            },
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.country
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.state
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.city
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.street
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.building
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                address.apartment
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                _react2.default.createElement(_delete2.default, {
-                                                    color: 'rgb(255, 64, 129)',
-                                                    onClick: function onClick() {
-                                                        return _this2.deleteAddress(index);
-                                                    },
-                                                    style: { cursor: 'pointer' }
-                                                })
-                                            )
-                                        );
-                                    }) : null
-                                )
-                            ),
-                            _react2.default.createElement(_RaisedButton2.default, {
-                                label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
-                                style: { margin: '38px' },
-                                onClick: this.handleOpen
-                            }),
-                            _react2.default.createElement(
-                                _Dialog2.default,
-                                {
-                                    title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0430\u0434\u0440\u0435\u0441\u0430',
-                                    actions: actions,
-                                    modal: true,
-                                    open: this.state.open,
-                                    autoScrollBodyContent: true
-                                },
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-                                    value: this.state.country,
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            country: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-                                    value: this.state.state,
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            state: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
-                                    value: this.state.city,
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            city: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
-                                    value: this.state.street,
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            street: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u0414\u043E\u043C',
-                                    value: this.state.building,
-                                    errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            building: value
-                                        });
-                                    } }),
-                                _react2.default.createElement(_TextField2.default, {
-                                    fullWidth: true,
-                                    floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-                                    value: this.state.apartment,
-                                    onChange: function onChange(event, value) {
-                                        return _this2.setState({
-                                            apartment: value
-                                        });
-                                    } })
-                            )
-                        )
-                    ),
-                    ')'
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'clients',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return ClientsCreate;
-}(_react2.default.Component);
-
-exports.default = ClientsCreate;
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _Table = __webpack_require__(13);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var OrdersEdit = function (_React$Component) {
-    _inherits(OrdersEdit, _React$Component);
-
-    function OrdersEdit(props) {
-        _classCallCheck(this, OrdersEdit);
-
-        var _this = _possibleConstructorReturn(this, (OrdersEdit.__proto__ || Object.getPrototypeOf(OrdersEdit)).call(this, props));
-
-        _this.state = {
-            statuses: [],
-            clients: [],
-            data: {
-                products: [],
-                status: '',
-                client: '',
-                address: {
-                    country: '',
-                    state: '',
-                    city: '',
-                    street: '',
-                    building: '',
-                    apartment: ''
-                },
-                slug: '',
-                creationDate: new Date(),
-                modificationDate: new Date()
-            },
-            products: []
-        };
-        _this.getOrder(_this.props.location);
-        _this.getClients();
-        _this.getStatuses();
-        _this.getProducts();
-        _this.changeStatus = _this.changeStatus.bind(_this);
-        _this.changeClient = _this.changeClient.bind(_this);
-        _this.changeProducts = _this.changeProducts.bind(_this);
-        return _this;
-    }
-
-    _createClass(OrdersEdit, [{
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'changeProducts',
-        value: function changeProducts(event, index, value) {
-            var _this2 = this;
-
-            this.state.products.forEach(function (product) {
-                if (product.slug === value) {
-                    _this2.changeState([].concat(_toConsumableArray(_this2.state.data.products), [product]), 'products');
-                }
-            });
-        }
-    }, {
-        key: 'deleteProduct',
-        value: function deleteProduct(id) {
-            var products = [];
-            this.state.data.products.map(function (product) {
-                if (product.slug !== id) {
-                    products.push(product);
-                }
-            });
-            this.changeState(products, 'products');
-        }
-    }, {
-        key: 'changeStatus',
-        value: function changeStatus(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    status: value
-                })
-            });
-        }
-    }, {
-        key: 'getClients',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource('/clients');
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    clients: response.clients
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getClients() {
-                return _ref.apply(this, arguments);
-            }
-
-            return getClients;
-        }()
-    }, {
-        key: 'getStatuses',
-        value: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _data2.default.getResource('/statuses');
-
-                            case 2:
-                                response = _context2.sent;
-
-                                this.setState({
-                                    statuses: response.statuses
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function getStatuses() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return getStatuses;
-        }()
-    }, {
-        key: 'getProducts',
-        value: function () {
-            var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee3$(_context3) {
-                    while (1) {
-                        switch (_context3.prev = _context3.next) {
-                            case 0:
-                                _context3.next = 2;
-                                return _data2.default.getResource('/products');
-
-                            case 2:
-                                response = _context3.sent;
-
-                                this.setState({
-                                    products: response.products
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context3.stop();
-                        }
-                    }
-                }, _callee3, this);
-            }));
-
-            function getProducts() {
-                return _ref3.apply(this, arguments);
-            }
-
-            return getProducts;
-        }()
-    }, {
-        key: 'changeClient',
-        value: function changeClient(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    client: value
-                })
-            });
-        }
-    }, {
-        key: 'getOrder',
-        value: function () {
-            var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(uri) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee4$(_context4) {
-                    while (1) {
-                        switch (_context4.prev = _context4.next) {
-                            case 0:
-                                _context4.next = 2;
-                                return _data2.default.getResource(uri);
-
-                            case 2:
-                                response = _context4.sent;
-
-                                this.setState({
-                                    data: _extends({}, this.state.data, response)
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context4.stop();
-                        }
-                    }
-                }, _callee4, this);
-            }));
-
-            function getOrder(_x) {
-                return _ref4.apply(this, arguments);
-            }
-
-            return getOrder;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this3 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/orders'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.status,
-                                    floatingLabelText: '\u0421\u0442\u0430\u0442\u0443\u0441',
-                                    onChange: this.changeStatus
-                                },
-                                this.state.statuses.map(function (status, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: status.slug,
-                                        primaryText: status.title,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.client,
-                                    floatingLabelText: '\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A',
-                                    onChange: this.changeClient
-                                },
-                                this.state.clients.map(function (client, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: client.slug,
-                                        primaryText: client.name,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _Table.Table,
-                                {
-                                    selectable: false
-                                },
-                                _react2.default.createElement(
-                                    _Table.TableHeader,
-                                    {
-                                        displaySelectAll: false,
-                                        adjustForCheckbox: false
-                                    },
-                                    _react2.default.createElement(
-                                        _Table.TableRow,
-                                        null,
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0426\u0435\u043D\u0430'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E'
-                                        ),
-                                        _react2.default.createElement(
-                                            _Table.TableHeaderColumn,
-                                            null,
-                                            '\u0418\u0442\u043E\u0433\u043E'
-                                        ),
-                                        _react2.default.createElement(_Table.TableHeaderColumn, null)
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    _Table.TableBody,
-                                    {
-                                        displayRowCheckbox: false
-                                    },
-                                    this.state.data.products.map(function (product, index) {
-                                        return _react2.default.createElement(
-                                            _Table.TableRow,
-                                            {
-                                                key: index
-                                            },
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.sku
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.title
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.price
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                product.count
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableRowColumn,
-                                                null,
-                                                '\u0418\u0422\u041E\u0413\u041E'
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                _react2.default.createElement(_delete2.default, {
-                                                    color: 'rgb(255, 64, 129)',
-                                                    onClick: function onClick() {
-                                                        return _this3.deleteProduct(product.slug);
-                                                    },
-                                                    style: { cursor: 'pointer' }
-                                                })
-                                            )
-                                        );
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.products,
-                                    floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
-                                    onChange: this.changeProducts
-                                },
-                                this.state.products.map(function (product, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: product.slug,
-                                        primaryText: product.title,
-                                        key: index
-                                    });
-                                })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u0410\u0434\u0440\u0435\u0441' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-                                floatingLabelText: '\u0421\u0442\u0440\u0430\u043D\u0430',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                value: this.state.data.address.country,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            address: _extends({}, _this3.state.data.address, {
-                                                country: value
-                                            })
-                                        })
-                                    });
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-                                floatingLabelText: '\u041E\u0431\u043B\u0430\u0441\u0442\u044C',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                value: this.state.data.address.state,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            address: _extends({}, _this3.state.data.address, {
-                                                state: value
-                                            })
-                                        })
-                                    });
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0413\u043E\u0440\u043E\u0434',
-                                floatingLabelText: '\u0413\u043E\u0440\u043E\u0434',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                value: this.state.data.address.city,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            address: _extends({}, _this3.state.data.address, {
-                                                city: value
-                                            })
-                                        })
-                                    });
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0423\u043B\u0438\u0446\u0430',
-                                floatingLabelText: '\u0423\u043B\u0438\u0446\u0430',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                value: this.state.data.address.street,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            address: _extends({}, _this3.state.data.address, {
-                                                street: value
-                                            })
-                                        })
-                                    });
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0414\u043E\u043C',
-                                floatingLabelText: '\u0414\u043E\u043C',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                value: this.state.data.address.building,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            address: _extends({}, _this3.state.data.address, {
-                                                building: value
-                                            })
-                                        })
-                                    });
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-                                floatingLabelText: '\u041A\u0432\u0430\u0440\u0442\u0438\u0440\u0430',
-                                value: this.state.data.address.apartment,
-                                onChange: function onChange(event, value) {
-                                    return _this3.setState({
-                                        data: _extends({}, _this3.state.data, {
-                                            address: _extends({}, _this3.state.data.address, {
-                                                apartment: value
-                                            })
-                                        })
-                                    });
-                                }
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'orders',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return OrdersEdit;
-}(_react2.default.Component);
-
-exports.default = OrdersEdit;
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _Toggle = __webpack_require__(14);
-
-var _Toggle2 = _interopRequireDefault(_Toggle);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _Table = __webpack_require__(13);
-
-var _Dialog = __webpack_require__(21);
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _RaisedButton = __webpack_require__(16);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _FlatButton = __webpack_require__(10);
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AttributesEdit = function (_React$Component) {
-    _inherits(AttributesEdit, _React$Component);
-
-    function AttributesEdit(props) {
-        _classCallCheck(this, AttributesEdit);
-
-        var _this = _possibleConstructorReturn(this, (AttributesEdit.__proto__ || Object.getPrototypeOf(AttributesEdit)).call(this, props));
-
-        _this.state = {
-            data: {
-                showInFilter: false,
-                showInProductPage: false,
-                showInList: false,
-                isRequired: false,
-                name: '',
-                title: '',
-                units: '',
-                slug: '',
-                attrType: '',
-                variants: [],
-                creationDate: new Date(),
-                modificationDate: new Date()
-            },
-            open: false,
-            types: [{
-                id: 'multipleSelect',
-                title: 'Множественный список'
-            }, {
-                id: 'textInput',
-                title: 'Текстовое поле'
-            }, {
-                id: 'select',
-                title: 'Список'
-            }, {
-                id: 'numberInput',
-                title: 'Числовое поле'
-            }, {
-                id: 'textBlock',
-                title: 'Текстовый блок'
-            }, {
-                id: 'boolean',
-                title: 'Да/Нет'
-            }, {
-                id: 'interval',
-                title: 'Интервал'
-            }],
-            variant: {
-                id: '',
-                value: ''
-            }
-        };
-        _this.getAttribute(_this.props.location);
-        _this.changeType = _this.changeType.bind(_this);
-        _this.handleClose = _this.handleClose.bind(_this);
-        _this.handleOpen = _this.handleOpen.bind(_this);
-        _this.addVariant = _this.addVariant.bind(_this);
-        return _this;
-    }
-
-    _createClass(AttributesEdit, [{
-        key: 'handleOpen',
-        value: function handleOpen() {
-            this.setState({
-                open: true
-            });
-        }
-    }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            this.setState({
-                open: false
-            });
-        }
-    }, {
-        key: 'addVariant',
-        value: function addVariant() {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    variants: [].concat(_toConsumableArray(this.state.data.variants), [this.state.variant])
-                })
-            });
-            this.handleClose();
-        }
-    }, {
-        key: 'changeState',
-        value: function changeState(value, key) {
-            var newState = this.state;
-            newState.data[key] = value;
-            this.setState(newState);
-        }
-    }, {
-        key: 'changeType',
-        value: function changeType(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    attrType: value
-                })
-            });
-        }
-    }, {
-        key: 'getAttribute',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(url);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: response
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getAttribute(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getAttribute;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            var actions = [_react2.default.createElement(_FlatButton2.default, {
-                label: '\u0417\u0430\u043A\u0440\u044B\u0442\u044C',
-                primary: true,
-                onClick: this.handleClose
-            }), _react2.default.createElement(_FlatButton2.default, {
-                label: '\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C',
-                primary: true,
-                onClick: this.addVariant
-            })];
-            if (!this.state.data) return false;
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/attributes'
-                                    },
-                                    _react2.default.createElement(_FlatButton2.default, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                toggled: this.state.data.showInFilter,
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0444\u0438\u043B\u044C\u0442\u0440\u0435',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'showInFilter');
-                                }
-                            }),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                toggled: this.state.data.showInProductPage,
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 \u0442\u043E\u0432\u0430\u0440\u0430',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'showInProductPage');
-                                }
-                            }),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                toggled: this.state.data.showInList,
-                                label: '\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432 \u0441\u043F\u0438\u0441\u043A\u0435',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'showInList');
-                                }
-                            }),
-                            _react2.default.createElement(_Toggle2.default, {
-                                style: {
-                                    width: '250px',
-                                    marginLeft: '20px'
-                                },
-                                toggled: this.state.data.isRequired,
-                                label: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439',
-                                onToggle: function onToggle(event, value) {
-                                    return _this2.changeState(value, 'isRequired');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.name,
-                                hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-                                floatingLabelText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'name');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.title,
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'title');
-                                }
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.units,
-                                hintText: '\u0415\u0434\u0438\u043D\u0438\u0446\u0430 \u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F',
-                                floatingLabelText: '\u0415\u0434\u0438\u043D\u0438\u0446\u0430 \u0438\u0437\u043C\u0435\u0440\u0435\u043D\u0438\u044F',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-                                onChange: function onChange(event, value) {
-                                    return _this2.changeState(value, 'units');
-                                }
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u0422\u0438\u043F' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    value: this.state.data.attrType,
-                                    disabled: true,
-                                    floatingLabelText: '\u0422\u0438\u043F'
-                                },
-                                this.state.types.map(function (type, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: type.id,
-                                        primaryText: type.title,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            this.state.data.attrType === 'multipleSelect' || this.state.data.attrType === 'select' ? _react2.default.createElement(
-                                'div',
-                                null,
-                                _react2.default.createElement(
-                                    _Table.Table,
-                                    {
-                                        selectable: false
-                                    },
-                                    _react2.default.createElement(
-                                        _Table.TableHeader,
-                                        {
-                                            displaySelectAll: false,
-                                            adjustForCheckbox: false
-                                        },
-                                        _react2.default.createElement(
-                                            _Table.TableRow,
-                                            null,
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440'
-                                            ),
-                                            _react2.default.createElement(
-                                                _Table.TableHeaderColumn,
-                                                null,
-                                                '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435'
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        _Table.TableBody,
-                                        {
-                                            displayRowCheckbox: false
-                                        },
-                                        !!this.state.data.variants ? this.state.data.variants.map(function (variant, index) {
-                                            return _react2.default.createElement(
-                                                _Table.TableRow,
-                                                {
-                                                    key: index
-                                                },
-                                                _react2.default.createElement(
-                                                    _Table.TableRowColumn,
-                                                    null,
-                                                    variant.id
-                                                ),
-                                                _react2.default.createElement(
-                                                    _Table.TableRowColumn,
-                                                    null,
-                                                    variant.value
-                                                )
-                                            );
-                                        }) : null
-                                    )
-                                ),
-                                _react2.default.createElement(_RaisedButton2.default, {
-                                    label: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C',
-                                    style: { margin: '38px' },
-                                    onClick: this.handleOpen
-                                }),
-                                _react2.default.createElement(
-                                    _Dialog2.default,
-                                    {
-                                        title: '\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0430\u0434\u0440\u0435\u0441\u0430',
-                                        actions: actions,
-                                        modal: true,
-                                        open: this.state.open,
-                                        autoScrollBodyContent: true
-                                    },
-                                    _react2.default.createElement(_TextField2.default, {
-                                        fullWidth: true,
-                                        floatingLabelText: '\u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440',
-                                        value: this.state.variant.id,
-                                        errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                        onChange: function onChange(event, value) {
-                                            return _this2.setState({
-                                                variant: _extends({}, _this2.state.variant, {
-                                                    id: value
-                                                })
-                                            });
-                                        } }),
-                                    _react2.default.createElement(_TextField2.default, {
-                                        fullWidth: true,
-                                        floatingLabelText: '\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435',
-                                        value: this.state.variant.value,
-                                        errorText: '\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u043F\u043E\u043B\u0435',
-                                        onChange: function onChange(event, value) {
-                                            return _this2.setState({
-                                                variant: _extends({}, _this2.state.variant, {
-                                                    value: value
-                                                })
-                                            });
-                                        } })
-                                )
-                            ) : null
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'attributes',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return AttributesEdit;
-}(_react2.default.Component);
-
-exports.default = AttributesEdit;
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AttributesCreate = function (_React$Component) {
-	_inherits(AttributesCreate, _React$Component);
-
-	function AttributesCreate(props) {
-		_classCallCheck(this, AttributesCreate);
-
-		var _this = _possibleConstructorReturn(this, (AttributesCreate.__proto__ || Object.getPrototypeOf(AttributesCreate)).call(this, props));
-
-		_this.state = {
-			data: {
-				title: '',
-				attributes: [],
-				slug: ''
-			},
-			attributes: []
-		};
-		_this.getAttributes();
-		_this.getAttributeSet(_this.props.location);
-		_this.changeAttribute = _this.changeAttribute.bind(_this);
-		return _this;
-	}
-
-	_createClass(AttributesCreate, [{
-		key: 'getAttributes',
-		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-				var response;
-				return regeneratorRuntime.wrap(function _callee$(_context) {
-					while (1) {
-						switch (_context.prev = _context.next) {
-							case 0:
-								_context.next = 2;
-								return _data2.default.getData('/attributes');
-
-							case 2:
-								response = _context.sent;
-
-								this.setState({
-									attributes: response.data
-								});
-
-							case 4:
-							case 'end':
-								return _context.stop();
-						}
-					}
-				}, _callee, this);
-			}));
-
-			function getAttributes() {
-				return _ref.apply(this, arguments);
-			}
-
-			return getAttributes;
-		}()
-	}, {
-		key: 'getAttributeSet',
-		value: function () {
-			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(url) {
-				var response;
-				return regeneratorRuntime.wrap(function _callee2$(_context2) {
-					while (1) {
-						switch (_context2.prev = _context2.next) {
-							case 0:
-								_context2.next = 2;
-								return _data2.default.getResource(url);
-
-							case 2:
-								response = _context2.sent;
-
-								this.setState({
-									data: response
-								});
-
-							case 4:
-							case 'end':
-								return _context2.stop();
-						}
-					}
-				}, _callee2, this);
-			}));
-
-			function getAttributeSet(_x) {
-				return _ref2.apply(this, arguments);
-			}
-
-			return getAttributeSet;
-		}()
-	}, {
-		key: 'changeState',
-		value: function changeState(value, key) {
-			var newState = this.state;
-			newState.data[key] = value;
-			this.setState(newState);
-		}
-	}, {
-		key: 'changeAttribute',
-		value: function changeAttribute(event, index, value) {
-			this.setState({
-				data: _extends({}, this.state.data, {
-					attributes: [].concat(_toConsumableArray(value))
-				})
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_Tabs.Tabs,
-					null,
-					_react2.default.createElement(
-						_Tabs.Tab,
-						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-						_react2.default.createElement(
-							'div',
-							{
-								className: 'resource-page' },
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{
-									className: 'resource-actions',
-									to: '/attribute-sets'
-								},
-								_react2.default.createElement(
-									_reactRouterDom.Link,
-									{
-										to: this.props.location + '/delete'
-									},
-									_react2.default.createElement(_materialUi.FlatButton, {
-										label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-										labelStyle: { color: 'rgb(255, 64, 129)' },
-										primary: true,
-										icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-									})
-								),
-								_react2.default.createElement(_materialUi.FlatButton, {
-									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-									primary: true,
-									icon: _react2.default.createElement(_list2.default, null)
-								})
-							),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
-								value: this.state.data.title,
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											title: value
-										})
-									});
-								}
-							}),
-							_react2.default.createElement(
-								_SelectField2.default,
-								{
-									fullWidth: true,
-									multiple: true,
-									value: this.state.data.attributes,
-									floatingLabelText: '\u0410\u0442\u0440\u0438\u0431\u0443\u0442\u044B',
-									onChange: this.changeAttribute
-								},
-								this.state.attributes.map(function (attribute, index) {
-									return _react2.default.createElement(_MenuItem2.default, {
-										value: attribute.slug,
-										primaryText: attribute.title,
-										key: index
-									});
-								})
-							),
-							_react2.default.createElement(_TextField2.default, {
-								fullWidth: true,
-								value: this.state.data.slug,
-								onChange: function onChange(event, value) {
-									return _this2.setState({
-										data: _extends({}, _this2.state.data, {
-											slug: value
-										})
-									});
-								},
-								floatingLabelText: 'Slug',
-								label: 'Slug'
-							})
-						)
-					)
-				),
-				_react2.default.createElement(_toolBar2.default, {
-					resources: 'attribute-sets',
-					data: this.state.data,
-					action: 'edit'
-				})
-			);
-		}
-	}]);
-
-	return AttributesCreate;
-}(_react2.default.Component);
-
-exports.default = AttributesCreate;
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TabsEdit = function (_React$Component) {
-    _inherits(TabsEdit, _React$Component);
-
-    function TabsEdit(props) {
-        _classCallCheck(this, TabsEdit);
-
-        var _this = _possibleConstructorReturn(this, (TabsEdit.__proto__ || Object.getPrototypeOf(TabsEdit)).call(this, props));
-
-        _this.state = {
-            data: {
-                name: '',
-                title: '',
-                slug: '',
-                creationDate: new Date(),
-                modificationDate: new Date()
-            }
-        };
-        _this.getData(_this.props.location);
-        return _this;
-    }
-
-    _createClass(TabsEdit, [{
-        key: 'getData',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(uri);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: response
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getData(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getData;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/tabs'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435',
-                                value: this.state.data.name,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            name: value
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.title,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            title: value
-                                        })
-                                    });
-                                },
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'tabs',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return TabsEdit;
-}(_react2.default.Component);
-
-exports.default = TabsEdit;
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _SelectField = __webpack_require__(7);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(8);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TabSetsEdit = function (_React$Component) {
-    _inherits(TabSetsEdit, _React$Component);
-
-    function TabSetsEdit(props) {
-        _classCallCheck(this, TabSetsEdit);
-
-        var _this = _possibleConstructorReturn(this, (TabSetsEdit.__proto__ || Object.getPrototypeOf(TabSetsEdit)).call(this, props));
-
-        _this.state = {
-            data: {
-                title: '',
-                tabs: [],
-                slug: '',
-                creationDate: new Date(),
-                modificationDate: new Date()
-            },
-            tabs: []
-        };
-        _this.getTabs();
-        _this.getTabSets(_this.props.location);
-        _this.changeTabs = _this.changeTabs.bind(_this);
-        return _this;
-    }
-
-    _createClass(TabSetsEdit, [{
-        key: 'changeTabs',
-        value: function changeTabs(event, index, value) {
-            this.setState({
-                data: _extends({}, this.state.data, {
-                    tabs: [].concat(_toConsumableArray(value))
-                })
-            });
-        }
-    }, {
-        key: 'getTabSets',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(uri);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: response
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getTabSets(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getTabSets;
-        }()
-    }, {
-        key: 'getTabs',
-        value: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var response;
-                return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return _data2.default.getData('/tabs');
-
-                            case 2:
-                                response = _context2.sent;
-
-                                this.setState({
-                                    tabs: response.data
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function getTabs() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return getTabs;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/tab-sets'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
-                                value: this.state.data.title,
-                                onChange: function onChange(event, value) {
-                                    _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            title: value
-                                        })
-                                    });
-                                },
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(
-                                _SelectField2.default,
-                                {
-                                    fullWidth: true,
-                                    multiple: true,
-                                    value: this.state.data.tabs,
-                                    floatingLabelText: '\u0422\u0430\u0431\u044B',
-                                    onChange: this.changeTabs
-                                },
-                                this.state.tabs.map(function (tab, index) {
-                                    return _react2.default.createElement(_MenuItem2.default, {
-                                        value: tab.slug,
-                                        primaryText: tab.title,
-                                        key: index
-                                    });
-                                })
-                            ),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'tab-sets',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return TabSetsEdit;
-}(_react2.default.Component);
-
-exports.default = TabSetsEdit;
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Tabs = __webpack_require__(6);
-
-var _TextField = __webpack_require__(2);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _DatePicker = __webpack_require__(12);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _materialUi = __webpack_require__(15);
-
-var _list = __webpack_require__(5);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _delete = __webpack_require__(9);
-
-var _delete2 = _interopRequireDefault(_delete);
-
-var _data = __webpack_require__(3);
-
-var _data2 = _interopRequireDefault(_data);
-
-var _toolBar = __webpack_require__(4);
-
-var _toolBar2 = _interopRequireDefault(_toolBar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var StatusEdit = function (_React$Component) {
-    _inherits(StatusEdit, _React$Component);
-
-    function StatusEdit(props) {
-        _classCallCheck(this, StatusEdit);
-
-        var _this = _possibleConstructorReturn(this, (StatusEdit.__proto__ || Object.getPrototypeOf(StatusEdit)).call(this, props));
-
-        _this.state = {
-            data: {
-                title: '',
-                slug: '',
-                creationDate: new Date(),
-                modificationDate: new Date()
-            }
-        };
-        _this.getStatus(_this.props.location);
-        return _this;
-    }
-
-    _createClass(StatusEdit, [{
-        key: 'getStatus',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(uri) {
-                var response;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return _data2.default.getResource(uri);
-
-                            case 2:
-                                response = _context.sent;
-
-                                this.setState({
-                                    data: response
-                                });
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function getStatus(_x) {
-                return _ref.apply(this, arguments);
-            }
-
-            return getStatus;
-        }()
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _Tabs.Tabs,
-                    null,
-                    _react2.default.createElement(
-                        _Tabs.Tab,
-                        { label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
-                        _react2.default.createElement(
-                            'div',
-                            {
-                                className: 'resource-page' },
-                            _react2.default.createElement(
-                                'div',
-                                {
-                                    className: 'resource-actions'
-                                },
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: this.props.location + '/delete'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-                                        labelStyle: { color: 'rgb(255, 64, 129)' },
-                                        primary: true,
-                                        icon: _react2.default.createElement(_delete2.default, { color: 'rgb(255, 64, 129)' })
-                                    })
-                                ),
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    {
-                                        to: '/statuses'
-                                    },
-                                    _react2.default.createElement(_materialUi.FlatButton, {
-                                        label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
-                                        primary: true,
-                                        icon: _react2.default.createElement(_list2.default, null)
-                                    })
-                                )
-                            ),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.title,
-                                onChange: function onChange(event, value) {
-                                    _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            title: value
-                                        })
-                                    });
-                                },
-                                hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A(\u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435)',
-                                errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E'
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.creationDate)
-                            }),
-                            _react2.default.createElement(_DatePicker2.default, {
-                                fullWidth: true,
-                                floatingLabelText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                hintText: '\u0414\u0430\u0442\u0430 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F',
-                                defaultDate: new Date(this.state.data.modificationDate)
-                            }),
-                            _react2.default.createElement(_TextField2.default, {
-                                fullWidth: true,
-                                value: this.state.data.slug,
-                                onChange: function onChange(event, value) {
-                                    return _this2.setState({
-                                        data: _extends({}, _this2.state.data, {
-                                            slug: value
-                                        })
-                                    });
-                                },
-                                floatingLabelText: 'Slug',
-                                label: 'Slug'
-                            })
-                        )
-                    )
-                ),
-                _react2.default.createElement(_toolBar2.default, {
-                    resources: 'statuses',
-                    data: this.state.data,
-                    action: 'edit'
-                })
-            );
-        }
-    }]);
-
-    return StatusEdit;
-}(_react2.default.Component);
-
-exports.default = StatusEdit;
-
-/***/ }),
-/* 107 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14912,15 +5956,31 @@ exports.default = [{
 	structure: {
 		tabs: [{
 			title: 'ОСНОВНОЕ',
+			className: 'big-resource',
 			content: [{
 				type: 'textInput',
 				name: 'name',
 				title: 'Название',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'categories', 'permissions'],
-				title: 'Права для категорий'
+				title: 'Права для категорий',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'categories', 'showInMenu'],
@@ -14928,7 +5988,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'products', 'permissions'],
-				title: 'Права для продуктов'
+				title: 'Права для продуктов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'products', 'showInMenu'],
@@ -14936,7 +6010,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'users', 'permissions'],
-				title: 'Права для пользователей'
+				title: 'Права для пользователей',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'users', 'showInMenu'],
@@ -14944,7 +6032,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'roles', 'permissions'],
-				title: 'Права для ролей'
+				title: 'Права для ролей',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'roles', 'showInMenu'],
@@ -14952,7 +6054,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'clients', 'permissions'],
-				title: 'Права для клиентов'
+				title: 'Права для клиентов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'clients', 'showInMenu'],
@@ -14960,7 +6076,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'orders', 'permissions'],
-				title: 'Права для заказов'
+				title: 'Права для заказов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'orders', 'showInMenu'],
@@ -14968,7 +6098,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'attributes', 'permissions'],
-				title: 'Права для атрибутов'
+				title: 'Права для атрибутов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'attributes', 'showInMenu'],
@@ -14976,7 +6120,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'tabs', 'permissions'],
-				title: 'Права для табов'
+				title: 'Права для табов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'tabs', 'showInMenu'],
@@ -14984,7 +6142,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'attribute-sets', 'permissions'],
-				title: 'Права для наборов атрибутов'
+				title: 'Права для наборов атрибутов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'attribute-sets', 'showInMenu'],
@@ -14992,7 +6164,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'tab-sets', 'permissions'],
-				title: 'Права для наборов табов'
+				title: 'Права для наборов табов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'tab-sets', 'showInMenu'],
@@ -15000,7 +6186,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'statuses', 'permissions'],
-				title: 'Права для статусов'
+				title: 'Права для статусов',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'statuses', 'showInMenu'],
@@ -15008,7 +6208,21 @@ exports.default = [{
 			}, {
 				type: 'multipleSelect',
 				name: ['resources', 'photos', 'permissions'],
-				title: 'Права для фото'
+				title: 'Права для фото',
+				variants: [{
+					id: 'get',
+					title: 'Чтение'
+				}, {
+					id: 'create',
+					title: 'Создание'
+				}, {
+					id: 'put',
+					title: 'Редактирование'
+				}, {
+					id: 'delete',
+					title: 'Удаление'
+				}],
+				defaultValue: []
 			}, {
 				type: 'boolean',
 				name: ['resources', 'photos', 'showInMenu'],
@@ -15046,21 +6260,26 @@ exports.default = [{
 				type: 'textInput',
 				name: 'name',
 				title: 'Имя',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'textInput',
 				name: 'email',
 				title: 'Почта',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'textInput',
 				name: 'password',
 				title: 'Пароль',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'select',
 				name: 'role',
 				title: 'Роль',
+				needResources: 'roles',
+				defaultValue: '',
 				required: true
 			}]
 		}]
@@ -15091,29 +6310,36 @@ exports.default = [{
 	structure: {
 		tabs: [{
 			title: 'ОСНОВНОЕ',
+			className: 'big-resource',
 			content: [{
 				type: 'boolean',
 				name: 'isActive',
 				title: 'Активный',
+				defaultValue: false,
 				required: false
 			}, {
 				type: 'textInput',
 				name: 'title',
 				title: 'Заголовок',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'wysiwyg',
 				name: 'description',
 				title: 'Описание',
+				editorStateName: 'descState',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'file',
 				name: 'image',
 				title: 'Перенесите сюда файл или нажмите, чтобы выбрать изображение',
+				defaultValue: undefined,
 				required: false
 			}, {
 				type: 'select',
 				name: 'parentCategory',
+				needResources: 'categories',
 				title: 'Родительская категория',
 				required: false
 			}]
@@ -15181,55 +6407,72 @@ exports.default = [{
 	structure: {
 		tabs: [{
 			title: 'ОСНОВНОЕ',
+			className: 'big-resource',
 			content: [{
 				type: 'boolean',
 				name: 'isActive',
 				title: 'Активный',
+				defaultValue: false,
 				required: false
 			}, {
 				type: 'textInput',
 				name: 'title',
 				title: 'Заголовок',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'wysiwyg',
 				name: 'description',
 				title: 'Описание',
+				editorStateName: 'descState',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'wysiwyg',
 				name: 'shortDescription',
+				editorStateName: 'shortDescState',
 				title: 'Краткое описание',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'textInput',
 				name: 'sku',
 				title: 'Атрикул',
+				defaultValue: '',
 				required: true
 			}, {
-				type: 'numberInput',
+				type: 'textInput',
 				name: 'price',
 				title: 'Цена',
+				defaultValue: '',
 				required: true
 			}, {
 				type: 'multipleSelect',
 				name: 'categories',
 				title: 'Категории',
+				defaultValue: [],
+				needResources: 'categories',
 				required: false
 			}, {
 				type: 'file',
-				name: 'image',
+				name: 'images',
+				multiple: true,
 				title: 'Перенесите сюда файл или нажмите, чтобы выбрать изображение',
+				defaultValue: [],
 				required: false
 			}, {
 				type: 'multipleSelect',
 				name: 'attribute-sets',
 				title: 'Наборы атрибутов',
+				defaultValue: [],
+				needResources: 'attribute-sets',
 				required: false
 			}, {
 				type: 'multipleSelect',
 				name: 'tab-sets',
 				title: 'Наборы табов',
+				defaultValue: [],
+				needResources: 'tab-sets',
 				required: false
 			}]
 		}, {
@@ -15238,22 +6481,26 @@ exports.default = [{
 				type: 'textInput',
 				name: ['seo', 'title'],
 				title: 'SEO заголовок',
+				defaultValue: '',
 				required: false
 			}, {
 				type: 'textInput',
 				name: ['seo', 'description'],
 				title: 'SEO описание',
+				defaultValue: '',
 				required: false
 			}, {
 				type: 'textInput',
 				name: ['seo', 'keywords'],
 				title: 'SEO ключевые слова',
+				defaultValue: '',
 				required: false
 			}]
 		}, {
 			title: 'ПОХОЖИЕ ПРОДУКТЫ',
 			content: [{
 				type: 'table',
+				name: 'relatedProducts',
 				columns: [{
 					name: 'sku',
 					title: 'Артикул'
@@ -15263,17 +6510,19 @@ exports.default = [{
 				}, {
 					name: 'price',
 					title: 'Цена'
-				}]
+				}],
+				defaultValue: []
 			}, {
-				type: 'select',
-				name: 'relatedProducts',
+				type: 'pushTable',
 				title: 'Похожий продукт',
-				required: false
+				needResources: 'products',
+				name: 'relatedProducts'
 			}]
 		}, {
 			title: 'ТОВАРЫ ИЗ НАБОРА',
 			content: [{
 				type: 'table',
+				name: 'fromSet',
 				columns: [{
 					name: 'sku',
 					title: 'Артикул'
@@ -15283,19 +6532,20 @@ exports.default = [{
 				}, {
 					name: 'price',
 					title: 'Цена'
-				}]
+				}],
+				defaultValue: []
 			}, {
-				type: 'select',
-				name: 'fromSet',
+				type: 'pushTable',
 				title: 'Товар из набора',
-				required: false
+				needResources: 'products',
+				name: 'fromSet'
 			}]
 		}]
 	}
 }];
 
 /***/ }),
-/* 108 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15311,27 +6561,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _List = __webpack_require__(109);
+var _List = __webpack_require__(83);
 
 var _reactRouterDom = __webpack_require__(1);
 
-var _people = __webpack_require__(27);
+var _people = __webpack_require__(18);
 
 var _people2 = _interopRequireDefault(_people);
 
-var _exitToApp = __webpack_require__(110);
+var _exitToApp = __webpack_require__(84);
 
 var _exitToApp2 = _interopRequireDefault(_exitToApp);
 
-var _home = __webpack_require__(111);
+var _home = __webpack_require__(85);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _auth = __webpack_require__(17);
+var _auth = __webpack_require__(4);
 
 var _auth2 = _interopRequireDefault(_auth);
 
-var _resources = __webpack_require__(26);
+var _resources = __webpack_require__(17);
 
 var _resources2 = _interopRequireDefault(_resources);
 
@@ -15427,25 +6677,25 @@ var ResourcesList = function (_React$Component) {
 exports.default = ResourcesList;
 
 /***/ }),
-/* 109 */
+/* 83 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/List");
 
 /***/ }),
-/* 110 */
+/* 84 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/exit-to-app");
 
 /***/ }),
-/* 111 */
+/* 85 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/home");
 
 /***/ }),
-/* 112 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15461,29 +6711,29 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _colors = __webpack_require__(32);
+var _colors = __webpack_require__(27);
 
-var _Paper = __webpack_require__(113);
+var _Paper = __webpack_require__(87);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _TextField = __webpack_require__(2);
+var _TextField = __webpack_require__(3);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _Avatar = __webpack_require__(114);
+var _Avatar = __webpack_require__(88);
 
 var _Avatar2 = _interopRequireDefault(_Avatar);
 
-var _lockOutline = __webpack_require__(115);
+var _lockOutline = __webpack_require__(89);
 
 var _lockOutline2 = _interopRequireDefault(_lockOutline);
 
-var _RaisedButton = __webpack_require__(16);
+var _RaisedButton = __webpack_require__(9);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
-var _auth = __webpack_require__(17);
+var _auth = __webpack_require__(4);
 
 var _auth2 = _interopRequireDefault(_auth);
 
@@ -15612,22 +6862,852 @@ var Login = function (_React$Component) {
 exports.default = Login;
 
 /***/ }),
-/* 113 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Paper");
 
 /***/ }),
-/* 114 */
+/* 88 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/Avatar");
 
 /***/ }),
-/* 115 */
+/* 89 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/svg-icons/action/lock-outline");
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Tabs = __webpack_require__(22);
+
+var _TextField = __webpack_require__(3);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Toggle = __webpack_require__(14);
+
+var _Toggle2 = _interopRequireDefault(_Toggle);
+
+var _Table = __webpack_require__(13);
+
+var _delete = __webpack_require__(6);
+
+var _delete2 = _interopRequireDefault(_delete);
+
+var _SelectField = __webpack_require__(11);
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _list = __webpack_require__(8);
+
+var _list2 = _interopRequireDefault(_list);
+
+var _MenuItem = __webpack_require__(12);
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _FlatButton = __webpack_require__(10);
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _uid = __webpack_require__(91);
+
+var _uid2 = _interopRequireDefault(_uid);
+
+var _reactDraftWysiwyg = __webpack_require__(23);
+
+var _draftJs = __webpack_require__(25);
+
+var _draftjsToHtml = __webpack_require__(24);
+
+var _draftjsToHtml2 = _interopRequireDefault(_draftjsToHtml);
+
+var _htmlToDraftjs = __webpack_require__(26);
+
+var _htmlToDraftjs2 = _interopRequireDefault(_htmlToDraftjs);
+
+var _data = __webpack_require__(2);
+
+var _data2 = _interopRequireDefault(_data);
+
+var _toolBar = __webpack_require__(5);
+
+var _toolBar2 = _interopRequireDefault(_toolBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProductsCreate = function (_React$Component) {
+	_inherits(ProductsCreate, _React$Component);
+
+	function ProductsCreate(props) {
+		_classCallCheck(this, ProductsCreate);
+
+		var _this = _possibleConstructorReturn(this, (ProductsCreate.__proto__ || Object.getPrototypeOf(ProductsCreate)).call(this, props));
+
+		_this.state = {
+			data: {
+				isActive: false,
+				relatedProducts: [],
+				fromSet: [],
+				images: [],
+				categories: [],
+				seo: {
+					title: '',
+					description: '',
+					keywords: ''
+				},
+				'attribute-sets': [],
+				attributes: [],
+				'tab-sets': [],
+				tabs: [],
+				slug: (0, _uid2.default)(16)
+			},
+			descState: _draftJs.EditorState.createEmpty(),
+			shortDescState: _draftJs.EditorState.createEmpty(),
+			products: []
+		};
+		if (!!_this.props.match) {
+			_this.getProduct();
+		}
+		_this.getResource('/products');
+		_this.getResource('/categories');
+		_this.getResource('/attribute-sets');
+		_this.getResource('/tab-sets');
+		_this.changeRelatedProducts = _this.changeRelatedProducts.bind(_this);
+		_this.uploadFile = _this.uploadFile.bind(_this);
+		_this.changeCategories = _this.changeCategories.bind(_this);
+		_this.changeAttributeSets = _this.changeAttributeSets.bind(_this);
+		_this.changeTabSets = _this.changeTabSets.bind(_this);
+		_this.onEditorDescChange = _this.onEditorDescChange.bind(_this);
+		_this.onEditorShortDescChange = _this.onEditorShortDescChange.bind(_this);
+		return _this;
+	}
+
+	_createClass(ProductsCreate, [{
+		key: 'getProduct',
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+				var id, response, description, contentBlockDesc, contentStateDesc, editorStateDesc, shortDescription, contentBlockShortDesc, contentStateShortDesc, editorStateShortDesc;
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								id = this.props.match.params.id;
+								_context.next = 3;
+								return _data2.default.getResource('/products/' + id);
+
+							case 3:
+								response = _context.sent;
+
+								delete response._id;
+								description = response.description;
+								contentBlockDesc = (0, _htmlToDraftjs2.default)(description);
+								contentStateDesc = _draftJs.ContentState.createFromBlockArray(contentBlockDesc.contentBlocks);
+								editorStateDesc = _draftJs.EditorState.createWithContent(contentStateDesc);
+								shortDescription = response.shortDescription;
+								contentBlockShortDesc = (0, _htmlToDraftjs2.default)(shortDescription);
+								contentStateShortDesc = _draftJs.ContentState.createFromBlockArray(contentBlockShortDesc.contentBlocks);
+								editorStateShortDesc = _draftJs.EditorState.createWithContent(contentStateShortDesc);
+
+								this.setState({
+									data: _extends({}, this.state.data, response, {
+										sku: response.sku + '-COPY'
+									}),
+									descState: editorStateDesc,
+									shortDescState: editorStateShortDesc
+								});
+
+							case 14:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function getProduct() {
+				return _ref.apply(this, arguments);
+			}
+
+			return getProduct;
+		}()
+	}, {
+		key: 'changeState',
+		value: function changeState(value, key) {
+			var newState = this.state;
+			newState.data[key] = value;
+			this.setState(newState);
+		}
+	}, {
+		key: 'changeRelatedProducts',
+		value: function changeRelatedProducts(event, index, value) {
+			var _this2 = this;
+
+			this.state.products.forEach(function (product) {
+				if (product.slug === value) {
+					_this2.changeState([].concat(_toConsumableArray(_this2.state.data.relatedProducts), [product]), 'relatedProducts');
+				}
+			});
+		}
+	}, {
+		key: 'deleteRelatedProduct',
+		value: function deleteRelatedProduct(id) {
+			var relatedProducts = [];
+			this.state.data.relatedProducts.map(function (relatedProduct) {
+				if (relatedProduct.slug !== id) {
+					relatedProducts.push(relatedProduct);
+				}
+			});
+			this.changeState(relatedProducts, 'relatedProducts');
+		}
+	}, {
+		key: 'uploadFile',
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(file) {
+				var result;
+				return regeneratorRuntime.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								_context2.next = 2;
+								return _data2.default.uploadImage('/upload/products', file.target.files[0]);
+
+							case 2:
+								result = _context2.sent;
+
+								this.setState({
+									data: _extends({}, this.state.data, {
+										images: [].concat(_toConsumableArray(this.state.data.images), [result])
+									})
+								});
+
+							case 4:
+							case 'end':
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
+
+			function uploadFile(_x) {
+				return _ref2.apply(this, arguments);
+			}
+
+			return uploadFile;
+		}()
+	}, {
+		key: 'getResource',
+		value: function () {
+			var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(uri) {
+				var resource, response, newState;
+				return regeneratorRuntime.wrap(function _callee3$(_context3) {
+					while (1) {
+						switch (_context3.prev = _context3.next) {
+							case 0:
+								resource = uri.slice(1);
+								_context3.next = 3;
+								return _data2.default.getData(uri);
+
+							case 3:
+								response = _context3.sent;
+								newState = {};
+
+								newState[resource] = response.data;
+								this.setState(newState);
+
+							case 7:
+							case 'end':
+								return _context3.stop();
+						}
+					}
+				}, _callee3, this);
+			}));
+
+			function getResource(_x2) {
+				return _ref3.apply(this, arguments);
+			}
+
+			return getResource;
+		}()
+	}, {
+		key: 'changeCategories',
+		value: function changeCategories(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					categories: [].concat(_toConsumableArray(this.state.data.categories), _toConsumableArray(value))
+				})
+			});
+		}
+	}, {
+		key: 'changeAttributeSets',
+		value: function changeAttributeSets(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					'attribute-sets': [].concat(_toConsumableArray(this.state.data['attribute-sets']), _toConsumableArray(value))
+				})
+			});
+		}
+	}, {
+		key: 'changeTabSets',
+		value: function changeTabSets(event, index, value) {
+			this.setState({
+				data: _extends({}, this.state.data, {
+					'tab-sets': [].concat(_toConsumableArray(this.state.data['tab-sets']), _toConsumableArray(value))
+				})
+			});
+		}
+	}, {
+		key: 'onEditorDescChange',
+		value: function onEditorDescChange(descState) {
+			this.setState({
+				descState: descState
+			});
+		}
+	}, {
+		key: 'onEditorShortDescChange',
+		value: function onEditorShortDescChange(shortDescState) {
+			this.setState({
+				shortDescState: shortDescState
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			if (!this.state.categories || !this.state.products || !this.state['attribute-sets'] || !this.state['tab-sets']) {
+				return false;
+			}
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					_Tabs.Tabs,
+					null,
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0435' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'big-resource' },
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									className: 'resource-actions',
+									to: '/products'
+								},
+								_react2.default.createElement(_FlatButton2.default, {
+									label: '\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u043F\u0438\u0441\u043A\u0443',
+									primary: true,
+									icon: _react2.default.createElement(_list2.default, null)
+								})
+							),
+							_react2.default.createElement(_Toggle2.default, {
+								style: {
+									width: '150px',
+									marginLeft: '20px'
+								},
+								label: '\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439',
+								toggled: this.state.data.isActive,
+								onToggle: function onToggle(event, value) {
+									return _this3.changeState(value, 'isActive');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								floatingLabelText: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+								value: this.state.data.title,
+								onChange: function onChange(event, value) {
+									return _this3.changeState(value, 'title');
+								}
+							}),
+							_react2.default.createElement(
+								'div',
+								{
+									style: {
+										color: 'rgba(0, 0, 0, 0.3)'
+									}
+								},
+								'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+							),
+							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+								editorState: this.state.descState,
+								wrapperClassName: 'demo-wrapper',
+								editorClassName: 'demo-editor',
+								onEditorStateChange: this.onEditorDescChange,
+								onChange: function onChange() {
+									return _this3.setState({
+										data: _extends({}, _this3.state.data, {
+											description: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.descState.getCurrentContent()))
+										})
+									});
+								}
+							}),
+							_react2.default.createElement(
+								'div',
+								{
+									style: {
+										color: 'rgba(0, 0, 0, 0.3)'
+									}
+								},
+								'\u041A\u0440\u0430\u0442\u043A\u043E\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+							),
+							_react2.default.createElement(_reactDraftWysiwyg.Editor, {
+								editorState: this.state.shortDescState,
+								wrapperClassName: 'demo-wrapper',
+								editorClassName: 'demo-editor',
+								onEditorStateChange: this.onEditorShortDescChange,
+								onChange: function onChange() {
+									return _this3.setState({
+										data: _extends({}, _this3.state.data, {
+											shortDescription: (0, _draftjsToHtml2.default)((0, _draftJs.convertToRaw)(_this3.state.shortDescState.getCurrentContent()))
+										})
+									});
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
+								floatingLabelText: '\u0410\u0440\u0442\u0438\u043A\u0443\u043B',
+								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+								value: this.state.data.sku,
+								onChange: function onChange(event, value) {
+									return _this3.changeState(value, 'sku');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: '\u0426\u0435\u043D\u0430',
+								floatingLabelText: '\u0426\u0435\u043D\u0430',
+								errorText: '\u041F\u043E\u043B\u0435 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E',
+								value: this.state.data.price,
+								onChange: function onChange(event, value) {
+									return _this3.changeState(value, 'price');
+								}
+							}),
+							_react2.default.createElement(
+								_SelectField2.default,
+								{
+									fullWidth: true,
+									multiple: true,
+									value: this.state.data.categories,
+									floatingLabelText: '\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0438',
+									onChange: function onChange(event, index, value) {
+										_this3.setState({
+											data: _extends({}, _this3.state.data, {
+												categories: value
+											})
+										});
+									}
+								},
+								this.state.categories.map(function (category, index) {
+									return _react2.default.createElement(_MenuItem2.default, {
+										value: category.slug,
+										primaryText: category.title,
+										key: index
+									});
+								})
+							),
+							_react2.default.createElement('input', {
+								type: 'file',
+								className: 'inputfile',
+								id: 'file',
+								onChange: this.uploadFile
+							}),
+							_react2.default.createElement(
+								'label',
+								{
+									htmlFor: 'file',
+									className: 'inputfile__label'
+								},
+								'\u041F\u0435\u0440\u0435\u043D\u0435\u0441\u0438\u0442\u0435 \u0441\u044E\u0434\u0430 \u0444\u0430\u0439\u043B \u0438\u043B\u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435'
+							),
+							_react2.default.createElement(
+								'div',
+								{
+									className: 'inputfile__images'
+								},
+								this.state.data.images.map(function (image, index) {
+									return _react2.default.createElement('img', {
+										className: 'inputfile__image',
+										src: image,
+										key: index
+									});
+								})
+							),
+							_react2.default.createElement(
+								_SelectField2.default,
+								{
+									fullWidth: true,
+									multiple: true,
+									value: this.state.data['attribute-sets'],
+									floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0432',
+									onChange: function onChange(event, index, value) {
+										return _this3.setState({
+											data: _extends({}, _this3.state.data, {
+												'attribute-sets': value
+											})
+										});
+									}
+								},
+								this.state['attribute-sets'].map(function (attribute, index) {
+									return _react2.default.createElement(_MenuItem2.default, {
+										value: attribute.slug,
+										primaryText: attribute.title,
+										key: index
+									});
+								})
+							),
+							_react2.default.createElement(
+								_SelectField2.default,
+								{
+									fullWidth: true,
+									multiple: true,
+									value: this.state.data['tab-sets'],
+									floatingLabelText: '\u041D\u0430\u0431\u043E\u0440\u044B \u0442\u0430\u0431\u043E\u0432',
+									onChange: function onChange(event, index, value) {
+										return _this3.setState({
+											data: _extends({}, _this3.state.data, {
+												'tab-sets': value
+											})
+										});
+									}
+								},
+								this.state['tab-sets'].map(function (set, index) {
+									return _react2.default.createElement(_MenuItem2.default, {
+										value: set.slug,
+										primaryText: set.title,
+										key: index
+									});
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: 'SEO' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								floatingLabelText: 'SEO \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A',
+								value: this.state.data.seo.title,
+								onChange: function onChange(event, value) {
+									return _this3.changeState(_extends({}, _this3.state.data.seo, {
+										title: value
+									}), 'seo');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+								floatingLabelText: 'SEO \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435',
+								value: this.state.data.seo.description,
+								onChange: function onChange(event, value) {
+									return _this3.changeState(_extends({}, _this3.state.data.seo, {
+										description: value
+									}), 'seo');
+								}
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								fullWidth: true,
+								hintText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+								floatingLabelText: 'SEO \u043A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0441\u043B\u043E\u0432\u0430',
+								value: this.state.data.seo.keywords,
+								onChange: function onChange(event, value) {
+									return _this3.changeState(_extends({}, _this3.state.data.seo, {
+										keywords: value
+									}), 'seo');
+								}
+							})
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u041F\u043E\u0445\u043E\u0436\u0438\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u044B' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_Table.Table,
+								{
+									selectable: false
+								},
+								_react2.default.createElement(
+									_Table.TableHeader,
+									{
+										displaySelectAll: false,
+										adjustForCheckbox: false
+									},
+									_react2.default.createElement(
+										_Table.TableRow,
+										null,
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0426\u0435\u043D\u0430'
+										),
+										_react2.default.createElement(_Table.TableHeaderColumn, null)
+									)
+								),
+								_react2.default.createElement(
+									_Table.TableBody,
+									{
+										displayRowCheckbox: false
+									},
+									this.state.data.relatedProducts.map(function (relatedProduct, index) {
+										return _this3.state.products.map(function (product) {
+											if (product.slug === relatedProduct) {
+												return _react2.default.createElement(
+													_Table.TableRow,
+													{
+														key: index
+													},
+													_react2.default.createElement(
+														_Table.TableRowColumn,
+														null,
+														product.sku
+													),
+													_react2.default.createElement(
+														_Table.TableRowColumn,
+														null,
+														product.title
+													),
+													_react2.default.createElement(
+														_Table.TableRowColumn,
+														null,
+														product.price
+													),
+													_react2.default.createElement(
+														_Table.TableHeaderColumn,
+														null,
+														_react2.default.createElement(_delete2.default, {
+															color: 'rgb(255, 64, 129)',
+															onClick: function onClick() {
+																var relatedProducts = _this3.state.data.relatedProducts;
+																relatedProducts.splice(index, 1);
+																_this3.setState({
+																	data: _extends({}, _this3.state.data, {
+																		relatedProducts: relatedProducts
+																	})
+																});
+															},
+															style: { cursor: 'pointer' }
+														})
+													)
+												);
+											}
+										});
+									})
+								)
+							),
+							_react2.default.createElement(
+								_SelectField2.default,
+								{
+									fullWidth: true,
+									value: this.state.data.relatedProducts,
+									floatingLabelText: '\u041F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u0440\u043E\u0434\u0443\u043A\u0442',
+									onChange: function onChange(event, index, value) {
+										return _this3.setState({
+											data: _extends({}, _this3.state.data, {
+												relatedProducts: [].concat(_toConsumableArray(_this3.state.data.relatedProducts), [value])
+											})
+										});
+									}
+								},
+								this.state.products.map(function (product, index) {
+									return _react2.default.createElement(_MenuItem2.default, {
+										value: product.slug,
+										primaryText: product.title,
+										key: index
+									});
+								})
+							)
+						)
+					),
+					_react2.default.createElement(
+						_Tabs.Tab,
+						{ label: '\u0422\u043E\u0432\u0430\u0440\u044B \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430' },
+						_react2.default.createElement(
+							'div',
+							{
+								className: 'resource-page' },
+							_react2.default.createElement(
+								_Table.Table,
+								{
+									selectable: false
+								},
+								_react2.default.createElement(
+									_Table.TableHeader,
+									{
+										displaySelectAll: false,
+										adjustForCheckbox: false
+									},
+									_react2.default.createElement(
+										_Table.TableRow,
+										null,
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0410\u0440\u0442\u0438\u043A\u0443\u043B'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435'
+										),
+										_react2.default.createElement(
+											_Table.TableHeaderColumn,
+											null,
+											'\u0426\u0435\u043D\u0430'
+										),
+										_react2.default.createElement(_Table.TableHeaderColumn, null)
+									)
+								),
+								_react2.default.createElement(
+									_Table.TableBody,
+									{
+										displayRowCheckbox: false
+									},
+									this.state.data.fromSet.map(function (fromSet, index) {
+										return _this3.state.products.map(function (product) {
+											if (product.slug === fromSet) {
+												return _react2.default.createElement(
+													_Table.TableRow,
+													{
+														key: index
+													},
+													_react2.default.createElement(
+														_Table.TableRowColumn,
+														null,
+														product.sku
+													),
+													_react2.default.createElement(
+														_Table.TableRowColumn,
+														null,
+														product.title
+													),
+													_react2.default.createElement(
+														_Table.TableRowColumn,
+														null,
+														product.price
+													),
+													_react2.default.createElement(
+														_Table.TableHeaderColumn,
+														null,
+														_react2.default.createElement(_delete2.default, {
+															color: 'rgb(255, 64, 129)',
+															onClick: function onClick() {
+																var fromSet = _this3.state.data.fromSet;
+																fromSet.splice(index, 1);
+																_this3.setState({
+																	data: _extends({}, _this3.state.data, {
+																		fromSet: fromSet
+																	})
+																});
+															},
+															style: { cursor: 'pointer' }
+														})
+													)
+												);
+											}
+										});
+									})
+								)
+							),
+							_react2.default.createElement(
+								_SelectField2.default,
+								{
+									fullWidth: true,
+									value: this.state.data.fromSet,
+									floatingLabelText: '\u0422\u043E\u0432\u0430\u0440 \u0438\u0437 \u043D\u0430\u0431\u043E\u0440\u0430',
+									onChange: function onChange(event, index, value) {
+										return _this3.setState({
+											data: _extends({}, _this3.state.data, {
+												fromSet: [].concat(_toConsumableArray(_this3.state.data.fromSet), [value])
+											})
+										});
+									}
+								},
+								this.state.products.map(function (product, index) {
+									return _react2.default.createElement(_MenuItem2.default, {
+										value: product.slug,
+										primaryText: product.title,
+										key: index
+									});
+								})
+							)
+						)
+					)
+				),
+				_react2.default.createElement(_toolBar2.default, {
+					resources: 'products',
+					data: this.state.data,
+					action: 'create'
+				})
+			);
+		}
+	}]);
+
+	return ProductsCreate;
+}(_react2.default.Component);
+
+exports.default = ProductsCreate;
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports) {
+
+module.exports = require("uid");
 
 /***/ })
 /******/ ]);

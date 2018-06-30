@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ToolBar from '@src/containers/tool-bar'
+import ToolBar from '@src/containers/content/tool-bar'
 
 export default class RemoveLayout extends React.Component {
     render() {

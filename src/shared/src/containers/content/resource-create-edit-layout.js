@@ -10,17 +10,21 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 import Dialog from 'material-ui/Dialog'
 import RaisedButton from 'material-ui/RaisedButton'
 import Toggle from 'material-ui/Toggle'
+import CopyIcon from 'material-ui/svg-icons/action/flip-to-front'
+import { Editor } from 'react-draft-wysiwyg'
+import draftToHtml from 'draftjs-to-html'
+import { ContentState, convertToRaw, EditorState } from 'draft-js'
+import htmlToDraft from 'html-to-draftjs'
 import { Link } from 'react-router-dom'
 
-import ToolBar from '@src/containers/tool-bar'
+import ToolBar from '@src/containers/content/tool-bar'
 import Data from '@src/core/data.provider'
 
-export default class ResourceLayout extends React.Component {
+export default class ResourceCreateEditLayout extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			data: this.getInitialState(),
-			variant: {}
+			data: this.getInitialState()
 		}
 		if (this.props.action === 'edit') {
 			this.getResourceInfo()
@@ -84,12 +88,52 @@ export default class ResourceLayout extends React.Component {
 				open: false
 			}
 		}
+		if (this.props.resource === 'users') {
+			this.state = {
+				...this.state,
+				roles: []
+			}
+			this.getData('roles')
+			    .catch(err => console.error('resource-layout:92 ERROR GETTING DATA!: ', err))
+		}
+		if (this.props.resource === 'categories') {
+			this.state = {
+				...this.state,
+				categories: [],
+				descState: EditorState.createEmpty()
+			}
+			this.getData('categories')
+			    .catch(err => console.error('resource-layout:102 ERROR GETTING DATA!: ', err))
+		}
+		if (this.props.resource === 'products') {
+			this.state = {
+				...this.state,
+				categories: [],
+				'attribute-sets': [],
+				'tab-sets': [],
+				products: [],
+				descState: EditorState.createEmpty(),
+				shortDescState: EditorState.createEmpty()
+			}
+			this.getData('categories')
+			    .catch(err => console.error('resource-layout:117 ERROR GETTING DATA!: ', err))
+			this.getData('attribute-sets')
+			    .catch(err => console.error('resource-layout:119 ERROR GETTING DATA!: ', err))
+			this.getData('tab-sets')
+			    .catch(err => console.error('resource-layout:121 ERROR GETTING DATA!: ', err))
+			this.getData('products')
+			    .catch(err => console.error('resource-layout:123 ERROR GETTING DATA!: ', err))
+		}
 		this.changeValueOfInput = this.changeValueOfInput.bind(this)
 		this.changeSwitchInput = this.changeSwitchInput.bind(this)
 		this.handleClose = this.handleClose.bind(this)
 		this.handleOpen = this.handleOpen.bind(this)
 		this.addVariant = this.addVariant.bind(this)
 		this.addAddress = this.addAddress.bind(this)
+		this.onEditorDescChange = this.onEditorDescChange.bind(this)
+		this.onEditorShortDescChange = this.onEditorShortDescChange.bind(this)
+		this.uploadFile = this.uploadFile.bind(this)
+		this.uploadFiles = this.uploadFiles.bind(this)
 	}
 
 	getInitialState() {
@@ -134,12 +178,44 @@ export default class ResourceLayout extends React.Component {
 			delete currentResource.address
 		}
 
+		if (this.props.resource === 'products') {
+			currentResource.relatedProducts = []
+			currentResource.fromSet = []
+		}
+
 		return currentResource
 	}
 
 	async getResourceInfo() {
 		const {id} = this.props.match.params
 		const result = await Data.getResource(`/${this.props.resource}/${id}`)
+		if (this.props.resource === 'categories') {
+			const description = result.description
+			const contentBlock = htmlToDraft(description)
+			const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
+			const editorState = EditorState.createWithContent(contentState)
+			this.setState({
+				data: result,
+				descState: editorState
+			})
+			return
+		}
+		if (this.props.resource === 'products') {
+			const description = result.description
+			const contentBlock = htmlToDraft(description)
+			const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
+			const editorState = EditorState.createWithContent(contentState)
+			const shortDescription = result.shortDescription
+			const contentBlockShortDesc = htmlToDraft(shortDescription)
+			const contentStateShortDesc = ContentState.createFromBlockArray(contentBlockShortDesc.contentBlocks)
+			const editorStateShortDesc = EditorState.createWithContent(contentStateShortDesc)
+			this.setState({
+				data: result,
+				descState: editorState,
+				shortDescState: editorStateShortDesc
+			})
+			return
+		}
 		this.setState({
 			data: result
 		})
@@ -149,6 +225,30 @@ export default class ResourceLayout extends React.Component {
 		const response = await Data.getData(`/${resources}`)
 		this.setState({
 			[ resources ]: response.data
+		})
+	}
+
+	async uploadFile(file) {
+		const result = await Data.uploadImage('/upload/categories', file.target.files[ 0 ])
+		this.setState({
+			data: {
+				...this.state.data,
+				image: result
+			},
+			image: result
+		})
+	}
+
+	async uploadFiles(file) {
+		const result = await Data.uploadImage('/upload/products', file.target.files[ 0 ])
+		this.setState({
+			data: {
+				...this.state.data,
+				images: [
+					...this.state.data.images,
+					result
+				]
+			}
 		})
 	}
 
@@ -162,7 +262,53 @@ export default class ResourceLayout extends React.Component {
 		})
 	}
 
-	changeSelectInput(value, name) {
+	async changeSelectInput(value, name, multiple) {
+		if (this.props.resource === 'products') {
+			if (name === 'attribute-sets') {
+				const attributes = await Data.getAttributes(value)
+				this.setState({
+					data: {
+						...this.state.data,
+						attributes
+					}
+				})
+			}
+			if (name === 'tab-sets') {
+				const tabs = await Data.getTabs(value)
+				this.setState({
+					data: {
+						...this.state.data,
+						tabs
+					}
+				})
+			}
+			this.setState({
+				data: {
+					...this.state.data,
+					[ name ]: value
+				}
+			})
+			return
+		}
+		if (name instanceof Array) {
+			if (name.length === 3) {
+				if (!!multiple) {
+					this.setState({
+						data: {
+							...this.state.data,
+							[ name[ 0 ] ]: {
+								...this.state.data[ name[ 0 ] ],
+								[ name[ 1 ] ]: {
+									...this.state.data[ name[ 0 ] ][ name[ 1 ] ],
+									[ name[ 2 ] ]: value
+								}
+							}
+						}
+					})
+				}
+			}
+			return
+		}
 		this.setState({
 			data: {
 				...this.state.data,
@@ -171,7 +317,24 @@ export default class ResourceLayout extends React.Component {
 		})
 	}
 
-	changeSwitchInput(value, name) {
+	changeSwitchInput(value, name, multiple) {
+		if (!!multiple) {
+			if (name.length === 3) {
+				this.setState({
+					data: {
+						...this.state.data,
+						[ name[ 0 ] ]: {
+							...this.state.data[ name[ 0 ] ],
+							[ name[ 1 ] ]: {
+								...this.state.data[ name[ 0 ] ][ name[ 1 ] ],
+								[ name[ 2 ] ]: value
+							}
+						}
+					}
+				})
+			}
+			return
+		}
 		this.setState({
 			data: {
 				...this.state.data,
@@ -240,7 +403,7 @@ export default class ResourceLayout extends React.Component {
 			data: {
 				...this.state.data,
 				[ name ]: [
-					...this.state.data.products,
+					...this.state.data[ name ],
 					value
 				]
 			}
@@ -263,10 +426,20 @@ export default class ResourceLayout extends React.Component {
 		})
 	}
 
+	onEditorDescChange(descState) {
+		this.setState({
+			descState
+		})
+	}
+
+	onEditorShortDescChange(shortDescState) {
+		this.setState({
+			shortDescState
+		})
+	}
+
 	render() {
 		const {tabs} = this.props.structure
-		console.log('STATE =>>>', this.state)
-		console.log('PROPS =>>>', this.props)
 		return (
 			<React.Fragment>
 				<Tabs>
@@ -278,7 +451,7 @@ export default class ResourceLayout extends React.Component {
 									key={tabIndex}
 								>
 									<div
-										className='resource-page'
+										className={!!tab.className ? tab.className : 'resource-page'}
 									>
 										<div
 											className='resource-actions'
@@ -295,6 +468,24 @@ export default class ResourceLayout extends React.Component {
 															icon={<DeleteIcon color='rgb(255, 64, 129)'/>}
 														/>
 													</Link>
+													: null
+											}
+											{
+												this.props.action === 'edit' && this.props.resource === 'products'
+													? (
+														<Link
+															to={{
+																pathname: `${this.props.location.pathname}/copy`
+															}}
+														>
+															<FlatButton
+																label="Копировать"
+																labelStyle={{color: 'rgb(64, 255, 129)'}}
+																primary={true}
+																icon={<CopyIcon color='rgb(64, 255, 129)'/>}
+															/>
+														</Link>
+													)
 													: null
 											}
 											<Link
@@ -353,7 +544,8 @@ export default class ResourceLayout extends React.Component {
 														</div>
 													)
 												}
-												if (type === 'multipleSelect' || (
+												if ((
+													type === 'multipleSelect' && !!field.variants) || (
 													type === 'select' && !!field.variants))
 												{
 													const {name, required, title, type, variants} = field
@@ -369,6 +561,36 @@ export default class ResourceLayout extends React.Component {
 															onClick={this.addVariant}
 														/>
 													]
+													if (name instanceof Array) {
+														if (name.length === 3) {
+															return (
+																<div
+																	className='input'
+																	key={fieldIndex}
+																>
+																	<SelectField
+																		fullWidth={true}
+																		multiple={type === 'multipleSelect'}
+																		value={this.state.data[ name[ 0 ] ][ name[ 1 ] ][ name[ 2 ] ]}
+																		floatingLabelText={title}
+																		errorText={required ? 'Поле обязательно' : ''}
+																		onChange={(event, index, value) => this.changeSelectInput(value, name, true)}
+																	>
+																		{
+																			variants.map((variant, index) => {
+																				return <MenuItem
+																					value={variant.id}
+																					primaryText={variant.title}
+																					key={index}
+																				/>
+																			})
+																		}
+																	</SelectField>
+																</div>
+															)
+														}
+														return
+													}
 													return (
 														<div
 															className='input'
@@ -487,6 +709,33 @@ export default class ResourceLayout extends React.Component {
 														</div>
 													)
 												}
+												if (type === 'multipleSelect') {
+													return (
+														<div
+															className='input'
+															key={fieldIndex}
+														>
+															<SelectField
+																fullWidth={true}
+																multiple={type === 'multipleSelect'}
+																value={this.state.data[ name ]}
+																floatingLabelText={title}
+																errorText={required ? 'Поле обязательно' : ''}
+																onChange={(event, index, value) => this.changeSelectInput(value, name)}
+															>
+																{
+																	this.state[ name ].map((item, index) => {
+																		return <MenuItem
+																			value={item.slug}
+																			primaryText={item.title}
+																			key={index}
+																		/>
+																	})
+																}
+															</SelectField>
+														</div>
+													)
+												}
 												if (type === 'select') {
 													const {name, title, needResources} = field
 													return (
@@ -517,6 +766,26 @@ export default class ResourceLayout extends React.Component {
 												}
 												if (type === 'boolean') {
 													const {name, title} = field
+													if (name instanceof Array) {
+														if (name.length === 3) {
+															return (
+																<div
+																	className='input'
+																	key={fieldIndex}
+																>
+																	<Toggle
+																		style={{
+																			width: '250px'
+																		}}
+																		toggled={this.state.data[ name[ 0 ] ][ name[ 1 ] ][ name[ 2 ] ]}
+																		label={title}
+																		onToggle={(event, value) => this.changeSwitchInput(value, name, true)}
+																	/>
+																</div>
+															)
+														}
+														return
+													}
 													return (
 														<div
 															className='input'
@@ -677,12 +946,257 @@ export default class ResourceLayout extends React.Component {
 														</React.Fragment>
 													)
 												}
+												if (type === 'wysiwyg') {
+													return (
+														<div
+															className='input'
+															key={fieldIndex}
+														>
+															<div
+																style={{
+																	color: 'rgba(0, 0, 0, 0.3)'
+																}}
+															>
+																{title}
+															</div>
+															<Editor
+																editorState={this.state[ field.editorStateName ]}
+																wrapperClassName="demo-wrapper"
+																editorClassName="demo-editor"
+																onEditorStateChange={field.editorStateName === 'descState' ? this.onEditorDescChange : this.onEditorShortDescChange}
+																onChange={() => this.setState({
+																	data: {
+																		...this.state.data,
+																		[ name ]: draftToHtml(convertToRaw(this.state[ field.editorStateName ].getCurrentContent()))
+																	}
+																})}
+															/>
+														</div>
+													)
+												}
+												if (type === 'file') {
+													if (!field.multiple) {
+														return (
+															<div
+																className='input'
+																key={fieldIndex}
+															>
+																<input
+																	type="file"
+																	className="inputfile"
+																	id="file"
+																	onChange={this.uploadFile}
+																/>
+																<label
+																	htmlFor="file"
+																	className="inputfile__label"
+																>
+																	Перенесите сюда файл или нажмите, чтобы выбрать
+																	изображение
+																</label>
+																<div
+																	className="inputfile__images"
+																>
+																	{
+																		!!this.state.data.image
+																			? <img
+																				className="inputfile__image"
+																				src={this.state.data.image}
+																			/>
+																			: null
+																	}
+																</div>
+															</div>
+														)
+													} else {
+														return (
+															<div
+																className='input'
+																key={fieldIndex}
+															>
+																<input
+																	type="file"
+																	className="inputfile"
+																	id="file"
+																	onChange={this.uploadFiles}
+																/>
+																<label
+																	htmlFor="file"
+																	className="inputfile__label"
+																>
+																	Перенесите сюда файл или нажмите, чтобы выбрать
+																	изображение
+																</label>
+																<div
+																	className="inputfile__images"
+																>
+																	{this.state.data.images.map((image, index) => {
+																		return (
+																			<img
+																				className="inputfile__image"
+																				src={image}
+																				key={index}
+																			/>
+																		)
+																	})}
+																</div>
+															</div>
+														)
+													}
+												}
 											})
 										}
 									</div>
 								</Tab>
 							)
 						})
+					}
+					{
+						this.props.resource === 'products' && !!this.state.data.attributes
+							? (
+								<Tab
+									label='Атрибуты'
+								>
+									<div
+										className="resource-page">
+										{
+											this.state.data.attributes.map((attribute, key) => {
+												if (attribute.attrType === 'select' || attribute.attrType === 'multipleSelect') {
+													return (
+														<SelectField
+															fullWidth={true}
+															multiple={attribute.attrType === 'multipleSelect'}
+															value={this.state.data.attributes[ key ].value}
+															floatingLabelText={attribute.title}
+															onChange={(event, index, value) => {
+																let newState = {
+																	data: {
+																		...this.state.data,
+																		attributes: this.state.data.attributes
+																	}
+																}
+																newState.data.attributes[ key ].value = value
+																this.setState(newState)
+															}}
+															key={key}
+														>
+															{
+																attribute.variants.map((variant, index) => {
+																	return (
+																		<MenuItem
+																			value={variant.value}
+																			primaryText={variant.id}
+																			key={index}
+																		/>
+																	)
+																})
+															}
+														</SelectField>
+													)
+												}
+												if (attribute.attrType === 'interval') {
+													return (
+														<div
+															key={key}
+														>
+															<TextField
+																fullWidth={true}
+																hintText={`${attribute.title} от`}
+																defaultValue={!!this.state.data.attributes[ key ].value ? this.state.data.attributes[ key ].value.from : ''}
+																floatingLabelText={`${attribute.title} от`}
+																onChange={(event, value) => {
+																	let newState = {
+																		data: {
+																			...this.state.data,
+																			attributes: this.state.data.attributes
+																		}
+																	}
+																	newState.data.attributes[ key ].value = {...newState.data.attributes[ key ].value}
+																	newState.data.attributes[ key ].value.from = value
+																	this.setState(newState)
+																}}
+															/>
+															<TextField
+																fullWidth={true}
+																hintText={`${attribute.title} до`}
+																defaultValue={!!this.state.data.attributes[ key ].value ? this.state.data.attributes[ key ].value.to : ''}
+																floatingLabelText={`${attribute.title} до`}
+																onChange={(event, value) => {
+																	let newState = {
+																		data: {
+																			...this.state.data,
+																			attributes: this.state.data.attributes
+																		}
+																	}
+																	newState.data.attributes[ key ].value = {...newState.data.attributes[ key ].value}
+																	newState.data.attributes[ key ].value.to = value
+																	this.setState(newState)
+																}}
+															/>
+														</div>
+													)
+												}
+												return (
+													<TextField
+														fullWidth={true}
+														hintText={attribute.title}
+														value={this.state.data.attributes[ key ].value}
+														floatingLabelText={attribute.title}
+														onChange={(event, value) => {
+															let newState = {
+																data: {
+																	...this.state.data,
+																	attributes: this.state.data.attributes
+																}
+															}
+															newState.data.attributes[ key ].value = value
+															this.setState(newState)
+														}}
+														key={key}
+													/>
+												)
+											})
+										}
+									</div>
+								</Tab>
+							)
+							: null
+					}
+					{
+						this.props.resource === 'products' && !!this.state.data.tabs
+							? (
+								<Tab
+									label='Табы'
+								>
+									<div
+										className="resource-page">
+										{
+											this.state.data.tabs.map((tab, key) => {
+												return (
+													<TextField
+														fullWidth={true}
+														hintText={tab.title}
+														value={this.state.data.tabs[ key ].value}
+														floatingLabelText={tab.title}
+														onChange={(event, value) => {
+															let newState = {
+																data: {
+																	...this.state.data,
+																	tabs: this.state.data.tabs
+																}
+															}
+															newState.data.tabs[ key ].value = value
+															this.setState(newState)
+														}}
+														key={key}
+													/>
+												)
+											})
+										}
+									</div>
+								</Tab>
+							)
+							: null
 					}
 				</Tabs>
 				<ToolBar

@@ -1,11 +1,11 @@
 import React from 'react'
-import ResourcesContent from './resources-content'
-import ResourcesHeader from './resources-header'
+import ResourcesBody from '@src/components/content/resources-body'
+import ResourcesHeader from '@src/components/content/resources-header'
 import { CardTitle } from 'material-ui/Card'
 import mapObj from 'map-obj'
 
-import PaginationContainer from '@src/containers/pagination'
-import Photos from '@src/components/photos'
+import PaginationContainer from '@src/containers/content/pagination'
+import Photos from '@src/components/content/photos'
 import Data from '@src/core/data.provider'
 
 export default class ResourcesList extends React.Component {
@@ -36,7 +36,7 @@ export default class ResourcesList extends React.Component {
 
 	onChangeState(key, value) {
 		let newState = this.state
-		newState[ key ] = value
+		newState[key] = value
 		this.setState({
 			...newState
 		})
@@ -44,7 +44,7 @@ export default class ResourcesList extends React.Component {
 
 	addFiltration(type, value) {
 		let filtration = this.state.filtration
-		filtration[ type ] = value
+		filtration[type] = value
 		this.setState({
 			filtration
 		})
@@ -52,16 +52,16 @@ export default class ResourcesList extends React.Component {
 		mapObj(this.state.filtration, (key, value) => {
 			let newResources = resources.filter(resource => {
 				if (key === 'title' || key === 'sku') {
-					return resource[ key ].indexOf(value) !== -1
+					return resource[key].indexOf(value) !== -1
 				}
 				if (key === 'showInFilter' || key === 'isActive' || key === 'isRequire' || key === 'attrType' || key === 'role') {
-					return resource[ key ] === value
+					return resource[key] === value
 				}
 				if (key === 'client') {
-					return resource[ key ] === value
+					return resource[key] === value
 				}
 				if (key === 'attribute-sets' || key === 'categories' || key === 'name' || key === 'email') {
-					return resource[ key ].indexOf(value) !== -1
+					return resource[key].indexOf(value) !== -1
 				}
 				if (key === 'priceStart') {
 					return Number(resource.price) >= Number(value)
@@ -106,7 +106,7 @@ export default class ResourcesList extends React.Component {
 	}
 
 	async exportFile(file) {
-		await Data.uploadXls(this.props.path, file.target.files[ 0 ])
+		await Data.uploadXls(this.props.path, file.target.files[0])
 		this.props.refresh()
 	}
 
@@ -137,7 +137,7 @@ export default class ResourcesList extends React.Component {
 								/>
 							}
 						/>
-						<ResourcesContent
+						<ResourcesBody
 							columns={columns}
 							data={filteredResources}
 							statuses={statuses}
