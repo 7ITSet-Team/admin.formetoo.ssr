@@ -141,13 +141,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 
 		let parseArrayOfKeys = (keys, defaultValue) => {
 			if (keys.length === 2) {
-				currentResource[ keys[ 0 ] ] = {...currentResource[ keys[ 0 ] ]}
-				currentResource[ keys[ 0 ] ][ keys[ 1 ] ] = defaultValue
+				currentResource[keys[0]] = {...currentResource[keys[0]]}
+				currentResource[keys[0]][keys[1]] = defaultValue
 			}
 			if (keys.length === 3) {
-				currentResource[ keys[ 0 ] ] = {...currentResource[ keys[ 0 ] ]}
-				currentResource[ keys[ 0 ] ][ keys[ 1 ] ] = {...currentResource[ keys[ 0 ] ][ keys[ 1 ] ]}
-				currentResource[ keys[ 0 ] ][ keys[ 1 ] ][ keys[ 2 ] ] = defaultValue
+				currentResource[keys[0]] = {...currentResource[keys[0]]}
+				currentResource[keys[0]][keys[1]] = {...currentResource[keys[0]][keys[1]]}
+				currentResource[keys[0]][keys[1]][keys[2]] = defaultValue
 			}
 		}
 
@@ -161,7 +161,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 					parseArrayOfKeys(name, defaultValue)
 					return
 				}
-				currentResource[ name ] = defaultValue
+				currentResource[name] = defaultValue
 			})
 		})
 
@@ -224,12 +224,12 @@ export default class ResourceCreateEditLayout extends React.Component {
 	async getData(resources) {
 		const response = await Data.getData(`/${resources}`)
 		this.setState({
-			[ resources ]: response.data
+			[resources]: response.data
 		})
 	}
 
 	async uploadFile(file) {
-		const result = await Data.uploadImage('/upload/categories', file.target.files[ 0 ])
+		const result = await Data.uploadImage('/upload/categories', file.target.files[0])
 		this.setState({
 			data: {
 				...this.state.data,
@@ -240,7 +240,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 	}
 
 	async uploadFiles(file) {
-		const result = await Data.uploadImage('/upload/products', file.target.files[ 0 ])
+		const result = await Data.uploadImage('/upload/products', file.target.files[0])
 		this.setState({
 			data: {
 				...this.state.data,
@@ -257,7 +257,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				[ name ]: value
+				[name]: value
 			}
 		})
 	}
@@ -285,7 +285,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 			this.setState({
 				data: {
 					...this.state.data,
-					[ name ]: value
+					[name]: value
 				}
 			})
 			return
@@ -296,11 +296,11 @@ export default class ResourceCreateEditLayout extends React.Component {
 					this.setState({
 						data: {
 							...this.state.data,
-							[ name[ 0 ] ]: {
-								...this.state.data[ name[ 0 ] ],
-								[ name[ 1 ] ]: {
-									...this.state.data[ name[ 0 ] ][ name[ 1 ] ],
-									[ name[ 2 ] ]: value
+							[name[0]]: {
+								...this.state.data[name[0]],
+								[name[1]]: {
+									...this.state.data[name[0]][name[1]],
+									[name[2]]: value
 								}
 							}
 						}
@@ -312,7 +312,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				[ name ]: value
+				[name]: value
 			}
 		})
 	}
@@ -323,11 +323,11 @@ export default class ResourceCreateEditLayout extends React.Component {
 				this.setState({
 					data: {
 						...this.state.data,
-						[ name[ 0 ] ]: {
-							...this.state.data[ name[ 0 ] ],
-							[ name[ 1 ] ]: {
-								...this.state.data[ name[ 0 ] ][ name[ 1 ] ],
-								[ name[ 2 ] ]: value
+						[name[0]]: {
+							...this.state.data[name[0]],
+							[name[1]]: {
+								...this.state.data[name[0]][name[1]],
+								[name[2]]: value
 							}
 						}
 					}
@@ -338,7 +338,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				[ name ]: value
+				[name]: value
 			}
 		})
 	}
@@ -402,8 +402,8 @@ export default class ResourceCreateEditLayout extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				[ name ]: [
-					...this.state.data[ name ],
+				[name]: [
+					...this.state.data[name],
 					value
 				]
 			}
@@ -412,7 +412,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 
 	deleteTableRow(index, name) {
 		let newItems = []
-		this.state.data[ name ].forEach((item, i) => {
+		this.state.data[name].forEach((item, i) => {
 			if (i === index) {
 				return
 			}
@@ -421,7 +421,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				[ name ]: newItems
+				[name]: newItems
 			}
 		})
 	}
@@ -513,13 +513,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 																	hintText={title}
 																	floatingLabelText={title}
 																	errorText={required ? 'Поле обязательно' : ''}
-																	value={this.state.data[ name[ 0 ] ][ name[ 1 ] ]}
+																	value={this.state.data[name[0]][name[1]]}
 																	onChange={(e) => this.setState({
 																		data: {
 																			...this.state.data,
-																			[ name[ 0 ] ]: {
-																				...this.state.data[ name[ 0 ] ],
-																				[ name[ 1 ] ]: e.target.value
+																			[name[0]]: {
+																				...this.state.data[name[0]],
+																				[name[1]]: e.target.value
 																			}
 																		}
 																	})}
@@ -538,7 +538,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																floatingLabelText={title}
 																errorText={required ? 'Поле обязательно' : ''}
 																name={name}
-																value={this.state.data[ name ]}
+																value={this.state.data[name]}
 																onChange={this.changeValueOfInput}
 															/>
 														</div>
@@ -571,7 +571,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																	<SelectField
 																		fullWidth={true}
 																		multiple={type === 'multipleSelect'}
-																		value={this.state.data[ name[ 0 ] ][ name[ 1 ] ][ name[ 2 ] ]}
+																		value={this.state.data[name[0]][name[1]][name[2]]}
 																		floatingLabelText={title}
 																		errorText={required ? 'Поле обязательно' : ''}
 																		onChange={(event, index, value) => this.changeSelectInput(value, name, true)}
@@ -599,7 +599,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 															<SelectField
 																fullWidth={true}
 																multiple={type === 'multipleSelect'}
-																value={this.state.data[ name ]}
+																value={this.state.data[name]}
 																floatingLabelText={title}
 																errorText={required ? 'Поле обязательно' : ''}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
@@ -613,7 +613,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																				key={index}
 																			/>
 																		})
-																		: this.state[ name ].map((item, index) => {
+																		: this.state[name].map((item, index) => {
 																			return <MenuItem
 																				value={item.slug}
 																				primaryText={item.title}
@@ -718,13 +718,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 															<SelectField
 																fullWidth={true}
 																multiple={type === 'multipleSelect'}
-																value={this.state.data[ name ]}
+																value={this.state.data[name]}
 																floatingLabelText={title}
 																errorText={required ? 'Поле обязательно' : ''}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
 															>
 																{
-																	this.state[ name ].map((item, index) => {
+																	this.state[name].map((item, index) => {
 																		return <MenuItem
 																			value={item.slug}
 																			primaryText={item.title}
@@ -746,13 +746,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 															<SelectField
 																fullWidth={true}
 																multiple={type === 'multipleSelect'}
-																value={this.state.data[ name ]}
+																value={this.state.data[name]}
 																floatingLabelText={title}
 																errorText={required ? 'Поле обязательно' : ''}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
 															>
 																{
-																	this.state[ needResources ].map((item, index) => {
+																	this.state[needResources].map((item, index) => {
 																		return <MenuItem
 																			value={item.slug}
 																			primaryText={item.title || item.name}
@@ -777,7 +777,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																		style={{
 																			width: '250px'
 																		}}
-																		toggled={this.state.data[ name[ 0 ] ][ name[ 1 ] ][ name[ 2 ] ]}
+																		toggled={this.state.data[name[0]][name[1]][name[2]]}
 																		label={title}
 																		onToggle={(event, value) => this.changeSwitchInput(value, name, true)}
 																	/>
@@ -795,7 +795,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																style={{
 																	width: '250px'
 																}}
-																toggled={this.state.data[ name ]}
+																toggled={this.state.data[name]}
 																label={title}
 																onToggle={(event, value) => this.changeSwitchInput(value, name)}
 															/>
@@ -833,7 +833,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																displayRowCheckbox={false}
 															>
 																{
-																	this.state.data[ name ].map((item, index) => {
+																	this.state.data[name].map((item, index) => {
 																		return (
 																			<TableRow
 																				key={index}
@@ -844,7 +844,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																							<TableRowColumn
 																								key={index}
 																							>
-																								{item[ column.name ]}
+																								{item[column.name]}
 																							</TableRowColumn>
 																						)
 																					})
@@ -877,7 +877,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																onChange={(event, index, value) => this.pushToTable(value, name)}
 															>
 																{
-																	this.state[ needResources ].map((item, index) => {
+																	this.state[needResources].map((item, index) => {
 																		return <MenuItem
 																			value={item}
 																			primaryText={item.title || item.name}
@@ -925,11 +925,11 @@ export default class ResourceCreateEditLayout extends React.Component {
 																					hintText={element.title}
 																					floatingLabelText={element.title}
 																					errorText={element.required ? 'Поле обязательно' : ''}
-																					value={this.state[ field.name ][ element.name ]}
+																					value={this.state[field.name][element.name]}
 																					onChange={(e) => this.setState({
-																						[ field.name ]: {
-																							...this.state[ field.name ],
-																							[ element.name ]: e.target.value
+																						[field.name]: {
+																							...this.state[field.name],
+																							[element.name]: e.target.value
 																						}
 																					})}
 																				/>
@@ -960,14 +960,14 @@ export default class ResourceCreateEditLayout extends React.Component {
 																{title}
 															</div>
 															<Editor
-																editorState={this.state[ field.editorStateName ]}
+																editorState={this.state[field.editorStateName]}
 																wrapperClassName="demo-wrapper"
 																editorClassName="demo-editor"
 																onEditorStateChange={field.editorStateName === 'descState' ? this.onEditorDescChange : this.onEditorShortDescChange}
 																onChange={() => this.setState({
 																	data: {
 																		...this.state.data,
-																		[ name ]: draftToHtml(convertToRaw(this.state[ field.editorStateName ].getCurrentContent()))
+																		[name]: draftToHtml(convertToRaw(this.state[field.editorStateName].getCurrentContent()))
 																	}
 																})}
 															/>
@@ -1066,7 +1066,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 														<SelectField
 															fullWidth={true}
 															multiple={attribute.attrType === 'multipleSelect'}
-															value={this.state.data.attributes[ key ].value}
+															value={this.state.data.attributes[key].value}
 															floatingLabelText={attribute.title}
 															onChange={(event, index, value) => {
 																let newState = {
@@ -1075,7 +1075,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																		attributes: this.state.data.attributes
 																	}
 																}
-																newState.data.attributes[ key ].value = value
+																newState.data.attributes[key].value = value
 																this.setState(newState)
 															}}
 															key={key}
@@ -1102,7 +1102,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 															<TextField
 																fullWidth={true}
 																hintText={`${attribute.title} от`}
-																defaultValue={!!this.state.data.attributes[ key ].value ? this.state.data.attributes[ key ].value.from : ''}
+																defaultValue={!!this.state.data.attributes[key].value ? this.state.data.attributes[key].value.from : ''}
 																floatingLabelText={`${attribute.title} от`}
 																onChange={(event, value) => {
 																	let newState = {
@@ -1111,15 +1111,15 @@ export default class ResourceCreateEditLayout extends React.Component {
 																			attributes: this.state.data.attributes
 																		}
 																	}
-																	newState.data.attributes[ key ].value = {...newState.data.attributes[ key ].value}
-																	newState.data.attributes[ key ].value.from = value
+																	newState.data.attributes[key].value = {...newState.data.attributes[key].value}
+																	newState.data.attributes[key].value.from = value
 																	this.setState(newState)
 																}}
 															/>
 															<TextField
 																fullWidth={true}
 																hintText={`${attribute.title} до`}
-																defaultValue={!!this.state.data.attributes[ key ].value ? this.state.data.attributes[ key ].value.to : ''}
+																defaultValue={!!this.state.data.attributes[key].value ? this.state.data.attributes[key].value.to : ''}
 																floatingLabelText={`${attribute.title} до`}
 																onChange={(event, value) => {
 																	let newState = {
@@ -1128,8 +1128,8 @@ export default class ResourceCreateEditLayout extends React.Component {
 																			attributes: this.state.data.attributes
 																		}
 																	}
-																	newState.data.attributes[ key ].value = {...newState.data.attributes[ key ].value}
-																	newState.data.attributes[ key ].value.to = value
+																	newState.data.attributes[key].value = {...newState.data.attributes[key].value}
+																	newState.data.attributes[key].value.to = value
 																	this.setState(newState)
 																}}
 															/>
@@ -1140,7 +1140,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 													<TextField
 														fullWidth={true}
 														hintText={attribute.title}
-														value={this.state.data.attributes[ key ].value}
+														value={this.state.data.attributes[key].value}
 														floatingLabelText={attribute.title}
 														onChange={(event, value) => {
 															let newState = {
@@ -1149,7 +1149,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																	attributes: this.state.data.attributes
 																}
 															}
-															newState.data.attributes[ key ].value = value
+															newState.data.attributes[key].value = value
 															this.setState(newState)
 														}}
 														key={key}
@@ -1176,7 +1176,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 													<TextField
 														fullWidth={true}
 														hintText={tab.title}
-														value={this.state.data.tabs[ key ].value}
+														value={this.state.data.tabs[key].value}
 														floatingLabelText={tab.title}
 														onChange={(event, value) => {
 															let newState = {
@@ -1185,7 +1185,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 																	tabs: this.state.data.tabs
 																}
 															}
-															newState.data.tabs[ key ].value = value
+															newState.data.tabs[key].value = value
 															this.setState(newState)
 														}}
 														key={key}
@@ -1203,6 +1203,16 @@ export default class ResourceCreateEditLayout extends React.Component {
 					resources={this.props.resource}
 					data={this.state.data}
 					action={this.props.action}
+					photos={
+						this.props.resource === 'products'
+							? this.state.data.images
+							: undefined
+					}
+					photo={
+						this.props.resource === 'categories'
+							? this.state.data.image
+							: null
+					}
 				/>
 			</React.Fragment>
 		)

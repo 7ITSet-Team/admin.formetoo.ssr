@@ -58,12 +58,12 @@ export default class Data {
 	}
 
 	static async getAttributes(sets) {
-		const response = await axios.post(config.uri.admin + '/products/attributes', sets, axiosConfig)
+		const response = await axios.post(config.uri.admin + '/products/get/attributes', sets, axiosConfig)
 		return response.data
 	}
 
 	static async getTabs(sets) {
-		const response = await axios.post(config.uri.admin + '/products/tabs', sets, axiosConfig)
+		const response = await axios.post(config.uri.admin + '/products/get/tabs', sets, axiosConfig)
 		return response.data
 	}
 
@@ -100,8 +100,9 @@ export default class Data {
 			}
 	}
 
-	static create(uri, data) {
-		axios.post(config.uri.admin + uri, data, axiosConfig)
+	static async create(uri, data) {
+		const result = await axios.post(config.uri.admin + uri, data, axiosConfig)
+		return result.data
 	}
 
 	static async edit(uri, data) {
@@ -114,10 +115,12 @@ export default class Data {
 			}
 		}
 		const url = config.uri.admin + uri + '/' + data._id
-		axios.post(url, data, axiosConfig)
+		const result = await axios.post(url, data, axiosConfig)
+		return result.data
 	}
 
-	static remove(uri) {
-		axios.post(config.uri.admin + uri, null, axiosConfig)
+	static async remove(uri) {
+		const result = await axios.post(config.uri.admin + uri, null, axiosConfig)
+		return result.data
 	}
 }

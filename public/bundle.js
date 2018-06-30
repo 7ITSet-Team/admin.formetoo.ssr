@@ -8934,7 +8934,7 @@ var Data = function () {
 						switch (_context5.prev = _context5.next) {
 							case 0:
 								_context5.next = 2;
-								return _axios2.default.post(_config2.default.uri.admin + '/products/attributes', sets, axiosConfig);
+								return _axios2.default.post(_config2.default.uri.admin + '/products/get/attributes', sets, axiosConfig);
 
 							case 2:
 								response = _context5.sent;
@@ -8964,7 +8964,7 @@ var Data = function () {
 						switch (_context6.prev = _context6.next) {
 							case 0:
 								_context6.next = 2;
-								return _axios2.default.post(_config2.default.uri.admin + '/products/tabs', sets, axiosConfig);
+								return _axios2.default.post(_config2.default.uri.admin + '/products/get/tabs', sets, axiosConfig);
 
 							case 2:
 								response = _context6.sent;
@@ -9108,41 +9108,21 @@ var Data = function () {
 		}()
 	}, {
 		key: 'create',
-		value: function create(uri, data) {
-			_axios2.default.post(_config2.default.uri.admin + uri, data, axiosConfig);
-		}
-	}, {
-		key: 'edit',
 		value: function () {
 			var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(uri, data) {
-				var response, url;
+				var result;
 				return regeneratorRuntime.wrap(function _callee10$(_context10) {
 					while (1) {
 						switch (_context10.prev = _context10.next) {
 							case 0:
-								if (!(uri === '/profile')) {
-									_context10.next = 6;
-									break;
-								}
+								_context10.next = 2;
+								return _axios2.default.post(_config2.default.uri.admin + uri, data, axiosConfig);
 
-								_context10.next = 3;
-								return _axios2.default.post(_config2.default.uri.admin + uri + '/', data, axiosConfig);
+							case 2:
+								result = _context10.sent;
+								return _context10.abrupt('return', result.data);
 
-							case 3:
-								response = _context10.sent;
-
-								_auth2.default._token = response.data.token;
-								return _context10.abrupt('return', {
-									success: true,
-									email: response.data.profile.email
-								});
-
-							case 6:
-								url = _config2.default.uri.admin + uri + '/' + data._id;
-
-								_axios2.default.post(url, data, axiosConfig);
-
-							case 8:
+							case 4:
 							case 'end':
 								return _context10.stop();
 						}
@@ -9150,17 +9130,91 @@ var Data = function () {
 				}, _callee10, this);
 			}));
 
-			function edit(_x10, _x11) {
+			function create(_x10, _x11) {
 				return _ref10.apply(this, arguments);
+			}
+
+			return create;
+		}()
+	}, {
+		key: 'edit',
+		value: function () {
+			var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(uri, data) {
+				var response, url, result;
+				return regeneratorRuntime.wrap(function _callee11$(_context11) {
+					while (1) {
+						switch (_context11.prev = _context11.next) {
+							case 0:
+								if (!(uri === '/profile')) {
+									_context11.next = 6;
+									break;
+								}
+
+								_context11.next = 3;
+								return _axios2.default.post(_config2.default.uri.admin + uri + '/', data, axiosConfig);
+
+							case 3:
+								response = _context11.sent;
+
+								_auth2.default._token = response.data.token;
+								return _context11.abrupt('return', {
+									success: true,
+									email: response.data.profile.email
+								});
+
+							case 6:
+								url = _config2.default.uri.admin + uri + '/' + data._id;
+								_context11.next = 9;
+								return _axios2.default.post(url, data, axiosConfig);
+
+							case 9:
+								result = _context11.sent;
+								return _context11.abrupt('return', result.data);
+
+							case 11:
+							case 'end':
+								return _context11.stop();
+						}
+					}
+				}, _callee11, this);
+			}));
+
+			function edit(_x12, _x13) {
+				return _ref11.apply(this, arguments);
 			}
 
 			return edit;
 		}()
 	}, {
 		key: 'remove',
-		value: function remove(uri) {
-			_axios2.default.post(_config2.default.uri.admin + uri, null, axiosConfig);
-		}
+		value: function () {
+			var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(uri) {
+				var result;
+				return regeneratorRuntime.wrap(function _callee12$(_context12) {
+					while (1) {
+						switch (_context12.prev = _context12.next) {
+							case 0:
+								_context12.next = 2;
+								return _axios2.default.post(_config2.default.uri.admin + uri, null, axiosConfig);
+
+							case 2:
+								result = _context12.sent;
+								return _context12.abrupt('return', result.data);
+
+							case 4:
+							case 'end':
+								return _context12.stop();
+						}
+					}
+				}, _callee12, this);
+			}));
+
+			function remove(_x14) {
+				return _ref12.apply(this, arguments);
+			}
+
+			return remove;
+		}()
 	}]);
 
 	return Data;
@@ -13869,11 +13923,13 @@ var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _reactRouterDom = __webpack_require__(48);
 
-var _data4 = __webpack_require__(63);
+var _data6 = __webpack_require__(63);
 
-var _data5 = _interopRequireDefault(_data4);
+var _data7 = _interopRequireDefault(_data6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13903,52 +13959,175 @@ var ToolBar = function (_React$Component) {
 
 	_createClass(ToolBar, [{
 		key: 'handleSaveButton',
-		value: function handleSaveButton(action) {
-			if (this.props.action === 'create') {
-				if (this.props.resources === 'categories') {
-					var _data = {
-						url: this.props.photo,
-						creationDate: new Date().toLocaleString(),
-						modificationDate: new Date().toLocaleString()
-					};
-					_data5.default.create('/photos', _data);
-				}
-				var data = this.props.data;
-				data.creationDate = new Date().toLocaleString();
-				data.modificationDate = new Date().toLocaleString();
-				_data5.default.create('/' + this.props.resources, data);
-				if (action === 'saveAndExit') this.setState({
-					created: true
-				});
-				if (action === 'saveAndAdd') this.setState({
-					add: true
-				});
+		value: function () {
+			var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(action) {
+				var _data, _data2, data, result, _data4, _data5, _data3, _result;
+
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								if (!(this.props.action === 'create')) {
+									_context.next = 16;
+									break;
+								}
+
+								if (!(this.props.resources === 'categories')) {
+									_context.next = 5;
+									break;
+								}
+
+								_data = {
+									url: this.props.photo,
+									creationDate: new Date().toLocaleString(),
+									modificationDate: new Date().toLocaleString()
+								};
+								_context.next = 5;
+								return _data7.default.create('/photos', _data);
+
+							case 5:
+								if (!(this.props.resources === 'products')) {
+									_context.next = 9;
+									break;
+								}
+
+								_data2 = this.props.photos.map(function (photo) {
+									return {
+										url: photo,
+										creationDate: new Date().toLocaleString(),
+										modificationDate: new Date().toLocaleString()
+									};
+								});
+								_context.next = 9;
+								return _data7.default.create('/photos', _data2);
+
+							case 9:
+								data = this.props.data;
+
+								data.creationDate = new Date().toLocaleString();
+								data.modificationDate = new Date().toLocaleString();
+								_context.next = 14;
+								return _data7.default.create('/' + this.props.resources, data);
+
+							case 14:
+								result = _context.sent;
+
+								if (result.success) {
+									if (action === 'saveAndExit') {
+										this.setState({
+											created: true
+										});
+									}
+									if (action === 'saveAndAdd') {
+										this.setState({
+											add: true
+										});
+									}
+								}
+
+							case 16:
+								if (!(this.props.action === 'edit')) {
+									_context.next = 31;
+									break;
+								}
+
+								if (!(this.props.resources === 'categories')) {
+									_context.next = 21;
+									break;
+								}
+
+								_data4 = {
+									url: this.props.photo,
+									creationDate: new Date().toLocaleString(),
+									modificationDate: new Date().toLocaleString()
+								};
+								_context.next = 21;
+								return _data7.default.create('/photos', _data4);
+
+							case 21:
+								if (!(this.props.resources === 'products')) {
+									_context.next = 25;
+									break;
+								}
+
+								_data5 = this.props.photos.map(function (photo) {
+									return {
+										url: photo,
+										creationDate: new Date().toLocaleString(),
+										modificationDate: new Date().toLocaleString()
+									};
+								});
+								_context.next = 25;
+								return _data7.default.create('/photos', _data5);
+
+							case 25:
+								_data3 = this.props.data;
+
+								_data3.modificationDate = new Date().toLocaleString();
+								_context.next = 29;
+								return _data7.default.edit('/' + this.props.resources, _data3);
+
+							case 29:
+								_result = _context.sent;
+
+								if (_result.success) {
+									if (action === 'saveAndExit') {
+										this.setState({
+											edited: true
+										});
+									}
+								}
+
+							case 31:
+							case 'end':
+								return _context.stop();
+						}
+					}
+				}, _callee, this);
+			}));
+
+			function handleSaveButton(_x) {
+				return _ref.apply(this, arguments);
 			}
-			if (this.props.action === 'edit') {
-				if (this.props.resources === 'categories') {
-					var _data3 = {
-						url: this.props.photo,
-						creationDate: new Date().toLocaleString(),
-						modificationDate: new Date().toLocaleString()
-					};
-					_data5.default.create('/photos', _data3);
-				}
-				var _data2 = this.props.data;
-				_data2.modificationDate = new Date().toLocaleString();
-				_data5.default.edit('/' + this.props.resources, _data2);
-				if (action === 'saveAndExit') this.setState({
-					edited: true
-				});
-			}
-		}
+
+			return handleSaveButton;
+		}()
 	}, {
 		key: 'handleRemoveButton',
-		value: function handleRemoveButton() {
-			_data5.default.remove(this.props.resource);
-			this.setState({
-				deleted: true
-			});
-		}
+		value: function () {
+			var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+				var result;
+				return regeneratorRuntime.wrap(function _callee2$(_context2) {
+					while (1) {
+						switch (_context2.prev = _context2.next) {
+							case 0:
+								_context2.next = 2;
+								return _data7.default.remove(this.props.resource);
+
+							case 2:
+								result = _context2.sent;
+
+								console.log(result);
+								if (result.success) {
+									this.setState({
+										deleted: true
+									});
+								}
+
+							case 5:
+							case 'end':
+								return _context2.stop();
+						}
+					}
+				}, _callee2, this);
+			}));
+
+			function handleRemoveButton() {
+				return _ref2.apply(this, arguments);
+			}
+
+			return handleRemoveButton;
+		}()
 	}, {
 		key: 'handleCancelButton',
 		value: function handleCancelButton() {
@@ -13961,112 +14140,119 @@ var ToolBar = function (_React$Component) {
 		value: function render() {
 			var _this2 = this;
 
-			if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled) return _react2.default.createElement(_reactRouterDom.Redirect, {
-				push: true,
-				to: {
-					pathname: '/' + this.props.resources,
-					state: {
-						kek: 'lol'
+			if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled) {
+				return _react2.default.createElement(_reactRouterDom.Redirect, {
+					push: true,
+					to: {
+						pathname: '/' + this.props.resources
 					}
-				}
-			});
-			if (this.state.add) return _react2.default.createElement(_reactRouterDom.Redirect, {
-				push: true,
-				to: '/' + this.props.resources + '/create'
-			});
-			if (this.props.action === 'delete') return _react2.default.createElement(
-				_Toolbar.Toolbar,
-				{
-					style: {
-						display: 'flex',
-						justifyContent: 'flex-start'
-					}
-				},
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
+				});
+			}
+			if (this.state.add) {
+				return _react2.default.createElement(_reactRouterDom.Redirect, {
+					push: true,
+					to: '/' + this.props.resources + '/create'
+				});
+			}
+			if (this.props.action === 'delete') {
+				return _react2.default.createElement(
+					_Toolbar.Toolbar,
+					{
+						style: {
+							display: 'flex',
+							justifyContent: 'flex-start'
+						}
 					},
-					label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
-					onClick: this.handleRemoveButton,
-					primary: true
-				}),
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C',
+						onClick: this.handleRemoveButton,
+						primary: true
+					}),
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u041E\u0442\u043C\u0435\u043D\u0430',
+						primary: false,
+						onClick: this.handleCancelButton
+					})
+				);
+			}
+			if (this.props.action === 'create') {
+				return _react2.default.createElement(
+					_Toolbar.Toolbar,
+					{
+						style: {
+							display: 'flex',
+							justifyContent: 'flex-start'
+						}
 					},
-					label: '\u041E\u0442\u043C\u0435\u043D\u0430',
-					primary: false,
-					onClick: this.handleCancelButton
-				})
-			);
-			if (this.props.action === 'create') return _react2.default.createElement(
-				_Toolbar.Toolbar,
-				{
-					style: {
-						display: 'flex',
-						justifyContent: 'flex-start'
-					}
-				},
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C',
+						primary: true,
+						onClick: function onClick() {
+							return _this2.handleSaveButton('apply');
+						}
+					}),
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C',
+						primary: true,
+						onClick: function onClick() {
+							return _this2.handleSaveButton('saveAndExit');
+						}
+					}),
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438 \u0441\u043E\u0437\u0434\u0430\u0442\u044C',
+						primary: true,
+						onClick: function onClick() {
+							return _this2.handleSaveButton('saveAndAdd');
+						}
+					})
+				);
+			}
+			if (this.props.action === 'edit') {
+				return _react2.default.createElement(
+					_Toolbar.Toolbar,
+					{
+						style: {
+							display: 'flex',
+							justifyContent: 'flex-start'
+						}
 					},
-					label: '\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C',
-					primary: true,
-					onClick: function onClick() {
-						return _this2.handleSaveButton('apply');
-					}
-				}),
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
-					},
-					label: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C',
-					primary: true,
-					onClick: function onClick() {
-						return _this2.handleSaveButton('saveAndExit');
-					}
-				}),
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
-					},
-					label: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438 \u0441\u043E\u0437\u0434\u0430\u0442\u044C',
-					primary: true,
-					onClick: function onClick() {
-						return _this2.handleSaveButton('saveAndAdd');
-					}
-				})
-			);
-			if (this.props.action === 'edit') return _react2.default.createElement(
-				_Toolbar.Toolbar,
-				{
-					style: {
-						display: 'flex',
-						justifyContent: 'flex-start'
-					}
-				},
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
-					},
-					label: '\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C',
-					primary: true,
-					onClick: function onClick() {
-						return _this2.handleSaveButton('apply');
-					}
-				}),
-				_react2.default.createElement(_RaisedButton2.default, {
-					style: {
-						margin: '10px'
-					},
-					label: '\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C \u0438 \u0437\u0430\u043A\u0440\u044B\u0442\u044C',
-					primary: true,
-					onClick: function onClick() {
-						return _this2.handleSaveButton('saveAndExit');
-					}
-				})
-			);
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C',
+						primary: true,
+						onClick: function onClick() {
+							return _this2.handleSaveButton('apply');
+						}
+					}),
+					_react2.default.createElement(_RaisedButton2.default, {
+						style: {
+							margin: '10px'
+						},
+						label: '\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C \u0438 \u0437\u0430\u043A\u0440\u044B\u0442\u044C',
+						primary: true,
+						onClick: function onClick() {
+							return _this2.handleSaveButton('saveAndExit');
+						}
+					})
+				);
+			}
 		}
 	}]);
 
@@ -70060,7 +70246,9 @@ var ResourceCreateEditLayout = function (_React$Component) {
 				_react2.default.createElement(_toolBar2.default, {
 					resources: this.props.resource,
 					data: this.state.data,
-					action: this.props.action
+					action: this.props.action,
+					photos: this.props.resource === 'products' ? this.state.data.images : undefined,
+					photo: this.props.resource === 'categories' ? this.state.data.image : null
 				})
 			);
 		}
@@ -90836,7 +91024,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -90862,55 +91050,55 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Photos = function (_React$Component) {
-    _inherits(Photos, _React$Component);
+	_inherits(Photos, _React$Component);
 
-    function Photos(props) {
-        _classCallCheck(this, Photos);
+	function Photos(props) {
+		_classCallCheck(this, Photos);
 
-        return _possibleConstructorReturn(this, (Photos.__proto__ || Object.getPrototypeOf(Photos)).call(this, props));
-    }
+		return _possibleConstructorReturn(this, (Photos.__proto__ || Object.getPrototypeOf(Photos)).call(this, props));
+	}
 
-    _createClass(Photos, [{
-        key: 'render',
-        value: function render() {
-            var data = this.props.data;
+	_createClass(Photos, [{
+		key: 'render',
+		value: function render() {
+			var data = this.props.data;
 
-            return _react2.default.createElement(
-                _GridList.GridList,
-                {
-                    cellHeight: 180,
-                    cols: 4,
-                    className: 'photos__gridlist'
-                },
-                data.map(function (item, key) {
-                    return _react2.default.createElement(
-                        _GridList.GridTile,
-                        {
-                            key: key,
-                            title: ' ',
-                            actionIcon: _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                {
-                                    to: 'photos/' + item._id + '/delete'
-                                },
-                                _react2.default.createElement(_delete2.default, {
-                                    color: 'rgb(255, 64, 129)',
-                                    style: {
-                                        cursor: 'pointer'
-                                    }
-                                })
-                            )
-                        },
-                        _react2.default.createElement('img', {
-                            src: item.url
-                        })
-                    );
-                })
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				_GridList.GridList,
+				{
+					cellHeight: 180,
+					cols: 4,
+					className: 'photos__gridlist'
+				},
+				data.map(function (item, key) {
+					return _react2.default.createElement(
+						_GridList.GridTile,
+						{
+							key: key,
+							title: ' ',
+							actionIcon: _react2.default.createElement(
+								_reactRouterDom.Link,
+								{
+									to: 'photos/' + item._id + '/delete'
+								},
+								_react2.default.createElement(_delete2.default, {
+									color: 'rgb(255, 64, 129)',
+									style: {
+										cursor: 'pointer'
+									}
+								})
+							)
+						},
+						_react2.default.createElement('img', {
+							src: item.url
+						})
+					);
+				})
+			);
+		}
+	}]);
 
-    return Photos;
+	return Photos;
 }(_react2.default.Component);
 
 exports.default = Photos;
