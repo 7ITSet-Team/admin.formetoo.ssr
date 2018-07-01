@@ -70,24 +70,24 @@ a, a:link, a:visited, a:active {
 }
 
 .content {
-    width: 82%;
+    width: 100%;
 }
 
 .content, .content_moved {
     display: flex;
     flex-flow: column;
     transition: all 200ms linear;
-    margin-left: 40px;
-    margin-top: 40px;
+    margin: 40px;
     background-color: rgb(237, 236, 236);
 }
 
 .content_moved {
-    width: 96.57%;
+    width: 100%;
 }
 
 .resource-page {
     background-color: white;
+    padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     max-height: 780px;
@@ -130,16 +130,13 @@ a, a:link, a:visited, a:active {
 /*--------------ГЛАВНАЯ СТРАНИЦА---------------*/
 
 .dashboard {
-    width: 100%;
-    height: 600px;
+    padding: 40px;
 }
 
 .dashboard__item {
     width: 350px;
     height: 120px;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 100px;
+    margin: 30px;
     box-shadow: 0 4px 8px gray;
     display: flex;
     flex-direction: column;
@@ -177,6 +174,11 @@ a, a:link, a:visited, a:active {
 
 .table__row {
     border-color: black !important;
+}
+
+.input {
+    border: 1px solid black;
+    margin-top: 20px;
 }
 
 .inputfile {

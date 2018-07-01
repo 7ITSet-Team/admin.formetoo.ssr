@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from 'material-ui/TextField'
 
 import Data from '@src/core/data.provider'
-import ToolBar from '@src/containers/tool-bar'
+import ToolBar from '@src/containers/content/tool-bar'
 
 export default class Profile extends React.Component {
     constructor(props) {

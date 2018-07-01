@@ -2,55 +2,50 @@ import React from 'react'
 import { Tab, Tabs } from 'material-ui/Tabs'
 import TextField from 'material-ui/TextField'
 import Toggle from 'material-ui/Toggle'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import CopyIcon from 'material-ui/svg-icons/action/flip-to-front'
-import DatePicker from 'material-ui/DatePicker'
-import { Link } from 'react-router-dom'
-import { FlatButton } from 'material-ui'
+import SelectField from 'material-ui/SelectField'
 import ListIcon from 'material-ui/svg-icons/action/list'
+import MenuItem from 'material-ui/MenuItem'
+import FlatButton from 'material-ui/FlatButton'
+import { Link } from 'react-router-dom'
 import uid from 'uid'
 import { Editor } from 'react-draft-wysiwyg'
-import draftToHtml from 'draftjs-to-html'
 import { ContentState, convertToRaw, EditorState } from 'draft-js'
+import draftToHtml from 'draftjs-to-html'
 import htmlToDraft from 'html-to-draftjs'
 
 import Data from '@src/core/data.provider'
-import ToolBar from '@src/containers/tool-bar'
+import ToolBar from '@src/containers/content/tool-bar'
 
-export default class ProductsEdit extends React.Component {
+export default class ProductsCreate extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			data: {
 				isActive: false,
-				title: '',
-				description: '',
-				shortDescription: '',
-				sku: '',
-				price: '',
-				categories: [],
+				relatedProducts: [],
+				fromSet: [],
 				images: [],
-				'attribute-sets': [],
-				attributes: [],
-				'tab-sets': [],
-				tabs: [],
+				categories: [],
 				seo: {
 					title: '',
 					description: '',
 					keywords: ''
 				},
-				relatedProducts: [],
-				fromSet: [],
-				creationDate: new Date(),
-				modificationDate: new Date(),
+				'attribute-sets': [],
+				attributes: [],
+				'tab-sets': [],
+				tabs: [],
 				slug: uid(16)
 			},
+			descState: EditorState.createEmpty(),
+			shortDescState: EditorState.createEmpty(),
 			products: []
 		}
-		this.getProduct(this.props.location)
+		if (!!this.props.match) {
+			this.getProduct()
+		}
 		this.getResource('/products')
 		this.getResource('/categories')
 		this.getResource('/attribute-sets')
@@ -64,8 +59,10 @@ export default class ProductsEdit extends React.Component {
 		this.onEditorShortDescChange = this.onEditorShortDescChange.bind(this)
 	}
 
-	async getProduct(uri) {
-		const response = await Data.getResource(uri)
+	async getProduct() {
+		const id = this.props.match.params.id
+		let response = await Data.getResource('/products/' + id)
+		delete response._id
 		const description = response.description
 		const contentBlockDesc = htmlToDraft(description)
 		const contentStateDesc = ContentState.createFromBlockArray(contentBlockDesc.contentBlocks)
@@ -77,7 +74,8 @@ export default class ProductsEdit extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				...response
+				...response,
+				sku: response.sku + '-COPY'
 			},
 			descState: editorStateDesc,
 			shortDescState: editorStateShortDesc
@@ -86,18 +84,17 @@ export default class ProductsEdit extends React.Component {
 
 	changeState(value, key) {
 		let newState = this.state
-		newState.data[key] = value
+		newState.data[ key ] = value
 		this.setState(newState)
 	}
 
 	changeRelatedProducts(event, index, value) {
-		this.setState({
-			data: {
-				...this.state.data,
-				relatedProducts: [
+		this.state.products.forEach((product) => {
+			if (product.slug === value) {
+				this.changeState([
 					...this.state.data.relatedProducts,
-					value
-				]
+					product
+				], 'relatedProducts')
 			}
 		})
 	}
@@ -105,20 +102,18 @@ export default class ProductsEdit extends React.Component {
 	deleteRelatedProduct(id) {
 		let relatedProducts = []
 		this.state.data.relatedProducts.map(relatedProduct => {
-			if (relatedProduct !== id) {
+			if (relatedProduct.slug !== id) {
 				relatedProducts.push(relatedProduct)
 			}
 		})
-		this.setState({
-			data: {
-				...this.state.data,
-				relatedProducts: relatedProducts
-			}
-		})
+		this.changeState(
+			relatedProducts,
+			'relatedProducts'
+		)
 	}
 
 	async uploadFile(file) {
-		const result = await Data.uploadImage('/upload/products', file.target.files[0])
+		const result = await Data.uploadImage('/upload/products', file.target.files[ 0 ])
 		this.setState({
 			data: {
 				...this.state.data,
@@ -134,7 +129,7 @@ export default class ProductsEdit extends React.Component {
 		const resource = uri.slice(1)
 		const response = await Data.getData(uri)
 		let newState = {}
-		newState[resource] = response.data
+		newState[ resource ] = response.data
 		this.setState(newState)
 	}
 
@@ -155,7 +150,7 @@ export default class ProductsEdit extends React.Component {
 			data: {
 				...this.state.data,
 				'attribute-sets': [
-					...this.state.data['attribute-sets'],
+					...this.state.data[ 'attribute-sets' ],
 					...value
 				]
 			}
@@ -167,7 +162,7 @@ export default class ProductsEdit extends React.Component {
 			data: {
 				...this.state.data,
 				'tab-sets': [
-					...this.state.data['tab-sets'],
+					...this.state.data[ 'tab-sets' ],
 					...value
 				]
 			}
@@ -176,19 +171,18 @@ export default class ProductsEdit extends React.Component {
 
 	onEditorDescChange(descState) {
 		this.setState({
-			descState,
+			descState
 		})
 	}
 
 	onEditorShortDescChange(shortDescState) {
 		this.setState({
-			shortDescState,
+			shortDescState
 		})
 	}
 
-
 	render() {
-		if (!this.state.data || !this.state.categories || !this.state['attribute-sets'] || !this.state['tab-sets']) {
+		if (!this.state.categories || !this.state.products || !this.state[ 'attribute-sets' ] || !this.state[ 'tab-sets' ]) {
 			return false
 		}
 		return (
@@ -197,42 +191,16 @@ export default class ProductsEdit extends React.Component {
 					<Tab label="Основное">
 						<div
 							className="big-resource">
-							<div
+							<Link
 								className="resource-actions"
+								to="/products"
 							>
-								<Link
-									to={{
-										pathname: `${this.props.location}/copy`,
-										state: this.state.data
-									}}
-								>
-									<FlatButton
-										label="Копировать"
-										labelStyle={{color: 'rgb(64, 255, 129)'}}
-										primary={true}
-										icon={<CopyIcon color='rgb(64, 255, 129)'/>}
-									/>
-								</Link>
-								<Link
-									to={`${this.props.location}/delete`}
-								>
-									<FlatButton
-										label="Удалить"
-										labelStyle={{color: 'rgb(255, 64, 129)'}}
-										primary={true}
-										icon={<DeleteIcon color='rgb(255, 64, 129)'/>}
-									/>
-								</Link>
-								<Link
-									to="/products"
-								>
-									<FlatButton
-										label="Назад к списку"
-										primary={true}
-										icon={<ListIcon/>}
-									/>
-								</Link>
-							</div>
+								<FlatButton
+									label="Назад к списку"
+									primary={true}
+									icon={<ListIcon/>}
+								/>
+							</Link>
 							<Toggle
 								style={{
 									width: '150px',
@@ -245,6 +213,7 @@ export default class ProductsEdit extends React.Component {
 							<TextField
 								fullWidth={true}
 								hintText="Заголовок"
+								floatingLabelText="Заголовок"
 								errorText="Поле обязательно"
 								value={this.state.data.title}
 								onChange={(event, value) => this.changeState(value, 'title')}
@@ -290,6 +259,7 @@ export default class ProductsEdit extends React.Component {
 							<TextField
 								fullWidth={true}
 								hintText="Артикул"
+								floatingLabelText="Артикул"
 								errorText="Поле обязательно"
 								value={this.state.data.sku}
 								onChange={(event, value) => this.changeState(value, 'sku')}
@@ -297,6 +267,7 @@ export default class ProductsEdit extends React.Component {
 							<TextField
 								fullWidth={true}
 								hintText="Цена"
+								floatingLabelText="Цена"
 								errorText="Поле обязательно"
 								value={this.state.data.price}
 								onChange={(event, value) => this.changeState(value, 'price')}
@@ -306,12 +277,14 @@ export default class ProductsEdit extends React.Component {
 								multiple={true}
 								value={this.state.data.categories}
 								floatingLabelText="Категории"
-								onChange={(event, index, value) => this.setState({
-									data: {
-										...this.state.data,
-										categories: value
-									}
-								})}
+								onChange={(event, index, value) => {
+									this.setState({
+										data: {
+											...this.state.data,
+											categories: value
+										}
+									})
+								}}
 							>
 								{this.state.categories.map((category, index) => {
 									return <MenuItem
@@ -349,7 +322,7 @@ export default class ProductsEdit extends React.Component {
 							<SelectField
 								fullWidth={true}
 								multiple={true}
-								value={this.state.data['attribute-sets']}
+								value={this.state.data[ 'attribute-sets' ]}
 								floatingLabelText="Наборы атрибутов"
 								onChange={(event, index, value) => this.setState({
 									data: {
@@ -358,7 +331,7 @@ export default class ProductsEdit extends React.Component {
 									}
 								})}
 							>
-								{this.state['attribute-sets'].map((attribute, index) => {
+								{this.state[ 'attribute-sets' ].map((attribute, index) => {
 									return <MenuItem
 										value={attribute.slug}
 										primaryText={attribute.title}
@@ -369,7 +342,7 @@ export default class ProductsEdit extends React.Component {
 							<SelectField
 								fullWidth={true}
 								multiple={true}
-								value={this.state.data['tab-sets']}
+								value={this.state.data[ 'tab-sets' ]}
 								floatingLabelText="Наборы табов"
 								onChange={(event, index, value) => this.setState({
 									data: {
@@ -378,7 +351,7 @@ export default class ProductsEdit extends React.Component {
 									}
 								})}
 							>
-								{this.state['tab-sets'].map((set, index) => {
+								{this.state[ 'tab-sets' ].map((set, index) => {
 									return <MenuItem
 										value={set.slug}
 										primaryText={set.title}
@@ -386,30 +359,6 @@ export default class ProductsEdit extends React.Component {
 									/>
 								})}
 							</SelectField>
-							<DatePicker
-								fullWidth={true}
-								floatingLabelText="Дата создания"
-								hintText="Дата создания"
-								defaultDate={new Date(this.state.data.creationDate)}
-							/>
-							<DatePicker
-								fullWidth={true}
-								floatingLabelText="Дата изменения"
-								hintText="Дата изменения"
-								defaultDate={new Date(this.state.data.modificationDate)}
-							/>
-							<TextField
-								fullWidth={true}
-								value={this.state.data.slug}
-								onChange={(event, value) => this.setState({
-									data: {
-										...this.state.data,
-										slug: value
-									}
-								})}
-								floatingLabelText='Slug'
-								label='Slug'
-							/>
 						</div>
 					</Tab>
 					<Tab label="SEO">
@@ -418,7 +367,8 @@ export default class ProductsEdit extends React.Component {
 							<TextField
 								fullWidth={true}
 								hintText="SEO заголовок"
-								value={!!this.state.data.seo ? this.state.data.seo.title : undefined}
+								floatingLabelText="SEO заголовок"
+								value={this.state.data.seo.title}
 								onChange={(event, value) => this.changeState({
 									...this.state.data.seo,
 									title: value
@@ -427,7 +377,8 @@ export default class ProductsEdit extends React.Component {
 							<TextField
 								fullWidth={true}
 								hintText="SEO описание"
-								value={!!this.state.data.seo ? this.state.data.seo.description : undefined}
+								floatingLabelText="SEO описание"
+								value={this.state.data.seo.description}
 								onChange={(event, value) => this.changeState({
 									...this.state.data.seo,
 									description: value
@@ -436,7 +387,8 @@ export default class ProductsEdit extends React.Component {
 							<TextField
 								fullWidth={true}
 								hintText="SEO ключевые слова"
-								value={!!this.state.data.seo ? this.state.data.seo.keywords : undefined}
+								floatingLabelText="SEO ключевые слова"
+								value={this.state.data.seo.keywords}
 								onChange={(event, value) => this.changeState({
 									...this.state.data.seo,
 									keywords: value
@@ -490,7 +442,16 @@ export default class ProductsEdit extends React.Component {
 														<TableHeaderColumn>
 															<DeleteIcon
 																color='rgb(255, 64, 129)'
-																onClick={() => this.deleteRelatedProduct(product.slug)}
+																onClick={() => {
+																	let relatedProducts = this.state.data.relatedProducts
+																	relatedProducts.splice(index, 1)
+																	this.setState({
+																		data: {
+																			...this.state.data,
+																			relatedProducts
+																		}
+																	})
+																}}
 																style={{cursor: 'pointer'}}
 															/>
 														</TableHeaderColumn>
@@ -505,7 +466,15 @@ export default class ProductsEdit extends React.Component {
 								fullWidth={true}
 								value={this.state.data.relatedProducts}
 								floatingLabelText="Похожий продукт"
-								onChange={this.changeRelatedProducts}
+								onChange={(event, index, value) => this.setState({
+									data: {
+										...this.state.data,
+										relatedProducts: [
+											...this.state.data.relatedProducts,
+											value
+										]
+									}
+								})}
 							>
 								{this.state.products.map((product, index) => {
 									return <MenuItem
@@ -607,144 +576,11 @@ export default class ProductsEdit extends React.Component {
 							</SelectField>
 						</div>
 					</Tab>
-					<Tab
-						label='Атрибуты'
-					>
-						<div
-							className="resource-page">
-							{
-								this.state.data.attributes.map((attribute, key) => {
-									if (attribute.attrType === 'select' || attribute.attrType === 'multipleSelect')
-										return (
-											<SelectField
-												fullWidth={true}
-												multiple={attribute.attrType === 'multipleSelect'}
-												value={this.state.data.attributes[key].value}
-												floatingLabelText={attribute.title}
-												onChange={(event, index, value) => {
-													let newState = {
-														data: {
-															...this.state.data,
-															attributes: this.state.data.attributes
-														}
-													}
-													newState.data.attributes[key].value = value
-													this.setState(newState)
-												}}
-												key={key}
-											>
-												{
-													attribute.variants.map((variant, index) => {
-														return (
-															<MenuItem
-																value={variant.value}
-																primaryText={variant.id}
-																key={index}
-															/>
-														)
-													})
-												}
-											</SelectField>
-										)
-									if (attribute.attrType === 'interval')
-										return (
-											<div
-												key={key}
-											>
-												<TextField
-													fullWidth={true}
-													hintText={`${attribute.title} от`}
-													defaultValue={!!this.state.data.attributes[key].value ? this.state.data.attributes[key].value.from : ''}
-													floatingLabelText={`${attribute.title} от`}
-													onChange={(event, value) => {
-														let newState = {
-															data: {
-																...this.state.data,
-																attributes: this.state.data.attributes
-															}
-														}
-														newState.data.attributes[key].value = {...newState.data.attributes[key].value}
-														newState.data.attributes[key].value.from = value
-														this.setState(newState)
-													}}
-												/>
-												<TextField
-													fullWidth={true}
-													hintText={`${attribute.title} до`}
-													defaultValue={!!this.state.data.attributes[key].value ? this.state.data.attributes[key].value.to : ''}
-													floatingLabelText={`${attribute.title} до`}
-													onChange={(event, value) => {
-														let newState = {
-															data: {
-																...this.state.data,
-																attributes: this.state.data.attributes
-															}
-														}
-														newState.data.attributes[key].value = {...newState.data.attributes[key].value}
-														newState.data.attributes[key].value.to = value
-														this.setState(newState)
-													}}
-												/>
-											</div>
-										)
-									return (
-										<TextField
-											fullWidth={true}
-											hintText={attribute.title}
-											value={this.state.data.attributes[key].value}
-											floatingLabelText={attribute.title}
-											onChange={(event, value) => {
-												let newState = {
-													data: {
-														...this.state.data,
-														attributes: this.state.data.attributes
-													}
-												}
-												newState.data.attributes[key].value = value
-												this.setState(newState)
-											}}
-											key={key}
-										/>
-									)
-								})
-							}
-						</div>
-					</Tab>
-					<Tab
-						label='Табы'
-					>
-						<div
-							className="resource-page">
-							{
-								this.state.data.tabs.map((tab, key) => {
-									return (
-										<TextField
-											fullWidth={true}
-											hintText={tab.title}
-											value={this.state.data.tabs[key].value}
-											floatingLabelText={tab.title}
-											onChange={(event, value) => {
-												let newState = {
-													data: {
-														...this.state.data,
-														tabs: this.state.data.tabs
-													}
-												}
-												newState.data.tabs[key].value = value
-												this.setState(newState)
-											}}
-											key={key}
-										/>
-									)
-								})
-							}
-						</div>
-					</Tab>
 				</Tabs>
 				<ToolBar
 					resources='products'
 					data={this.state.data}
-					action='edit'
+					action='create'
 				/>
 			</div>
 		)

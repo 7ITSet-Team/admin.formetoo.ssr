@@ -7,40 +7,54 @@ import Data from '@src/core/data.provider'
 
 export default class ToolBar extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			created: false,
 			edited: false,
 			deleted: false,
 			canceled: false,
 			add: false
-		};
-		this.handleRemoveButton = this.handleRemoveButton.bind(this);
+		}
+		this.handleRemoveButton = this.handleRemoveButton.bind(this)
 		this.handleCancelButton = this.handleCancelButton.bind(this)
 	}
 
-	handleSaveButton(action) {
+	async handleSaveButton(action) {
 		if (this.props.action === 'create') {
 			if (this.props.resources === 'categories') {
 				const data = {
 					url: this.props.photo,
 					creationDate: new Date().toLocaleString(),
 					modificationDate: new Date().toLocaleString()
-				};
-				Data.create('/photos', data)
+				}
+				await Data.create('/photos', data)
 			}
-			const data = this.props.data;
-			data.creationDate = new Date().toLocaleString();
-			data.modificationDate = new Date().toLocaleString();
-			Data.create('/' + this.props.resources, data);
-			if (action === 'saveAndExit')
-				this.setState({
-					created: true
-				});
-			if (action === 'saveAndAdd')
-				this.setState({
-					add: true
+			if (this.props.resources === 'products') {
+				let data = this.props.photos.map(photo => {
+					return {
+						url: photo,
+						creationDate: new Date().toLocaleString(),
+						modificationDate: new Date().toLocaleString()
+					}
 				})
+				await Data.create('/photos', data)
+			}
+			const data = this.props.data
+			data.creationDate = new Date().toLocaleString()
+			data.modificationDate = new Date().toLocaleString()
+			const result = await Data.create('/' + this.props.resources, data)
+			if (result.success) {
+				if (action === 'saveAndExit') {
+					this.setState({
+						created: true
+					})
+				}
+				if (action === 'saveAndAdd') {
+					this.setState({
+						add: true
+					})
+				}
+			}
 		}
 		if (this.props.action === 'edit') {
 			if (this.props.resources === 'categories') {
@@ -48,24 +62,40 @@ export default class ToolBar extends React.Component {
 					url: this.props.photo,
 					creationDate: new Date().toLocaleString(),
 					modificationDate: new Date().toLocaleString()
-				};
-				Data.create('/photos', data)
+				}
+				await Data.create('/photos', data)
 			}
-			const data = this.props.data;
-			data.modificationDate = new Date().toLocaleString();
-			Data.edit('/' + this.props.resources, data);
-			if (action === 'saveAndExit')
-				this.setState({
-					edited: true
+			if (this.props.resources === 'products') {
+				let data = this.props.photos.map(photo => {
+					return {
+						url: photo,
+						creationDate: new Date().toLocaleString(),
+						modificationDate: new Date().toLocaleString()
+					}
 				})
+				await Data.create('/photos', data)
+			}
+			const data = this.props.data
+			data.modificationDate = new Date().toLocaleString()
+			const result = await Data.edit('/' + this.props.resources, data)
+			if (result.success) {
+				if (action === 'saveAndExit') {
+					this.setState({
+						edited: true
+					})
+				}
+			}
 		}
 	}
 
-	handleRemoveButton() {
-		Data.remove(this.props.resource);
-		this.setState({
-			deleted: true
-		})
+	async handleRemoveButton() {
+		const result = await Data.remove(this.props.resource)
+		console.log(result)
+		if (result.success) {
+			this.setState({
+				deleted: true
+			})
+		}
 	}
 
 	handleCancelButton() {
@@ -75,15 +105,25 @@ export default class ToolBar extends React.Component {
 	}
 
 	render() {
-		if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled)
+		if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled) {
 			return (
-				<Redirect to={'/' + this.props.resources}/>
-			);
-		if (this.state.add)
+				<Redirect
+					push
+					to={{
+						pathname: '/' + this.props.resources
+					}}
+				/>
+			)
+		}
+		if (this.state.add) {
 			return (
-				<Redirect to={'/' + this.props.resources + '/create'}/>
-			);
-		if (this.props.action === 'delete')
+				<Redirect
+					push
+					to={'/' + this.props.resources + '/create'}
+				/>
+			)
+		}
+		if (this.props.action === 'delete') {
 			return (
 				<Toolbar
 					style={{
@@ -108,8 +148,9 @@ export default class ToolBar extends React.Component {
 						onClick={this.handleCancelButton}
 					/>
 				</Toolbar>
-			);
-		if (this.props.action === 'create')
+			)
+		}
+		if (this.props.action === 'create') {
 			return (
 				<Toolbar
 					style={{
@@ -142,8 +183,9 @@ export default class ToolBar extends React.Component {
 						onClick={() => this.handleSaveButton('saveAndAdd')}
 					/>
 				</Toolbar>
-			);
-		if (this.props.action === 'edit')
+			)
+		}
+		if (this.props.action === 'edit') {
 			return (
 				<Toolbar
 					style={{
@@ -169,5 +211,6 @@ export default class ToolBar extends React.Component {
 					/>
 				</Toolbar>
 			)
+		}
 	}
 }

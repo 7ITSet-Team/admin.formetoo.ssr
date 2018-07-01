@@ -19,7 +19,6 @@
       <option name="METHOD_BRACE_STYLE" value="5" />
       <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
       <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
-      <option name="SPACE_WITHIN_BRACKETS" value="true" />
       <option name="METHOD_CALL_CHAIN_WRAP" value="1" />
       <option name="PARENTHESES_EXPRESSION_LPAREN_WRAP" value="true" />
       <option name="ARRAY_INITIALIZER_WRAP" value="5" />

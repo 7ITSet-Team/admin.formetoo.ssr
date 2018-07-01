@@ -2,15 +2,15 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import { Route } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
-import routes from '@src/constants/routes'
+import { Redirect } from 'react-router-dom'
 
-import ResourcesList from '@src/containers/resources'
-import Login from '@src/containers/login'
+import routes from '@src/constants/routes'
+import ResourcesList from '@src/components/sidebar/resources'
 import Auth from '@src/core/auth.provider'
 import Data from '@src/core/data.provider'
-import components from '@src/constants/routes/components'
+import CopyProduct from '@src/containers/content/copy-product-page'
 
-export default class Layout extends React.Component {
+export default class AppLayout extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -60,46 +60,46 @@ export default class Layout extends React.Component {
 		const {authorised, allowedResources, isMenuOpened} = this.state
 		const location = this.props.location.pathname
 		const route = this.props.route.path
-		if (!__isBrowser__) {
-			return null
-		}
 		if (__isBrowser__ && !authorised) {
-			return <Login/>
+			return <Redirect
+				push
+				to='/login'
+			/>
 		}
-			return (
+		return (
+			<div
+				className="layout"
+			>
+				<AppBar
+					title="ForMeToo"
+					onLeftIconButtonClick={this.openMenu}
+					style={{
+						height: 60
+					}}
+				/>
 				<div
-					className="layout"
+					className="body"
 				>
-					<AppBar
-						title="ForMeToo"
-						onLeftIconButtonClick={this.openMenu}
-						style={{
-							height: 60
-						}}
+					<ResourcesList
+						allowedResources={allowedResources}
+						isMenuOpened={isMenuOpened}
+						basePath={route}
 					/>
 					<div
-						className="body"
+						className={
+							isMenuOpened
+								? 'content'
+								: 'content_moved'
+						}
 					>
-						<ResourcesList
-							allowedResources={allowedResources}
-							isMenuOpened={isMenuOpened}
-							basePath={route}
+						{renderRoutes(routes(location, route))}
+						<Route
+							path={route + 'products/:id/copy'}
+							component={CopyProduct}
 						/>
-						<div
-							className={
-								isMenuOpened
-									? 'content'
-									: 'content_moved'
-							}
-						>
-							{renderRoutes(routes(location, route))}
-							<Route
-								path={route + 'products/:id/copy'}
-								component={components.ProductsCreate}
-							/>
-						</div>
 					</div>
 				</div>
-			)
+			</div>
+		)
 	}
 }
