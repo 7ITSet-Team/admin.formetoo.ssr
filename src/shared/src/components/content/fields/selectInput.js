@@ -21,7 +21,7 @@ export default class SelectInput extends React.Component {
 				{
 					variants.map((variant, index) => {
 						return <MenuItem
-							value={!!key ? variant[key] variant.id}
+							value={!!key ? variant[key] : variant.id}
 							primaryText={variant.title}
 							key={index}
 						/>

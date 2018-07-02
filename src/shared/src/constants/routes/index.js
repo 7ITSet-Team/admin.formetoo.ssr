@@ -2,6 +2,7 @@ import React from 'react'
 
 import Dashboard from '@src/components/content/dashboard'
 import Profile from '@src/containers/content/profile'
+import Logs from '@src/containers/content/logs'
 import ResourceCreateEditTemplate from '@src/containers/content/resource-create-edit-template'
 import ResourcesLayout from '@src/containers/content/resources-layout'
 import RemoveLayout from '@src/containers/content/remove-layout'
@@ -35,6 +36,10 @@ export default (location, root) => {
 				location={location}
 				resources='photos'
 			/>
+		}, {
+			path: root + 'logs',
+			exact: true,
+			component: () => <Logs/>
 		}
 	]
 
