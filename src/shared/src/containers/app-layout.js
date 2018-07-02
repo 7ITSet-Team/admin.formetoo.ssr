@@ -1,6 +1,5 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
-import { Route } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import { Redirect } from 'react-router-dom'
 
@@ -8,7 +7,6 @@ import routes from '@src/constants/routes'
 import ResourcesList from '@src/components/sidebar/resources'
 import Auth from '@src/core/auth.provider'
 import Data from '@src/core/data.provider'
-import CopyProduct from '@src/containers/content/copy-product-page'
 
 export default class AppLayout extends React.Component {
 	constructor(props) {
@@ -93,10 +91,6 @@ export default class AppLayout extends React.Component {
 						}
 					>
 						{renderRoutes(routes(location, route))}
-						<Route
-							path={route + 'products/:id/copy'}
-							component={CopyProduct}
-						/>
 					</div>
 				</div>
 			</div>

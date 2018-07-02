@@ -19,38 +19,43 @@ import { Link } from 'react-router-dom'
 
 import ToolBar from '@src/containers/content/tool-bar'
 import Data from '@src/core/data.provider'
+import TextFieldTemplate from '@src/components/content/fields/textInput'
+import SelectFieldTemplate from '@src/components/content/fields/selectInput'
+import SwitchFieldTemplate from '@src/components/content/fields/switchInput'
+import TableFieldTemplate from '@src/components/content/fields/tableField'
 
-export default class ResourceCreateEditLayout extends React.Component {
+export default class ResourceCreateEditTemplate extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			data: this.getInitialState()
 		}
-		if (this.props.action === 'edit') {
+		const {action, resource} = this.props
+		if (action === 'edit' || action === 'copy') {
 			this.getResourceInfo()
-			    .catch(err => console.error('resource-layout:27 ERROR GETTING RESOURCE!: ', err))
+			    .catch(err => console.error('resource-layout:35 ERROR GETTING RESOURCE!: ', err))
 		}
-		if (this.props.resource === 'attribute-sets') {
+		if (resource === 'attribute-sets') {
 			this.getData('attributes')
-			    .catch(err => console.error('resource-layout:31 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:39 ERROR GETTING DATA!: ', err))
 		}
-		if (this.props.resource === 'tab-sets') {
+		if (resource === 'tab-sets') {
 			this.state = {
 				...this.state,
 				tabs: []
 			}
 			this.getData('tabs')
-			    .catch(err => console.error('resource-layout:39 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:47 ERROR GETTING DATA!: ', err))
 		}
-		if (this.props.resource === 'attribute-sets') {
+		if (resource === 'attribute-sets') {
 			this.state = {
 				...this.state,
 				attributes: []
 			}
 			this.getData('attributes')
-			    .catch(err => console.error('resource-layout:47 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:55 ERROR GETTING DATA!: ', err))
 		}
-		if (this.props.resource === 'attributes') {
+		if (resource === 'attributes') {
 			this.state = {
 				...this.state,
 				open: false,
@@ -60,7 +65,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 				}
 			}
 		}
-		if (this.props.resource === 'orders') {
+		if (resource === 'orders') {
 			this.state = {
 				...this.state,
 				clients: [],
@@ -68,13 +73,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 				products: []
 			}
 			this.getData('clients')
-			    .catch(err => console.error('resource-layout:66 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:75 ERROR GETTING DATA!: ', err))
 			this.getData('statuses')
-			    .catch(err => console.error('resource-layout:68 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:77 ERROR GETTING DATA!: ', err))
 			this.getData('products')
-			    .catch(err => console.error('resource-layout:70 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:79 ERROR GETTING DATA!: ', err))
 		}
-		if (this.props.resource === 'clients') {
+		if (resource === 'clients') {
 			this.state = {
 				...this.state,
 				address: {
@@ -88,24 +93,24 @@ export default class ResourceCreateEditLayout extends React.Component {
 				open: false
 			}
 		}
-		if (this.props.resource === 'users') {
+		if (resource === 'users') {
 			this.state = {
 				...this.state,
 				roles: []
 			}
 			this.getData('roles')
-			    .catch(err => console.error('resource-layout:92 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:100 ERROR GETTING DATA!: ', err))
 		}
-		if (this.props.resource === 'categories') {
+		if (resource === 'categories') {
 			this.state = {
 				...this.state,
 				categories: [],
 				descState: EditorState.createEmpty()
 			}
 			this.getData('categories')
-			    .catch(err => console.error('resource-layout:102 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout:110 ERROR GETTING DATA!: ', err))
 		}
-		if (this.props.resource === 'products') {
+		if (resource === 'products') {
 			this.state = {
 				...this.state,
 				categories: [],
@@ -116,13 +121,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 				shortDescState: EditorState.createEmpty()
 			}
 			this.getData('categories')
-			    .catch(err => console.error('resource-layout:117 ERROR GETTING DATA!: ', err))
-			this.getData('attribute-sets')
-			    .catch(err => console.error('resource-layout:119 ERROR GETTING DATA!: ', err))
-			this.getData('tab-sets')
-			    .catch(err => console.error('resource-layout:121 ERROR GETTING DATA!: ', err))
-			this.getData('products')
 			    .catch(err => console.error('resource-layout:123 ERROR GETTING DATA!: ', err))
+			this.getData('attribute-sets')
+			    .catch(err => console.error('resource-layout:125 ERROR GETTING DATA!: ', err))
+			this.getData('tab-sets')
+			    .catch(err => console.error('resource-layout:127 ERROR GETTING DATA!: ', err))
+			this.getData('products')
+			    .catch(err => console.error('resource-layout:129 ERROR GETTING DATA!: ', err))
 		}
 		this.changeValueOfInput = this.changeValueOfInput.bind(this)
 		this.changeSwitchInput = this.changeSwitchInput.bind(this)
@@ -188,6 +193,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 
 	async getResourceInfo() {
 		const {id} = this.props.match.params
+		console.log(id)
 		const result = await Data.getResource(`/${this.props.resource}/${id}`)
 		if (this.props.resource === 'categories') {
 			const description = result.description
@@ -200,6 +206,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 			})
 			return
 		}
+
 		if (this.props.resource === 'products') {
 			const description = result.description
 			const contentBlock = htmlToDraft(description)
@@ -209,12 +216,22 @@ export default class ResourceCreateEditLayout extends React.Component {
 			const contentBlockShortDesc = htmlToDraft(shortDescription)
 			const contentStateShortDesc = ContentState.createFromBlockArray(contentBlockShortDesc.contentBlocks)
 			const editorStateShortDesc = EditorState.createWithContent(contentStateShortDesc)
-			this.setState({
+			if (this.props.copy) {
+				delete result._id
+				return this.setState({
+					data: {
+						...result,
+						sku: `${result.sku}-COPY`
+					},
+					descState: editorState,
+					shortDescState: editorStateShortDesc
+				})
+			}
+			return this.setState({
 				data: result,
 				descState: editorState,
 				shortDescState: editorStateShortDesc
 			})
-			return
 		}
 		this.setState({
 			data: result
@@ -440,6 +457,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 
 	render() {
 		const {tabs} = this.props.structure
+		console.log('RESOURCE CREATE EDIT TEMPLATE STATE IS =>>>>>> ', this.state)
 		return (
 			<React.Fragment>
 				<Tabs>
@@ -500,7 +518,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 										</div>
 										{
 											tab.content.map((field, fieldIndex) => {
-												const {name, required, title, type} = field
+												const {name, title, type} = field
 												if (type === 'textInput') {
 													if (name instanceof Array) {
 														return (
@@ -508,11 +526,8 @@ export default class ResourceCreateEditLayout extends React.Component {
 																className='input'
 																key={fieldIndex}
 															>
-																<TextField
-																	fullWidth={true}
-																	hintText={title}
-																	floatingLabelText={title}
-																	errorText={required ? 'Поле обязательно' : ''}
+																<TextFieldTemplate
+																	{...field}
 																	value={this.state.data[name[0]][name[1]]}
 																	onChange={(e) => this.setState({
 																		data: {
@@ -532,12 +547,8 @@ export default class ResourceCreateEditLayout extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<TextField
-																fullWidth={true}
-																hintText={title}
-																floatingLabelText={title}
-																errorText={required ? 'Поле обязательно' : ''}
-																name={name}
+															<TextFieldTemplate
+																{...field}
 																value={this.state.data[name]}
 																onChange={this.changeValueOfInput}
 															/>
@@ -568,24 +579,10 @@ export default class ResourceCreateEditLayout extends React.Component {
 																	className='input'
 																	key={fieldIndex}
 																>
-																	<SelectField
-																		fullWidth={true}
-																		multiple={type === 'multipleSelect'}
-																		value={this.state.data[name[0]][name[1]][name[2]]}
-																		floatingLabelText={title}
-																		errorText={required ? 'Поле обязательно' : ''}
+																	<SelectFieldTemplate
 																		onChange={(event, index, value) => this.changeSelectInput(value, name, true)}
-																	>
-																		{
-																			variants.map((variant, index) => {
-																				return <MenuItem
-																					value={variant.id}
-																					primaryText={variant.title}
-																					key={index}
-																				/>
-																			})
-																		}
-																	</SelectField>
+																		{...field}
+																	/>
 																</div>
 															)
 														}
@@ -596,32 +593,20 @@ export default class ResourceCreateEditLayout extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<SelectField
-																fullWidth={true}
-																multiple={type === 'multipleSelect'}
-																value={this.state.data[name]}
-																floatingLabelText={title}
-																errorText={required ? 'Поле обязательно' : ''}
-																onChange={(event, index, value) => this.changeSelectInput(value, name)}
-															>
-																{
-																	!!variants
-																		? variants.map((variant, index) => {
-																			return <MenuItem
-																				value={variant.id}
-																				primaryText={variant.title}
-																				key={index}
-																			/>
-																		})
-																		: this.state[name].map((item, index) => {
-																			return <MenuItem
-																				value={item.slug}
-																				primaryText={item.title}
-																				key={index}
-																			/>
-																		})
-																}
-															</SelectField>
+															{
+																!!variants
+																	? <SelectFieldTemplate
+																		onChange={(event, index, value) => this.changeSelectInput(value, name)}
+																		value={this.state.data[name]}
+																		{...field}
+																	/>
+																	: <SelectFieldTemplate
+																		onChange={(event, index, value) => this.changeSelectInput(value, name)}
+																		value={this.state.data[name]}
+																		variants={this.state[name]}
+																		{...field}
+																	/>
+															}
 															{
 																(
 																	this.state.data.attrType === 'select' || this.state.data.attrType === 'multipleSelect') && this.props.resource === 'attributes'
@@ -715,24 +700,13 @@ export default class ResourceCreateEditLayout extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<SelectField
-																fullWidth={true}
-																multiple={type === 'multipleSelect'}
+															<SelectFieldTemplate
 																value={this.state.data[name]}
-																floatingLabelText={title}
-																errorText={required ? 'Поле обязательно' : ''}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
-															>
-																{
-																	this.state[name].map((item, index) => {
-																		return <MenuItem
-																			value={item.slug}
-																			primaryText={item.title}
-																			key={index}
-																		/>
-																	})
-																}
-															</SelectField>
+																variants={this.state[name]}
+																key='slug'
+																{...field}
+															/>
 														</div>
 													)
 												}
@@ -743,24 +717,14 @@ export default class ResourceCreateEditLayout extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<SelectField
-																fullWidth={true}
-																multiple={type === 'multipleSelect'}
+															<SelectFieldTemplate
+																title={title}
 																value={this.state.data[name]}
-																floatingLabelText={title}
-																errorText={required ? 'Поле обязательно' : ''}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
-															>
-																{
-																	this.state[needResources].map((item, index) => {
-																		return <MenuItem
-																			value={item.slug}
-																			primaryText={item.title || item.name}
-																			key={index}
-																		/>
-																	})
-																}
-															</SelectField>
+																variants={this.state[needResources]}
+																key='slug'
+																{...field}
+															/>
 														</div>
 													)
 												}
@@ -773,13 +737,10 @@ export default class ResourceCreateEditLayout extends React.Component {
 																	className='input'
 																	key={fieldIndex}
 																>
-																	<Toggle
-																		style={{
-																			width: '250px'
-																		}}
+																	<SwitchFieldTemplate
 																		toggled={this.state.data[name[0]][name[1]][name[2]]}
-																		label={title}
 																		onToggle={(event, value) => this.changeSwitchInput(value, name, true)}
+																		{...field}
 																	/>
 																</div>
 															)
@@ -803,65 +764,14 @@ export default class ResourceCreateEditLayout extends React.Component {
 													)
 												}
 												if (type === 'table') {
-													const {columns, name} = field
+													const {name} = field
 													return (
-														<Table
-															selectable={false}
+														<TableFieldTemplate
+															rows={this.state.data[name]}
 															key={fieldIndex}
-														>
-															<TableHeader
-																displaySelectAll={false}
-																adjustForCheckbox={false}
-															>
-																<TableRow>
-																	{
-																		columns.map((item, index) => {
-																			return (
-																				<TableHeaderColumn
-																					key={index}
-																				>
-																					{item.title}
-																				</TableHeaderColumn>
-																			)
-																		})
-																	}
-																	<TableHeaderColumn>
-																	</TableHeaderColumn>
-																</TableRow>
-															</TableHeader>
-															<TableBody
-																displayRowCheckbox={false}
-															>
-																{
-																	this.state.data[name].map((item, index) => {
-																		return (
-																			<TableRow
-																				key={index}
-																			>
-																				{
-																					columns.map((column, index) => {
-																						return (
-																							<TableRowColumn
-																								key={index}
-																							>
-																								{item[column.name]}
-																							</TableRowColumn>
-																						)
-																					})
-																				}
-																				<TableRowColumn>
-																					<DeleteIcon
-																						color='rgb(255, 64, 129)'
-																						onClick={() => this.deleteTableRow(index, name)}
-																						style={{cursor: 'pointer'}}
-																					/>
-																				</TableRowColumn>
-																			</TableRow>
-																		)
-																	})
-																}
-															</TableBody>
-														</Table>
+															deleteTableRow={(index, name) => this.deleteTableRow(index, name)}
+															{...field}
+														/>
 													)
 												}
 												if (type === 'pushTable') {
@@ -1202,7 +1112,7 @@ export default class ResourceCreateEditLayout extends React.Component {
 				<ToolBar
 					resources={this.props.resource}
 					data={this.state.data}
-					action={this.props.action}
+					action={this.props.action === 'copy' ? 'create' : this.props.action}
 					photos={
 						this.props.resource === 'products'
 							? this.state.data.images

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Dashboard from '@src/components/content/dashboard'
 import Profile from '@src/containers/content/profile'
-import ResourceCreateEditLayout from '@src/containers/content/resource-create-edit-layout'
+import ResourceCreateEditTemplate from '@src/containers/content/resource-create-edit-template'
 import ResourcesLayout from '@src/containers/content/resources-layout'
 import RemoveLayout from '@src/containers/content/remove-layout'
 
@@ -37,6 +37,7 @@ export default (location, root) => {
 			/>
 		}
 	]
+
 	listRoutes.forEach(route => {
 		routes.push({
 			path: root + route.resource,
@@ -48,13 +49,10 @@ export default (location, root) => {
 				filters={route.filters}
 			/>
 		})
-	})
-
-	listRoutes.forEach(route => {
 		routes.push({
 			path: `${root}${route.resource}/create`,
 			exact: true,
-			component: () => <ResourceCreateEditLayout
+			component: () => <ResourceCreateEditTemplate
 				resource={route.resource}
 				structure={route.structure}
 				action='create'
@@ -63,10 +61,21 @@ export default (location, root) => {
 		routes.push({
 			path: `${root}${route.resource}/:id`,
 			exact: true,
-			component: (props) => <ResourceCreateEditLayout
+			component: (props) => <ResourceCreateEditTemplate
 				resource={route.resource}
 				structure={route.structure}
 				action='edit'
+				{...props}
+			/>
+		})
+		routes.push({
+			path: `${root}${route.resource}/:id/copy`,
+			exact: true,
+			component: (props) => <ResourceCreateEditTemplate
+				resource={route.resource}
+				structure={route.structure}
+				copy
+				action='copy'
 				{...props}
 			/>
 		})
