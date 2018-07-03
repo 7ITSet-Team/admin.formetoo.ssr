@@ -16,6 +16,7 @@ import draftToHtml from 'draftjs-to-html'
 import { ContentState, convertToRaw, EditorState } from 'draft-js'
 import htmlToDraft from 'html-to-draftjs'
 import { Link } from 'react-router-dom'
+import uid from 'uid'
 
 import ToolBar from '@src/containers/content/tool-bar'
 import Data from '@src/core/data.provider'
@@ -33,11 +34,11 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		const {action, resource} = this.props
 		if (action === 'edit' || action === 'copy') {
 			this.getResourceInfo()
-			    .catch(err => console.error('resource-layout:35 ERROR GETTING RESOURCE!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING RESOURCE!: ', err))
 		}
 		if (resource === 'attribute-sets') {
 			this.getData('attributes')
-			    .catch(err => console.error('resource-layout:39 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		if (resource === 'tab-sets') {
 			this.state = {
@@ -45,7 +46,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				tabs: []
 			}
 			this.getData('tabs')
-			    .catch(err => console.error('resource-layout:47 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		if (resource === 'attribute-sets') {
 			this.state = {
@@ -53,7 +54,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				attributes: []
 			}
 			this.getData('attributes')
-			    .catch(err => console.error('resource-layout:55 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		if (resource === 'attributes') {
 			this.state = {
@@ -73,11 +74,11 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				products: []
 			}
 			this.getData('clients')
-			    .catch(err => console.error('resource-layout:75 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 			this.getData('statuses')
-			    .catch(err => console.error('resource-layout:77 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 			this.getData('products')
-			    .catch(err => console.error('resource-layout:79 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		if (resource === 'clients') {
 			this.state = {
@@ -99,7 +100,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				roles: []
 			}
 			this.getData('roles')
-			    .catch(err => console.error('resource-layout:100 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		if (resource === 'categories') {
 			this.state = {
@@ -108,7 +109,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				descState: EditorState.createEmpty()
 			}
 			this.getData('categories')
-			    .catch(err => console.error('resource-layout:110 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		if (resource === 'products') {
 			this.state = {
@@ -121,13 +122,13 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				shortDescState: EditorState.createEmpty()
 			}
 			this.getData('categories')
-			    .catch(err => console.error('resource-layout:123 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 			this.getData('attribute-sets')
-			    .catch(err => console.error('resource-layout:125 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 			this.getData('tab-sets')
-			    .catch(err => console.error('resource-layout:127 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 			this.getData('products')
-			    .catch(err => console.error('resource-layout:129 ERROR GETTING DATA!: ', err))
+			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
 		this.changeValueOfInput = this.changeValueOfInput.bind(this)
 		this.changeSwitchInput = this.changeSwitchInput.bind(this)
@@ -221,7 +222,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				return this.setState({
 					data: {
 						...result,
-						sku: `${result.sku}-COPY`
+						sku: `${result.sku}-COPY`,
+						slug: uid(16)
 					},
 					descState: editorState,
 					shortDescState: editorStateShortDesc
@@ -704,7 +706,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																value={this.state.data[name]}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
 																variants={this.state[name]}
-																key='slug'
+																field='slug'
 																{...field}
 															/>
 														</div>
@@ -720,9 +722,9 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															<SelectFieldTemplate
 																title={title}
 																value={this.state.data[name]}
-																onChange={(event, index, value) => this.changeSelectInput(value, name)}
+																onChange={value => this.changeSelectInput(value, name)}
 																variants={this.state[needResources]}
-																key='slug'
+																field='slug'
 																{...field}
 															/>
 														</div>

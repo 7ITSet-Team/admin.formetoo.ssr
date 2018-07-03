@@ -1,3 +1,5 @@
+import uid from 'uid'
+
 export default [
 	{
 		resource: 'photos',
@@ -25,6 +27,12 @@ export default [
 							title: 'Заголовок(наименование)',
 							name: 'title',
 							defaultValue: '',
+							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -59,6 +67,12 @@ export default [
 							name: 'tabs',
 							defaultValue: [],
 							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
+							required: true
 						}
 					]
 				}
@@ -92,6 +106,12 @@ export default [
 							name: 'title',
 							defaultValue: '',
 							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
+							required: true
 						}
 					]
 				}
@@ -124,6 +144,12 @@ export default [
 							title: 'Атрибуты',
 							name: 'attributes',
 							defaultValue: [],
+							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -206,6 +232,12 @@ export default [
 							title: 'Единица измерения',
 							name: 'unit',
 							defaultValue: '',
+							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -290,6 +322,12 @@ export default [
 							name: 'client',
 							needResources: 'clients',
 							defaultValue: '',
+							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -415,6 +453,12 @@ export default [
 							name: 'password',
 							title: 'Пароль',
 							defaultValue: '',
+							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -805,6 +849,12 @@ export default [
 							type: 'boolean',
 							name: ['resources', 'photos', 'showInMenu'],
 							title: 'Показывать в меню'
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
+							required: true
 						}
 					]
 				}
@@ -867,6 +917,12 @@ export default [
 							title: 'Роль',
 							needResources: 'roles',
 							defaultValue: '',
+							required: true
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -938,6 +994,12 @@ export default [
 							needResources: 'categories',
 							title: 'Родительская категория',
 							required: false
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
+							required: true
 						}
 					]
 				}, {
@@ -1081,6 +1143,12 @@ export default [
 							defaultValue: [],
 							needResources: 'tab-sets',
 							required: false
+						}, {
+							type: 'textInput',
+							title: 'Слаг',
+							name: 'slug',
+							defaultValue: uid(16),
+							required: true
 						}
 					]
 				}, {

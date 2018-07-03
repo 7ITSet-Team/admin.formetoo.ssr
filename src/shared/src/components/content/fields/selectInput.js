@@ -8,20 +8,19 @@ export default class SelectInput extends React.Component {
 	}
 
 	render() {
-		const {title, required, value, onChange, type, variants, key} = this.props
-		console.log(123)
+		const {title, required, value, onChange, type, variants, field} = this.props
 		return (
 			<SelectField
 				multiple={type === 'multipleSelect'}
 				value={value}
 				floatingLabelText={title}
 				errorText={required ? 'Поле обязательно' : ''}
-				onChange={onChange}
+				onChange={(event, index, value) => onChange(value)}
 			>
 				{
 					variants.map((variant, index) => {
 						return <MenuItem
-							value={!!key ? variant[key] : variant.id}
+							value={variant[field]}
 							primaryText={variant.title}
 							key={index}
 						/>
