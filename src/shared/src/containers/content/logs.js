@@ -64,22 +64,9 @@ export default class Logs extends React.Component {
 										{log.action}
 									</div>
 								</div>
-								<div
-									style={{
-										display: 'flex'
-									}}
-								>
-									<Chip>
-										{log.time}
-									</Chip>
-									<FlatButton
-										label="Удалить"
-										labelStyle={{color: 'rgb(255, 64, 129)'}}
-										primary={true}
-										icon={<DeleteIcon color='rgb(255, 64, 129)'/>}
-										onClick={() => console.log(this.props.location)}
-									/>
-								</div>
+								<Chip>
+									{log.time}
+								</Chip>
 							</div>
 						)
 					})

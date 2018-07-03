@@ -162,14 +162,6 @@ export default class ToolBar extends React.Component {
 						style={{
 							margin: '10px'
 						}}
-						label="Применить"
-						primary={true}
-						onClick={() => this.handleSaveButton('apply')}
-					/>
-					<RaisedButton
-						style={{
-							margin: '10px'
-						}}
 						label="Сохранить"
 						primary={true}
 						onClick={() => this.handleSaveButton('saveAndExit')}
