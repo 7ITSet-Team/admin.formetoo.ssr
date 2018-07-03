@@ -189,6 +189,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			currentResource.fromSet = []
 		}
 
+		currentResource.slug = uid(16)
+
 		return currentResource
 	}
 

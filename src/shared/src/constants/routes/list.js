@@ -1,5 +1,3 @@
-import uid from 'uid'
-
 export default [
 	{
 		resource: 'photos',
@@ -32,7 +30,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -71,7 +68,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -110,7 +106,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -149,7 +144,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -237,7 +231,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -327,7 +320,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -458,7 +450,7 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
+							name: 'slug',
 							required: true
 						}
 					]
@@ -853,7 +845,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -922,7 +913,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -998,7 +988,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]
@@ -1147,7 +1136,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							defaultValue: uid(16),
 							required: true
 						}
 					]

@@ -118,7 +118,6 @@ export default class ToolBar extends React.Component {
 		if (this.state.add) {
 			return (
 				<Redirect
-					push
 					to={'/' + this.props.resources + '/create'}
 				/>
 			)
