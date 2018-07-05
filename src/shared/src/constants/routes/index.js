@@ -2,7 +2,6 @@ import React from 'react'
 
 import Dashboard from '@src/components/content/dashboard'
 import Profile from '@src/containers/content/profile'
-import Logs from '@src/containers/content/logs'
 import ResourceCreateEditTemplate from '@src/containers/content/resource-create-edit-template'
 import ResourcesLayout from '@src/containers/content/resources-layout'
 import RemoveLayout from '@src/containers/content/remove-layout'
@@ -22,7 +21,8 @@ export default (location, root) => {
 		'tab-sets',
 		'statuses',
 		'roles',
-		'photos'
+		'photos',
+		'logs'
 	]
 	let routes = [
 		{
@@ -37,9 +37,12 @@ export default (location, root) => {
 				resources='photos'
 			/>
 		}, {
-			path: root + 'logs',
+			path: root + 'logs/:id/changes',
 			exact: true,
-			component: () => <Logs/>
+			component: (props) => <ResourcesLayout
+				changes
+				{...props}
+			/>
 		}
 	]
 

@@ -111,7 +111,7 @@ export default class ResourcesList extends React.Component {
 	}
 
 	render() {
-		const {title, statuses, columns, path, total, filters} = this.props
+		const {title, statuses, columns, path, total, filters, isChanged, changeFields, match} = this.props
 		const {page, filteredResources} = this.state
 		return (
 			<div
@@ -124,35 +124,51 @@ export default class ResourcesList extends React.Component {
 						page={page}
 					>
 					</Photos>
-					: <div>
-						<ResourcesHeader
-							path={path}
-							refresh={() => this.props.refresh()}
-							filters={filters}
-							addFiltration={(type, value) => this.addFiltration(type, value)}
-							exportFile={this.exportFile}
-							title={
-								<CardTitle
-									title={title}
-								/>
-							}
-						/>
-						<ResourcesBody
-							columns={columns}
-							data={filteredResources}
-							statuses={statuses}
-							addFiltration={(type, value) => this.addFiltration(type, value)}
-							onChangeState={(key, value) => this.onChangeState(key, value)}
-							path={path}
-							page={page}
-							total={total}
-						/>
-						<PaginationContainer
-							total={total}
-							changePage={this.changePage}
-							page={page}
-						/>
-					</div>
+					: isChanged
+						? <div>
+							<ResourcesHeader
+								isChanged
+								title={
+									<CardTitle
+										title={title}
+									/>
+								}
+							/>
+							<ResourcesBody
+								isChanged
+								match={match}
+								changeFields={changeFields}
+							/>
+						</div>
+						: <div>
+							<ResourcesHeader
+								path={path}
+								refresh={() => this.props.refresh()}
+								filters={filters}
+								addFiltration={(type, value) => this.addFiltration(type, value)}
+								exportFile={this.exportFile}
+								title={
+									<CardTitle
+										title={title}
+									/>
+								}
+							/>
+							<ResourcesBody
+								columns={columns}
+								data={filteredResources}
+								statuses={statuses}
+								addFiltration={(type, value) => this.addFiltration(type, value)}
+								onChangeState={(key, value) => this.onChangeState(key, value)}
+								path={path}
+								page={page}
+								total={total}
+							/>
+							<PaginationContainer
+								total={total}
+								changePage={this.changePage}
+								page={page}
+							/>
+						</div>
 				}
 			</div>
 		)

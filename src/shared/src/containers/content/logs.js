@@ -28,7 +28,8 @@ export default class Logs extends React.Component {
 					display: 'flex',
 					justifyContent: 'flex-start',
 					flexDirection: 'column',
-					backgroundColor: 'white'
+					backgroundColor: 'white',
+					overflowY: 'scroll'
 				}}
 			>
 				{
@@ -38,7 +39,8 @@ export default class Logs extends React.Component {
 								key={index}
 								style={{
 									display: 'flex',
-									justifyContent: 'space-between'
+									justifyContent: 'space-between',
+									marginTop: '20px'
 								}}
 							>
 								<div
@@ -64,6 +66,12 @@ export default class Logs extends React.Component {
 										{log.action}
 									</div>
 								</div>
+								<FlatButton
+									label="Удалить"
+									labelStyle={{color: 'rgb(255, 64, 129)'}}
+									primary={true}
+									icon={<DeleteIcon color='rgb(255, 64, 129)'/>}
+								/>
 								<Chip>
 									{log.time}
 								</Chip>

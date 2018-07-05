@@ -20,10 +20,6 @@ import uid from 'uid'
 
 import ToolBar from '@src/containers/content/tool-bar'
 import Data from '@src/core/data.provider'
-import TextFieldTemplate from '@src/components/content/fields/textInput'
-import SelectFieldTemplate from '@src/components/content/fields/selectInput'
-import SwitchFieldTemplate from '@src/components/content/fields/switchInput'
-import TableFieldTemplate from '@src/components/content/fields/tableField'
 
 export default class ResourceCreateEditTemplate extends React.Component {
 	constructor(props) {
@@ -196,7 +192,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 
 	async getResourceInfo() {
 		const {id} = this.props.match.params
-		console.log(id)
 		const result = await Data.getResource(`/${this.props.resource}/${id}`)
 		if (this.props.resource === 'categories') {
 			const description = result.description
@@ -231,12 +226,18 @@ export default class ResourceCreateEditTemplate extends React.Component {
 					shortDescState: editorStateShortDesc
 				})
 			}
+			result.seo.keywords = result.seo.keywords.join(', ')
 			return this.setState({
 				data: result,
 				descState: editorState,
 				shortDescState: editorStateShortDesc
 			})
 		}
+
+		if (this.props.resource === 'categories') {
+			result.seo.keywords = result.seo.keywords.join(', ')
+		}
+
 		this.setState({
 			data: result
 		})
@@ -461,7 +462,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 
 	render() {
 		const {tabs} = this.props.structure
-		console.log('RESOURCE CREATE EDIT TEMPLATE STATE IS =>>>>>> ', this.state)
+		console.log('RESCREAEDITSTATE ', this.state)
 		return (
 			<React.Fragment>
 				<Tabs>
@@ -522,7 +523,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 										</div>
 										{
 											tab.content.map((field, fieldIndex) => {
-												const {name, title, type} = field
+												const {name, title, type, required} = field
 												if (type === 'textInput') {
 													if (name instanceof Array) {
 														return (
@@ -530,8 +531,11 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																className='input'
 																key={fieldIndex}
 															>
-																<TextFieldTemplate
-																	{...field}
+																<TextField
+																	fullWidth={true}
+																	hintText={title}
+																	floatingLabelText={title}
+																	errorText={required ? 'Поле обязательно' : ''}
 																	value={this.state.data[name[0]][name[1]]}
 																	onChange={(e) => this.setState({
 																		data: {
@@ -551,8 +555,12 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<TextFieldTemplate
-																{...field}
+															<TextField
+																fullWidth={true}
+																hintText={title}
+																floatingLabelText={title}
+																errorText={required ? 'Поле обязательно' : ''}
+																name={name}
 																value={this.state.data[name]}
 																onChange={this.changeValueOfInput}
 															/>
@@ -583,10 +591,24 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	className='input'
 																	key={fieldIndex}
 																>
-																	<SelectFieldTemplate
+																	<SelectField
+																		fullWidth={true}
+																		multiple={type === 'multipleSelect'}
+																		value={this.state.data[name[0]][name[1]][name[2]]}
+																		floatingLabelText={title}
+																		errorText={required ? 'Поле обязательно' : ''}
 																		onChange={(event, index, value) => this.changeSelectInput(value, name, true)}
-																		{...field}
-																	/>
+																	>
+																		{
+																			variants.map((variant, index) => {
+																				return <MenuItem
+																					value={variant.id}
+																					primaryText={variant.title}
+																					key={index}
+																				/>
+																			})
+																		}
+																	</SelectField>
 																</div>
 															)
 														}
@@ -597,20 +619,32 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															{
-																!!variants
-																	? <SelectFieldTemplate
-																		onChange={(event, index, value) => this.changeSelectInput(value, name)}
-																		value={this.state.data[name]}
-																		{...field}
-																	/>
-																	: <SelectFieldTemplate
-																		onChange={(event, index, value) => this.changeSelectInput(value, name)}
-																		value={this.state.data[name]}
-																		variants={this.state[name]}
-																		{...field}
-																	/>
-															}
+															<SelectField
+																fullWidth={true}
+																multiple={type === 'multipleSelect'}
+																value={this.state.data[name]}
+																floatingLabelText={title}
+																errorText={required ? 'Поле обязательно' : ''}
+																onChange={(event, index, value) => this.changeSelectInput(value, name)}
+															>
+																{
+																	!!variants
+																		? variants.map((variant, index) => {
+																			return <MenuItem
+																				value={variant.id}
+																				primaryText={variant.title}
+																				key={index}
+																			/>
+																		})
+																		: this.state[name].map((item, index) => {
+																			return <MenuItem
+																				value={item.slug}
+																				primaryText={item.title}
+																				key={index}
+																			/>
+																		})
+																}
+															</SelectField>
 															{
 																(
 																	this.state.data.attrType === 'select' || this.state.data.attrType === 'multipleSelect') && this.props.resource === 'attributes'
@@ -704,36 +738,57 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<SelectFieldTemplate
+															<SelectField
+																fullWidth={true}
+																multiple={type === 'multipleSelect'}
 																value={this.state.data[name]}
+																floatingLabelText={title}
+																errorText={required ? 'Поле обязательно' : ''}
 																onChange={(event, index, value) => this.changeSelectInput(value, name)}
-																variants={this.state[name]}
-																field='slug'
-																{...field}
-															/>
+															>
+																{
+																	this.state[name].map((item, index) => {
+																		return <MenuItem
+																			value={item.slug}
+																			primaryText={item.title}
+																			key={index}
+																		/>
+																	})
+																}
+															</SelectField>
 														</div>
 													)
 												}
 												if (type === 'select') {
-													const {name, title, needResources} = field
+													const {name, title, needResources, required} = field
 													return (
 														<div
 															className='input'
 															key={fieldIndex}
 														>
-															<SelectFieldTemplate
-																title={title}
+															<SelectField
+																fullWidth={true}
+																multiple={type === 'multipleSelect'}
 																value={this.state.data[name]}
-																onChange={value => this.changeSelectInput(value, name)}
-																variants={this.state[needResources]}
-																field='slug'
-																{...field}
-															/>
+																floatingLabelText={title}
+																errorText={required ? 'Поле обязательно' : ''}
+																onChange={(event, index, value) => this.changeSelectInput(value, name)}
+															>
+																{
+																	this.state[needResources].map((item, index) => {
+																		return <MenuItem
+																			value={item.slug}
+																			primaryText={item.title || item.name}
+																			key={index}
+																		/>
+																	})
+																}
+															</SelectField>
 														</div>
 													)
 												}
 												if (type === 'boolean') {
-													const {name, title} = field
+													const {name, title, required} = field
 													if (name instanceof Array) {
 														if (name.length === 3) {
 															return (
@@ -741,10 +796,13 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	className='input'
 																	key={fieldIndex}
 																>
-																	<SwitchFieldTemplate
+																	<Toggle
+																		style={{
+																			width: '250px'
+																		}}
 																		toggled={this.state.data[name[0]][name[1]][name[2]]}
+																		label={title}
 																		onToggle={(event, value) => this.changeSwitchInput(value, name, true)}
-																		{...field}
 																	/>
 																</div>
 															)
@@ -768,14 +826,69 @@ export default class ResourceCreateEditTemplate extends React.Component {
 													)
 												}
 												if (type === 'table') {
-													const {name} = field
+													const {name, columns, needResources} = field
 													return (
-														<TableFieldTemplate
-															rows={this.state.data[name]}
+														<Table
+															selectable={false}
 															key={fieldIndex}
-															deleteTableRow={(index, name) => this.deleteTableRow(index, name)}
-															{...field}
-														/>
+														>
+															<TableHeader
+																displaySelectAll={false}
+																adjustForCheckbox={false}
+															>
+																<TableRow>
+																	{
+																		columns.map((item, index) => {
+																			return (
+																				<TableHeaderColumn
+																					key={index}
+																				>
+																					{item.title}
+																				</TableHeaderColumn>
+																			)
+																		})
+																	}
+																	<TableHeaderColumn>
+																	</TableHeaderColumn>
+																</TableRow>
+															</TableHeader>
+															<TableBody
+																displayRowCheckbox={false}
+															>
+																{
+																	this.state.data[name].map(slug => {
+																		return this.state[needResources].map((item, index) => {
+																			if (item.slug === slug) {
+																				return (
+																					<TableRow
+																						key={index}
+																					>
+																						{
+																							columns.map((column, index) => {
+																								return (
+																									<TableRowColumn
+																										key={index}
+																									>
+																										{item[column.name]}
+																									</TableRowColumn>
+																								)
+																							})
+																						}
+																						<TableRowColumn>
+																							<DeleteIcon
+																								color='rgb(255, 64, 129)'
+																								onClick={() => this.deleteTableRow(index, name)}
+																								style={{cursor: 'pointer'}}
+																							/>
+																						</TableRowColumn>
+																					</TableRow>
+																				)
+																			}
+																		})
+																	})
+																}
+															</TableBody>
+														</Table>
 													)
 												}
 												if (type === 'pushTable') {
@@ -793,7 +906,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																{
 																	this.state[needResources].map((item, index) => {
 																		return <MenuItem
-																			value={item}
+																			value={item.slug}
 																			primaryText={item.title || item.name}
 																			key={index}
 																		/>
@@ -1054,8 +1167,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 													<TextField
 														fullWidth={true}
 														hintText={attribute.title}
-														value={this.state.data.attributes[key].value}
 														floatingLabelText={attribute.title}
+														value={attribute.value}
 														onChange={(event, value) => {
 															let newState = {
 																data: {

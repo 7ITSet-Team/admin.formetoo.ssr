@@ -450,7 +450,6 @@ export default [
 							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
-							name: 'slug',
 							required: true
 						}
 					]
@@ -998,16 +997,19 @@ export default [
 							type: 'textInput',
 							name: ['seo', 'title'],
 							title: 'SEO заголовок',
+							defaultValue: '',
 							required: false
 						}, {
 							type: 'textInput',
 							name: ['seo', 'description'],
 							title: 'SEO описание',
+							defaultValue: '',
 							required: false
 						}, {
 							type: 'textInput',
 							name: ['seo', 'keywords'],
 							title: 'SEO ключевые слова',
+							defaultValue: [],
 							required: false
 						}
 					]
@@ -1158,7 +1160,7 @@ export default [
 							type: 'textInput',
 							name: ['seo', 'keywords'],
 							title: 'SEO ключевые слова',
-							defaultValue: '',
+							defaultValue: [],
 							required: false
 						}
 					]
@@ -1180,6 +1182,8 @@ export default [
 									title: 'Цена'
 								}
 							],
+							rows: [],
+							needResources: 'products',
 							defaultValue: []
 						}, {
 							type: 'pushTable',
@@ -1206,6 +1210,8 @@ export default [
 									title: 'Цена'
 								}
 							],
+							rows: [],
+							needResources: 'products',
 							defaultValue: []
 						}, {
 							type: 'pushTable',
@@ -1217,5 +1223,22 @@ export default [
 				}
 			]
 		}
+	},
+	{
+		resource: 'logs',
+		title: 'Список логов',
+		columns: [
+			{
+				name: 'ПОЛЬЗОВАТЕЛЬ',
+				key: 'user'
+			}, {
+				name: 'ДЕЙСТВИЕ',
+				key: 'action'
+			}, {
+				name: 'ДАТА',
+				key: 'time'
+			}
+		],
+		filters: []
 	}
 ]

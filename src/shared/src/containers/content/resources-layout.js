@@ -10,60 +10,67 @@ export default class ResourcesLayout extends React.Component {
 		this.state = {
 			resources: [],
 			total: 0,
-			statuses: []
+			statuses: [],
+			changes: []
 		}
-		this.getData(this.props.path)
-			.catch(err => console.log('resource-layout:16, Error getting data! ', err))
+		this.getData()
+		    .catch(err => console.log('resource-layout:16, Error getting data! ', err))
 	}
 
-	async getData(uri) {
-		const response = await Data.getData(uri)
-		if (uri === '/orders') {
-			const resStatuses = await Data.getResource('/statuses')
-			const resClients = await Data.getResource('/clients')
-			const statuses = response.data.map(data => {
-				let arr = {}
-				resStatuses.statuses.forEach(item => {
-					if (item.slug === data.status) {
-						arr = {
-							...data,
-							...arr,
-							status: item.title
+	async getData() {
+		if (!this.props.changes) {
+		const response = await Data.getData(this.props.path)
+			if (this.props.path === '/orders') {
+				const resStatuses = await Data.getResource('/statuses')
+				const resClients = await Data.getResource('/clients')
+				const statuses = response.data.map(data => {
+					let arr = {}
+					resStatuses.statuses.forEach(item => {
+						if (item.slug === data.status) {
+							arr = {
+								...data,
+								...arr,
+								status: item.title
+							}
 						}
-					}
-				})
-				resClients.clients.forEach(item => {
-					if (item.slug === data.client) {
-						arr = {
-							...data,
-							...arr,
-							client: item.name
+					})
+					resClients.clients.forEach(item => {
+						if (item.slug === data.client) {
+							arr = {
+								...data,
+								...arr,
+								client: item.name
+							}
 						}
-					}
+					})
+					return arr
 				})
-				return arr
-			})
+				this.setState({
+					resources: statuses,
+					total: response.total
+				})
+				return {
+					resources: statuses,
+					total: response.total
+				}
+			}
 			this.setState({
-				resources: statuses,
+				resources: response.data,
 				total: response.total
 			})
 			return {
-				resources: statuses,
+				resources: response.data,
 				total: response.total
 			}
-		}
-		this.setState({
-			resources: response.data,
-			total: response.total
-		})
-		return {
-			resources: response.data,
-			total: response.total
+		} else {
+			const response = await Data.getResource(this.props.location.pathname)
+			this.setState({
+				changes: response
+			})
 		}
 	}
 
 	async refresh() {
-		console.log(this.props.path)
 		const response = await this.getData(this.props.path)
 		this.setState({
 			resources: response.resources,
@@ -84,6 +91,16 @@ export default class ResourcesLayout extends React.Component {
 						total={total}
 					/>
 				</Card>
+			)
+		}
+		if (this.props.changes) {
+			return (
+				<Resources
+					title='Изменения у продукта'
+					isChanged
+					changeFields={this.state.changes}
+					match={this.props.match}
+				/>
 			)
 		}
 		const {columns, filters} = this.props

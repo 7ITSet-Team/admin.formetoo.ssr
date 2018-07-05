@@ -473,6 +473,15 @@ export default class ResourcesHeader extends React.Component {
                 opacity: 0,
             },
         }
+        if (this.props.isChanged) {
+            return (
+                <div
+                    className='resource-headline'
+                >
+	                {this.props.title}
+                </div>
+            )
+        }
         return (
             <div>
                 <div

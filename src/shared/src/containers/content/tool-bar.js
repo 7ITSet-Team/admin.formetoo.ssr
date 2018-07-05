@@ -2,6 +2,7 @@ import React from 'react'
 import { Toolbar } from 'material-ui/Toolbar'
 import RaisedButton from 'material-ui/RaisedButton'
 import { Redirect } from 'react-router-dom'
+import sha256 from 'js-sha256'
 
 import Data from '@src/core/data.provider'
 
@@ -39,7 +40,14 @@ export default class ToolBar extends React.Component {
 				})
 				await Data.create('/photos', data)
 			}
-			const data = this.props.data
+			let data = this.props.data
+			if (this.props.resources === 'users') {
+				const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
+				data.password = sha256(salt + data.password)
+			}
+			if (this.props.resources === 'products' || this.props.resources === 'categories') {
+				data.seo.keywords = data.seo.keywords.split(', ')
+			}
 			data.creationDate = new Date().toLocaleString()
 			data.modificationDate = new Date().toLocaleString()
 			const result = await Data.create('/' + this.props.resources, data)
@@ -76,6 +84,9 @@ export default class ToolBar extends React.Component {
 				await Data.create('/photos', data)
 			}
 			const data = this.props.data
+			if (this.props.resources === 'products' || this.props.resources === 'categories') {
+				data.seo.keywords = data.seo.keywords.split(', ')
+			}
 			data.modificationDate = new Date().toLocaleString()
 			const result = await Data.edit('/' + this.props.resources, data)
 			if (result.success) {
@@ -90,7 +101,6 @@ export default class ToolBar extends React.Component {
 
 	async handleRemoveButton() {
 		const result = await Data.remove(this.props.resource)
-		console.log(result)
 		if (result.success) {
 			this.setState({
 				deleted: true

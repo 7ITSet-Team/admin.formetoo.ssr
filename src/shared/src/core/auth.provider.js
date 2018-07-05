@@ -43,7 +43,6 @@ export default class Auth {
 		if (response.data.success) {
 			Auth._token = response.data.token
 			Auth.onLoginAction()
-			console.log('AUTH TOKEN ============= ', Auth._token)
 			return true
 		}
 		return {
