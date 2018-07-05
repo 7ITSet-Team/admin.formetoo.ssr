@@ -58,10 +58,6 @@ export default (location, root) => {
 			/>
 		})
 
-		if (route.resource === 'logs') {
-			return
-		}
-
 		routes.push({
 			path: `${root}${route.resource}/create`,
 			exact: true,

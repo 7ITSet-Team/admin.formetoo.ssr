@@ -124,7 +124,23 @@ export default class ResourcesList extends React.Component {
 						page={page}
 					>
 					</Photos>
-					:   <div>
+					:  isChanged
+						? <div>
+							<ResourcesHeader
+								isChanged
+								title={
+									<CardTitle
+										title={title}
+									/>
+								}
+							/>
+							<ResourcesBody
+								isChanged
+								match={match}
+								changeFields={changeFields}
+							/>
+						</div>
+						: <div>
 							<ResourcesHeader
 								path={path}
 								refresh={() => this.props.refresh()}
