@@ -18,55 +18,48 @@ export default class ResourcesLayout extends React.Component {
 	}
 
 	async getData() {
-		if (!this.props.changes) {
 		const response = await Data.getData(this.props.path)
-			if (this.props.path === '/orders') {
-				const resStatuses = await Data.getResource('/statuses')
-				const resClients = await Data.getResource('/clients')
-				const statuses = response.data.map(data => {
-					let arr = {}
-					resStatuses.statuses.forEach(item => {
-						if (item.slug === data.status) {
-							arr = {
-								...data,
-								...arr,
-								status: item.title
-							}
+		if (this.props.path === '/orders') {
+			const resStatuses = await Data.getResource('/statuses')
+			const resClients = await Data.getResource('/clients')
+			const statuses = response.data.map(data => {
+				let arr = {}
+				resStatuses.statuses.forEach(item => {
+					if (item.slug === data.status) {
+						arr = {
+							...data,
+							...arr,
+							status: item.title
 						}
-					})
-					resClients.clients.forEach(item => {
-						if (item.slug === data.client) {
-							arr = {
-								...data,
-								...arr,
-								client: item.name
-							}
+					}
+				})
+				resClients.clients.forEach(item => {
+					if (item.slug === data.client) {
+						arr = {
+							...data,
+							...arr,
+							client: item.name
 						}
-					})
-					return arr
+					}
 				})
-				this.setState({
-					resources: statuses,
-					total: response.total
-				})
-				return {
-					resources: statuses,
-					total: response.total
-				}
-			}
+				return arr
+			})
 			this.setState({
-				resources: response.data,
+				resources: statuses,
 				total: response.total
 			})
 			return {
-				resources: response.data,
+				resources: statuses,
 				total: response.total
 			}
-		} else {
-			const response = await Data.getResource(this.props.location.pathname)
-			this.setState({
-				changes: response
-			})
+		}
+		this.setState({
+			resources: response.data,
+			total: response.total
+		})
+		return {
+			resources: response.data,
+			total: response.total
 		}
 	}
 

@@ -473,15 +473,6 @@ export default class ResourcesHeader extends React.Component {
                 opacity: 0,
             },
         }
-        if (this.props.isChanged) {
-            return (
-                <div
-                    className='resource-headline'
-                >
-	                {this.props.title}
-                </div>
-            )
-        }
         return (
             <div>
                 <div
@@ -516,56 +507,66 @@ export default class ResourcesHeader extends React.Component {
                                 </div>
                             )
                             : null}
-                        <Link
-                            to={`${path}/create`}>
-                            <FlatButton
-                                label='Создать'
-                                primary={true}
-                                icon={<AddIcon color={cyan500}/>}
-                            />
-                        </Link>
-                        <FlatButton
-                            label='Обновить'
-                            primary={true}
-                            icon={<RefreshIcon color={cyan500}/>}
-                            onClick={() => this.props.refresh()}
-                        />
+                        {
+                            this.props.path !== '/logs'
+                            ? <React.Fragment>
+		                            <Link
+			                            to={`${path}/create`}>
+			                            <FlatButton
+				                            label='Создать'
+				                            primary={true}
+				                            icon={<AddIcon color={cyan500}/>}
+			                            />
+		                            </Link>
+		                            <FlatButton
+			                            label='Обновить'
+			                            primary={true}
+			                            icon={<RefreshIcon color={cyan500}/>}
+			                            onClick={() => this.props.refresh()}
+		                            />
+                            </React.Fragment>
+                            : null
+                        }
                     </div>
                 </div>
-                <div
-                    className='resource-filters'
-                >
-                    <SelectField
-                        floatingLabelText='Фильтры'
-                        onChange={this.addFilter}
-                    >
-                        {this.props.filters.map((filter, index) => {
-                            return (
-                                <MenuItem
-                                    value={filter.type}
-                                    primaryText={filter.title}
-                                    key={index}
-                                />
-                            )
-                        })}
-                    </SelectField>
-                    {this.state.filters.map((filter, index) => {
-                        return (
-                            <div
-                                className='filter'
-                                key={index}
-                            >
-                                {filter}
-                                <CloseIcon
-                                    style={{
-                                        cursor: 'pointer',
-                                        marginTop: 40
-                                    }}
-                                />
-                            </div>
-                        )
-                    })}
-                </div>
+	            {
+		            this.props.path !== '/logs'
+			            ? <div
+				            className='resource-filters'
+			            >
+				            <SelectField
+					            floatingLabelText='Фильтры'
+					            onChange={this.addFilter}
+				            >
+					            {this.props.filters.map((filter, index) => {
+						            return (
+							            <MenuItem
+								            value={filter.type}
+								            primaryText={filter.title}
+								            key={index}
+							            />
+						            )
+					            })}
+				            </SelectField>
+				            {this.state.filters.map((filter, index) => {
+					            return (
+						            <div
+							            className='filter'
+							            key={index}
+						            >
+							            {filter}
+							            <CloseIcon
+								            style={{
+									            cursor: 'pointer',
+									            marginTop: 40
+								            }}
+							            />
+						            </div>
+					            )
+				            })}
+			            </div>
+			            : null
+	            }
             </div>
         )
     }
