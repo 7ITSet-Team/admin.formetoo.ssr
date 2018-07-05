@@ -91,6 +91,27 @@ export default [
 					title: 'ОСНОВНОЕ',
 					content: [
 						{
+							type: 'boolean',
+							title: 'Показывать в фильтре',
+							name: 'showInFilter',
+							required: false
+						},{
+							type: 'boolean',
+							title: 'Показывать на странице товара',
+							name: 'showInProductPage',
+							required: false
+						},{
+							type: 'boolean',
+							title: 'Показывать в списке',
+							name: 'showInList',
+							required: false
+						},{
+							type: 'boolean',
+							title: 'Обязательный',
+							name: 'isRequired',
+							required: false
+						},
+						{
 							type: 'textInput',
 							title: 'Наименование',
 							name: 'name',
@@ -104,8 +125,50 @@ export default [
 							required: true
 						}, {
 							type: 'textInput',
+							title: 'Единица измерения',
+							name: 'unit',
+							defaultValue: '',
+							required: true
+						}, {
+							type: 'textInput',
 							title: 'Слаг',
 							name: 'slug',
+							required: true
+						}
+					]
+				},
+				{
+					title: 'ТИП',
+					content: [
+						{
+							type: 'select',
+							title: 'Тип',
+							name: 'tabType',
+							variants: [
+								{
+									id: 'multipleSelect',
+									title: 'Множественный список'
+								}, {
+									id: 'textInput',
+									title: 'Текстовое поле'
+								}, {
+									id: 'select',
+									title: 'Список'
+								}, {
+									id: 'numberInput',
+									title: 'Числовое поле'
+								}, {
+									id: 'textBlock',
+									title: 'Текстовый блок'
+								}, {
+									id: 'boolean',
+									title: 'Да/Нет'
+								}, {
+									id: 'interval',
+									title: 'Интервал'
+								}
+							],
+							defaultValue: 'textInput',
 							required: true
 						}
 					]

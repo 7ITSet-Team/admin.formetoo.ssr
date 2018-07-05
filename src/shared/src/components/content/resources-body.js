@@ -427,7 +427,7 @@ export default class ResourcesBody extends React.Component {
 													: null
 											}
 											{
-												this.props.path === '/logs'
+												this.props.path === '/logs' && data.actionType === 'edit'
 													? (
 														<TableRowColumn>
 															<Link
@@ -439,7 +439,7 @@ export default class ResourcesBody extends React.Component {
 															</Link>
 														</TableRowColumn>
 													)
-													: null
+													: <TableRowColumn/>
 											}
 											<TableRowColumn>
 												<Link

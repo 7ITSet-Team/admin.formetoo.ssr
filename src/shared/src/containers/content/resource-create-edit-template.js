@@ -52,7 +52,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			this.getData('attributes')
 			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
-		if (resource === 'attributes') {
+		if (resource === 'attributes' || resource === 'tabs') {
 			this.state = {
 				...this.state,
 				open: false,
@@ -110,6 +110,15 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		if (resource === 'products') {
 			this.state = {
 				...this.state,
+				data: {
+					...this.state.data,
+					seo: {
+						title: '',
+						description: '',
+						keywords: ''
+					},
+					images: []
+				},
 				categories: [],
 				'attribute-sets': [],
 				'tab-sets': [],
@@ -167,7 +176,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			})
 		})
 
-		if (this.props.resource === 'attributes') {
+		if (this.props.resource === 'attributes' || this.props.resource === 'tabs') {
 			currentResource.variants = []
 		}
 
@@ -647,7 +656,11 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															</SelectField>
 															{
 																(
-																	this.state.data.attrType === 'select' || this.state.data.attrType === 'multipleSelect') && this.props.resource === 'attributes'
+																	this.state.data.attrType === 'select' ||
+																	this.state.data.attrType === 'multipleSelect' ||
+																	this.state.data.tabType === 'select' ||
+																	this.state.data.tabType === 'multipleSelect'
+																) && (this.props.resource === 'attributes' || this.props.resource === 'tabs')
 																	? <React.Fragment>
 																		<Table
 																			selectable={false}
@@ -1199,12 +1212,87 @@ export default class ResourceCreateEditTemplate extends React.Component {
 										className="resource-page">
 										{
 											this.state.data.tabs.map((tab, key) => {
+												if (tab.tabType === 'select' || tab.tabType === 'multipleSelect') {
+													return (
+														<SelectField
+															fullWidth={true}
+															multiple={tab.tabType === 'multipleSelect'}
+															value={this.state.data.tabs[key].value}
+															floatingLabelText={tab.title}
+															onChange={(event, index, value) => {
+																let newState = {
+																	data: {
+																		...this.state.data,
+																		tabs: this.state.data.tabs
+																	}
+																}
+																newState.data.tabs[key].value = value
+																this.setState(newState)
+															}}
+															key={key}
+														>
+															{
+																tab.variants.map((variant, index) => {
+																	return (
+																		<MenuItem
+																			value={variant.value}
+																			primaryText={variant.id}
+																			key={index}
+																		/>
+																	)
+																})
+															}
+														</SelectField>
+													)
+												}
+												if (tab.tabType === 'interval') {
+													return (
+														<div
+															key={key}
+														>
+															<TextField
+																fullWidth={true}
+																hintText={`${tab.title} от`}
+																defaultValue={!!this.state.data.tabs[key].value ? this.state.data.tabs[key].value.from : ''}
+																floatingLabelText={`${tab.title} от`}
+																onChange={(event, value) => {
+																	let newState = {
+																		data: {
+																			...this.state.data,
+																			tabs: this.state.data.tabs
+																		}
+																	}
+																	newState.data.tabs[key].value = {...newState.data.tabs[key].value}
+																	newState.data.tabs[key].value.from = value
+																	this.setState(newState)
+																}}
+															/>
+															<TextField
+																fullWidth={true}
+																hintText={`${tab.title} до`}
+																defaultValue={!!this.state.data.tabs[key].value ? this.state.data.tabs[key].value.to : ''}
+																floatingLabelText={`${tabs.title} до`}
+																onChange={(event, value) => {
+																	let newState = {
+																		data: {
+																			...this.state.data,
+																			tabs: this.state.data.tabs
+																		}
+																	}
+																	newState.data.tabs[key].value = {...newState.data.tabs[key].value}
+																	newState.data.tabs[key].value.to = value
+																	this.setState(newState)
+																}}
+															/>
+														</div>
+													)
+												}
 												return (
 													<TextField
 														fullWidth={true}
 														hintText={tab.title}
-														value={this.state.data.tabs[key].value}
 														floatingLabelText={tab.title}
+														value={tab.value}
 														onChange={(event, value) => {
 															let newState = {
 																data: {
@@ -1233,7 +1321,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 					photos={
 						this.props.resource === 'products'
 							? this.state.data.images
-							: undefined
+							: null
 					}
 					photo={
 						this.props.resource === 'categories'

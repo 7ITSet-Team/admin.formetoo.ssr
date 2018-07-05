@@ -50,6 +50,7 @@ export default class ToolBar extends React.Component {
 			}
 			data.creationDate = new Date().toLocaleString()
 			data.modificationDate = new Date().toLocaleString()
+			console.log(data)
 			const result = await Data.create('/' + this.props.resources, data)
 			if (result.success) {
 				if (action === 'saveAndExit') {
