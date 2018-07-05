@@ -61,7 +61,7 @@ export default class ResourcesList extends React.Component {
 				</div>
 				<div>
 					<Link
-						to="logs"
+						to="/logs"
 					>
 						<ListItem
 							primaryText="Логи"
@@ -70,7 +70,7 @@ export default class ResourcesList extends React.Component {
 						/>
 					</Link>
 					<Link
-						to="profile"
+						to="/profile"
 					>
 						<ListItem
 							primaryText="Профиль"
