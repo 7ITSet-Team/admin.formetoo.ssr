@@ -45,13 +45,11 @@ export default class ToolBar extends React.Component {
 				const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
 				data.password = sha256(salt + data.password)
 			}
-			console.log(data.seo)
 			if (this.props.resources === 'products' || this.props.resources === 'categories') {
 				data.seo.keywords = data.seo.keywords.split(', ')
 			}
 			data.creationDate = new Date().toLocaleString()
 			data.modificationDate = new Date().toLocaleString()
-			console.log(data)
 			const result = await Data.create('/' + this.props.resources, data)
 			if (result.success) {
 				if (action === 'saveAndExit') {

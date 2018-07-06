@@ -1235,8 +1235,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																tab.variants.map((variant, index) => {
 																	return (
 																		<MenuItem
-																			value={variant.value}
-																			primaryText={variant.id}
+																			value={variant.id}
+																			primaryText={variant.value}
 																			key={index}
 																		/>
 																	)
