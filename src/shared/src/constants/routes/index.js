@@ -43,6 +43,13 @@ export default (location, root) => {
 				changes
 				{...props}
 			/>
+		}, {
+			path: root + 'tree',
+			exact: true,
+			component: (props) => <ResourcesLayout
+				tree
+				{...props}
+			/>
 		}
 	]
 

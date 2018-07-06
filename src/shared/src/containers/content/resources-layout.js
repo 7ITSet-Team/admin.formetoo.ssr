@@ -18,6 +18,11 @@ export default class ResourcesLayout extends React.Component {
 	}
 
 	async getData() {
+		if (this.props.tree) {
+			const response = await Data.getData('/tree')
+			console.log(response)
+			return
+		}
 		if (!this.props.changes) {
 			const response = await Data.getData(this.props.path)
 			if (this.props.path === '/orders') {
@@ -80,7 +85,14 @@ export default class ResourcesLayout extends React.Component {
 
 	render() {
 		const {resources, total, statuses} = this.state
-		const {title, path} = this.props
+		const {title, path, tree} = this.props
+		if (tree) {
+			return (
+				<div>
+
+				</div>
+			)
+		}
 		if (this.props.location === '/photos') {
 			return (
 				<Card>
