@@ -1072,7 +1072,7 @@ export default [
 							type: 'textInput',
 							name: ['seo', 'keywords'],
 							title: 'SEO ключевые слова',
-							defaultValue: [],
+							defaultValue: '',
 							required: false
 						}
 					]
