@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from 'material-ui/Card'
 
 import Data from '@src/core/data.provider'
+import Nested from '@src/core/nested.provider'
 import Resources from '@src/containers/content/resources'
 
 export default class ResourcesLayout extends React.Component {
@@ -11,7 +12,8 @@ export default class ResourcesLayout extends React.Component {
 			resources: [],
 			total: 0,
 			statuses: [],
-			changes: []
+			changes: [],
+			elements: []
 		}
 		this.getData()
 		    .catch(err => console.log('resource-layout:16, Error getting data! ', err))
@@ -20,8 +22,11 @@ export default class ResourcesLayout extends React.Component {
 	async getData() {
 		if (this.props.tree) {
 			const response = await Data.getData('/tree')
-			console.log(response)
-			return
+			const products = await Data.getData('/products')
+			return this.setState({
+				resources: response.data,
+				products: products.data
+			})
 		}
 		if (!this.props.changes) {
 			const response = await Data.getData(this.props.path)
@@ -69,8 +74,8 @@ export default class ResourcesLayout extends React.Component {
 			}
 		} else {
 			const response = await Data.getResource(this.props.location.pathname)
-				this.setState({
-					changes: response
+			this.setState({
+				changes: response
 			})
 		}
 	}
@@ -84,12 +89,14 @@ export default class ResourcesLayout extends React.Component {
 	}
 
 	render() {
-		const {resources, total, statuses} = this.state
+		const {resources, total, statuses, products} = this.state
 		const {title, path, tree} = this.props
 		if (tree) {
 			return (
-				<div>
-
+				<div
+					className='resource-page'
+				>
+					{Nested.drawNestedSetsTree(resources, products)}
 				</div>
 			)
 		}

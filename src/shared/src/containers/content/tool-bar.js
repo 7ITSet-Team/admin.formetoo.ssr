@@ -45,7 +45,7 @@ export default class ToolBar extends React.Component {
 				const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
 				data.password = sha256(salt + data.password)
 			}
-			if (this.props.resources === 'products' || this.props.resources === 'categories') {
+			if ((this.props.resources === 'products' || this.props.resources === 'categories') && !(data.seo.keywords instanceof Array)) {
 				data.seo.keywords = data.seo.keywords.split(', ')
 			}
 			data.creationDate = new Date().toLocaleString()
@@ -86,7 +86,7 @@ export default class ToolBar extends React.Component {
 				await Data.create('/photos', data)
 			}
 			const data = this.props.data
-			if (this.props.resources === 'products' || this.props.resources === 'categories') {
+			if ((this.props.resources === 'products' || this.props.resources === 'categories') && !(data.seo.keywords instanceof Array)) {
 				data.seo.keywords = data.seo.keywords.split(', ')
 			}
 			data.modificationDate = new Date().toLocaleString()
