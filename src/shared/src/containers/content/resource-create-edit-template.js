@@ -6,6 +6,7 @@ import ListIcon from 'material-ui/svg-icons/action/list'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
+import FileIcon from 'material-ui/svg-icons/editor/insert-drive-file'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 import Dialog from 'material-ui/Dialog'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -145,6 +146,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		this.onEditorShortDescChange = this.onEditorShortDescChange.bind(this)
 		this.uploadFile = this.uploadFile.bind(this)
 		this.uploadFiles = this.uploadFiles.bind(this)
+		this.uploadAnotherFile = this.uploadAnotherFile.bind(this)
 	}
 
 	getInitialState() {
@@ -268,6 +270,19 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			},
 			image: result
 		})
+	}
+
+	async uploadAnotherFile(event, key, resources) {
+		const result = await Data.uploadFile(event.target.files[0])
+		let newState = {
+			data: {
+				...this.state.data,
+				[resources]: this.state.data[resources]
+			}
+		}
+		newState.data[resources][key].value = result.data.filename
+		newState.data[resources][key].filename = result.data.originalFileName
+		this.setState(newState)
 	}
 
 	async uploadFiles(file) {
@@ -660,7 +675,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	this.state.data.attrType === 'multipleSelect' ||
 																	this.state.data.tabType === 'select' ||
 																	this.state.data.tabType === 'multipleSelect'
-																) && (this.props.resource === 'attributes' || this.props.resource === 'tabs')
+																) && (
+																	this.props.resource === 'attributes' || this.props.resource === 'tabs')
 																	? <React.Fragment>
 																		<Table
 																			selectable={false}
@@ -1176,6 +1192,31 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												if (attribute.attrType === 'file') {
+													return (
+														<div>
+															<div>
+																{attribute.title}
+															</div>
+															<input
+																type='file'
+																onChange={(event) => this.uploadAnotherFile(event, key, 'attributes')}
+															/>
+															<div>
+																{
+																	!!attribute.filename
+																		? (
+																			<div>
+																				<FileIcon/>
+																				{attribute.filename}
+																			</div>
+																		)
+																		: null
+																}
+															</div>
+														</div>
+													)
+												}
 												return (
 													<TextField
 														fullWidth={true}
@@ -1284,6 +1325,31 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	this.setState(newState)
 																}}
 															/>
+														</div>
+													)
+												}
+												if (tab.tabType === 'file') {
+													return (
+														<div>
+															<div>
+																{tab.title}
+															</div>
+															<input
+																type='file'
+																onChange={(event) => this.uploadAnotherFile(event, key, 'tabs')}
+															/>
+															<div>
+																{
+																	!!tab.filename
+																		? (
+																			<div>
+																				<FileIcon/>
+																				{tab.filename}
+																			</div>
+																		)
+																		: null
+																}
+															</div>
 														</div>
 													)
 												}

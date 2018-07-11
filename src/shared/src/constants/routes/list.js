@@ -166,6 +166,9 @@ export default [
 								}, {
 									id: 'interval',
 									title: 'Интервал'
+								}, {
+									id: 'file',
+									title: 'Файл'
 								}
 							],
 							defaultValue: 'textInput',
@@ -326,6 +329,9 @@ export default [
 								}, {
 									id: 'interval',
 									title: 'Интервал'
+								}, {
+									id: 'file',
+									title: 'Файл'
 								}
 							],
 							defaultValue: 'textInput',

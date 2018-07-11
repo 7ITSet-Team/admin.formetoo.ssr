@@ -76,6 +76,13 @@ export default class Data {
 		return result.data.url
 	}
 
+	static async uploadFile(data) {
+		let formData = new FormData()
+		formData.append('file', data)
+		const result = await axios.post(config.uri.admin + '/upload', formData, axiosConfig())
+		return result
+	}
+
 	static async uploadXls(uri, data) {
 		let formData = new FormData()
 		formData.append('file', data)
