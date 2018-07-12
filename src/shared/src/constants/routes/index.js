@@ -24,6 +24,96 @@ export default (location, root) => {
 		'photos',
 		'logs'
 	]
+	let structureLegalEntity = {
+		tabs: [
+			{
+				title: 'ОСНОВНОЕ',
+				className: 'big-resource',
+				content: [
+					{
+						type: 'textInput',
+						name: 'firstname',
+						title: 'Имя',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'lastname',
+						title: 'Фамилия',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'patronymic',
+						title: 'Отчество',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'post',
+						title: 'Должность',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'tin',
+						title: 'ИНН',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'msrn',
+						title: 'ОГРН',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'rcf',
+						title: 'КПП',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'rs',
+						title: 'Расчётный счет',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'ks',
+						title: 'Корреспондентский счёт',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'legalAddress',
+						title: 'Юридический адрес',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'actualAddress',
+						title: 'Фактический адрес',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'phone',
+						title: 'Телефон',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'textInput',
+						name: 'email',
+						title: 'Эл. почта',
+						defaultValue: '',
+						required: true
+					}
+				]
+			}
+		]
+	}
+
 	let routes = [
 		{
 			path: root,
@@ -48,6 +138,15 @@ export default (location, root) => {
 			exact: true,
 			component: (props) => <ResourcesLayout
 				tree
+				{...props}
+			/>
+		}, {
+			path: root + 'legalentity',
+			exact: true,
+			component: (props) => <ResourceCreateEditTemplate
+				resource='legalentity'
+				structure={structureLegalEntity}
+				action='universal'
 				{...props}
 			/>
 		}

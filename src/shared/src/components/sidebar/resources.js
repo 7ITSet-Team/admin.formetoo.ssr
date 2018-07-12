@@ -5,6 +5,7 @@ import ProfileIcon from 'material-ui/svg-icons/social/people'
 import ExitIcon from 'material-ui/svg-icons/action/exit-to-app'
 import LogsIcon from 'material-ui/svg-icons/hardware/laptop'
 import TreeIcon from 'material-ui/svg-icons/editor/format-align-center'
+import LegalEntityIcon from 'material-ui/svg-icons/action/face'
 import DashboardIcon from 'material-ui/svg-icons/action/home'
 import { Redirect } from 'react-router-dom'
 
@@ -61,6 +62,15 @@ export default class ResourcesList extends React.Component {
 					})}
 				</div>
 				<div>
+					<Link
+						to="/legalentity"
+					>
+						<ListItem
+							primaryText="Юридическое лицо"
+							className="list__item"
+							leftIcon={<LegalEntityIcon/>}
+						/>
+					</Link>
 					<Link
 						to="/tree"
 					>

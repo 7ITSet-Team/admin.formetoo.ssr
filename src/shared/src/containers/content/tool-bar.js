@@ -66,7 +66,7 @@ export default class ToolBar extends React.Component {
 				console.error(result)
 			}
 		}
-		if (this.props.action === 'edit') {
+		if (this.props.action === 'edit' || this.props.action === 'universal') {
 			if (this.props.resources === 'categories') {
 				const data = {
 					url: this.props.photo,
@@ -211,6 +211,25 @@ export default class ToolBar extends React.Component {
 						label="Применить и закрыть"
 						primary={true}
 						onClick={() => this.handleSaveButton('saveAndExit')}
+					/>
+				</Toolbar>
+			)
+		}
+		if (this.props.action === 'universal') {
+			return (
+				<Toolbar
+					style={{
+						display: 'flex',
+						justifyContent: 'flex-start'
+					}}
+				>
+					<RaisedButton
+						style={{
+							margin: '10px'
+						}}
+						label="Применить"
+						primary={true}
+						onClick={() => this.handleSaveButton('apply')}
 					/>
 				</Toolbar>
 			)

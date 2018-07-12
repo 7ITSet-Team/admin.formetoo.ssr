@@ -29,7 +29,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			data: this.getInitialState()
 		}
 		const {action, resource} = this.props
-		if (action === 'edit' || action === 'copy') {
+		if (action === 'edit' || action === 'copy' || action === 'universal') {
 			this.getResourceInfo()
 			    .catch(err => console.error('resource-layout ERROR GETTING RESOURCE!: ', err))
 		}
@@ -202,6 +202,13 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	}
 
 	async getResourceInfo() {
+		if (this.props.action === 'universal') {
+			const result = await Data.getData(`/${this.props.resource}`)
+			this.setState({
+				data: result.data[0]
+			})
+			return
+		}
 		const {id} = this.props.match.params
 		const result = await Data.getResource(`/${this.props.resource}/${id}`)
 		if (this.props.resource === 'categories') {
@@ -487,6 +494,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	render() {
 		const {tabs} = this.props.structure
 		console.log('RESCREAEDITSTATE ', this.state)
+		console.log('RESCREAEDITPROPS ', this.props)
 		return (
 			<React.Fragment>
 				<Tabs>
@@ -535,15 +543,21 @@ export default class ResourceCreateEditTemplate extends React.Component {
 													)
 													: null
 											}
-											<Link
-												to={`/${this.props.resource}`}
-											>
-												<FlatButton
-													label='Назад к списку'
-													primary={true}
-													icon={<ListIcon/>}
-												/>
-											</Link>
+											{
+												this.props.action !== 'universal'
+													? (
+														<Link
+															to={`/${this.props.resource}`}
+														>
+															<FlatButton
+																label='Назад к списку'
+																primary={true}
+																icon={<ListIcon/>}
+															/>
+														</Link>
+													)
+													: null
+											}
 										</div>
 										{
 											tab.content.map((field, fieldIndex) => {
@@ -574,10 +588,10 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															</div>
 														)
 													}
+													console.log(1)
 													return (
 														<div
 															className='input'
-															key={fieldIndex}
 														>
 															<TextField
 																fullWidth={true}
@@ -591,6 +605,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(2)
 												if ((
 													type === 'multipleSelect' && !!field.variants) || (
 													type === 'select' && !!field.variants))
@@ -761,6 +776,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(3)
 												if (type === 'multipleSelect') {
 													return (
 														<div
@@ -788,6 +804,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(4)
 												if (type === 'select') {
 													const {name, title, needResources, required} = field
 													return (
@@ -816,6 +833,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(5)
 												if (type === 'boolean') {
 													const {name, title, required} = field
 													if (name instanceof Array) {
@@ -854,6 +872,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(6)
 												if (type === 'table') {
 													const {name, columns, needResources} = field
 													return (
@@ -920,6 +939,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</Table>
 													)
 												}
+												console.log(7)
 												if (type === 'pushTable') {
 													const {title, needResources, name} = field
 													return (
@@ -945,6 +965,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(8)
 												if (type === 'dialog') {
 													const actions = [
 														<FlatButton
@@ -1002,6 +1023,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</React.Fragment>
 													)
 												}
+												console.log(9)
 												if (type === 'wysiwyg') {
 													return (
 														<div
@@ -1030,6 +1052,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												console.log(10)
 												if (type === 'file') {
 													if (!field.multiple) {
 														return (
@@ -1037,6 +1060,9 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																className='input'
 																key={fieldIndex}
 															>
+																<div>
+																	Добавить документ
+																</div>
 																<input
 																	type="file"
 																	className="inputfile"
