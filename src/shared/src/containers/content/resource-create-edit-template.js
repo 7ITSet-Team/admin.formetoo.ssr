@@ -281,6 +281,20 @@ export default class ResourceCreateEditTemplate extends React.Component {
 
 	async uploadAnotherFile(event, key, resources) {
 		const result = await Data.uploadFile(event.target.files[0])
+		if (!key) {
+			console.log(resources)
+			let newState = {
+				data: {
+					...this.state.data,
+					[resources]: {
+						filename: result.data.originalFileName,
+						value: result.data.filename
+					}
+				}
+			}
+			this.setState(newState)
+			return
+		}
 		let newState = {
 			data: {
 				...this.state.data,
@@ -588,7 +602,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															</div>
 														)
 													}
-													console.log(1)
 													return (
 														<div
 															className='input'
@@ -605,7 +618,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(2)
 												if ((
 													type === 'multipleSelect' && !!field.variants) || (
 													type === 'select' && !!field.variants))
@@ -776,7 +788,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(3)
 												if (type === 'multipleSelect') {
 													return (
 														<div
@@ -804,7 +815,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(4)
 												if (type === 'select') {
 													const {name, title, needResources, required} = field
 													return (
@@ -833,7 +843,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(5)
 												if (type === 'boolean') {
 													const {name, title, required} = field
 													if (name instanceof Array) {
@@ -872,7 +881,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(6)
 												if (type === 'table') {
 													const {name, columns, needResources} = field
 													return (
@@ -939,7 +947,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</Table>
 													)
 												}
-												console.log(7)
 												if (type === 'pushTable') {
 													const {title, needResources, name} = field
 													return (
@@ -965,7 +972,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(8)
 												if (type === 'dialog') {
 													const actions = [
 														<FlatButton
@@ -1023,7 +1029,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</React.Fragment>
 													)
 												}
-												console.log(9)
 												if (type === 'wysiwyg') {
 													return (
 														<div
@@ -1052,7 +1057,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
-												console.log(10)
 												if (type === 'file') {
 													if (!field.multiple) {
 														return (
@@ -1060,9 +1064,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																className='input'
 																key={fieldIndex}
 															>
-																<div>
-																	Добавить документ
-																</div>
 																<input
 																	type="file"
 																	className="inputfile"
@@ -1107,7 +1108,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	className="inputfile__label"
 																>
 																	Перенесите сюда файл или нажмите, чтобы выбрать
-																	изображение
+																	его
 																</label>
 																<div
 																	className="inputfile__images"
@@ -1125,6 +1126,35 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															</div>
 														)
 													}
+												}
+												if (type === 'customFile') {
+													const {name, title} = field
+													return (
+														<div
+															className='input'
+															key={fieldIndex}
+														>
+															<div>
+																{title}
+															</div>
+															<input
+																type="file"
+																onChange={event => this.uploadAnotherFile(event, undefined, name)}
+															/>
+															<div>
+																{
+																	!!this.state.data[name] && !!this.state.data[name].filename
+																		? (
+																			<div>
+																				<FileIcon/>
+																				{this.state.data[name].filename}
+																			</div>
+																		)
+																		: null
+																}
+															</div>
+														</div>
+													)
 												}
 											})
 										}

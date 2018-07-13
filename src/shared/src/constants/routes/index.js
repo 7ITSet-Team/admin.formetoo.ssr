@@ -31,6 +31,30 @@ export default (location, root) => {
 				className: 'big-resource',
 				content: [
 					{
+						type: 'customFile',
+						name: 'logo',
+						title: 'Логотип',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'customFile',
+						name: 'companySeal',
+						title: 'Печать предприятия',
+						defaultValue: '',
+						required: true
+					}, {
+						type: 'customFile',
+						name: 'signatureGenDirector',
+						title: 'Подпись ген. директора',
+						defaultValue: '',
+						required: true
+					},{
+						type: 'customFile',
+						name: 'signatureChiefAccountant',
+						title: 'Подпись глав.бухгалтера',
+						defaultValue: '',
+						required: true
+					}, {
 						type: 'textInput',
 						name: 'firstname',
 						title: 'Имя',
