@@ -21,7 +21,7 @@ export default class ToolBar extends React.Component {
 	}
 
 	async handleSaveButton(action) {
-		if (this.props.action === 'create') {
+		if (this.props.action === 'create' || this.props.action === 'universal') {
 			if (this.props.resources === 'categories') {
 				const data = {
 					url: this.props.photo,
@@ -66,7 +66,7 @@ export default class ToolBar extends React.Component {
 				console.error(result)
 			}
 		}
-		if (this.props.action === 'edit' || this.props.action === 'universal') {
+		if (this.props.action === 'edit') {
 			if (this.props.resources === 'categories') {
 				const data = {
 					url: this.props.photo,

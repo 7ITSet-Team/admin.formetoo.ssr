@@ -26,7 +26,11 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			data: this.getInitialState()
+			data: this.getInitialState(),
+			imageData: {
+				addWaterMark: false,
+				rotation: 0
+			}
 		}
 		const {action, resource} = this.props
 		if (action === 'edit' || action === 'copy' || action === 'universal') {
@@ -147,6 +151,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		this.uploadFile = this.uploadFile.bind(this)
 		this.uploadFiles = this.uploadFiles.bind(this)
 		this.uploadAnotherFile = this.uploadAnotherFile.bind(this)
+		this.handleCloseSettings = this.handleCloseSettings.bind(this)
+		this.handleApplySettings = this.handleApplySettings.bind(this)
 	}
 
 	getInitialState() {
@@ -205,7 +211,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		if (this.props.action === 'universal') {
 			const result = await Data.getData(`/${this.props.resource}`)
 			this.setState({
-				data: result.data[0]
+				data: result.data[0] || {}
 			})
 			return
 		}
@@ -269,7 +275,10 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	}
 
 	async uploadFile(file) {
-		const result = await Data.uploadImage('/upload/categories', file.target.files[0])
+		const result = await Data.uploadImage('/upload/categories', {
+			file: file.target.files[0],
+			imageData: this.state.imageData
+		})
 		this.setState({
 			data: {
 				...this.state.data,
@@ -307,7 +316,10 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	}
 
 	async uploadFiles(file) {
-		const result = await Data.uploadImage('/upload/products', file.target.files[0])
+		const result = await Data.uploadImages('/upload/products', {
+			file: file.target.files[0],
+			imageData: this.state.imageData
+		})
 		this.setState({
 			data: {
 				...this.state.data,
@@ -417,6 +429,19 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	}
 
 	handleClose() {
+		this.setState({
+			open: false
+		})
+	}
+
+	handleCloseSettings() {
+		this.setState({
+			open: false,
+			imageData: {}
+		})
+	}
+
+	handleApplySettings() {
 		this.setState({
 			open: false
 		})
@@ -1058,6 +1083,18 @@ export default class ResourceCreateEditTemplate extends React.Component {
 													)
 												}
 												if (type === 'file') {
+													const actions = [
+														<FlatButton
+															label="Закрыть"
+															primary={true}
+															onClick={this.handleCloseSettings}
+														/>,
+														<FlatButton
+															label="Подтвердить"
+															primary={true}
+															onClick={this.handleApplySettings}
+														/>
+													]
 													if (!field.multiple) {
 														return (
 															<div
@@ -1075,20 +1112,59 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	className="inputfile__label"
 																>
 																	Перенесите сюда файл или нажмите, чтобы выбрать
-																	изображение
+																	его
 																</label>
 																<div
 																	className="inputfile__images"
 																>
 																	{
 																		!!this.state.data.image
-																			? <img
-																				className="inputfile__image"
-																				src={this.state.data.image}
-																			/>
+																			? (
+																				<img
+																					className="inputfile__image"
+																					src={this.state.data.image}
+																				/>
+																			)
 																			: null
 																	}
 																</div>
+																<RaisedButton
+																	label="Настройки водяного знака"
+																	style={{margin: '38px'}}
+																	onClick={this.handleOpen}
+																/>
+																<Dialog
+																	title="Настройки водяного знака "
+																	actions={actions}
+																	modal={true}
+																	open={this.state.open}
+																	autoScrollBodyContent={true}
+																>
+																	<Toggle
+																		style={{
+																			width: '250px'
+																		}}
+																		toggled={this.state.imageData.addWaterMark}
+																		label='Добавить водяные знаки?'
+																		onToggle={(event, value) => this.setState({
+																			imageData: {
+																				...this.state.imageData,
+																				addWaterMark: value
+																			}
+																		})}
+																	/>
+																	<TextField
+																		fullWidth={true}
+																		floatingLabelText="Градус поворота по часовой стрелке"
+																		value={this.state.imageData.rotation}
+																		onChange={(event, value) => this.setState({
+																			imageData: {
+																				...this.state.imageData,
+																				rotation: value
+																			}
+																		})}
+																	/>
+																</Dialog>
 															</div>
 														)
 													} else {
@@ -1123,6 +1199,43 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																		)
 																	})}
 																</div>
+																<RaisedButton
+																	label="Настройки водяного знака"
+																	style={{margin: '38px'}}
+																	onClick={this.handleOpen}
+																/>
+																<Dialog
+																	title="Настройки водяного знака "
+																	actions={actions}
+																	modal={true}
+																	open={this.state.open}
+																	autoScrollBodyContent={true}
+																>
+																	<Toggle
+																		style={{
+																			width: '250px'
+																		}}
+																		toggled={this.state.imageData.addWaterMark}
+																		label='Добавить водяные знаки?'
+																		onToggle={(event, value) => this.setState({
+																			imageData: {
+																				...this.state.imageData,
+																				addWaterMark: value
+																			}
+																		})}
+																	/>
+																	<TextField
+																		fullWidth={true}
+																		floatingLabelText="Градус поворота по часовой стрелке"
+																		value={this.state.imageData.rotation}
+																		onChange={(event, value) => this.setState({
+																			imageData: {
+																				...this.state.imageData,
+																				rotation: value
+																			}
+																		})}
+																	/>
+																</Dialog>
 															</div>
 														)
 													}
@@ -1134,13 +1247,30 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															className='input'
 															key={fieldIndex}
 														>
-															<div>
-																{title}
-															</div>
-															<input
-																type="file"
+															<FlatButton
+																label={title}
+																labelPosition="before"
+																primary={true}
+																style={{
+																	verticalAlign: 'middle'
+																}}
+																containerElement="label"
 																onChange={event => this.uploadAnotherFile(event, undefined, name)}
-															/>
+															>
+																<input
+																	type="file"
+																	style={{
+																		cursor: 'pointer',
+																		position: 'absolute',
+																		top: 0,
+																		bottom: 0,
+																		right: 0,
+																		left: 0,
+																		width: '100%',
+																		opacity: 0,
+																	}}
+																/>
+															</FlatButton>
 															<div>
 																{
 																	!!this.state.data[name] && !!this.state.data[name].filename

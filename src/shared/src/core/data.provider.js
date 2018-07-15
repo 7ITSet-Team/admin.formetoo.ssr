@@ -71,7 +71,18 @@ export default class Data {
 
 	static async uploadImage(uri, data) {
 		let formData = new FormData()
-		formData.append('file', data)
+		formData.append('file', data.file)
+		formData.append('addWaterMark', data.imageData.addWaterMark)
+		formData.append('rotation', data.imageData.rotation)
+		const result = await axios.post(config.uri.admin + uri, formData, axiosConfig())
+		return result.data.url
+	}
+
+	static async uploadImages(uri, data) {
+		let formData = new FormData()
+		formData.append('file', data.file)
+		formData.append('addWaterMark', data.imageData.addWaterMark)
+		formData.append('rotation', data.imageData.rotation)
 		const result = await axios.post(config.uri.admin + uri, formData, axiosConfig())
 		return result.data.url
 	}
