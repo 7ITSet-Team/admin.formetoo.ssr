@@ -155,8 +155,8 @@ export default class ResourcesBody extends React.Component {
 									let after = []
 									if (field.title === 'Категории') {
 										this.state.categories.forEach(category => {
-											const beforeSlugs = field.before.split(', ')
-											const afterSlugs = field.after.split(', ')
+											const beforeSlugs = field.before.split(/, ?/)
+											const afterSlugs = field.after.split(/, ?/)
 											beforeSlugs.forEach(slug => {
 												if (category.slug === slug) {
 													before.push(category.title)
@@ -171,8 +171,8 @@ export default class ResourcesBody extends React.Component {
 									}
 									if (field.title === 'Набор атрибутов') {
 										this.state['attribute-sets'].forEach(set => {
-											const beforeSlugs = field.before.split(', ')
-											const afterSlugs = field.after.split(', ')
+											const beforeSlugs = field.before.split(/, ?/)
+											const afterSlugs = field.after.split(/, ?/)
 											beforeSlugs.forEach(slug => {
 												if (set.slug === slug) {
 													before.push(set.title)
@@ -187,8 +187,8 @@ export default class ResourcesBody extends React.Component {
 									}
 									if (field.title === 'Набор табов') {
 										this.state['tab-sets'].forEach(set => {
-											const beforeSlugs = field.before.split(', ')
-											const afterSlugs = field.after.split(', ')
+											const beforeSlugs = field.before.split(/, ?/)
+											const afterSlugs = field.after.split(/, ?/)
 											beforeSlugs.forEach(slug => {
 												if (set.slug === slug) {
 													before.push(set.title)
@@ -203,8 +203,8 @@ export default class ResourcesBody extends React.Component {
 									}
 									if (field.title === 'Похожие продукты' || field.title === 'Из набора') {
 										this.state.products.forEach(product => {
-											const beforeSlugs = field.before.split(', ')
-											const afterSlugs = field.after.split(', ')
+											const beforeSlugs = field.before.split(/, ?/)
+											const afterSlugs = field.after.split(/, ?/)
 											beforeSlugs.forEach(slug => {
 												if (product.slug === slug) {
 													before.push(product.title)
@@ -439,7 +439,7 @@ export default class ResourcesBody extends React.Component {
 															</Link>
 														</TableRowColumn>
 													)
-													: <TableRowColumn/>
+													: null
 											}
 											<TableRowColumn>
 												<Link
