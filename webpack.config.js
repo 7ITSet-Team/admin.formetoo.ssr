@@ -22,7 +22,6 @@ const browserConfig = {
 			'@theme': _themePath
 		}
 	},
-	mode: 'production',
 	module: {
 		rules: [
 			{
@@ -92,7 +91,6 @@ const serverConfig = {
 			}
 		]
 	},
-	mode: 'production',
 	plugins: [
 		new webpack.DefinePlugin({
 			__isBrowser__: 'false'

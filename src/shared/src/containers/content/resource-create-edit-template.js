@@ -107,7 +107,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			this.state = {
 				...this.state,
 				categories: [],
-				descState: EditorState.createEmpty()
+				descState: EditorState.createEmpty(),
+				open: false
 			}
 			this.getData('categories')
 			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
@@ -129,7 +130,8 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				'tab-sets': [],
 				products: [],
 				descState: EditorState.createEmpty(),
-				shortDescState: EditorState.createEmpty()
+				shortDescState: EditorState.createEmpty(),
+				open: false
 			}
 			this.getData('categories')
 			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
@@ -630,6 +632,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 													return (
 														<div
 															className='input'
+															key={fieldIndex}
 														>
 															<TextField
 																fullWidth={true}
