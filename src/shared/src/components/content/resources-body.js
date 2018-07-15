@@ -439,7 +439,9 @@ export default class ResourcesBody extends React.Component {
 															</Link>
 														</TableRowColumn>
 													)
-													: null
+													: this.props.path === '/logs'
+														? <TableRowColumn/>
+														: null
 											}
 											<TableRowColumn>
 												<Link
