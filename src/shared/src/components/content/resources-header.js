@@ -47,6 +47,7 @@ export default class ResourcesHeader extends React.Component {
 						<TextField
 							hintText='Заголовок'
 							floatingLabelText='Заголовок'
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('title', value)}
 						/>
 					)
@@ -65,6 +66,7 @@ export default class ResourcesHeader extends React.Component {
 						<TextField
 							hintText='Артикул'
 							floatingLabelText='Артикул'
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('sku', value)}
 						/>
 					)
@@ -103,6 +105,7 @@ export default class ResourcesHeader extends React.Component {
 					const search = (
 						<SelectField
 							floatingLabelText='Тип'
+							name={value}
 							onChange={(event, index, value) => this.props.addFiltration('attrType', value)}
 						>
 							{variants.map((variant, index) => {
@@ -134,6 +137,7 @@ export default class ResourcesHeader extends React.Component {
 								maxWidth: 250,
 								marginTop: 40
 							}}
+							name={value}
 							onToggle={(event, value) => this.props.addFiltration('isRequired', value)}
 						/>
 					)
@@ -155,6 +159,7 @@ export default class ResourcesHeader extends React.Component {
 								maxWidth: 250,
 								marginTop: 40
 							}}
+							name={value}
 							onToggle={(event, value) => this.props.addFiltration('isActive', value)}
 						/>
 					)
@@ -176,6 +181,7 @@ export default class ResourcesHeader extends React.Component {
 								maxWidth: 250,
 								marginTop: 40
 							}}
+							name={value}
 							onToggle={(event, value) => this.props.addFiltration('showInFilter', value)}
 						/>
 					)
@@ -196,6 +202,7 @@ export default class ResourcesHeader extends React.Component {
 							style={{
 								marginTop: 40
 							}}
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('creationDateStart', value)}
 						/>
 					)
@@ -216,6 +223,7 @@ export default class ResourcesHeader extends React.Component {
 							style={{
 								marginTop: 40
 							}}
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('creationDateEnd', value.toLocaleString())}
 						/>
 					)
@@ -236,6 +244,7 @@ export default class ResourcesHeader extends React.Component {
 							style={{
 								marginTop: 40
 							}}
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('modificationDateStart', value)}
 						/>
 					)
@@ -256,6 +265,7 @@ export default class ResourcesHeader extends React.Component {
 							style={{
 								marginTop: 40
 							}}
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('modificationDateEnd', value.toLocaleString())}
 						/>
 					)
@@ -275,6 +285,7 @@ export default class ResourcesHeader extends React.Component {
 						<SelectField
 							floatingLabelText='Набор атрибутов'
 							value={this.state.filtration.type}
+							name={value}
 							onChange={(event, index, value) => this.props.addFiltration('attribute-sets', value)}
 						>
 							{result['attribute-sets'].map((set, index) => {
@@ -303,6 +314,7 @@ export default class ResourcesHeader extends React.Component {
 					const search = (
 						<SelectField
 							floatingLabelText='Категория'
+							name={value}
 							onChange={(event, index, value) => this.props.addFiltration('categories', value)}
 						>
 							{result.categories.map((category, index) => {
@@ -331,6 +343,7 @@ export default class ResourcesHeader extends React.Component {
 						<TextField
 							hintText='Цена от'
 							floatingLabelText='Цена от'
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('priceStart', value)}
 						/>
 					)
@@ -349,6 +362,7 @@ export default class ResourcesHeader extends React.Component {
 						<TextField
 							hintText='Цена до'
 							floatingLabelText='Цена до'
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('priceEnd', value)}
 						/>
 					)
@@ -367,6 +381,7 @@ export default class ResourcesHeader extends React.Component {
 						<TextField
 							hintText='Имя'
 							floatingLabelText='Имя'
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('name', value)}
 						/>
 					)
@@ -385,6 +400,7 @@ export default class ResourcesHeader extends React.Component {
 						<TextField
 							hintText='Почта'
 							floatingLabelText='Почта'
+							name={value}
 							onChange={(event, value) => this.props.addFiltration('email', value)}
 						/>
 					)
@@ -403,6 +419,7 @@ export default class ResourcesHeader extends React.Component {
 					const search = (
 						<SelectField
 							floatingLabelText='Роль'
+							name={value}
 							onChange={(event, index, value) => this.props.addFiltration('role', value)}
 						>
 							{result.roles.map((role, index) => {
@@ -431,6 +448,7 @@ export default class ResourcesHeader extends React.Component {
 					const search = (
 						<SelectField
 							floatingLabelText='Клиент'
+							name={value}
 							onChange={(event, index, value) => this.props.addFiltration('client', value)}
 						>
 							{result.clients.map((client, index) => {
@@ -569,12 +587,25 @@ export default class ResourcesHeader extends React.Component {
 												key={index}
 											>
 												{filter}
+												{/*
 												<CloseIcon
 													style={{
 														cursor: 'pointer',
 														marginTop: 40
 													}}
-												/>
+													onClick={() => {
+														let filters = []
+														this.state.filters.forEach((filter, i) => {
+															if (i !== index) {
+																filters.push(filter)
+															}
+														})
+														this.setState({
+															filters: filters,
+															[this.state.filters[index].props.name]: false
+														})
+													}}
+												/>*/}
 											</div>
 										)
 									})}

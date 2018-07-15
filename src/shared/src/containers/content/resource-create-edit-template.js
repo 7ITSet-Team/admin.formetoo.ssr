@@ -293,7 +293,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	async uploadAnotherFile(event, key, resources) {
 		const result = await Data.uploadFile(event.target.files[0])
 		if (!key) {
-			console.log(resources)
 			let newState = {
 				data: {
 					...this.state.data,
@@ -534,8 +533,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 
 	render() {
 		const {tabs} = this.props.structure
-		console.log('RESCREAEDITSTATE ', this.state)
-		console.log('RESCREAEDITPROPS ', this.props)
+		console.log(this.state)
 		return (
 			<React.Fragment>
 				<Tabs>
@@ -1381,6 +1379,32 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</div>
 													)
 												}
+												if (attribute.attrType === 'boolean') {
+													return (
+														<div
+															className='input'
+															key={key}
+														>
+															<Toggle
+																style={{
+																	width: '250px'
+																}}
+																toggled={this.state.data.attributes[key].value}
+																label={attribute.title}
+																onToggle={(event, value) => {
+																	let newState = {
+																		data: {
+																			...this.state.data,
+																			attributes: this.state.data.attributes
+																		}
+																	}
+																	newState.data.attributes[key].value = value
+																	this.setState(newState)
+																}}
+															/>
+														</div>
+													)
+												}
 												if (attribute.attrType === 'file') {
 													return (
 														<div>
@@ -1475,6 +1499,32 @@ export default class ResourceCreateEditTemplate extends React.Component {
 														</SelectField>
 													)
 												}
+												if (tab.tabType === 'boolean') {
+													return (
+														<div
+															className='input'
+															key={key}
+														>
+															<Toggle
+																style={{
+																	width: '250px'
+																}}
+																toggled={this.state.data.tabs[key].value}
+																label={tab.title}
+																onToggle={(event, value) => {
+																	let newState = {
+																		data: {
+																			...this.state.data,
+																			tabs: this.state.data.tabs
+																		}
+																	}
+																	newState.data.tabs[key].value = value
+																	this.setState(newState)
+																}}
+															/>
+														</div>
+													)
+												}
 												if (tab.tabType === 'interval') {
 													return (
 														<div
@@ -1501,7 +1551,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																fullWidth={true}
 																hintText={`${tab.title} до`}
 																defaultValue={!!this.state.data.tabs[key].value ? this.state.data.tabs[key].value.to : ''}
-																floatingLabelText={`${tabs.title} до`}
+																floatingLabelText={`${tab.title} до`}
 																onChange={(event, value) => {
 																	let newState = {
 																		data: {

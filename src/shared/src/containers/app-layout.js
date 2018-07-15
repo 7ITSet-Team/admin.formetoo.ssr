@@ -58,7 +58,6 @@ export default class AppLayout extends React.Component {
 		const {authorised, allowedResources, isMenuOpened} = this.state
 		const location = this.props.location.pathname
 		const route = this.props.route.path
-		console.log(this.state, '=====')
 		if (!authorised) {
 			return <Redirect
 				push

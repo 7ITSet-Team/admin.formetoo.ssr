@@ -7,11 +7,7 @@ export default class NestedProvider {
 		console.log(data)
 		if (data.length && products.length) {
 			let ul = (
-				<div
-					style={{
-						marginLeft: 3
-					}}
-				>
+				<div>
 				</div>
 			)
 			let tree = fetchChildElement(ul)
@@ -37,20 +33,30 @@ export default class NestedProvider {
 								marginLeft: 10
 							}}
 						>
-							<div>
-								<CategoriesIcon
-									style={{
-										color: 'gray',
-										width: 17,
-										height: 17
-									}}
-								/>
-								{title}
-							</div>
+							{
+								title !== 'Корневая'
+								? (
+									<div>
+										<CategoriesIcon
+											style={{
+												color: 'gray',
+												width: 17,
+												height: 17
+											}}
+										/>
+										{title}
+									</div>
+									)
+								: null
+							}
 							{products.map(product => {
 								if (product.categories.indexOf(item.slug) !== -1) {
 									return (
-										<div>
+										<div
+											style={{
+												marginLeft: 10
+											}}
+										>
 											<ProductsIcon
 												style={{
 													color: 'gray',

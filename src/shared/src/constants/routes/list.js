@@ -355,9 +355,6 @@ export default [
 			}, {
 				name: 'КЛИЕНТ',
 				key: 'client'
-			}, {
-				name: 'СУММА',
-				key: 'sum'
 			}
 		],
 		filters: [
@@ -409,6 +406,7 @@ export default [
 									title: 'Цена'
 								}
 							],
+							needResources: 'products',
 							name: 'products'
 						}, {
 							type: 'pushTable',
