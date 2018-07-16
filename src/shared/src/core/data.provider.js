@@ -87,6 +87,16 @@ export default class Data {
 		return result.data.url
 	}
 
+	static async upload3DImages(uri, data) {
+		let formData = new FormData()
+		for (let i = 0; i < data.length; i++) {
+			formData.append('files', data[i])
+		}
+		const result = await axios.post(config.uri.admin + uri, formData, axiosConfig())
+		console.log('FROM SERVER --- ', result)
+		return true
+	}
+
 	static async uploadFile(data) {
 		let formData = new FormData()
 		formData.append('file', data)

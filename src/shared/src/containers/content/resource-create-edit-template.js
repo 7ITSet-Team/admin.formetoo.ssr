@@ -332,6 +332,11 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		})
 	}
 
+	async upload3DImages(file) {
+		const result = await Data.upload3DImages('/upload/3d/products', file.target.files)
+		console.log('result, ', result)
+	}
+
 	changeValueOfInput(e) {
 		const {name, value} = e.target
 		this.setState({
@@ -1237,6 +1242,63 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																		})}
 																	/>
 																</Dialog>
+																{
+																	/**
+																	 *
+																	 *  <input
+																	 type="file"
+																	 className="inputfile"
+																	 id="files"
+																	 name="files"
+																	 multiple
+																	 onChange={this.upload3DImages}
+																	 />
+																	 <label
+																	 htmlFor="files"
+																	 className="inputfile__label"
+																	 >
+																	 Загрузка 3D изображений
+																	 </label>
+																	 <RaisedButton
+																	 label="Настройки водяного знака"
+																	 style={{margin: '38px'}}
+																	 onClick={this.handleOpen}
+																	 />
+																	 <Dialog
+																	 title="Настройки водяного знака "
+																	 actions={actions}
+																	 modal={true}
+																	 open={this.state.open}
+																	 autoScrollBodyContent={true}
+																	 >
+																	 <Toggle
+																	 style={{
+																			width: '250px'
+																		}}
+																	 toggled={this.state.imageData.addWaterMark}
+																	 label='Добавить водяные знаки?'
+																	 onToggle={(event, value) => this.setState({
+																			imageData: {
+																				...this.state.imageData,
+																				addWaterMark: value
+																			}
+																		})}
+																	 />
+																	 <TextField
+																	 fullWidth={true}
+																	 floatingLabelText="Градус поворота по часовой стрелке"
+																	 value={this.state.imageData.rotation}
+																	 onChange={(event, value) => this.setState({
+																			imageData: {
+																				...this.state.imageData,
+																				rotation: value
+																			}
+																		})}
+																	 />
+																	 </Dialog>
+																	 *
+																	 */
+																}
 															</div>
 														)
 													}
