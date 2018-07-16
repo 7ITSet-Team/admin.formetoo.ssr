@@ -4,7 +4,7 @@
   "description": "server-side rendering",
   "main": "server.js",
   "scripts": {
-    "prod-build": "webpack",
+    "prod-build": "webpack --mode production",
     "start-dev": "webpack --mode development -w & nodemon server.js",
     "start-prod": "webpack --mode production -w & nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

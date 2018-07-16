@@ -14,6 +14,7 @@ let config = {
 		login: 'http://localhost:3001/api/login',
 		allowed: 'http://localhost:3001/api/allowed'
 	}
-}*/
+}
+*/
 
 export default config
