@@ -6,6 +6,7 @@
   "scripts": {
     "prod-build": "webpack",
     "start-dev": "webpack --mode development -w & nodemon server.js",
+    "start-prod": "webpack --mode production -w & nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
