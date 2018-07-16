@@ -5,7 +5,7 @@ import ProductsIcon from 'material-ui/svg-icons/action/list'
 export default class NestedProvider {
 	static drawNestedSetsTree(data, products) {
 		console.log(data)
-		if (data.length && products.length) {
+		if (data.length) {
 			let ul = (
 				<div>
 				</div>
