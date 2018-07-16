@@ -39,17 +39,6 @@ app.get('*', (req, res) => {
 		            <link rel="stylesheet" type="text/css" href="/styles/index.css" >
 		            <link rel="stylesheet" type="text/css" href="/styles/wysiwyg.css" >
 		            <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-		            <link rel="stylesheet" href="/photo3d-html-files/v3/css/style.css" type="text/css" media="all" />
-		
-					<script src="/photo3d-html-files/v3/js/jquery-1.11.0.min.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/canvasloader.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/jquery.fullscreen-0.3.5.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/jquery.mousewheel.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/jquery.selection.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/jquery.metadata.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/jquery.photo3d.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/jquery.photo3dconfig.js" type="text/javascript"></script>
-					<script src="/photo3d-html-files/v3/js/device.min.js" type="text/javascript"></script>
 				</head>
 				<body>
 					<div id="app">${markup}</div>
