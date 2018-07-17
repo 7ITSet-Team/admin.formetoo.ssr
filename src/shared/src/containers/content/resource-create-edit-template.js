@@ -155,6 +155,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		this.uploadAnotherFile = this.uploadAnotherFile.bind(this)
 		this.handleCloseSettings = this.handleCloseSettings.bind(this)
 		this.handleApplySettings = this.handleApplySettings.bind(this)
+		this.upload3DImages = this.upload3DImages.bind(this)
 	}
 
 	getInitialState() {
@@ -333,8 +334,16 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	}
 
 	async upload3DImages(file) {
-		const result = await Data.upload3DImages('/upload/3d/products', file.target.files)
-		console.log('result, ', result)
+		const result = await Data.upload3DImages('/upload/3d/products', {
+			file: file.target.files[0],
+			imageData: this.state.imageData
+		})
+		this.setState({
+			data: {
+				...this.state.data,
+				images: result.urls
+			}
+		})
 	}
 
 	changeValueOfInput(e) {
@@ -538,7 +547,6 @@ export default class ResourceCreateEditTemplate extends React.Component {
 
 	render() {
 		const {tabs} = this.props.structure
-		console.log(this.state)
 		return (
 			<React.Fragment>
 				<Tabs>
@@ -1180,125 +1188,70 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																key={fieldIndex}
 															>
 																<input
-																	type="file"
-																	className="inputfile"
-																	id="file"
-																	onChange={this.uploadFiles}
-																/>
-																<label
-																	htmlFor="file"
-																	className="inputfile__label"
-																>
-																	Перенесите сюда файл или нажмите, чтобы выбрать
-																	его
-																</label>
-																<div
-																	className="inputfile__images"
-																>
-																	{this.state.data.images.map((image, index) => {
-																		return (
-																			<img
-																				className="inputfile__image"
-																				src={image}
-																				key={index}
-																			/>
-																		)
-																	})}
-																</div>
-																<RaisedButton
-																	label="Настройки водяного знака"
-																	style={{margin: '38px'}}
-																	onClick={this.handleOpen}
-																/>
-																<Dialog
-																	title="Настройки водяного знака "
-																	actions={actions}
-																	modal={true}
-																	open={this.state.open}
-																	autoScrollBodyContent={true}
-																>
-																	<Toggle
-																		style={{
-																			width: '250px'
-																		}}
-																		toggled={this.state.imageData.addWaterMark}
-																		label='Добавить водяные знаки?'
-																		onToggle={(event, value) => this.setState({
-																			imageData: {
-																				...this.state.imageData,
-																				addWaterMark: value
-																			}
-																		})}
-																	/>
-																	<TextField
-																		fullWidth={true}
-																		floatingLabelText="Градус поворота по часовой стрелке"
-																		value={this.state.imageData.rotation}
-																		onChange={(event, value) => this.setState({
-																			imageData: {
-																				...this.state.imageData,
-																				rotation: value
-																			}
-																		})}
-																	/>
-																</Dialog>
-																{
-																	/**
-																	 *
-																	 *  <input
 																	 type="file"
 																	 className="inputfile"
-																	 id="files"
 																	 name="files"
-																	 multiple
+																	 id="files"
 																	 onChange={this.upload3DImages}
-																	 />
-																	 <label
+																 />
+																 <label
 																	 htmlFor="files"
 																	 className="inputfile__label"
-																	 >
-																	 Загрузка 3D изображений
-																	 </label>
-																	 <RaisedButton
+																 >
+																	 Загрузка 3D изображения. Загрузите архив со всеми кадрами товара.
+																 </label>
+																{
+																	this.state.data.images.length !== 0
+																		? (
+																			<div
+																				style={{marginTop: '38px', marginLeft: '38px'}}
+																			>
+																				<FileIcon
+																					color='rgb(0, 188, 212)'
+																				/>
+																				3D картинка загружена!
+																			</div>
+																		)
+																		: null
+																}
+																 <RaisedButton
 																	 label="Настройки водяного знака"
 																	 style={{margin: '38px'}}
 																	 onClick={this.handleOpen}
-																	 />
-																	 <Dialog
+																 />
+																 <Dialog
 																	 title="Настройки водяного знака "
 																	 actions={actions}
 																	 modal={true}
 																	 open={this.state.open}
 																	 autoScrollBodyContent={true}
-																	 >
+																 >
 																	 <Toggle
-																	 style={{
-																			width: '250px'
-																		}}
-																	 toggled={this.state.imageData.addWaterMark}
-																	 label='Добавить водяные знаки?'
-																	 onToggle={(event, value) => this.setState({
-																			imageData: {
-																				...this.state.imageData,
-																				addWaterMark: value
-																			}
-																		})}
+																		 style={{
+																				width: '250px'
+																			}}
+																		 toggled={this.state.imageData.addWaterMark}
+																		 label='Добавить водяные знаки?'
+																		 onToggle={(event, value) => this.setState({
+																				imageData: {
+																					...this.state.imageData,
+																					addWaterMark: value
+																				}
+																			})}
 																	 />
 																	 <TextField
-																	 fullWidth={true}
-																	 floatingLabelText="Градус поворота по часовой стрелке"
-																	 value={this.state.imageData.rotation}
-																	 onChange={(event, value) => this.setState({
-																			imageData: {
-																				...this.state.imageData,
-																				rotation: value
-																			}
-																		})}
+																		 fullWidth={true}
+																		 floatingLabelText="Градус поворота по часовой стрелке"
+																		 value={this.state.imageData.rotation}
+																		 onChange={(event, value) => this.setState({
+																				imageData: {
+																					...this.state.imageData,
+																					rotation: value
+																				}
+																			})
+																		 }
 																	 />
-																	 </Dialog>
-																	 *
-																	 */
-																}
+																 </Dialog>
 															</div>
 														)
 													}
