@@ -41,6 +41,10 @@ export default class ResourcesBody extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+
+		if (this.props.path === '/products') {
+			this.getProductsPrice()
+		}
 		this.setState({
 			sortedData: nextProps.data
 		})
@@ -353,7 +357,7 @@ export default class ResourcesBody extends React.Component {
 																style={{
 																	width: 60
 																}}
-																value={!!this.state.data[data.slug] ? this.state.data[data.slug] : ''}
+																value={this.state.data[data.slug]}
 																onChange={(event, value) => {
 																	this.setState({
 																		data: {
