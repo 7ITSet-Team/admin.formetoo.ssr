@@ -516,7 +516,7 @@ export default class ResourcesHeader extends React.Component {
 										label='Экспортировать файл'
 										primary={true}
 										icon={<ImportExportIcon color={cyan500}/>}
-										href={'http://admin.formetoo.ru/api/import/products' /*'http://localhost:3001/api/import/products'*/}
+										href={/*'http://admin.formetoo.ru/api/import/products'*/ 'http://localhost:3001/api/import/products'}
 									/>
 									<FlatButton
 										label='Импортировать файл'
@@ -563,7 +563,7 @@ export default class ResourcesHeader extends React.Component {
 				>
 
 					{
-						path !== '/logs'
+						path !== '/logs' && this.state.filters.length > 0
 							? (
 								<React.Fragment>
 									<SelectField
