@@ -549,6 +549,7 @@ export default [
 						{
 							type: 'dialog',
 							name: 'address',
+							title: 'Создание нового адреса',
 							children: [
 								{
 									type: 'textInput',

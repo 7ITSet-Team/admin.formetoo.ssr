@@ -81,7 +81,8 @@ export default class Login extends React.Component {
 							password === '') ? 'обязательно для заполнения' : undefined}
 						onBlur={() => !password && this.setState({password: ''})}
 						onChange={e => this.setState({password: e.target.value})}
-						type='password' name='password'
+						type='password'
+						name='password'
 					/>
 					<RaisedButton
 						label="ВОЙТИ"

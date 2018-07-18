@@ -85,6 +85,19 @@ export default class ToolBar extends React.Component {
 				})
 				await Data.create('/photos', data)
 			}
+			if (this.props.resources === 'profile') {
+				let data = this.props.data
+				const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
+				data.password = sha256(salt + data.password)
+				const result = await Data.edit('/' + this.props.resources, data)
+				if (result.success) {
+					if (action === 'saveAndExit') {
+						this.setState({
+							edited: true
+						})
+					}
+				}
+			}
 			const data = this.props.data
 			if ((this.props.resources === 'products' || this.props.resources === 'categories') && !(data.seo.keywords instanceof Array)) {
 				data.seo.keywords = data.seo.keywords.split(/, ?/)
@@ -117,6 +130,16 @@ export default class ToolBar extends React.Component {
 	}
 
 	render() {
+		if (this.state.edited && this.props.resources === 'profile') {
+			return (
+				<Redirect
+					push
+					to={{
+						pathname: '/'
+					}}
+				/>
+			)
+		}
 		if (this.state.created || this.state.edited || this.state.deleted || this.state.canceled) {
 			return (
 				<Redirect

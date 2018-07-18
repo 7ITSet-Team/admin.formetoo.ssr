@@ -357,7 +357,7 @@ export default class ResourcesBody extends React.Component {
 																style={{
 																	width: 60
 																}}
-																value={this.state.data[data.slug]}
+																value={this.state.data[data.slug] || ''}
 																onChange={(event, value) => {
 																	this.setState({
 																		data: {

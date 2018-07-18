@@ -341,8 +341,9 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		this.setState({
 			data: {
 				...this.state.data,
-				images: result.urls
-			}
+				images: result.urls || [...this.state.data.images, result.url]
+			},
+			many: !!result.urls
 		})
 	}
 
@@ -923,6 +924,67 @@ export default class ResourceCreateEditTemplate extends React.Component {
 												}
 												if (type === 'table') {
 													const {name, columns, needResources} = field
+													if (!needResources) {
+														return (
+															<Table
+																selectable={false}
+																key={fieldIndex}
+															>
+																<TableHeader
+																	displaySelectAll={false}
+																	adjustForCheckbox={false}
+																>
+																	<TableRow>
+																		{
+																			columns.map((item, index) => {
+																				return (
+																					<TableHeaderColumn
+																						key={index}
+																					>
+																						{item.title}
+																					</TableHeaderColumn>
+																				)
+																			})
+																		}
+																		<TableHeaderColumn>
+																		</TableHeaderColumn>
+																	</TableRow>
+																</TableHeader>
+																<TableBody
+																	displayRowCheckbox={false}
+																>
+																	{
+																		this.state.data[name].map((address, index) => {
+																			return (
+																				<TableRow
+																					key={index}
+																				>
+																					{
+																						columns.map((column, i) => {
+																							return (
+																								<TableRowColumn
+																									key={i}
+																								>
+																									{address[column.name]}
+																								</TableRowColumn>
+																							)
+																						})
+																					}
+																					<TableRowColumn>
+																						<DeleteIcon
+																							color='rgb(255, 64, 129)'
+																							onClick={() => this.deleteTableRow(index, name)}
+																							style={{cursor: 'pointer'}}
+																						/>
+																					</TableRowColumn>
+																				</TableRow>
+																			)
+																		})
+																	}
+																</TableBody>
+															</Table>
+														)
+													}
 													return (
 														<Table
 															selectable={false}
@@ -1030,35 +1092,37 @@ export default class ResourceCreateEditTemplate extends React.Component {
 															key={fieldIndex}
 														>
 															<Dialog
-																title="Создание нового варианта"
+																title={field.title || 'Создание нового варианта'}
 																actions={actions}
 																modal={true}
 																open={this.state.open}
 																autoScrollBodyContent={true}
 															>
 																{
-																	field.children.map((element, index) => {
-																		return (
-																			<div
-																				className='input'
-																				key={index}
-																			>
-																				<TextField
-																					fullWidth={true}
-																					hintText={element.title}
-																					floatingLabelText={element.title}
-																					errorText={element.required ? 'Поле обязательно' : ''}
-																					value={this.state[field.name][element.name]}
-																					onChange={(e) => this.setState({
-																						[field.name]: {
-																							...this.state[field.name],
-																							[element.name]: e.target.value
-																						}
-																					})}
-																				/>
-																			</div>
-																		)
-																	})
+																	!!field.children
+																		? field.children.map((element, index) => {
+																			return (
+																				<div
+																					className='input'
+																					key={index}
+																				>
+																					<TextField
+																						fullWidth={true}
+																						hintText={element.title}
+																						floatingLabelText={element.title}
+																						errorText={element.required ? 'Поле обязательно' : ''}
+																						value={this.state[field.name][element.name]}
+																						onChange={(e) => this.setState({
+																							[field.name]: {
+																								...this.state[field.name],
+																								[element.name]: e.target.value
+																							}
+																						})}
+																					/>
+																				</div>
+																			)
+																		})
+																		: null
 																}
 															</Dialog>
 															<RaisedButton
@@ -1199,10 +1263,10 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																	 htmlFor="files"
 																	 className="inputfile__label"
 																 >
-																	 Загрузка 3D изображения. Загрузите архив со всеми кадрами товара.
+																	 Загрузка изображений. Загрузите фотографию, или же архив со всеми кадрами товара, для загрузки в 3D.
 																 </label>
 																{
-																	this.state.data.images.length !== 0
+																	this.state.data.images.length !== 0 && !!this.state.many
 																		? (
 																			<div
 																				style={{marginTop: '38px', marginLeft: '38px'}}
@@ -1213,7 +1277,23 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																				3D картинка загружена!
 																			</div>
 																		)
-																		: null
+																		: this.state.data.images.length !== 0
+																			? (
+																				<div>
+																					{
+																						this.state.data.images.map((image, index) => {
+																							return (
+																								<img
+																									className="inputfile__image"
+																									src={image}
+																									key={index}
+																								/>
+																							)
+																						})
+																					}
+																				</div>
+																			)
+																			: null
 																}
 																 <RaisedButton
 																	 label="Настройки водяного знака"
