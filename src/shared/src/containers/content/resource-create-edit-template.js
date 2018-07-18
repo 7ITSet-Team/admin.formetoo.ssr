@@ -758,6 +758,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																					<TableHeaderColumn>
 																						Значение
 																					</TableHeaderColumn>
+																					<TableHeaderColumn/>
 																				</TableRow>
 																			</TableHeader>
 																			<TableBody

@@ -563,7 +563,7 @@ export default class ResourcesHeader extends React.Component {
 				>
 
 					{
-						path !== '/logs' && this.state.filters.length > 0
+						path !== '/logs' && this.props.filters.length > 0
 							? (
 								<React.Fragment>
 									<SelectField

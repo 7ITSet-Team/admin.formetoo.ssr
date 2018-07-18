@@ -243,9 +243,6 @@ export default [
 				type: 'type',
 				title: 'Тип'
 			}, {
-				type: 'isRequired',
-				title: 'Обязательный'
-			}, {
 				type: 'showInFilter',
 				title: 'Показать в фильтре'
 			}
