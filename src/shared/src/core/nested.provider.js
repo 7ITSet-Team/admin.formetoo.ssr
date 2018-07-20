@@ -2,6 +2,7 @@ import React from 'react'
 import CategoriesIcon from 'material-ui/svg-icons/action/bookmark'
 import ProductsIcon from 'material-ui/svg-icons/action/list'
 import SortableTree from 'react-sortable-tree'
+import { Redirect } from 'react-router-dom'
 
 let theme = undefined
 
@@ -11,7 +12,9 @@ export default class NestedProvider extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			treeData: this.getNestedSetsTree(this.props.data, this.props.products)
+			treeData: this.getNestedSetsTree(this.props.data, this.props.products),
+			redirect: false,
+			redirectPath: ''
 		}
 	}
 
@@ -20,8 +23,9 @@ export default class NestedProvider extends React.Component {
 			                             flatData,
 			                             getKey = node => node.slug,
 			                             getParentKey = node => node.parentCategory || node.categories,
-			                             rootKey = 'b364bss55ow',
-		                             }) {
+			                             rootKey = 'b364bss55ow'
+		                             })
+		{
 			if (!flatData) {
 				return []
 			}
@@ -30,6 +34,7 @@ export default class NestedProvider extends React.Component {
 			flatData.forEach(child => {
 				const parentKey = getParentKey(child)
 				if (parentKey instanceof Array) {
+					child.type = 'product'
 					parentKey.forEach(key => {
 						if (key in childrenToParents) {
 							childrenToParents[key].push(child)
@@ -39,6 +44,7 @@ export default class NestedProvider extends React.Component {
 					})
 					return
 				}
+				child.type = 'category'
 				if (parentKey in childrenToParents) {
 					childrenToParents[parentKey].push(child)
 				} else {
@@ -46,7 +52,9 @@ export default class NestedProvider extends React.Component {
 				}
 			})
 
-			if (!(rootKey in childrenToParents)) {
+			if (!(
+				rootKey in childrenToParents))
+			{
 				return []
 			}
 
@@ -55,26 +63,59 @@ export default class NestedProvider extends React.Component {
 				if (parentKey in childrenToParents) {
 					return {
 						...parent,
-						children: childrenToParents[parentKey].map(child => trav(child)),
+						children: childrenToParents[parentKey].map(child => trav(child))
 					}
 				}
 
-				return { ...parent }
+				return {...parent}
 			}
 
 			return childrenToParents[rootKey].map(child => trav(child))
 		}
+
 		return getTreeFromFlatData({
 			flatData: [...data, ...products]
 		})
 	}
 
 	render() {
+		if (this.state.redirect) {
+			return (
+				<Redirect
+					to={this.state.redirectPath}
+					push
+				/>
+			)
+		}
 		return (
-			<div style={{ height: '100%' }}>
+			<div style={{height: '100%'}}>
 				<SortableTree
 					treeData={this.state.treeData}
-					onChange={treeData => this.setState({ treeData })}
+					onChange={treeData => this.setState({treeData})}
+					generateNodeProps={rowInfo => {
+						return {
+							onClick: event => {
+								if (event.target.className.includes('collapseButton') || event.target.className.includes('expandButton')) {
+								} else {
+									if (rowInfo.node.type === 'product') {
+										this.setState({
+											redirect: true,
+											redirectPath: `/products/${rowInfo.node._id}`
+										})
+									}
+									if (rowInfo.node.type === 'category') {
+										this.setState({
+											redirect: true,
+											redirectPath: `/categories/${rowInfo.node._id}`
+										})
+									}
+								}
+							},
+							style: {
+								cursor: 'pointer'
+							}
+						}
+					}}
 				/>
 			</div>
 		)
