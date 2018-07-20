@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals')
 const _root = path.resolve()
 const _project = path.join(_root, '/src/shared')
 const _themePath = _root + '/public/styles/'
-
+console.log(_project + '/styles')
 const browserConfig = {
 	entry: ['babel-polyfill', './src/browser/index.js'],
 	output: {
@@ -19,13 +19,14 @@ const browserConfig = {
 			'@admin': _project,
 			'@src': _project + '/src',
 			'@common': _project + '/common',
-			'@theme': _themePath
+			'@theme': _project + '/styles'
 		}
 	},
 	module: {
 		rules: [
 			{
 				test: /\.(js)$/,
+				exclude: /node_modules/,
 				use: 'babel-loader'
 			}, {
 				test: /\.(png|jpg|eot|svg|ttf|woff)$/,
@@ -41,6 +42,17 @@ const browserConfig = {
 				]
 			}, {
 				test: /\.css$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'style-loader'
+					}, {
+						loader: 'css-loader'
+					}
+				]
+			}, {
+				test: /\.scss$/,
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'style-loader'

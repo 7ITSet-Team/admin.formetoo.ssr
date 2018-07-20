@@ -94,9 +94,27 @@ export default class ResourcesLayout extends React.Component {
 		if (tree) {
 			return (
 				<div
-					className='resource-page'
+					className='tree-layout'
 				>
-					{Nested.drawNestedSetsTree(resources, products)}
+					{resources.length !== 0
+						? <Nested
+							data={resources}
+							products={products}
+							generateNodeProps={rowInfo => (
+	                           <div
+	                               style={{
+		                               borderLeft: 'solid 8px gray',
+		                               borderBottom: 'solid 10px gray',
+		                               marginRight: 10,
+		                               width: 16,
+		                               height: 12,
+		                               filter: 'drop-shadow(1px 0 0 gray) drop-shadow(0 1px 0 gray) drop-shadow(0 -1px 0 gray) drop-shadow(-1px 0 0 gray)',
+		                               borderColor: 'white'
+	                               }}
+	                           />
+							)}
+						/>
+						: null}
 				</div>
 			)
 		}
