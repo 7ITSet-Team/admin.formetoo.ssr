@@ -618,6 +618,10 @@ export default [
 							defaultValue: '',
 							required: true
 						}, {
+							type: 'boolean',
+							name: 'isUser',
+							title: 'Обычный пользователь?'
+						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'categories', 'permissions'],
 							title: 'Права для категорий',

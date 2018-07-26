@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import sha256 from 'js-sha256'
 
 import Data from '@src/core/data.provider'
+import md5 from 'md5'
 
 export default class ToolBar extends React.Component {
 	constructor(props) {
@@ -42,8 +43,10 @@ export default class ToolBar extends React.Component {
 			}
 			let data = this.props.data
 			if (this.props.resources === 'users') {
-				const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
-				data.password = sha256(salt + data.password)
+				const salt1 = 'AQRp;S~G=&rG!>}rso!A3<B-[j?uO5f/--Z5v8Af=Qo+L?=Xe8=i[wyNBFn!HyB'
+				const salt2 = '#!cgW0mbPC&r*_m>Kozn{.H=)W^3YB>_5i@>_{f_tV+m*l\'}Ff/&r3\'kx!9NlX)'
+				const salt3 = '4PH}d9wj=cl-RzQ\'YUvezTwzGv0a+*Qt@`2H.Gh;e$}jJu9>UxSY5f<kX@$gNU~'
+				data.password = sha256(md5(salt1 + data.password + salt2) + salt3)
 			}
 			if ((this.props.resources === 'products' || this.props.resources === 'categories') && !(data.seo.keywords instanceof Array)) {
 				data.seo.keywords = data.seo.keywords.split(/, ?/)
@@ -87,8 +90,10 @@ export default class ToolBar extends React.Component {
 			}
 			if (this.props.resources === 'profile') {
 				let data = this.props.data
-				const salt = '#!f$55723e.12d68,,b36fdcCC0ba7cf^%^d8f8e1c1793453_32'
-				data.password = sha256(salt + data.password)
+				const salt1 = 'AQRp;S~G=&rG!>}rso!A3<B-[j?uO5f/--Z5v8Af=Qo+L?=Xe8=i[wyNBFn!HyB'
+				const salt2 = '#!cgW0mbPC&r*_m>Kozn{.H=)W^3YB>_5i@>_{f_tV+m*l\'}Ff/&r3\'kx!9NlX)'
+				const salt3 = '4PH}d9wj=cl-RzQ\'YUvezTwzGv0a+*Qt@`2H.Gh;e$}jJu9>UxSY5f<kX@$gNU~'
+				data.password = sha256(md5(salt1 + data.password + salt2) + salt3)
 				const result = await Data.edit('/' + this.props.resources, data)
 				if (result.success) {
 					if (action === 'saveAndExit') {
@@ -99,6 +104,12 @@ export default class ToolBar extends React.Component {
 				}
 			}
 			const data = this.props.data
+			if (this.props.resources === 'users') {
+				const salt1 = 'AQRp;S~G=&rG!>}rso!A3<B-[j?uO5f/--Z5v8Af=Qo+L?=Xe8=i[wyNBFn!HyB'
+				const salt2 = '#!cgW0mbPC&r*_m>Kozn{.H=)W^3YB>_5i@>_{f_tV+m*l\'}Ff/&r3\'kx!9NlX)'
+				const salt3 = '4PH}d9wj=cl-RzQ\'YUvezTwzGv0a+*Qt@`2H.Gh;e$}jJu9>UxSY5f<kX@$gNU~'
+				data.password = sha256(md5(salt1 + data.password + salt2) + salt3)
+			}
 			if ((this.props.resources === 'products' || this.props.resources === 'categories') && !(data.seo.keywords instanceof Array)) {
 				data.seo.keywords = data.seo.keywords.split(/, ?/)
 			}

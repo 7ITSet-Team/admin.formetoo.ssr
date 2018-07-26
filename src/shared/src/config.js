@@ -1,4 +1,3 @@
-
 let config = {
 	uri: {
 		admin: 'http://admin.formetoo.ru/api',

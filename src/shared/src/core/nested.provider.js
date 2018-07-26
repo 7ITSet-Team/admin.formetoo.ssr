@@ -4,10 +4,6 @@ import ProductsIcon from 'material-ui/svg-icons/action/list'
 import SortableTree from 'react-sortable-tree'
 import { Redirect } from 'react-router-dom'
 
-let theme = undefined
-
-__isBrowser__ ? theme = require('react-sortable-tree-theme-minimal') : null
-
 export default class NestedProvider extends React.Component {
 	constructor(props) {
 		super(props)
