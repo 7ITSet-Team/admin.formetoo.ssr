@@ -535,7 +535,7 @@ export default class ResourcesHeader extends React.Component {
 							)
 							: null}
 						{
-							path !== '/logs'
+							path !== '/logs' && path !== '/articles'
 								? (
 									<React.Fragment>
 										<Link

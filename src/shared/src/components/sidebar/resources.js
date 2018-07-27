@@ -7,6 +7,7 @@ import LogsIcon from 'material-ui/svg-icons/hardware/laptop'
 import TreeIcon from 'material-ui/svg-icons/editor/format-align-center'
 import LegalEntityIcon from 'material-ui/svg-icons/action/face'
 import DashboardIcon from 'material-ui/svg-icons/action/home'
+import ContentIcon from 'material-ui/svg-icons/content/archive'
 import { Redirect } from 'react-router-dom'
 
 import Auth from '@src/core/auth.provider'
@@ -62,6 +63,15 @@ export default class ResourcesList extends React.Component {
 					})}
 				</div>
 				<div>
+					<Link
+						to="/articles"
+					>
+						<ListItem
+							primaryText="Контент страниц"
+							className="list__item"
+							leftIcon={<ContentIcon/>}
+						/>
+					</Link>
 					<Link
 						to="/legalentity"
 					>

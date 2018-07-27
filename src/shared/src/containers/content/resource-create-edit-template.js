@@ -113,6 +113,13 @@ export default class ResourceCreateEditTemplate extends React.Component {
 			this.getData('categories')
 			    .catch(err => console.error('resource-layout ERROR GETTING DATA!: ', err))
 		}
+		if (resource === 'articles') {
+			this.state = {
+				...this.state,
+				contState: EditorState.createEmpty(),
+				open: false
+			}
+		}
 		if (resource === 'products') {
 			this.state = {
 				...this.state,
@@ -156,6 +163,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 		this.handleCloseSettings = this.handleCloseSettings.bind(this)
 		this.handleApplySettings = this.handleApplySettings.bind(this)
 		this.upload3DImages = this.upload3DImages.bind(this)
+		this.onEditorContChange = this.onEditorContChange.bind(this)
 	}
 
 	getInitialState() {
@@ -258,6 +266,17 @@ export default class ResourceCreateEditTemplate extends React.Component {
 				data: result,
 				descState: editorState,
 				shortDescState: editorStateShortDesc
+			})
+		}
+
+		if (this.props.resource === 'articles') {
+			const content = result.content
+			const contentBlock = htmlToDraft(content)
+			const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
+			const editorState = EditorState.createWithContent(contentState)
+			return this.setState({
+				data: result,
+				contState: editorState
 			})
 		}
 
@@ -543,6 +562,12 @@ export default class ResourceCreateEditTemplate extends React.Component {
 	onEditorShortDescChange(shortDescState) {
 		this.setState({
 			shortDescState
+		})
+	}
+
+	onEditorContChange(contState) {
+		this.setState({
+			contState
 		})
 	}
 
@@ -1150,7 +1175,7 @@ export default class ResourceCreateEditTemplate extends React.Component {
 																editorState={this.state[field.editorStateName]}
 																wrapperClassName="demo-wrapper"
 																editorClassName="demo-editor"
-																onEditorStateChange={field.editorStateName === 'descState' ? this.onEditorDescChange : this.onEditorShortDescChange}
+																onEditorStateChange={field.editorStateName === 'contState' ? this.onEditorContChange : field.editorStateName === 'descState' ? this.onEditorDescChange : this.onEditorShortDescChange}
 																onChange={() => this.setState({
 																	data: {
 																		...this.state.data,

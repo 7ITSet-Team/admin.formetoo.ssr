@@ -56,7 +56,7 @@ export default class ResourcesBody extends React.Component {
 			this.setState({
 				data: {
 					...this.state.data,
-					[ product.slug ]: product.price
+					[product.slug]: product.price
 				}
 			})
 		})
@@ -87,16 +87,16 @@ export default class ResourcesBody extends React.Component {
 
 	static ascendingSort(key, first, last) {
 		if (key !== 'price') {
-			return first[ key ] > last[ key ]
+			return first[key] > last[key]
 		}
-		return first[ key ] - last[ key ]
+		return first[key] - last[key]
 	}
 
 	static descendingSort(key, first, last) {
 		if (key !== 'price') {
-			return last[ key ] > first[ key ]
+			return last[key] > first[key]
 		}
-		return last[ key ] - first[ key ]
+		return last[key] - first[key]
 	}
 
 	sort(resource) {
@@ -279,22 +279,9 @@ export default class ResourcesBody extends React.Component {
 										key={key}
 										className='table__header__column'
 									>
-										<div
-											onClick={() => {
-												this.sort(column)
-												this.setState({
-													ascendingSort: !this.state.ascendingSort
-												})
-											}}
-											style={{
-												cursor: 'pointer'
-											}}
-										>
-											{column.name}
-										</div>
+										{column.name}
 									</TableHeaderColumn>
 								))}
-								<TableHeaderColumn/>
 								<TableHeaderColumn/>
 							</TableRow>
 						</TableHeader>
@@ -302,6 +289,27 @@ export default class ResourcesBody extends React.Component {
 							displayRowCheckbox={false}
 						>
 							{sortedData.map((data, key) => {
+								if (path === '/articles') {
+									return (
+										<TableRow
+											key={key}
+											className='table__row'
+										>
+											{columns.map((column, i) => {
+												return <TableRowColumn key={i}>{data[column.key]}</TableRowColumn>
+											})}
+											<TableRowColumn>
+												<Link
+													to={`${path}/${data._id}`}
+												>
+													<EditIcon
+														color='rgb(0, 188, 212)'
+													/>
+												</Link>
+											</TableRowColumn>
+										</TableRow>
+									)
+								}
 								if ((
 									(
 										key + 1 >= page * 10 - 9) && (
@@ -444,8 +452,8 @@ export default class ResourcesBody extends React.Component {
 														</TableRowColumn>
 													)
 													: this.props.path === '/logs'
-														? <TableRowColumn/>
-														: null
+													? <TableRowColumn/>
+													: null
 											}
 											<TableRowColumn>
 												<Link

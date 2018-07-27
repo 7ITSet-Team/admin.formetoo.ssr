@@ -5,6 +5,7 @@ import Profile from '@src/containers/content/profile'
 import ResourceCreateEditTemplate from '@src/containers/content/resource-create-edit-template'
 import ResourcesLayout from '@src/containers/content/resources-layout'
 import RemoveLayout from '@src/containers/content/remove-layout'
+import Articles from '@src/components/content/articles'
 
 import listRoutes from './list'
 
@@ -137,6 +138,28 @@ export default (location, root) => {
 			}
 		]
 	}
+	let structureArticles = {
+		tabs: [
+			{
+				title: 'ОСНОВНОЕ',
+				className: 'big-resource',
+				content: [
+					{
+						type: 'textInput',
+						name: 'title',
+						title: 'Заголовок страницы',
+						defaultValue: ''
+					}, {
+						type: 'wysiwyg',
+						name: 'content',
+						editorStateName: 'contState',
+						title: 'Контент страницы',
+						defaultValue: ''
+					}
+				]
+			}
+		]
+	}
 
 	let routes = [
 		{
@@ -171,6 +194,23 @@ export default (location, root) => {
 				resource='legalentity'
 				structure={structureLegalEntity}
 				action='universal'
+				{...props}
+			/>
+		}, {
+			path: root + 'articles',
+			exact: true,
+			component: (props) => <Articles
+				title='Контент страниц'
+				resource='articles'
+				{...props}
+			/>
+		}, {
+			path: root + 'articles/:id',
+			exact: true,
+			component: (props) => <ResourceCreateEditTemplate
+				resource='articles'
+				structure={structureArticles}
+				action='edit'
 				{...props}
 			/>
 		}
