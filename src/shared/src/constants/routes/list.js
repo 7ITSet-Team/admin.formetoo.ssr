@@ -621,6 +621,10 @@ export default [
 							type: 'boolean',
 							name: 'isUser',
 							title: 'Обычный пользователь?'
+						},{
+							type: 'boolean',
+							name: 'default',
+							title: 'Сделать по-умолчанию'
 						}, {
 							type: 'multipleSelect',
 							name: ['resources', 'categories', 'permissions'],
