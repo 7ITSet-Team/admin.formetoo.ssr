@@ -3,7 +3,7 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import EditIcon from 'material-ui/svg-icons/content/create'
 import TextField from 'material-ui/TextField'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import FalseIcon from 'material-ui/svg-icons/content/clear'
 import TrueIcon from 'material-ui/svg-icons/action/done'
 import SaveIcon from 'material-ui/svg-icons/content/save'
@@ -420,6 +420,15 @@ export default class ResourcesBody extends React.Component {
 																	})
 																})}
 															</div>
+														</TableRowColumn>
+													)
+												}
+												if (this.props.path === '/products' && column.key === 'title') {
+													return (
+														<TableRowColumn key={i}>
+															<a href={`http://formetoo.ru/catalog/products/${data.slug}`}>
+																{data[column.key]}
+															</a>
 														</TableRowColumn>
 													)
 												}
