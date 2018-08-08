@@ -1,3 +1,12 @@
+/**
+ *
+ * Тот человек, который сидит и читает этот код. Я очень глубоко извиняюсь за дичайший говнокод, извиняюсь за тонну недокументированного кода
+ * Поймите тоже правильно, админ-панель делалась на скорую руку
+ * Удачи!
+ *
+ */
+
+
 import express from 'express'
 import cors from 'cors'
 import { renderToString } from 'react-dom/server'
@@ -50,17 +59,3 @@ app.get('*', (req, res) => {
 app.listen(3000, () => {
 	console.log('Server listening on port 3000!')
 })
-
-
-/**
-
-
- <img
- id='image'
- class="photo3d-preview-image {maxZoom:100, frames:53, yframes:1, useSeparateFrames:true, startImmediately:true, autoPlay:true, horizontalRangeLeft:0, horizontalRangeRight:0, verticalRangeBottom:0, verticalRangeTop:0, firstFrameX:0, firstFrameY:0, productCode:''}"
- src='/img3d_000045.jpg'
- border='0'
- width='800'
- height='600'
- />
- **/

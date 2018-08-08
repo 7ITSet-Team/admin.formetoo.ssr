@@ -1,3 +1,11 @@
+/**
+ *
+ * Тот человек, который сидит и читает этот код. Я очень глубоко извиняюсь за дичайший говнокод, извиняюсь за тонну недокументированного кода
+ * Поймите тоже правильно, админ-панель делалась на скорую руку
+ * Удачи!
+ *
+ */
+
 import React from 'react'
 import renderRoutes from 'react-router-config/renderRoutes'
 import { Switch } from 'react-router-dom'
